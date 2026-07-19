@@ -1,0 +1,151 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+type Block =
+  | { type: 'p'; text: string }
+  | { type: 'h3'; text: string }
+  | { type: 'ul'; items: string[] };
+
+interface Section {
+  title: string;
+  blocks: Block[];
+}
+
+const lastUpdated = 'July 1, 2026';
+
+const intro =
+  'Zylo is built and operated by Zylo Theme. This Cookie Policy explains what cookies and similar technologies are, how Zylo uses them, and how you can manage your preferences. It should be read alongside our Privacy Policy.';
+
+const sections: Section[] = [
+  {
+    title: 'What Are Cookies',
+    blocks: [
+      { type: 'p', text: 'Cookies are small text files placed on your device when you visit a website. They help the site remember your actions and preferences over time. We also use similar technologies such as local storage, web beacons, pixels, and tags, which we refer to collectively as “cookies” in this policy.' }
+    ]
+  },
+  {
+    title: 'How We Use Cookies',
+    blocks: [
+      { type: 'p', text: 'Zylo uses cookies to:' },
+      {
+        type: 'ul',
+        items: [
+          'Keep you signed in and secure your session',
+          'Remember your settings and preferences',
+          'Understand how the product is used so we can improve it',
+          'Measure performance and diagnose errors'
+        ]
+      }
+    ]
+  },
+  {
+    title: 'Types of Cookies We Use',
+    blocks: [
+      { type: 'h3', text: 'a. Essential Cookies' },
+      { type: 'p', text: 'Required for Zylo to function — for example, authentication, security, and load balancing. The service cannot work properly without these, so they cannot be switched off.' },
+      { type: 'h3', text: 'b. Performance and Analytics Cookies' },
+      { type: 'p', text: 'Help us understand how visitors interact with Zylo so we can improve it. We use tools such as Plausible Analytics, Google Analytics, and Google Tag Manager.' },
+      { type: 'h3', text: 'c. Functional Cookies' },
+      { type: 'p', text: 'Remember choices you make — such as language, theme, and dismissed notices — to give you a more personalized experience.' },
+      { type: 'h3', text: 'd. Marketing Cookies' },
+      { type: 'p', text: 'Used to measure the effectiveness of campaigns and, where applicable, to show relevant messaging. These are only set with your consent where required.' }
+    ]
+  },
+  {
+    title: 'Third-Party Cookies',
+    blocks: [
+      { type: 'p', text: 'Some cookies are set by third-party services we use, including:' },
+      {
+        type: 'ul',
+        items: [
+          'Analytics providers (e.g. Plausible, Google Analytics)',
+          'Payment processors (e.g. Stripe, FastSpring, Lemon Squeezy)',
+          'Support and communication tools',
+          'Error monitoring services (e.g. Sentry)'
+        ]
+      },
+      { type: 'p', text: 'These providers process cookie data according to their own privacy and cookie policies.' }
+    ]
+  },
+  {
+    title: 'Managing Your Cookie Preferences',
+    blocks: [
+      { type: 'p', text: 'You can control and delete cookies through your browser settings. Most browsers let you block or remove cookies, though disabling essential cookies may affect how Zylo works.' },
+      { type: 'p', text: 'Where required by law, we ask for your consent before setting non-essential cookies, and you can withdraw consent at any time.' }
+    ]
+  },
+  {
+    title: 'Do Not Track',
+    blocks: [
+      { type: 'p', text: 'Some browsers offer a “Do Not Track” signal. There is no common industry standard for how to respond to these signals, so Zylo does not currently alter its behavior based on them. We do favor privacy-friendly analytics to minimize tracking.' }
+    ]
+  },
+  {
+    title: 'Changes to This Cookie Policy',
+    blocks: [
+      { type: 'p', text: 'We may update this Cookie Policy to reflect changes in our practices, technology, or legal requirements. Updates will be posted on this page with a revised “Last updated” date.' }
+    ]
+  },
+  {
+    title: 'Contact Us',
+    blocks: [
+      { type: 'p', text: 'If you have questions about our use of cookies, contact us at privacy@zylo.co.' },
+      { type: 'p', text: 'Zylo Theme — Zylo.co' }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Cookie Policy — Zylo"
+  description="Learn how Zylo uses cookies and similar technologies."
+>
+  <Navbar />
+  <main id="main">
+    <!-- Hero -->
+    <section
+      class="relative overflow-hidden pt-40 pb-12 md:pt-48"
+      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
+    >
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl" data-reveal>
+          <h1 class="h1 mb-4">Cookie Policy</h1>
+          <p class="p-lt text-slate-500">Last updated: {lastUpdated}</p>
+          <p class="p-lg mt-8">{intro}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <section class="bg-white pb-24">
+      <div class="container-page">
+        <div class="mx-auto flex max-w-3xl flex-col gap-12">
+          {sections.map((section, i) => (
+            <section class="flex flex-col gap-5">
+              <h2 class="h5 text-slate-900">{i + 1}. {section.title}</h2>
+              {section.blocks.map((block) => (
+                block.type === 'h3' ? (
+                  <h3 class="h6 text-slate-900">{block.text}</h3>
+                ) : block.type === 'ul' ? (
+                  <ul class="flex list-disc flex-col gap-2 pl-6 marker:text-slate-300">
+                    {block.items.map((item) => <li class="p-rg text-slate-600">{item}</li>)}
+                  </ul>
+                ) : (
+                  <p class="p-rg text-slate-600">{block.text}</p>
+                )
+              ))}
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

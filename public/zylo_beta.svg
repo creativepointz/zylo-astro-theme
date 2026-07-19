@@ -1,0 +1,7 @@
+<svg width="260" height="48" viewBox="0 0 260 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="4" width="40" height="40" rx="10" fill="#4F46E5"/>
+  <path d="M25 12L14 27H20.5L18 38L30 21H23.5L25 12Z" fill="white"/>
+  <text x="54" y="34" font-family="Fustat, ui-sans-serif, system-ui, sans-serif" font-size="30" font-weight="700" letter-spacing="-0.5" fill="#0F172B">Zylo</text>
+  <rect x="152" y="14" width="46" height="20" rx="10" fill="#FFE566"/>
+  <text x="175" y="28" font-family="Fustat, ui-sans-serif, system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5" fill="#0F172B" text-anchor="middle">BETA</text>
+</svg>

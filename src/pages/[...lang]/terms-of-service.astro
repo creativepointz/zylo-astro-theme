@@ -1,0 +1,195 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+type Block =
+  | { type: 'p'; text: string }
+  | { type: 'h3'; text: string }
+  | { type: 'ul'; items: string[] };
+
+interface Section {
+  title: string;
+  blocks: Block[];
+}
+
+const lastUpdated = 'July 1, 2026';
+
+const intro =
+  'Zylo is built and operated by Zylo Theme. These Terms of Service (“Terms”) govern your access to and use of Zylo, including our website, apps, and related services. By creating an account or using Zylo, you agree to these Terms. If you do not agree, do not use the service.';
+
+const sections: Section[] = [
+  {
+    title: 'Acceptance of Terms',
+    blocks: [
+      { type: 'p', text: 'By accessing or using Zylo, you confirm that you can form a binding contract and that you accept these Terms and our Privacy Policy. If you use Zylo on behalf of an organization, you agree to these Terms on its behalf.' }
+    ]
+  },
+  {
+    title: 'Description of Service',
+    blocks: [
+      { type: 'p', text: 'Zylo is a platform for writing, publishing, and maintaining documentation, with AI-assisted tools and integrations. We may add, change, or remove features at any time to improve the service.' }
+    ]
+  },
+  {
+    title: 'Accounts and Registration',
+    blocks: [
+      { type: 'p', text: 'To use most features you must create an account. You agree to:' },
+      {
+        type: 'ul',
+        items: [
+          'Provide accurate and complete registration information',
+          'Keep your credentials secure and confidential',
+          'Be responsible for all activity under your account',
+          'Notify us promptly of any unauthorized use'
+        ]
+      }
+    ]
+  },
+  {
+    title: 'Plans, Billing, and Payments',
+    blocks: [
+      { type: 'p', text: 'Paid plans are billed in advance on a recurring basis through our payment providers (Stripe, FastSpring, or Lemon Squeezy). By subscribing, you authorize recurring charges until you cancel.' },
+      {
+        type: 'ul',
+        items: [
+          'Fees are non-refundable except where required by law',
+          'We may change pricing with reasonable advance notice',
+          'You are responsible for any applicable taxes',
+          'Failure to pay may result in suspension or termination'
+        ]
+      }
+    ]
+  },
+  {
+    title: 'Acceptable Use',
+    blocks: [
+      { type: 'p', text: 'You agree not to misuse Zylo. You may not:' },
+      {
+        type: 'ul',
+        items: [
+          'Violate any law or infringe the rights of others',
+          'Upload malware or attempt to disrupt the service',
+          'Reverse engineer or bypass security or usage limits',
+          'Publish unlawful, harmful, or abusive content',
+          'Resell or misrepresent the service without authorization'
+        ]
+      }
+    ]
+  },
+  {
+    title: 'Your Content and License',
+    blocks: [
+      { type: 'p', text: 'You retain ownership of the documentation, media, and other content you create or upload (“Your Content”).' },
+      { type: 'p', text: 'You grant Zylo a limited, worldwide license to host, store, render, publish, and process Your Content solely to operate and improve the service. You are responsible for having the rights to Your Content and for its legality.' }
+    ]
+  },
+  {
+    title: 'Intellectual Property',
+    blocks: [
+      { type: 'p', text: 'Zylo, including its software, branding, and design, is owned by Zylo Theme and protected by intellectual property laws. These Terms do not grant you any right to our trademarks or brand assets without prior written permission.' }
+    ]
+  },
+  {
+    title: 'Third-Party Services and Integrations',
+    blocks: [
+      { type: 'p', text: 'Zylo may integrate with third-party services such as GitHub, analytics providers, and payment processors. Your use of those services is governed by their own terms and privacy policies. We are not responsible for third-party services.' }
+    ]
+  },
+  {
+    title: 'Cancellation and Termination',
+    blocks: [
+      { type: 'p', text: 'You may cancel your subscription at any time from your account settings; access continues until the end of the current billing period. We may suspend or terminate your access if you violate these Terms or for security, legal, or operational reasons. Upon termination, your right to use the service ends.' }
+    ]
+  },
+  {
+    title: 'Disclaimers',
+    blocks: [
+      { type: 'p', text: 'Zylo is provided “as is” and “as available” without warranties of any kind, whether express or implied, including fitness for a particular purpose, availability, or accuracy. We do not warrant that the service will be uninterrupted or error-free.' }
+    ]
+  },
+  {
+    title: 'Limitation of Liability',
+    blocks: [
+      { type: 'p', text: 'To the maximum extent permitted by law, Zylo Theme will not be liable for any indirect, incidental, special, or consequential damages, or for loss of data, revenue, or profits. Our total liability for any claim is limited to the amount you paid for the service in the twelve months before the claim.' }
+    ]
+  },
+  {
+    title: 'Indemnification',
+    blocks: [
+      { type: 'p', text: 'You agree to indemnify and hold harmless Zylo Theme and its affiliates from any claims, damages, or expenses arising from Your Content, your use of the service, or your violation of these Terms.' }
+    ]
+  },
+  {
+    title: 'Changes to the Service and Terms',
+    blocks: [
+      { type: 'p', text: 'We may update these Terms to reflect changes in our practices, technology, or legal requirements. Material changes will be posted on this page with a revised “Last updated” date. Continued use after changes take effect means you accept the updated Terms.' }
+    ]
+  },
+  {
+    title: 'Governing Law',
+    blocks: [
+      { type: 'p', text: 'These Terms are governed by the laws of Singapore, without regard to conflict-of-law principles. Any disputes will be subject to the exclusive jurisdiction of the courts of Singapore, unless otherwise required by applicable law.' }
+    ]
+  },
+  {
+    title: 'Contact Us',
+    blocks: [
+      { type: 'p', text: 'If you have questions about these Terms, contact us at legal@zylo.co.' },
+      { type: 'p', text: 'Zylo Theme — Zylo.co' }
+    ]
+  }
+];
+---
+
+<Layout
+  title="Terms of Service — Zylo"
+  description="The terms that govern your access to and use of Zylo."
+>
+  <Navbar />
+  <main id="main">
+    <!-- Hero -->
+    <section
+      class="relative overflow-hidden pt-40 pb-12 md:pt-48"
+      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
+    >
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl" data-reveal>
+          <h1 class="h1 mb-4">Terms of Service</h1>
+          <p class="p-lt text-slate-500">Last updated: {lastUpdated}</p>
+          <p class="p-lg mt-8">{intro}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <section class="bg-white pb-24">
+      <div class="container-page">
+        <div class="mx-auto flex max-w-3xl flex-col gap-12">
+          {sections.map((section, i) => (
+            <section class="flex flex-col gap-5">
+              <h2 class="h5 text-slate-900">{i + 1}. {section.title}</h2>
+              {section.blocks.map((block) => (
+                block.type === 'h3' ? (
+                  <h3 class="h6 text-slate-900">{block.text}</h3>
+                ) : block.type === 'ul' ? (
+                  <ul class="flex list-disc flex-col gap-2 pl-6 marker:text-slate-300">
+                    {block.items.map((item) => <li class="p-rg text-slate-600">{item}</li>)}
+                  </ul>
+                ) : (
+                  <p class="p-rg text-slate-600">{block.text}</p>
+                )
+              ))}
+            </section>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

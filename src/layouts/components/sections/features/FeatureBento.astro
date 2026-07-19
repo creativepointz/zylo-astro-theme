@@ -1,0 +1,81 @@
+---
+import Reveal from '@/components/widgets/Reveal.astro';
+import SectionHeading from '@/components/widgets/SectionHeading.astro';
+
+const items = [
+  { title: 'Custom Domain', body: 'Publish on your own domain in a few clicks.', colSpan: 'md:col-span-1 md:row-span-2', isTall: true },
+  { title: 'AI Translations', body: 'Reach more readers with multi-language docs.', colSpan: 'md:col-span-1' },
+  { title: 'Dark Mode', body: 'Easy on the eyes, across the whole site.', colSpan: 'md:col-span-1' },
+  { title: 'Page Analytics', body: 'See what readers view and where they drop off.', colSpan: 'md:col-span-2', isHorizontal: true },
+  { title: 'Custom Branding', body: 'Your logo, colors, and style on every page.', colSpan: 'md:col-span-1' },
+  { title: 'Roles and Permissions', body: 'Control who can edit, review, and publish.', colSpan: 'md:col-span-1' },
+  { title: 'SEO Optimization', body: 'Clean, fast pages built to rank.', colSpan: 'md:col-span-1 md:row-span-2', isTall: true },
+  { title: 'Export Anytime', body: 'Your content is always yours to take with you.', colSpan: 'md:col-span-2', isHorizontal: true },
+];
+
+const placeholders = [
+  '/features/Custom Domain.png',
+  '/features/AI Translations.png',
+  '/features/Dark Mode.png',
+  '/features/Page Analytics.png',
+  '/features/Custom Branding.png',
+  '/features/Roles and Permissions.png',
+  '/features/SEO Optimization.png',
+  '/features/Export Anytime.png'
+];
+---
+
+<section class="py-24 bg-[#efefff]">
+  <div class="container-page">
+    <!-- Header -->
+    <SectionHeading
+      title="More Features Packed Into Zylo"
+      intro="All the smaller tools that keep your docs running smoothly."
+    />
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 mt-16 gap-0 md:gap-0">
+      {items.map((item, i) => (
+        <!-- Card -->
+        <Reveal
+          delay={(i % 4) * 80}
+          class={`rounded-[20px] bg-white border border-[#e2e8f0] overflow-hidden flex ${item.isHorizontal ? 'flex-col md:flex-row' : 'flex-col'} group ${item.colSpan}`}
+        >
+          {item.isHorizontal ? (
+            <>
+              <!-- Content -->
+              <div class="p-6 md:p-8 flex-1 flex flex-col justify-center">
+                <h3 class="text-xl md:text-2xl font-semibold text-[#0f172b] mb-3 font-heading leading-tight">{item.title}</h3>
+                <p class="text-base text-[#45556c] leading-relaxed">{item.body}</p>
+              </div>
+              <!-- Image -->
+              <div class="h-44 md:h-full md:w-1/2 overflow-hidden flex items-center justify-center p-6">
+                 <img 
+                   src={placeholders[i]} 
+                   alt="" 
+                   class="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                 />
+              </div>
+            </>
+          ) : (
+            <>
+              <!-- Image -->
+              <div class={`w-full overflow-hidden ${item.isTall ? 'flex-1 min-h-[16rem]' : 'h-44 md:h-52'} flex items-center justify-center p-6`}>
+                 <img 
+                   src={placeholders[i]} 
+                   alt="" 
+                   class="max-w-full max-h-full object-contain transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                 />
+              </div>
+              <!-- Content -->
+              <div class={`p-6 md:p-8 mt-auto flex flex-col ${item.isTall ? 'shrink-0' : 'flex-1'}`}>
+                <h3 class="text-xl md:text-2xl font-semibold text-[#0f172b] mb-3 font-heading leading-tight">{item.title}</h3>
+                <p class="text-base text-[#45556c] leading-relaxed">{item.body}</p>
+              </div>
+            </>
+          )}
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+
+import PricingHero from '@/components/sections/pricing/PricingHero.astro';
+import PricingTable from '@/components/sections/pricing/PricingTable.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const pricingFaqs = [
+  { q: 'Do I need technical skills to use Zylo?', a: 'No. Zylo is built for everyone. If you can write a note, you can write docs. No code or markdown required.' },
+  { q: 'Can I use my own AI key?', a: 'Yes. Bring your own AI key on any plan for full control over cost and privacy.' },
+  { q: 'Are there any hidden charges?', a: 'No. Zylo follows transparent pricing. You only pay for the plan you choose.' },
+  { q: 'Can I manage multiple doc sites?', a: 'Yes. Growth gives you 3 doc sites and Business gives you 10.' },
+  { q: 'What happens to my docs if I cancel?', a: 'Your content stays yours. You can export everything anytime.' },
+  { q: 'Can I upgrade my plan later?', a: 'Yes. Upgrade anytime as your team grows.' },
+];
+---
+
+<Layout
+  title="Pricing — Zylo"
+  description="Simple, transparent pricing. Choose the plan that's right for you — no hidden fees, cancel anytime."
+>
+  <Navbar />
+  <main id="main">
+    <PricingHero />
+    <PricingTable />
+    <FAQ faqs={pricingFaqs} title="Frequently Asked Questions" />
+  </main>
+  <Footer
+    ctaTitle="Build Beautiful Docs, Effortlessly with Zylo"
+    ctaSubtitle="Start simple. Stay organized. Grow with confidence. 🚀"
+  />
+</Layout>

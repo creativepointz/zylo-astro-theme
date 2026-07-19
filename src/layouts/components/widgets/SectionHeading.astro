@@ -1,0 +1,14 @@
+---
+import Reveal from '@/components/widgets/Reveal.astro';
+const { eyebrow, title, intro } = Astro.props;
+---
+
+<div class="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+  {eyebrow && (
+    <Reveal as="p" class="display-1 mb-4">{eyebrow}</Reveal>
+  )}
+  <Reveal as="h2" class="h2" delay={60}>{title}</Reveal>
+  {intro && (
+    <Reveal as="p" class="p-lg mt-4" delay={120}>{intro}</Reveal>
+  )}
+</div>

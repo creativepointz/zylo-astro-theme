@@ -1,0 +1,169 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import MakersMarquee from '@/components/sections/MakersMarquee.astro';
+import { Icon } from 'astro-icon/components';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const stats = [
+  { value: '200K+', label: 'Users across our products' },
+  { value: '10+', label: 'Years building software' },
+  { value: '7', label: 'Products and counting' },
+  { value: '2', label: 'Flagship products shipped' },
+];
+
+const beliefs = [
+  {
+    icon: 'lucide:pen-line',
+    title: 'Anyone Can Write Docs',
+    body: "Good documentation shouldn't need a developer. If you can write a note, you can write docs.",
+  },
+  {
+    icon: 'lucide:sparkles',
+    title: 'Output Should Impress',
+    body: 'Every site should look designed, right out of the box. No theme tweaking required.',
+  },
+  {
+    icon: 'lucide:scale',
+    title: 'Tools Should Be Fair',
+    body: 'Powerful features at a price that makes sense for small and growing teams.',
+  },
+  {
+    icon: 'lucide:bot',
+    title: 'AI Should Help, Not Replace',
+    body: 'AI speeds up the work. You stay in control of your words and your data.',
+  },
+];
+---
+
+<Layout
+  title="About Us — Zylo"
+  description="Meet the team behind Zylo and learn why we built a documentation tool for everyone, not just developers."
+>
+  <Navbar />
+  <main id="main">
+    <!-- Hero -->
+    <section
+      class="relative overflow-hidden min-h-screen flex flex-col items-center justify-center"
+      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.18) 0%, rgba(255, 202, 205, 0.18) 42.23%, rgba(255, 255, 255, 0) 100%), #fff;"
+    >
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <h1 class="h1 mb-6">
+            Docs Shouldn't be Hard. Or Expensive.
+          </h1>
+          <p class="p-xl text-slate-600">So we built Zylo to fix both.</p>
+        </div>
+      </div>
+
+      <div class="absolute bottom-0 left-0 right-0">
+        <MakersMarquee />
+      </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="bg-white">
+      <div class="container-page py-16 md:py-24">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <h2 class="h2 mb-8 text-center">Our Story</h2>
+          <div class="flex flex-col gap-6">
+            <p class="p-lg">
+              Great docs used to mean a hard choice. Tools only developers could use, or tools that looked
+              dated. The good ones cost a fortune. The cheap ones felt like it.
+            </p>
+            <p class="p-lg">
+              We thought teams deserved better. Zylo gives anyone a visual editor, real AI, and beautiful
+              output, at a price small teams can actually afford.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Built on a Decade of Shipping -->
+    <section class="grid lg:grid-cols-2">
+      <!-- Left: content -->
+      <div class="flex justify-center bg-[#e0d4ff] px-6 py-20 md:px-12 lg:justify-end lg:py-28">
+        <div class="flex w-full max-w-[620px] flex-col gap-12 lg:pr-12" data-reveal>
+          <div class="flex flex-col gap-6">
+            <h2 class="h2">Built on a Decade of Shipping</h2>
+            <p class="text-lg leading-relaxed text-slate-700 md:text-xl">
+              Zylo comes from <span class="font-semibold text-slate-900">a team</span> that's spent ten years
+              building software people rely on. Our track record is your guarantee of quality and trust.
+            </p>
+          </div>
+
+          <!-- Stats 2x2 -->
+          <div class="grid grid-cols-2 overflow-hidden rounded-md border border-white/70 bg-white">
+            {stats.map((stat, i) => (
+              <div
+                class={`flex flex-col gap-3 p-8 sm:p-10 border-[#e0d4ff] ${i % 2 === 0 ? 'border-r' : ''} ${i < 2 ? 'border-b' : ''}`}
+              >
+                <span class="font-heading text-3xl font-semibold tracking-tight text-slate-900">{stat.value}</span>
+                <span class="text-base text-slate-500 md:text-lg">{stat.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <a
+            href="/pricing"
+            class="btn-primary btn-lg w-max"
+          >
+            Start Free
+            <Icon name="lucide:arrow-right" class="h-5 w-5" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: brand panel -->
+      <div class="relative flex min-h-[320px] md:min-h-[400px] lg:min-h-full items-center justify-center overflow-hidden bg-[#0a0a0a]">
+        <!-- Swap this placeholder for a team photo, product shot, or brand illustration -->
+        <div class="absolute inset-0 h-full w-full bg-gradient-to-br from-brand/40 via-[#1a1533] to-[#0a0a0a]"></div>
+      </div>
+    </section>
+
+    <!-- What We Believe -->
+    <section class="bg-white">
+      <div class="container-page py-16 md:py-24">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+          <h2 class="h2 mb-5">What We Believe</h2>
+        </div>
+        <div class="mt-14 grid gap-6 sm:grid-cols-2">
+          {beliefs.map((b) => (
+            <div class="flex flex-col rounded-2xl border border-slate-200 bg-white p-8 transition-colors hover:border-brand/40">
+              <span class="icon-tile mb-6">
+                <Icon name={b.icon} class="h-6 w-6" />
+              </span>
+              <h3 class="h5 mb-3">{b.title}</h3>
+              <p class="p-rg text-slate-600">{b.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Where We're Headed -->
+    <section class="bg-slate-50/60">
+      <div class="container-page py-16 md:py-24">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <h2 class="h2 mb-6">Where We're Headed</h2>
+          <p class="p-lg">
+            We're building the documentation tool we always wanted. Beautiful, affordable, and open to everyone,
+            not just developers. This is only the beginning.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+  <Footer
+    ctaTitle="Join Us Early"
+    ctaSubtitle="Help shape the future of Zylo and build docs you're proud of."
+  />
+</Layout>

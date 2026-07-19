@@ -1,0 +1,161 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { Icon } from 'astro-icon/components';
+import { entries, tagStyles, type ChangelogEntry } from '@/lib/data/changelog';
+import { generateEntryPaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generateEntryPaths(
+    entries,
+    (entry) => ({ single: entry.slug }),
+    (entry, i, all) => ({
+      entry,
+      prev: all[i - 1] ?? null,
+      next: all[i + 1] ?? null,
+    }),
+  );
+}
+
+const { entry, prev, next } = Astro.props as {
+  entry: ChangelogEntry;
+  prev: ChangelogEntry | null;
+  next: ChangelogEntry | null;
+};
+---
+
+<Layout title={`${entry.title} — Zylo Changelog`} description={entry.excerpt}>
+  <Navbar />
+  <main id="main">
+    <!-- Hero -->
+    <section
+      class="relative overflow-hidden pt-40 pb-12 md:pt-48"
+      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
+    >
+      <div class="container-page">
+        <div class="mx-auto max-w-[760px]">
+          <!-- Back link -->
+          <a
+            href="/changelog"
+            class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-brand"
+          >
+            <Icon name="lucide:arrow-left" class="h-4 w-4" />
+            All posts
+          </a>
+
+          <!-- Meta -->
+          <div class="mb-6 flex flex-wrap items-center gap-3">
+            <span class="text-lg font-semibold text-slate-700">{entry.date}</span>
+            <span class="rounded-full bg-brand-subtle px-3 py-1 text-sm font-medium text-brand">{entry.version}</span>
+            {entry.tags.map((tag) => (
+              <span class={`rounded-full px-3 py-1 text-xs font-semibold ${tagStyles[tag] ?? 'bg-slate-100 text-slate-600'}`}>{tag}</span>
+            ))}
+          </div>
+
+          <h1 class="h3">{entry.title}</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- Body -->
+    <section class="bg-white pb-24">
+      <div class="container-page">
+        <article class="mx-auto max-w-[760px]">
+          <!-- Hero image -->
+          <div class={`aspect-[760/426] w-full overflow-hidden rounded-xl bg-gradient-to-br ${entry.thumb}`}>
+            <div class="h-full w-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+          </div>
+
+          <!-- Intro -->
+          <div class="mt-12 flex flex-col gap-5">
+            {entry.intro.map((p) => <p class="p-lg">{p}</p>)}
+          </div>
+
+          <!-- Sections -->
+          <div class="mt-12 flex flex-col gap-12">
+            {entry.sections.map((section) => (
+              <section class="flex flex-col gap-7" data-reveal>
+                <h2 class="h5 text-brand">{section.title}</h2>
+
+                {section.subsections?.map((sub) => (
+                  <div class="flex flex-col gap-4">
+                    <h3 class="h6 text-slate-900">{sub.heading}</h3>
+                    {sub.paragraphs.map((p) => <p class="p-lg">{p}</p>)}
+                    {sub.benefits && (
+                      <div class="flex flex-col gap-3">
+                        <p class="font-semibold text-slate-900">Benefits</p>
+                        <ul class="flex flex-col gap-2">
+                          {sub.benefits.map((b) => (
+                            <li class="flex gap-3">
+                              <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-brand" />
+                              <span class="p-rg text-slate-600">{b}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ))}
+
+                {section.bullets && (
+                  <ul class="flex flex-col gap-3">
+                    {section.bullets.map((b) => (
+                      <li class="flex gap-3">
+                        <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-brand" />
+                        <span class="p-lg">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </section>
+            ))}
+          </div>
+
+          <!-- Callout -->
+          {entry.callout && (
+            <figure class="mt-14 flex flex-col gap-5 border-l-4 border-brand pl-6">
+              <p class="text-lg font-semibold italic text-slate-900">{entry.callout.quote}</p>
+              <p class="p-lg italic">{entry.callout.body}</p>
+              <a href={entry.callout.ctaHref} class="btn-primary btn-md w-max">
+                {entry.callout.ctaLabel}
+                <Icon name="lucide:arrow-right" class="h-5 w-5" />
+              </a>
+            </figure>
+          )}
+
+          <!-- Outro -->
+          {entry.outro && (
+            <section class="mt-14 flex flex-col gap-6">
+              <h2 class="h5 text-brand">{entry.outro.title}</h2>
+              {entry.outro.paragraphs.map((p) => <p class="p-lg">{p}</p>)}
+            </section>
+          )}
+
+          <!-- Prev / Next -->
+          {(prev || next) && (
+            <nav class="mt-16 grid gap-4 border-t border-slate-200 pt-10 sm:grid-cols-2">
+              {prev ? (
+                <a href={`/changelog/${prev.slug}`} class="group flex flex-col gap-1 rounded-xl border border-slate-200 p-5 transition-colors hover:border-brand">
+                  <span class="flex items-center gap-1.5 text-sm text-slate-500">
+                    <Icon name="lucide:arrow-left" class="h-4 w-4" /> Previous
+                  </span>
+                  <span class="font-medium text-slate-900 transition-colors group-hover:text-brand">{prev.title}</span>
+                </a>
+              ) : <span></span>}
+              {next && (
+                <a href={`/changelog/${next.slug}`} class="group flex flex-col gap-1 rounded-xl border border-slate-200 p-5 text-right transition-colors hover:border-brand sm:col-start-2">
+                  <span class="flex items-center justify-end gap-1.5 text-sm text-slate-500">
+                    Next <Icon name="lucide:arrow-right" class="h-4 w-4" />
+                  </span>
+                  <span class="font-medium text-slate-900 transition-colors group-hover:text-brand">{next.title}</span>
+                </a>
+              )}
+            </nav>
+          )}
+        </article>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

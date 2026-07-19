@@ -1,0 +1,145 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const {
+  ctaTitle = 'Start Writing Today',
+  ctaSubtitle = 'Your next doc is 10 minutes away.',
+} = Astro.props;
+
+const year = new Date().getFullYear();
+
+const columns = [
+  {
+    title: 'Platform',
+    links: [
+      { label: 'Features', href: '/features' },
+      { label: 'Integrations', href: '#' },
+      { label: 'Pricing', href: '/pricing' },
+      { label: 'Changelog', href: '/changelog' },
+    ],
+  },
+  {
+    title: 'Solutions',
+    links: [
+      { label: 'Startups', href: '#' },
+      { label: 'Enterprise', href: '#' },
+      { label: 'E-commerce', href: '#' },
+      { label: 'Agencies', href: '#' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Us', href: '/about-us' },
+      { label: 'Careers', href: '#' },
+      { label: 'Blog', href: '/blog' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Terms of Service', href: '/terms-of-service' },
+      { label: 'Cookie Policy', href: '/cookie-policy' },
+      { label: 'Security', href: '#' },
+    ],
+  },
+];
+---
+
+<footer class="text-indigo-100 overflow-hidden relative" style={{ background: '#5047E5' }}>
+  {/* SVG Background Layer */}
+  <div class="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
+    <svg class="w-full h-full" viewBox="0 0 1920 861" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <g clip-path="url(#clip0_7194_6706)">
+        <rect width="1920" height="861" fill="#5047E5"></rect>
+        <g filter="url(#filter0_f_7194_6706)">
+          <circle cx="960.5" cy="903.5" r="1150.5" fill="#010002"></circle>
+        </g>
+      </g>
+      <defs>
+        <filter id="filter0_f_7194_6706" x="-690" y="-747" width="3301" height="3301" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
+          <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_7194_6706"></feGaussianBlur>
+        </filter>
+        <clipPath id="clip0_7194_6706">
+          <rect width="1920" height="861" fill="white"></rect>
+        </clipPath>
+      </defs>
+    </svg>
+  </div>
+
+  {/* Central CTA Heading and Buttons */}
+  <div id="start" class="container-page flex flex-col items-center text-center py-20 md:py-28 max-w-4xl mx-auto px-4 relative z-10">
+    <h2 class="text-4xl md:text-[56px] font-bold text-white tracking-tight leading-[1.12] font-heading">
+      {ctaTitle}
+    </h2>
+    <p class="text-lg md:text-xl text-indigo-100/90 mt-4 max-w-xl">
+      {ctaSubtitle}
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+      <a href="/pricing" class="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#5047E5] hover:bg-indigo-50 transition-all duration-150 active:scale-[0.98]">
+        Start Free
+      </a>
+    </div>
+  </div>
+
+  {/* Main Link Grid */}
+  <div class="container-page py-16 border-t border-white/10 relative z-10">
+    <div class="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-6">
+      {/* Brand & Socials Column */}
+      <div class="col-span-2 md:col-span-2 space-y-4">
+        <a href="/" class="inline-block">
+          <img src="/zylo-white.svg" alt="Zylo" width="133" height="32" class="h-8 w-auto" />
+        </a>
+        <div class="flex items-center gap-3 pt-2">
+          <a href="#" aria-label="Instagram" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-indigo-150 transition-all duration-150 hover:border-white hover:bg-white/10 hover:text-white">
+            <Icon name="lucide:instagram" class="w-[18px] h-[18px]" />
+          </a>
+          <a href="#" aria-label="Play" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-indigo-150 transition-all duration-150 hover:border-white hover:bg-white/10 hover:text-white">
+            <Icon name="lucide:play" class="w-[18px] h-[18px] ml-0.5" />
+          </a>
+        </div>
+      </div>
+
+      {/* Links Columns */}
+      {columns.map((col) => (
+        <nav aria-label={col.title} class="col-span-1">
+          <h5 class="mb-4 text-sm font-semibold text-white font-heading">
+            {col.title}
+          </h5>
+          <ul class="space-y-3">
+            {col.links.map((link) => (
+              <li>
+                <a href={link.href} class="text-sm text-indigo-100/80 transition-colors duration-150 hover:text-white">
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+    </div>
+  </div>
+
+  {/* Bottom Bar */}
+  <div class="border-t border-white/10 relative z-10">
+    <div class="container-page py-6 flex flex-col items-center justify-between gap-4 sm:flex-row text-[13px] text-indigo-200/70">
+      <p>© {year} Zylo.co. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="/terms-of-service" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+
+  {/* Standalone ZYLO Watermark — bottom of footer */}
+  <div class="w-full overflow-hidden relative z-0 pointer-events-none select-none">
+    <span class="block text-center font-bold text-[#5047E5] whitespace-nowrap leading-[0.75] tracking-[-0.04em] text-[20vw] opacity-[0.08] font-heading">
+      Zylo
+    </span>
+  </div>
+</footer>

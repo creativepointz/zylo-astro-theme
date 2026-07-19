@@ -1,0 +1,271 @@
+@import 'tailwindcss';
+
+/* ---- Local Fonts ---- */
+@font-face {
+  font-family: 'Fustat';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('/fonts/fustat-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/poppins-400-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/poppins-500-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/poppins-600-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/poppins-700-latin.woff2') format('woff2');
+}
+
+/* Changelog tag badge colors live in src/data/changelog.ts (not auto-scanned) — safelist them */
+@source inline("bg-indigo-50 text-indigo-700 ring-indigo-600/20 bg-violet-50 text-violet-700 ring-violet-600/20 bg-sky-50 text-sky-700 ring-sky-600/20 bg-emerald-50 text-emerald-700 ring-emerald-600/20 bg-amber-50 text-amber-700 ring-amber-600/20 ring-1 ring-inset");
+
+/* ---- Zylo design tokens (DESIGN-home.md §1) ---- */
+@theme {
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: 'Fustat', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --color-brand: #4f46e5;
+  /* Indigo 600 */
+  --color-brand-hover: #4338ca;
+  /* Indigo 700 */
+  --color-brand-subtle: #eef2ff;
+  /* Indigo 50 */
+
+  --color-dark-bg: #171a21;
+  /* dark charcoal */
+  --color-dark-surface: #2b303b;
+  /* Dark card surface */
+
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  @apply bg-white font-sans text-slate-900 antialiased;
+}
+
+/* Base button — @utility so variants can @apply it (Tailwind v4) */
+@utility btn {
+  @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-full font-medium transition duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 active:scale-[0.98];
+}
+
+/* Marquee animation classes */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Footer animated gradient */
+@keyframes footer-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  25% {
+    background-position: 50% 100%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  75% {
+    background-position: 50% 0%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@utility animate-footer-gradient {
+  background-size: 300% 300%;
+  animation: footer-gradient 12s ease infinite;
+}
+
+/* Neon glow bar gradient */
+@utility bg-glow-bar {
+  background: linear-gradient(to top,
+      rgba(2, 6, 23, 0) 0%,
+      rgba(29, 78, 216, 0.4) 15%,
+      rgba(37, 99, 235, 0.8) 45%,
+      rgba(255, 255, 255, 0.95) 65%,
+      rgba(37, 99, 235, 0.8) 80%,
+      rgba(29, 78, 216, 0.4) 90%,
+      rgba(2, 6, 23, 0) 100%);
+}
+
+/* ---- Scroll reveal (driven by global IntersectionObserver in Layout.astro) ---- */
+[data-reveal].reveal-init {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-reveal].reveal-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ---- Type scale (exact px/LH from spec) ---- */
+@layer components {
+  .h1 {
+    @apply font-semibold text-[44px] leading-[1.2] tracking-[-0.02em] text-slate-900 md:text-[68px] md:leading-[1.25];
+    font-family: var(--font-heading);
+  }
+
+  .h2 {
+    @apply font-semibold text-[34px] leading-[1.2] tracking-[-0.02em] text-slate-900 md:text-[52px];
+    font-family: var(--font-heading);
+  }
+
+  .h3 {
+    @apply font-semibold text-[28px] leading-[1.3] text-slate-900 md:text-[42px];
+    font-family: var(--font-heading);
+  }
+
+  .h4 {
+    @apply font-semibold text-[28px] leading-[1.2] text-slate-900 md:text-[36px];
+    font-family: var(--font-heading);
+  }
+
+  .h5 {
+    @apply font-semibold text-2xl leading-[1.3] text-slate-900 md:text-[30px];
+    font-family: var(--font-heading);
+  }
+
+  .h6 {
+    @apply font-semibold text-xl leading-[1.3] text-slate-900 md:text-2xl;
+    font-family: var(--font-heading);
+  }
+
+  .display-1 {
+    @apply font-semibold text-base leading-[1.2] tracking-[0.08em] uppercase text-brand;
+    font-family: var(--font-heading);
+  }
+
+  .display-2 {
+    @apply font-semibold text-lg leading-[1.3] text-brand;
+    font-family: var(--font-heading);
+  }
+
+  .p-xl {
+    @apply text-xl leading-[1.5] text-slate-600;
+  }
+
+  .p-lg {
+    @apply text-lg leading-[1.5] text-slate-600;
+  }
+
+  .p-md {
+    @apply text-lg leading-[1.5] text-slate-600;
+  }
+
+  .p-rg {
+    @apply text-base leading-[1.5] text-slate-700;
+  }
+
+  .p-lt {
+    @apply text-sm leading-[1.3] text-slate-400;
+  }
+
+  /* ---- Button variants (base `btn` defined as @utility below) ---- */
+  .btn-primary {
+    @apply btn bg-brand text-white hover:bg-brand-hover;
+  }
+
+  .btn-secondary {
+    @apply btn border border-slate-200 bg-white text-slate-900 hover:bg-slate-50;
+  }
+
+  .btn-lg {
+    @apply h-12 px-6 text-base;
+  }
+
+  .btn-md {
+    @apply h-10 px-4 text-sm;
+  }
+
+  /* ---- Layout helpers ---- */
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-8;
+  }
+
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  /* ---- Icon tile ---- */
+  .icon-tile {
+    @apply inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-subtle text-brand;
+  }
+
+  /* ---- Footer dark-mode heading overrides ---- */
+  footer .h1,
+  footer .h2,
+  footer .h3,
+  footer .h4,
+  footer .h5,
+  footer .h6 {
+    color: #fff;
+  }
+}

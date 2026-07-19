@@ -1,0 +1,83 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="w-full flex flex-col lg:flex-row gap-6">
+  {/* Left: Testimonial */}
+  <div class="flex-1 lg:flex-[2] bg-[#0f172b] p-8 md:p-12 rounded-[24px] flex flex-col justify-between gap-10">
+    <div class="flex items-center gap-2 text-white/90">
+      <Icon name="lucide:zap" class="w-6 h-6 fill-current text-indigo-400" />
+      <span class="font-heading font-bold tracking-tight text-xl">Acme Corp</span>
+    </div>
+    
+    <p class="h5 !text-white leading-[1.4] tracking-tight font-normal">
+      "Zylo has improved efficiency, reducing documentation and letting us focus on great products."
+    </p>
+
+    <div class="flex items-center gap-4">
+      <div class="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center shrink-0 border border-indigo-400/30">
+        <Icon name="lucide:user" class="w-6 h-6 text-indigo-300" />
+      </div>
+      <div>
+        <p class="font-heading font-semibold text-lg text-white">Sarah Jenkins</p>
+        <p class="p-lt !text-slate-400 font-medium">VP of Engineering at Acme Corp</p>
+      </div>
+    </div>
+  </div>
+
+  {/* Right: Stat */}
+  <div class="flex-1 lg:flex-[1] bg-slate-50 p-8 md:p-12 rounded-[24px] border border-slate-100 flex flex-col justify-end min-h-[300px] relative overflow-hidden">
+    {/* Decorative background element mimicking Figma design */}
+    <div class="absolute top-0 right-0 w-full h-[60%] bg-gradient-to-bl from-indigo-100/50 to-transparent"></div>
+    <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-400/10 rounded-full blur-3xl"></div>
+    
+    <div class="relative z-10">
+      <p class="h1 !text-[56px] md:!text-[72px] tracking-tighter leading-none mb-4">
+        +<span data-testimonial-counter>0</span>%
+      </p>
+      <p class="p-lg font-medium max-w-[200px] leading-tight">
+        Increase in team shipping velocity
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const counterElement = document.querySelector('[data-testimonial-counter]');
+  if (counterElement) {
+    const target = 300;
+    const duration = 2000; // 2 seconds
+    let startTime: number | null = null;
+    let hasAnimated = false;
+
+    const animateCounter = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = timestamp - startTime;
+      const percentage = Math.min(progress / duration, 1);
+      
+      // Easing function (easeOutExpo)
+      const easePercentage = percentage === 1 ? 1 : 1 - Math.pow(2, -10 * percentage);
+      
+      const currentCount = Math.floor(target * easePercentage);
+      counterElement.textContent = currentCount.toString();
+
+      if (progress < duration) {
+        requestAnimationFrame(animateCounter);
+      } else {
+        counterElement.textContent = target.toString();
+      }
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          requestAnimationFrame(animateCounter);
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    observer.observe(counterElement);
+  }
+</script>

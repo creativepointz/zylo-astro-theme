@@ -1,0 +1,44 @@
+{
+  "name": "zylo-astro-theme",
+  "description": "A polished, multi-page documentation & SaaS marketing theme for Astro — homepage, features, pricing, docs, changelog, blog, and legal pages, built with Tailwind CSS v4 and Lucide icons.",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "author": {
+    "name": "Zylo Theme",
+    "url": "https://github.com/creativepointz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/creativepointz/zylo-astro-theme"
+  },
+  "homepage": "https://github.com/creativepointz/zylo-astro-theme#readme",
+  "keywords": [
+    "astro",
+    "astro-theme",
+    "astro-template",
+    "tailwindcss",
+    "docs",
+    "documentation",
+    "saas",
+    "marketing",
+    "landing-page"
+  ],
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.114",
+    "astro": "^5.4.0",
+    "astro-icon": "^1.1.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@tailwindcss/vite": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.9.3"
+  }
+}

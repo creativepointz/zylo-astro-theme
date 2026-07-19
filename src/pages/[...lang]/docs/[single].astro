@@ -1,0 +1,273 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { Icon } from 'astro-icon/components';
+import { categories, type DocCategory } from '@/lib/data/docs';
+import { generateEntryPaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generateEntryPaths(
+    categories,
+    (doc) => ({ single: doc.slug }),
+    (doc) => ({ doc }),
+  );
+}
+
+const { doc } = Astro.props as { doc: DocCategory };
+
+// Left sidebar navigation
+const nav = [
+  {
+    label: 'Getting Started',
+    icon: 'lucide:circle-arrow-right',
+    open: true,
+    items: [
+      { label: 'How to Create Great Doc' },
+      { label: 'How to Create Team', active: true },
+      { label: 'How to Keep Doc' }
+    ]
+  },
+  { label: 'Settings', icon: 'lucide:settings' },
+  { label: 'Ask and Search', icon: 'lucide:map-pin' },
+  { label: 'Writing in the Editor', icon: 'lucide:pencil' },
+  { label: 'Collaboration', icon: 'lucide:message-square' },
+  { label: 'Templates', icon: 'lucide:layout-template', leaf: true },
+  { label: 'Sharing', icon: 'lucide:share-2' },
+  { label: 'Import & Export', icon: 'lucide:arrow-down-up' },
+  { label: 'API & Integrations', icon: 'lucide:box' },
+  { label: 'Security', icon: 'lucide:shield-check' },
+  { label: 'Analytics', icon: 'lucide:bar-chart-3' },
+  { label: 'Pricing & Billing', icon: 'lucide:circle-dollar-sign' },
+  { label: 'Support & Bug Reports', icon: 'lucide:life-buoy' }
+];
+
+const roles = [
+  'Owners: Every workspace has a single owner who has full permission to manage all settings in a workspace, including deleting the workspace.',
+  'Admins: Admins can access most workspace settings, including updating the billing options, and adding or removing workspace members. After the owner, every additional workspace member in a Free workspace is an admin by default.',
+  'Creators (paid plans only): Creators can create, edit, and share presentations, but can’t access workspace settings or add new members.',
+  'Commenters (paid plans only): Commenter is a user role for members of Pro and Business workspaces that allows them to browse the workspace, and open, view, and comment on decks without extra cost.'
+];
+
+// Right "On this page" table of contents
+const toc = [
+  { label: 'Getting started', id: 'getting-started' },
+  { label: 'Install the GitHub App', id: 'install-app', sub: true },
+  { label: 'Authorize your GitHub account', id: 'authorize', sub: true },
+  { label: 'Editing workflows', id: 'editing-workflows' },
+  { label: 'Code-based workflow', id: 'code-workflow' },
+  { label: 'Install the CLI', id: 'install-cli', sub: true },
+  { label: 'Edit the documentation', id: 'edit-docs', sub: true },
+  { label: 'Preview the changes', id: 'preview', sub: true },
+  { label: 'Push the changes', id: 'push', sub: true },
+  { label: 'Web editor workflow', id: 'web-editor' },
+  { label: 'Access the web editor', id: 'access-editor', sub: true },
+  { label: 'Edit the documentation', id: 'edit-docs-2', sub: true },
+  { label: 'Publish your changes', id: 'publish', sub: true },
+  { label: 'Adding a custom domain', id: 'custom-domain' },
+  { label: 'Next steps', id: 'next-steps', active: true },
+  { label: 'Troubleshooting', id: 'troubleshooting' }
+];
+---
+
+<Layout title={`${doc.name} — Zylo Docs`} description={doc.description}>
+  <Navbar />
+  <main id="main" class="relative bg-white pt-32 pb-8">
+    <div class="w-full px-6 md:px-12">
+      <div class="grid gap-10 lg:grid-cols-[260px_minmax(0,1fr)_286px] xl:gap-16">
+        <!-- Left: doc navigation -->
+        <aside class="hidden lg:block">
+          <div class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-6 overflow-y-auto pb-8">
+            <!-- Search -->
+            <label class="flex h-10 items-center gap-2 rounded-md border border-slate-200 bg-white px-3 transition focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/30">
+              <Icon name="lucide:search" class="h-5 w-5 shrink-0 text-slate-400" />
+              <input
+                type="text"
+                placeholder="How can we help?"
+                class="min-w-0 flex-1 bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
+              />
+            </label>
+
+            <!-- Nav tree -->
+            <nav class="flex flex-col gap-1 text-sm">
+              {nav.map((group) => (
+                <div>
+                  <button
+                    type="button"
+                    class="flex w-full items-center justify-between rounded-md px-2 py-2 text-slate-900 transition-colors hover:bg-slate-50"
+                  >
+                    <span class="flex items-center gap-2">
+                      <Icon name={group.icon} stroke-width={1.75} class="h-5 w-5 text-brand" />
+                      {group.label}
+                    </span>
+                    {!group.leaf && (
+                      <Icon
+                        name="lucide:chevron-down"
+                        class={`h-4 w-4 text-slate-400 transition-transform ${group.open ? 'rotate-180' : ''}`}
+                      />
+                    )}
+                  </button>
+                  {group.items && (
+                    <div class="mt-1 flex flex-col">
+                      {group.items.map((item) => (
+                        <a
+                          href="#"
+                          class={`rounded-md py-2 pl-9 pr-2 transition-colors hover:text-brand ${
+                            item.active ? 'font-medium text-brand' : 'text-slate-600'
+                          }`}
+                        >
+                          {item.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Center: article -->
+        <article class="mx-auto w-full max-w-[720px]">
+          <!-- Breadcrumb -->
+          <nav class="mb-12 flex items-center gap-2 text-sm text-slate-500">
+            <a href="/docs" class="flex items-center gap-1.5 transition-colors hover:text-brand">
+              <Icon name="lucide:circle-arrow-right" class="h-5 w-5" />
+              Docs
+            </a>
+            <span class="text-slate-300">/</span>
+            <span class="text-slate-900">{doc.name}</span>
+          </nav>
+
+          <!-- Title -->
+          <header class="mb-10 flex flex-col gap-2">
+            <h1 class="h4 text-slate-900">{doc.name}</h1>
+            <p class="p-rg text-slate-500">{doc.description}</p>
+          </header>
+
+          <div class="article-body flex flex-col gap-6">
+            <!-- Premium note -->
+            <p class="p-rg text-slate-600">
+              ⭐️ This is a premium feature.
+              <a href="/pricing" class="font-medium text-slate-900 underline underline-offset-2 hover:text-brand">
+                Find out more about our paid plans
+              </a>
+            </p>
+
+            <p class="p-rg text-slate-600">
+              Workspace roles allow each workspace to set up granular controls that manage what users have
+              access to. With roles you can set up permissions for presentations, folders, billing settings,
+              and workspace management.
+            </p>
+
+            <p class="p-rg text-slate-600">Workspaces have five types of users:</p>
+
+            <!-- Roles list -->
+            <ul class="flex flex-col gap-3">
+              {roles.map((role) => (
+                <li class="flex gap-3">
+                  <Icon name="lucide:chevron-right" class="mt-1 h-4 w-4 shrink-0 text-brand" />
+                  <span class="p-rg text-slate-600">{role}</span>
+                </li>
+              ))}
+            </ul>
+
+            <!-- Image placeholder -->
+            <div class="aspect-[700/437] w-full overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-100 to-slate-200"></div>
+
+            <!-- Section -->
+            <section id="edit-docs" class="mt-6 flex scroll-mt-28 flex-col gap-4">
+              <h2 class="h6 text-slate-900">Change the workspace role</h2>
+              <p class="p-rg text-slate-600">
+                If you're the owner or an admin in a Pro workspace, navigate to the
+                <strong class="font-semibold text-slate-900">Workspace members</strong> page, which is
+                accessible from the workspace drop-down menu (next to the name of your workspace). Next to each
+                member you'll find the option to change their role from an admin to creator and vice versa. As
+                the owner, you'll also have the option to change the owner role from yourself to another member.
+                Please note that notifications will not be sent when a user's role has been changed.
+              </p>
+              <div class="aspect-[656/358] w-full overflow-hidden rounded-xl border border-slate-200 bg-gradient-to-br from-slate-100 to-slate-200"></div>
+            </section>
+
+            <section id="next-steps" class="mt-6 flex scroll-mt-28 flex-col gap-4">
+              <h2 class="h6 text-slate-900">Change the workspace role</h2>
+              <p class="p-rg text-slate-600">
+                If you're the owner or an admin in a Pro workspace, navigate to the
+                <strong class="font-semibold text-slate-900">Workspace members</strong> page, which is
+                accessible from the workspace drop-down menu (next to the name of your workspace). Next to each
+                member you'll find the option to change their role from an admin to creator and vice versa. As
+                the owner, you'll also have the option to change the owner role from yourself to another member.
+                Please note that notifications will not be sent when a user's role has been changed.
+              </p>
+            </section>
+
+            <!-- Feedback card -->
+            <div class="mt-6 flex flex-col gap-4 rounded-xl border border-slate-200 p-6">
+              <div class="flex items-center gap-2">
+                <Icon name="lucide:mail" class="h-6 w-6 shrink-0 text-slate-500" />
+                <p class="flex-1 text-sm text-slate-900">
+                  Still Stuck?
+                  <a href="#" class="text-brand hover:underline">How can we Help?</a>
+                </p>
+                <span class="text-sm text-slate-500">Updated on February 17, 2022</span>
+              </div>
+              <hr class="border-slate-200" />
+              <div class="flex items-center justify-between">
+                <p class="text-sm text-slate-900">Was this article helpful to you?</p>
+                <div class="flex items-center gap-4">
+                  <button type="button" aria-label="Yes" class="text-slate-400 transition-colors hover:text-brand">
+                    <Icon name="lucide:thumbs-up" class="h-6 w-6" />
+                  </button>
+                  <button type="button" aria-label="No" class="text-slate-400 transition-colors hover:text-brand">
+                    <Icon name="lucide:thumbs-down" class="h-6 w-6" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Prev / Next -->
+            <div class="mt-6 flex items-center justify-between gap-4">
+              <a href="#" class="flex items-center gap-2.5 text-sm text-slate-900 transition-colors hover:text-brand">
+                <Icon name="lucide:arrow-left" class="h-5 w-5 shrink-0" />
+                <span class="truncate">How to Create a Post Form</span>
+              </a>
+              <a href="#" class="flex items-center gap-2.5 text-sm text-brand transition-colors hover:underline">
+                <span class="truncate">Field Visibility Option</span>
+                <Icon name="lucide:arrow-right" class="h-5 w-5 shrink-0" />
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Right: on this page -->
+        <aside class="hidden lg:block">
+          <nav class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-6 overflow-y-auto rounded-xl border border-slate-100 bg-white px-8 py-5">
+            <div class="flex items-center gap-3 text-sm text-slate-900">
+              <Icon name="lucide:list" class="h-4 w-4 text-brand" />
+              On this page
+            </div>
+            <ul class="flex flex-col">
+              {toc.map((item) => (
+                <li>
+                  <a
+                    href={`#${item.id}`}
+                    class={`block border-l py-1 text-sm transition-colors hover:text-brand ${
+                      item.sub ? 'pl-8' : 'pl-4'
+                    } ${
+                      item.active
+                        ? 'border-brand font-medium text-slate-900'
+                        : 'border-slate-100 ' + (item.sub ? 'text-slate-500' : 'text-slate-900')
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Layout>

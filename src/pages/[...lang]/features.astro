@@ -1,0 +1,119 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import FeatureHero from '@/components/sections/features/FeatureHero.astro';
+import FeatureRow from '@/components/sections/features/FeatureRow.astro';
+import FeatureBento from '@/components/sections/features/FeatureBento.astro';
+import FeatureTestimonial from '@/components/sections/features/FeatureTestimonial.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const featureRows = [
+  {
+    eyebrow: 'Write with AI, Not From Scratch',
+    heading: 'Your AI writing partner.',
+    description: 'Polish rough drafts, fix tone, and keep docs current without rewriting them by hand.',
+    points: [
+      'Rewrite, shorten, expand, and simplify',
+      'Update docs from screenshots',
+      'Proofread and polish in one click',
+      'Translate into multiple languages',
+      'Bring your own AI key'
+    ],
+    placeholderImage: '/features/Your AI writing partner..png',
+    bgColor: '#EBE4FF',
+    reverse: false
+  },
+  {
+    eyebrow: 'Beautiful by Default',
+    heading: 'Docs that look designed.',
+    description: 'Every site looks modern and professional out of the box. No designer needed.',
+    points: [
+      'Clean, fast published sites',
+      'Custom domain support',
+      'Light and dark modes',
+      'Mobile-ready output',
+      'Your branding and logo'
+    ],
+    placeholderImage: '/features/Docs that look designed..png',
+    bgColor: '#FFE4F1',
+    reverse: true
+  },
+  {
+    eyebrow: 'Made for the AI Era',
+    heading: 'Found by humans and AI alike.',
+    description: 'Your docs work as well for ChatGPT and Claude as they do for your readers.',
+    points: [
+      'Copy any page for ChatGPT or Claude',
+      'AI chat on your published site',
+      'Clean structure AI tools can read',
+      'SEO-friendly pages'
+    ],
+    placeholderImage: '/features/Found by humans and AI alike..png',
+    bgColor: '#FFEEE4',
+    reverse: false
+  },
+  {
+    eyebrow: 'Built for Teams',
+    heading: 'Write together, ship together.',
+    description: 'Invite your team, set roles, and keep everyone in sync.',
+    points: [
+      'Roles and permissions',
+      'Multiple doc sites',
+      'Shared workspace',
+      'Page analytics'
+    ],
+    placeholderImage: '/features/Write together, ship together..png',
+    bgColor: '#E7FCE6',
+    reverse: true
+  },
+  {
+    eyebrow: 'Connects to Your Stack',
+    heading: 'Fits how you already work.',
+    description: 'Zylo plugs into the tools your team already uses.',
+    points: [
+      'GitHub sync',
+      'OpenAPI import (coming soon)',
+      'API access',
+      'Google Analytics and Tag Manager'
+    ],
+    placeholderImage: '/features/Fits how you already work..png',
+    bgColor: '#E6F3FC',
+    reverse: false
+  }
+];
+---
+
+<Layout
+  title="Features — Zylo"
+  description="Explore the visual editor, AI assistant, and publishing tools that make Zylo the easiest way to write documentation."
+>
+  <Navbar />
+  <main id="main">
+    <!-- Hero -->
+    <FeatureHero />
+    
+    <!-- Features -->
+    <div class="bg-[#ffffff] pb-24">
+      <div class="container-page flex flex-col gap-10">
+        {featureRows.slice(0, 3).map((row) => (
+          <FeatureRow {...row} />
+        ))}
+        
+        <FeatureTestimonial />
+        
+        {featureRows.slice(3).map((row) => (
+          <FeatureRow {...row} />
+        ))}
+      </div>
+    </div>
+
+    <!-- Bento -->
+    <FeatureBento />
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,155 @@
+---
+import { Icon } from 'astro-icon/components';
+import Reveal from '@/components/widgets/Reveal.astro';
+
+const features = [
+  {
+    icon: 'lucide:mouse-pointer-click',
+    title: 'Visual Editor',
+    eyebrow: 'No Markdown Required',
+    tagline: 'Write like a doc, publish like a pro.',
+    image: '/home/Visual Editor.png',
+    points: [
+      'No code or markdown configurations needed',
+      'Drag, drop, and format layout components with ease',
+      'Live preview changes instantly in the browser',
+    ],
+  },
+  {
+    icon: 'lucide:bot',
+    title: 'AI Assistant',
+    eyebrow: 'AI-Native Writing',
+    tagline: 'Rewrite, shorten, expand, or simplify in seconds.',
+    image: '/home/AI Assistant.png',
+    points: [
+      'Generate and refine drafts from rough notes',
+      'Update entire articles directly from screenshots',
+      'Translate document folders into multiple languages',
+      'Bring your own API key for maximum privacy & custom rates',
+    ],
+  },
+  {
+    icon: 'lucide:globe',
+    title: 'Beautiful Published Sites',
+    eyebrow: 'Custom Branding',
+    tagline: 'Modern, fast, and SEO-ready outputs.',
+    image: '/home/Beautiful Published Sites.png',
+    points: [
+      'Ultra-fast static generation for smooth loading times',
+      'Deploy on custom domain names with instant SSL setup',
+      'Light and dark modes supported automatically',
+    ],
+  },
+  {
+    icon: 'lucide:brain-circuit',
+    title: 'Made for the AI Era',
+    eyebrow: 'LLM & Search Ready',
+    tagline: 'Clean structures AI search assistants can scan.',
+    image: '/home/Made for the AI Era.png',
+    points: [
+      'One-click page copies optimized for ChatGPT or Claude',
+      'Deploy an interactive AI chatbot on your published docs site',
+      'Structured schema mapping to ensure accurate AI references',
+    ],
+  },
+];
+---
+
+<section id="features" class="section bg-gradient-to-b from-white via-[#ffebf0] via-[40%] to-[#8ab7f9] border-y border-[#f1f5f9] overflow-hidden" data-features>
+  <div class="container-page">
+    {/* Header section */}
+    <div class="flex flex-col items-center text-center max-w-[700px] mx-auto mb-12">
+      <Reveal>
+        <p class="text-[#4f46e5] text-[16px] font-semibold tracking-[1.28px] uppercase mb-4">Solutions ( 4 )</p>
+      </Reveal>
+      <Reveal delay={100}>
+        <h2 class="text-[42px] md:text-[52px] font-semibold text-[#0f172b] leading-[1.2] tracking-tight font-heading">
+          Write. Customize. Share. Be the answer.
+        </h2>
+      </Reveal>
+    </div>
+
+    {/* Tab Switcher */}
+    <Reveal delay={200} class="flex flex-wrap justify-center items-center gap-4 mb-16">
+      {features.map((item, idx) => (
+        <button
+          type="button"
+          data-tab-btn
+          data-idx={idx}
+          class={`flex items-center gap-2 px-[16px] py-[10px] font-semibold text-[14px] transition-all duration-200 rounded-full cursor-pointer ${idx === 0 ? 'bg-[#4f46e5] text-white shadow-md' : 'text-[#0f172b] hover:bg-white/50'}`}
+        >
+          <Icon name={item.icon} class="w-4 h-4" />
+          <span>{item.title}</span>
+        </button>
+      ))}
+    </Reveal>
+
+    {/* Tab Panels */}
+    <Reveal delay={300}>
+      {features.map((f, i) => (
+        <div data-tab-panel data-idx={i} class={i === 0 ? '' : 'hidden'}>
+          <div class="bg-white rounded-[24px] p-8 md:p-[40px] lg:p-[48px] w-full flex flex-col lg:flex-row gap-10 lg:gap-[60px] items-center shadow-xl shadow-indigo-900/5">
+            {/* Left info column */}
+            <div class="flex-1 space-y-8 lg:max-w-[50%] w-full text-left">
+              <div>
+                <span class="text-[#4f46e5] text-[12px] font-semibold tracking-[0.96px] uppercase">{f.eyebrow}</span>
+                <h3 class="text-[36px] lg:text-[42px] font-heading text-[#0f172b] leading-[1.2] mt-4 tracking-tight">
+                  <span class="font-semibold">{f.title}.</span>{' '}
+                  <span class="font-normal text-[#45556c]">{f.tagline}</span>
+                </h3>
+              </div>
+
+              <ul class="space-y-4">
+                {f.points.map((p) => (
+                  <li class="flex items-start gap-3 text-[16px] text-[#45556c] leading-[24px]">
+                    <Icon name="lucide:circle-check" class="w-6 h-6 shrink-0 text-[#4f46e5]" aria-hidden="true" />
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="pt-4">
+                <a href="#start" class="inline-flex items-center gap-2 bg-[#4f46e5] text-white px-[20px] py-[12px] rounded-full text-[14px] font-medium hover:bg-indigo-700 transition duration-200">
+                  Get started free <Icon name="lucide:arrow-right" class="w-[18px] h-[18px]" />
+                </a>
+              </div>
+            </div>
+
+            {/* Right column: Image Showcase */}
+            <div class="flex-1 w-full">
+              <img
+                src={f.image}
+                alt={f.title}
+                class="w-full h-auto object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      ))}
+    </Reveal>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector('[data-features]');
+  if (root) {
+    const btns = Array.from(root.querySelectorAll('[data-tab-btn]'));
+    const panels = Array.from(root.querySelectorAll('[data-tab-panel]'));
+
+    btns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const idx = btn.getAttribute('data-idx');
+        btns.forEach((b) => {
+          const on = b === btn;
+          b.classList.toggle('bg-[#4f46e5]', on);
+          b.classList.toggle('text-white', on);
+          b.classList.toggle('shadow-md', on);
+          b.classList.toggle('text-[#0f172b]', !on);
+          b.classList.toggle('hover:bg-white/50', !on);
+        });
+        panels.forEach((p) => p.classList.toggle('hidden', p.getAttribute('data-idx') !== idx));
+      });
+    });
+
+  }
+</script>

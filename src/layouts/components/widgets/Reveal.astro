@@ -1,0 +1,9 @@
+---
+// Fade-up on scroll wrapper. SSR-safe: renders children visible, tags with
+// data-reveal. Global IntersectionObserver in Layout.astro hides + reveals.
+const { as: Tag = 'div', delay = 0, class: className = '', ...rest } = Astro.props;
+---
+
+<Tag data-reveal data-reveal-delay={delay} class={className} {...rest}>
+  <slot />
+</Tag>

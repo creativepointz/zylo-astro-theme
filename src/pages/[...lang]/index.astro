@@ -1,0 +1,44 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Hero from '@/components/sections/Hero.astro';
+import MakersMarquee from '@/components/sections/MakersMarquee.astro';
+import PromoCards from '@/components/sections/PromoCards.astro';
+import Audience from '@/components/sections/Audience.astro';
+import Benefits from '@/components/sections/Benefits.astro';
+import HowItWorks from '@/components/sections/HowItWorks.astro';
+import Features from '@/components/sections/Features.astro';
+import WhyZylo from '@/components/sections/WhyZylo.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import Footer from '@/components/global/Footer.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+---
+
+<Layout>
+  <a
+    href="#main"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
+  >
+    Skip to content
+  </a>
+
+  <Navbar />
+
+  <main id="main">
+    <Hero />
+    <MakersMarquee />
+    <PromoCards />
+    <Audience />
+    <Benefits />
+    <HowItWorks />
+    <Features />
+    <WhyZylo />
+    <FAQ />
+  </main>
+
+  <Footer />
+</Layout>

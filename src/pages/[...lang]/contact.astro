@@ -1,0 +1,127 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { Icon } from 'astro-icon/components';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const infoCards = [
+  {
+    title: 'I Have a Technical Question?',
+    description: 'Find solutions to all technical problems that you are facing.',
+    cta: 'Submit a Ticket',
+    href: '#',
+    bg: '#f5effc'
+  },
+  {
+    title: 'Explore Our Knowledgebase',
+    description:
+      'Find detailed setup guides, tutorials, and technical information for every plugin in our suite.',
+    cta: 'Read the Docs',
+    href: '/docs',
+    bg: '#fcf3ef'
+  }
+];
+---
+
+<Layout
+  title="Contact Us — Zylo"
+  description="Have a question or feedback? Get in touch with the Zylo team."
+>
+  <Navbar />
+  <main id="main">
+    <!-- Hero -->
+    <section
+      class="relative overflow-hidden pt-40 pb-24 md:pt-48"
+      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
+    >
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <h1 class="h1 mb-7">We'd Love to Hear From You</h1>
+          <p class="p-xl mx-auto max-w-2xl">
+            Zylo builds practical documentation tools. Whether you have a question, feedback, or a
+            partnership idea, our team is here to help.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="bg-white pb-24">
+      <div class="container-page">
+        <div class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-3" data-reveal>
+        <!-- Form card -->
+        <form class="flex flex-col gap-10 rounded-xl border border-slate-200 bg-white p-10 lg:col-span-2">
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-6 sm:flex-row">
+              <label class="flex flex-1 flex-col gap-4">
+                <span class="text-lg text-slate-900">First Name</span>
+                <input
+                  type="text"
+                  name="first-name"
+                  placeholder="First Name"
+                  class="rounded-md border border-slate-200 px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+                />
+              </label>
+              <label class="flex flex-1 flex-col gap-4">
+                <span class="text-lg text-slate-900">Last Name</span>
+                <input
+                  type="text"
+                  name="last-name"
+                  placeholder="Last Name"
+                  class="rounded-md border border-slate-200 px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+                />
+              </label>
+            </div>
+
+            <label class="flex flex-col gap-4">
+              <span class="text-lg text-slate-900">Email</span>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                class="rounded-md border border-slate-200 px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+              />
+            </label>
+
+            <label class="flex flex-col gap-4">
+              <span class="text-lg text-slate-900">Message</span>
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="Write Your Message"
+                class="resize-y rounded-md border border-slate-200 px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+              ></textarea>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary btn-lg w-max">Submit Message</button>
+        </form>
+
+        <!-- Info cards -->
+        <div class="flex flex-col gap-8 lg:col-span-1">
+          {infoCards.map((card) => (
+            <div
+              class="flex flex-1 flex-col justify-between gap-8 rounded-xl border border-slate-200 p-8"
+              style={`background:${card.bg}`}
+            >
+              <div class="flex flex-col gap-3">
+                <h2 class="h6 text-slate-900">{card.title}</h2>
+                <p class="p-rg text-slate-500">{card.description}</p>
+              </div>
+              <a href={card.href} class="btn-secondary btn-md w-max">
+                {card.cta}
+                <Icon name="lucide:arrow-right" class="h-5 w-5" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

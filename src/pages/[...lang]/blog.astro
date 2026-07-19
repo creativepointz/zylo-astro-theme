@@ -1,0 +1,284 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { Icon } from 'astro-icon/components';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+// Brand-tinted gradient thumbnails (no external assets)
+const thumbs = [
+  'from-indigo-500 to-violet-600',
+  'from-sky-500 to-indigo-600',
+  'from-fuchsia-500 to-indigo-600',
+  'from-emerald-500 to-teal-600',
+  'from-amber-500 to-orange-600',
+  'from-rose-500 to-pink-600',
+];
+
+const featured = {
+  category: 'Product Updates',
+  title: 'Introducing AI Chat on Every Published Zylo Site',
+  excerpt:
+    'Readers can now ask questions in plain language and get instant answers pulled straight from your docs. No setup, no training — it works the moment you publish.',
+  author: 'Alistair Miles',
+  thumb: 'from-indigo-600 via-violet-600 to-sky-500',
+};
+
+const categories = ['All', 'Product Updates', 'Tutorials', 'AI & Docs', 'Tips & Tricks', 'More'];
+
+const latest = [
+  { category: 'AI & Docs', title: 'Let AI Answer From Your Knowledge Base — Accurately', author: 'Dev Sharma' },
+  { category: 'Tutorials', title: 'Publish Your First Docs Site in Under 10 Minutes', author: 'Nadia Khan' },
+  { category: 'Tips & Tricks', title: 'Why Structured Docs Win: A Practical Guide', author: 'Lena Petrova' },
+  { category: 'Product Updates', title: 'Custom Domains and Branding, Now on Every Plan', author: 'Nadia Khan' },
+  { category: 'Tips & Tricks', title: 'Writing Docs That Rank: SEO for Documentation', author: 'Lena Petrova' },
+  { category: 'AI & Docs', title: 'Translate Your Entire Knowledge Base With One Click', author: 'Dev Sharma' },
+];
+
+const popular = [
+  { category: 'Tutorials', title: 'From Notion to Zylo: Migrating Without Losing Formatting', author: 'Dev Sharma' },
+  { category: 'AI & Docs', title: 'Rewrite, Shorten, and Simplify With the AI Editor', author: 'Nadia Khan' },
+  { category: 'Tips & Tricks', title: 'Organizing Large Docs: Categories, Tags, and Search', author: 'Lena Petrova' },
+  { category: 'Product Updates', title: 'Roles & Permissions for Growing Documentation Teams', author: 'Nadia Khan' },
+  { category: 'Tutorials', title: 'Update Docs From Screenshots in Seconds', author: 'Dev Sharma' },
+  { category: 'Tips & Tricks', title: 'Light, Dark, and On-Brand: Theming Your Docs', author: 'Lena Petrova' },
+];
+
+const stories = [
+  { category: 'Customer Stories', title: 'How Anya Built a Self-Serve Help Center With Zylo', author: 'Dev Sharma' },
+  { category: 'Customer Stories', title: "Leo's Team Cut Support Tickets in Half With Better Docs", author: 'Nadia Khan' },
+  { category: 'Customer Stories', title: "Omar Scaled Docs Across 10 Sites Without Hiring Writers", author: 'Lena Petrova' },
+];
+
+const initials = (name: string) =>
+  name.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase();
+---
+
+<Layout
+  title="Blog — Zylo"
+  description="Product updates, writing tips, and stories from the Zylo team."
+>
+  <Navbar />
+  <main id="main">
+    <!-- Hero -->
+    <section
+      class="pt-36 pb-20 relative overflow-hidden"
+      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.18) 0%, rgba(255, 202, 205, 0.18) 42.23%, rgba(255, 255, 255, 0) 100%), #fff;"
+    >
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <h1 class="h1 mb-6">Discover Blog</h1>
+          <p class="p-lg mx-auto max-w-2xl">
+            Join 150,000+ subscribers. Get access to exclusive guides, tips, updates, ebooks, and more.
+          </p>
+
+          <form class="mx-auto mt-10 flex max-w-xl flex-col gap-3 sm:flex-row">
+            <input
+              type="email"
+              required
+              placeholder="Email Address"
+              class="h-[52px] flex-1 rounded-xl border border-slate-200 bg-white px-5 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+            />
+            <button type="submit" class="btn btn-primary h-[52px] shrink-0 px-7 text-base">
+              Stay Updated
+              <Icon name="lucide:send" class="h-5 w-5" />
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Post -->
+    <section class="bg-white">
+      <div class="container-page py-12">
+        <a href="/article" class="group grid gap-8 lg:grid-cols-2 lg:items-stretch">
+          <div class={`relative h-64 overflow-hidden rounded-2xl bg-gradient-to-br lg:h-[420px] ${featured.thumb}`}>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+          </div>
+          <div class="flex flex-col justify-between gap-6 rounded-2xl border border-slate-200 p-8">
+            <div>
+              <span class="inline-flex items-center rounded-full border border-slate-200 px-3.5 py-1.5 text-sm font-medium text-slate-700">
+                {featured.category}
+              </span>
+              <h2 class="h4 mt-5 transition-colors group-hover:text-brand">{featured.title}</h2>
+              <p class="p-rg mt-4 text-slate-500">{featured.excerpt}</p>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brand-subtle text-xs font-semibold text-brand">
+                {initials(featured.author)}
+              </span>
+              <span class="text-sm font-medium text-slate-600">{featured.author}</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- The Latest Insights -->
+    <section class="bg-white">
+      <div class="container-page py-16 md:py-20">
+        <div class="flex flex-col gap-8">
+          <h2 class="h3">The Latest Insights</h2>
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex flex-wrap items-center gap-2">
+              {categories.map((cat, i) => (
+                <button
+                  type="button"
+                  data-filter={cat}
+                  class={`blog-pill inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                    i === 0
+                      ? 'bg-brand text-white'
+                      : 'border border-slate-200 bg-white text-slate-700 hover:border-brand/40 hover:text-brand'
+                  }`}
+                >
+                  {cat}
+                  {cat === 'More' && <Icon name="lucide:chevron-down" class="h-4 w-4" />}
+                </button>
+              ))}
+            </div>
+            <div class="flex h-11 items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 transition focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/30 lg:w-64 lg:shrink-0">
+              <Icon name="lucide:search" class="h-5 w-5 text-slate-400" />
+              <input
+                type="text"
+                placeholder="Search Articles"
+                class="w-full min-w-0 bg-transparent text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div id="latest-grid" class="mt-12 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {latest.map((post, i) => (
+            <a href="/article" data-category={post.category} class="blog-card group flex flex-col gap-5">
+              <div class={`relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br ${thumbs[i % thumbs.length]}`}>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+              </div>
+              <div class="flex flex-col gap-4">
+                <span class="inline-flex w-max items-center rounded-full border border-slate-200 px-3.5 py-1.5 text-sm font-medium text-slate-700">
+                  {post.category}
+                </span>
+                <h3 class="h6 transition-colors group-hover:text-brand">{post.title}</h3>
+                <div class="flex items-center gap-3">
+                  <span class="flex h-7 w-7 items-center justify-center rounded-full bg-brand-subtle text-[10px] font-semibold text-brand">
+                    {initials(post.author)}
+                  </span>
+                  <span class="text-sm font-medium text-slate-600">{post.author}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+        <div class="mt-12 flex justify-center">
+          <a href="#" class="btn btn-primary btn-lg">View all articles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Most Popular -->
+    <section class="bg-slate-50/60">
+      <div class="container-page py-20 md:py-28">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+          <h2 class="h2 mb-5">Most Popular</h2>
+          <p class="p-lg">
+            The guides our readers come back to most — practical playbooks for writing, publishing, and scaling docs with Zylo.
+          </p>
+        </div>
+
+        <div class="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {popular.map((post, i) => (
+            <a href="/article" class="group flex flex-col gap-5">
+              <div class={`relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br ${thumbs[i % thumbs.length]}`}>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+              </div>
+              <div class="flex flex-col gap-4">
+                <span class="inline-flex w-max items-center rounded-full border border-slate-200 px-3.5 py-1.5 text-sm font-medium text-slate-700">
+                  {post.category}
+                </span>
+                <h3 class="h6 transition-colors group-hover:text-brand">{post.title}</h3>
+                <div class="flex items-center gap-3">
+                  <span class="flex h-7 w-7 items-center justify-center rounded-full bg-brand-subtle text-[10px] font-semibold text-brand">
+                    {initials(post.author)}
+                  </span>
+                  <span class="text-sm font-medium text-slate-600">{post.author}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="bg-white">
+      <div class="container-page py-20 md:py-28">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+          <h2 class="h2 mb-5">Success Stories</h2>
+          <p class="p-lg">
+            Real teams using Zylo to ship documentation that customers — and AI — actually understand.
+          </p>
+        </div>
+
+        <div class="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {stories.map((post, i) => (
+            <a href="/article" class="group flex flex-col gap-5">
+              <div class={`relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br ${thumbs[i % thumbs.length]}`}>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+              </div>
+              <div class="flex flex-col gap-4">
+                <span class="inline-flex w-max items-center rounded-full border border-slate-200 px-3.5 py-1.5 text-sm font-medium text-slate-700">
+                  {post.category}
+                </span>
+                <h3 class="h6 transition-colors group-hover:text-brand">{post.title}</h3>
+                <div class="flex items-center gap-3">
+                  <span class="flex h-7 w-7 items-center justify-center rounded-full bg-brand-subtle text-[10px] font-semibold text-brand">
+                    {initials(post.author)}
+                  </span>
+                  <span class="text-sm font-medium text-slate-600">{post.author}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Tab filtering for "The Latest Insights".
+    // Client-side filter of loaded cards (no backend). Swap to fetch('/api/articles')
+    // here if/when a real endpoint exists.
+    const pills = document.querySelectorAll<HTMLButtonElement>('.blog-pill');
+    const cards = document.querySelectorAll<HTMLElement>('#latest-grid .blog-card');
+    const activeCls = ['bg-brand', 'text-white'];
+    const inactiveCls = ['border', 'border-slate-200', 'bg-white', 'text-slate-700', 'hover:border-brand/40', 'hover:text-brand'];
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const filter = pill.dataset.filter;
+        if (filter === 'More') return; // dropdown placeholder, not a filter
+
+        pills.forEach((p) => {
+          if (p.dataset.filter === 'More') return;
+          p.classList.remove(...activeCls);
+          p.classList.add(...inactiveCls);
+        });
+        pill.classList.add(...activeCls);
+        pill.classList.remove(...inactiveCls);
+
+        cards.forEach((card) => {
+          const show = filter === 'All' || card.dataset.category === filter;
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+
+  <Footer
+    ctaTitle="Get the Best Docs Insights, Weekly"
+    ctaSubtitle="Join the Zylo newsletter — no spam, just useful writing. 🚀"
+  />
+</Layout>

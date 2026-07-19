@@ -1,0 +1,353 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { Icon } from 'astro-icon/components';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const article = {
+  category: 'Product Updates',
+  title: 'Zylo May Update: New AI Features and Integrations',
+  author: 'Aaliyah Ramirez',
+  date: 'June 12, 2024',
+  readTime: '8 min read',
+  lede:
+    "Hello Zylo community! We're excited to share our latest updates. Your feedback drives our roadmap, and May was a productive month for the team. We've been hard at work improving the editor, AI tooling, and integrations to make publishing docs faster than ever.",
+};
+
+const toc = [
+  { id: 'analytics', label: 'Enhanced Analytics Dashboard' },
+  { id: 'mailsync', label: 'New Integration: GitHub Sync' },
+  { id: 'performance', label: 'Performance Improvements & Fixes' },
+  { id: 'notable', label: 'Notable Fixes', sub: true },
+  { id: 'marketing', label: 'Community Updates' },
+  { id: 'featured', label: 'Zylo Featured on TechWave', sub: true },
+  { id: 'offer', label: 'Summer Savings: Limited-Time Offer', sub: true },
+];
+
+const tags = ['Month in review', 'Release notes'];
+const categories = ['News', 'Release Note', 'Product'];
+
+const shares = [
+  { name: 'Facebook', icon: 'lucide:facebook' },
+  { name: 'Twitter', icon: 'lucide:twitter' },
+  { name: 'YouTube', icon: 'lucide:youtube' },
+  { name: 'LinkedIn', icon: 'lucide:linkedin' },
+  { name: 'Instagram', icon: 'lucide:instagram' },
+];
+
+const thumbs = [
+  'from-indigo-500 to-violet-600',
+  'from-sky-500 to-indigo-600',
+  'from-fuchsia-500 to-indigo-600',
+];
+
+const related = [
+  { category: 'AI & Docs', title: 'Let AI Answer From Your Knowledge Base — Accurately', author: 'Dev Sharma' },
+  { category: 'Tutorials', title: 'Publish Your First Docs Site in Under 10 Minutes', author: 'Nadia Khan' },
+  { category: 'Tips & Tricks', title: 'Why Structured Docs Win: A Practical Guide', author: 'Lena Petrova' },
+];
+
+const initials = (name: string) =>
+  name.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase();
+---
+
+<Layout
+  title="Blog Article — Zylo"
+  description="Product updates, writing tips, and stories from the Zylo team."
+>
+  <Navbar />
+  <main id="main" class="pt-32 pb-8">
+    <div class="container-page">
+      <div class="grid gap-10 lg:grid-cols-[180px_minmax(0,1fr)_260px] xl:gap-14">
+        <!-- Share rail -->
+        <aside class="hidden lg:block">
+          <div class="sticky top-28 rounded-2xl border border-slate-200 bg-white p-5">
+            <p class="mb-4 text-lg font-semibold text-slate-900">Share on</p>
+            <div class="flex flex-wrap gap-2.5">
+              {shares.map((s) => (
+                <a
+                  href="#"
+                  aria-label={`Share on ${s.name}`}
+                  class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors hover:border-brand hover:bg-brand-subtle hover:text-brand"
+                >
+                  <Icon name={s.icon} class="h-[18px] w-[18px]" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        <!-- Article -->
+        <article class="mx-auto w-full max-w-[760px]">
+          <!-- Hero image -->
+          <div class="relative mb-10 h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-sky-500 md:h-[420px]">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+          </div>
+
+          <!-- Meta -->
+          <div class="mb-8 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-500">
+            <div class="flex flex-wrap items-center gap-x-8 gap-y-2">
+              <span>By <a href="#" class="font-medium text-slate-900 underline underline-offset-2">{article.author}</a></span>
+              <span>{article.date}</span>
+            </div>
+            <span>{article.readTime}</span>
+          </div>
+
+          <!-- Title + lede -->
+          <h1 class="h3 mb-7">{article.title}</h1>
+          <p class="p-lg mb-14">{article.lede}</p>
+
+          <!-- Quick Navigation -->
+          <div class="mb-14 rounded-2xl bg-slate-50 p-8">
+            <h2 class="h5 mb-6">Quick Navigation</h2>
+            <ul class="flex flex-col gap-3">
+              {toc.map((item) => (
+                <li class={item.sub ? 'pl-7' : ''}>
+                  <a href={`#${item.id}`} class="flex items-start gap-3 text-slate-600 transition-colors hover:text-brand">
+                    <Icon name="lucide:chevron-right" class="mt-1 h-4 w-4 shrink-0 text-brand" />
+                    <span>{item.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Body -->
+          <div class="article-body flex flex-col gap-7 text-slate-600">
+            <section id="analytics" class="flex scroll-mt-28 flex-col gap-7">
+              <h2 class="h4 text-slate-900">Enhanced Analytics Dashboard</h2>
+              <p class="p-lg">
+                On May 5, 2024, we launched our enhanced analytics dashboard. This update gives you deeper insight
+                into how readers use your docs — real-time page views, search queries that returned no results,
+                and the articles driving the most engagement. Open the new dashboard from your Zylo workspace
+                to start optimizing your content.
+              </p>
+              <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
+            </section>
+
+            <section id="mailsync" class="flex scroll-mt-28 flex-col gap-7">
+              <h2 class="h4 text-slate-900">New Integration: GitHub Sync</h2>
+              <p class="p-lg">
+                On May 15, 2024, we shipped two-way GitHub Sync. Connect a repository and your docs stay in lockstep
+                with your codebase — edit in Markdown, open a pull request, and Zylo publishes the moment it merges.
+                Reviewers get a live preview link on every PR, so docs ship with the feature, not weeks later.
+              </p>
+              <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
+            </section>
+
+            <section id="performance" class="flex scroll-mt-28 flex-col gap-7">
+              <h2 class="h4 text-slate-900">Performance Improvements &amp; Fixes</h2>
+              <p class="p-lg">
+                We rebuilt the publishing pipeline this month. Pages now render faster, search indexes update
+                instantly, and the editor stays responsive even on very large knowledge bases. Here's a quick look
+                at a typical deploy configuration:
+              </p>
+
+              <!-- Code snippet -->
+              <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-900">
+                <div class="flex items-center justify-between border-b border-white/10 px-5 py-3">
+                  <span class="text-sm font-medium text-slate-300">zylo.config.yml</span>
+                  <button type="button" class="rounded-md bg-white/10 px-3 py-1 text-xs font-medium text-slate-200 transition-colors hover:bg-white/20">Copy</button>
+                </div>
+                <pre class="overflow-x-auto px-5 py-4 text-sm leading-relaxed text-slate-100"><code>site:
+  name: My Docs
+  domain: docs.example.com
+  theme: auto        # light · dark · auto
+
+build:
+  source: ./content
+  ai_chat: true
+  search: instant</code></pre>
+              </div>
+
+              <h3 id="notable" class="h5 scroll-mt-28 text-slate-900">Notable Fixes</h3>
+              <p class="p-lg">
+                Resolved a rare issue where draft revisions could overwrite published content. Improved mobile
+                rendering for wide tables and code blocks. Hardened SSO sessions so team members stay signed in
+                across subdomains.
+              </p>
+
+              <!-- Callout -->
+              <div class="rounded-2xl bg-amber-50 px-6 py-8 text-center">
+                <p class="text-lg font-semibold text-slate-900">
+                  Missed last month? Read the Zylo April Update: Editor Refresh &amp; Roles.
+                </p>
+              </div>
+            </section>
+
+            <section id="marketing" class="flex scroll-mt-28 flex-col gap-9">
+              <div class="flex flex-col gap-6">
+                <h2 class="h4 text-slate-900">Community Updates</h2>
+                <p class="p-lg">In May, we focused on expanding our reach and engaging the community. A few highlights:</p>
+              </div>
+
+              <!-- Quote -->
+              <figure class="flex items-start gap-6 rounded-2xl border border-slate-200 border-l-4 border-l-brand bg-white p-8">
+                <Icon name="lucide:quote" class="h-9 w-9 shrink-0 text-brand" />
+                <blockquote class="text-xl leading-relaxed text-slate-900">
+                  Zylo transformed how our team ships documentation. The new analytics dashboard is a game-changer. Highly recommend! 😊
+                </blockquote>
+              </figure>
+
+              <div id="featured" class="flex scroll-mt-28 flex-col gap-6">
+                <h3 class="h5 text-slate-900">Zylo Featured on TechWave</h3>
+                <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
+                <p class="p-lg">
+                  We're thrilled that Zylo was featured on TechWave, a leading technology news platform. The
+                  recognition reflects our commitment to making documentation effortless for teams of every size.
+                </p>
+                <a href="/pricing" class="btn btn-primary btn-lg w-max">
+                  Explore Pricing Plans
+                  <Icon name="lucide:arrow-right" class="h-5 w-5" />
+                </a>
+              </div>
+
+              <div id="offer" class="flex scroll-mt-28 flex-col gap-6">
+                <h3 class="h5 text-slate-900">Summer Savings: Limited-Time Offer</h3>
+                <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
+                <p class="p-lg">
+                  To celebrate the season, we're offering a limited-time discount on all Zylo plans — the perfect
+                  moment to upgrade your docs workflow and take your knowledge base to the next level.
+                </p>
+                <a href="#" class="btn btn-primary btn-lg w-max">
+                  Join our Discord server
+                  <Icon name="lucide:arrow-right" class="h-5 w-5" />
+                </a>
+              </div>
+            </section>
+
+            <p class="h5 mt-4 text-slate-900">
+              That's all for May! Thanks for being part of the Zylo community — more updates soon. 🚀✨
+            </p>
+          </div>
+
+          <!-- Divider -->
+          <hr class="my-12 border-slate-200" />
+
+          <!-- Category + Tags -->
+          <div class="flex flex-col gap-5">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="text-base font-medium text-slate-900">Category:</span>
+              {categories.map((c, i) => (
+                <span class={`rounded-full px-5 py-2 text-sm font-medium ${i === 1 ? 'bg-brand text-white' : 'border border-slate-200 text-slate-700'}`}>{c}</span>
+              ))}
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="text-base font-medium text-slate-900">Tags:</span>
+              {tags.map((t) => (
+                <span class="rounded-full border border-slate-200 px-5 py-2 text-sm font-medium text-slate-700">{t}</span>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <!-- TOC rail -->
+        <aside class="hidden lg:block">
+          <nav class="sticky top-28 rounded-2xl border border-slate-200 bg-white p-5">
+            <div class="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900">
+              <Icon name="lucide:list" class="h-4 w-4 text-brand" />
+              On this page
+            </div>
+            <ul class="flex flex-col">
+              {toc.map((item) => (
+                <li>
+                  <a
+                    href={`#${item.id}`}
+                    data-toc-link={item.id}
+                    class={`block border-l-2 border-transparent py-2 text-sm text-slate-500 transition-colors hover:text-brand ${item.sub ? 'pl-7' : 'pl-3'}`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+      </div>
+    </div>
+
+    <!-- Relevant Articles -->
+    <section class="mt-8 bg-slate-50/60">
+      <div class="container-page py-20 md:py-28">
+        <div class="mx-auto max-w-2xl text-center" data-reveal>
+          <h2 class="h2 mb-5">Relevant Articles</h2>
+          <p class="p-lg">More guides on writing, publishing, and scaling documentation with Zylo.</p>
+        </div>
+        <div class="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+          {related.map((post, i) => (
+            <a href="/article" class="group flex flex-col gap-5">
+              <div class={`relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br ${thumbs[i % thumbs.length]}`}>
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+              </div>
+              <div class="flex flex-col gap-4">
+                <span class="inline-flex w-max items-center rounded-full border border-slate-200 px-3.5 py-1.5 text-sm font-medium text-slate-700">
+                  {post.category}
+                </span>
+                <h3 class="h6 transition-colors group-hover:text-brand">{post.title}</h3>
+                <div class="flex items-center gap-3">
+                  <span class="flex h-7 w-7 items-center justify-center rounded-full bg-brand-subtle text-[10px] font-semibold text-brand">
+                    {initials(post.author)}
+                  </span>
+                  <span class="text-sm font-medium text-slate-600">{post.author}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // TOC scrollspy + copy button
+    const links = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
+    const sections = Array.from(links)
+      .map((l) => document.getElementById(l.dataset.tocLink!))
+      .filter(Boolean) as HTMLElement[];
+
+    const setActive = (id: string) => {
+      links.forEach((l) => {
+        const on = l.dataset.tocLink === id;
+        l.classList.toggle('border-brand', on);
+        l.classList.toggle('text-brand', on);
+        l.classList.toggle('font-medium', on);
+        l.classList.toggle('border-transparent', !on);
+        l.classList.toggle('text-slate-500', !on);
+      });
+    };
+
+    if (sections.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) setActive(e.target.id);
+          });
+        },
+        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
+      );
+      sections.forEach((s) => io.observe(s));
+    }
+
+    document.querySelectorAll('button').forEach((btn) => {
+      if (btn.textContent?.trim() === 'Copy') {
+        btn.addEventListener('click', () => {
+          const code = btn.closest('div')?.parentElement?.querySelector('code')?.textContent ?? '';
+          navigator.clipboard?.writeText(code);
+          const original = btn.textContent;
+          btn.textContent = 'Copied';
+          setTimeout(() => (btn.textContent = original), 1500);
+        });
+      }
+    });
+  </script>
+
+  <Footer
+    ctaTitle="Get the Best Docs Insights, Weekly"
+    ctaSubtitle="Join the Zylo newsletter — no spam, just useful writing. 🚀"
+  />
+</Layout>

@@ -1,0 +1,96 @@
+---
+import SectionHeading from '@/components/widgets/SectionHeading.astro';
+
+const benefits = [
+  { image: '/home/Write the Way You Think.png', title: 'Write the Way You Think', body: 'Turn rough notes and screenshots into clean, structured documentation.', bgColor: '#FFEEF6' },
+  { image: '/home/Publish Without the Hassle.png', title: 'Publish Without the Hassle', body: 'No code, no setup. Your docs go live on a beautiful site instantly.', bgColor: '#F3EEFF' },
+  { image: '/home/Faster Writing with AI.png', title: 'Faster Writing with AI', body: 'Draft, rewrite, and translate in seconds with AI built in.', bgColor: '#FFF6EE' },
+];
+const colors = benefits.map((b) => b.bgColor);
+---
+
+<section id="benefits" class="section bg-white">
+  <div class="container-page">
+    <SectionHeading title="Docs That Work as Hard as You Do" />
+
+    <div class="mt-16 flex flex-col lg:flex-row items-start gap-12 lg:gap-24 relative" data-benefits data-colors={JSON.stringify(colors)}>
+      {/* Left Side: Scrolling Features */}
+      <div class="flex-1 w-full lg:w-1/2 flex flex-col space-y-16 lg:space-y-64 lg:py-64">
+        {benefits.map((b, i) => (
+          <div
+            data-index={i}
+            data-feature-item
+            class={`feature-item transition-all duration-700 ease-out ${i === 0 ? 'opacity-100 translate-x-0' : 'opacity-40 lg:opacity-20 translate-x-2 lg:translate-x-6'}`}
+          >
+            {/* Mobile visual inline */}
+            <div class="lg:hidden mb-8 p-6 rounded-[24px]" style={{ backgroundColor: b.bgColor }}>
+              <img src={b.image} alt={b.title} class="w-full h-auto block" />
+            </div>
+            <h3 class="h3 mb-4 text-slate-900">{b.title}</h3>
+            <p class="p-md text-slate-600">{b.body}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Right Side: Sticky Visual (Desktop Only) */}
+      <div
+        class="hidden lg:flex lg:flex-1 w-full lg:w-1/2 sticky top-32 p-10 transition-colors duration-700 h-[600px] overflow-hidden items-center justify-center rounded-[24px]"
+        style={{ backgroundColor: benefits[0].bgColor }}
+        data-sticky
+      >
+        <div class="relative w-full h-full flex items-center justify-center">
+          {benefits.map((b, i) => (
+            <img
+              src={b.image}
+              alt={b.title}
+              data-sticky-img={i}
+              class={`absolute w-full h-auto max-h-full object-contain transition-all duration-700 ease-in-out ${i === 0 ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-8'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const root = document.querySelector('[data-benefits]');
+  if (root) {
+    const colors = JSON.parse(root.getAttribute('data-colors') || '[]');
+    const items = Array.from(root.querySelectorAll('[data-feature-item]')) as HTMLElement[];
+    const sticky = root.querySelector('[data-sticky]') as HTMLElement | null;
+    const imgs = Array.from(root.querySelectorAll('[data-sticky-img]')) as HTMLElement[];
+
+    const setActive = (idx: number) => {
+      items.forEach((el, i) => {
+        const on = i === idx;
+        el.classList.toggle('opacity-100', on);
+        el.classList.toggle('translate-x-0', on);
+        el.classList.toggle('opacity-40', !on);
+        el.classList.toggle('lg:opacity-20', !on);
+        el.classList.toggle('translate-x-2', !on);
+        el.classList.toggle('lg:translate-x-6', !on);
+      });
+      imgs.forEach((el, i) => {
+        const on = i === idx;
+        el.classList.toggle('opacity-100', on);
+        el.classList.toggle('scale-100', on);
+        el.classList.toggle('translate-y-0', on);
+        el.classList.toggle('opacity-0', !on);
+        el.classList.toggle('scale-95', !on);
+        el.classList.toggle('translate-y-8', !on);
+      });
+      if (sticky && colors[idx]) sticky.style.backgroundColor = colors[idx];
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(Number((entry.target as HTMLElement).dataset.index));
+        });
+      },
+      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
+    );
+    items.forEach((el) => io.observe(el));
+  }
+</script>

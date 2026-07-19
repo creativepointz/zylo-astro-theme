@@ -1,0 +1,86 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import { Icon } from 'astro-icon/components';
+import { entries, tagStyles } from '@/lib/data/changelog';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+---
+
+<Layout
+  title="Changelog — Zylo"
+  description="All the latest updates, improvements, and fixes to Zylo."
+>
+  <Navbar />
+  <main id="main">
+    <!-- Hero -->
+    <section
+      class="relative overflow-hidden pt-40 pb-24 md:pt-48"
+      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
+    >
+      <div class="container-page">
+        <div class="mx-auto max-w-3xl text-center" data-reveal>
+          <h1 class="h1 mb-7">Changelog</h1>
+          <p class="p-xl mx-auto max-w-2xl">
+            All the latest updates, improvements, and fixes to Zylo.
+          </p>
+        </div>
+
+        <!-- Subscribe -->
+        <form class="mx-auto mt-14 flex w-full max-w-[560px] flex-col gap-3 sm:flex-row" data-reveal>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            class="flex-1 rounded-md border border-slate-200 bg-white px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
+          />
+          <button type="submit" class="btn-primary btn-lg shrink-0">
+            Stay Updated
+            <Icon name="lucide:send" class="h-5 w-5" />
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="bg-white pb-24">
+      {entries.map((entry) => (
+        <div class="border-t border-slate-200 last:border-b">
+          <div class="container-page">
+            <div class="mx-auto flex max-w-[960px] flex-col gap-8 py-12 md:flex-row md:gap-12">
+              <!-- Date column -->
+              <div class="flex shrink-0 flex-col gap-2 md:w-40 md:py-2">
+                <p class="text-lg font-semibold text-slate-700">{entry.date}</p>
+                <p class="p-lt text-slate-400">{entry.version}</p>
+              </div>
+
+              <!-- Content column -->
+              <div class="flex flex-1 flex-col gap-10" data-reveal>
+                <div class={`aspect-[1622/886] w-full overflow-hidden rounded-xl bg-gradient-to-br ${entry.thumb}`}>
+                  <div class="h-full w-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="flex flex-wrap gap-2">
+                    {entry.tags.map((tag) => (
+                      <span class={`rounded-full px-3 py-1 text-xs font-semibold ${tagStyles[tag] ?? 'bg-slate-100 text-slate-600'}`}>{tag}</span>
+                    ))}
+                  </div>
+                  <h2 class="h4 text-slate-900">
+                    <a href={`/changelog/${entry.slug}`} class="transition-colors hover:text-brand">{entry.title}</a>
+                  </h2>
+                  <p class="p-lg">{entry.excerpt}</p>
+                </div>
+                <a href={`/changelog/${entry.slug}`} class="btn-primary btn-md w-max">{entry.cta}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+  </main>
+  <Footer />
+</Layout>

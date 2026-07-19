@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon/components';
+import Reveal from '@/components/widgets/Reveal.astro';
+
+const trust = ['Free plan', 'No credit card required', 'Bring your own AI key'];
+
+const marqueeFeatures = [
+  { icon: 'lucide:sparkles', name: 'AI Assistant' },
+  { icon: 'lucide:pencil', name: 'Visual Editor' },
+  { icon: 'lucide:globe', name: 'Custom Domains' },
+  { icon: 'lucide:languages', name: 'Translations' },
+  { icon: 'lucide:image', name: 'Media Library' },
+  { icon: 'lucide:search', name: 'SEO Optimized' },
+  { icon: 'lucide:shield', name: 'Permissions' },
+  { icon: 'lucide:users', name: 'Team Sync' },
+  { icon: 'lucide:github', name: 'GitHub Sync' },
+  { icon: 'lucide:code', name: 'API Access' },
+  { icon: 'lucide:layout-template', name: 'Custom Branding' },
+];
+const loop = [...marqueeFeatures, ...marqueeFeatures, ...marqueeFeatures];
+---
+
+<section
+  class="relative overflow-hidden pt-24 pb-16 flex flex-col"
+  style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0.20) 100%), #FFF;"
+>
+  <!-- Content -->
+  <div class="container-page relative z-10 pt-20 text-center md:pt-24 mb-16">
+    <Reveal class="mx-auto max-w-4xl">
+      <h1 class="h1 text-slate-900 leading-tight">
+        Everything You Need.<br />
+        <span class="text-brand">Nothing You Don't.</span>
+      </h1>
+      <p class="p-xl mx-auto mt-6 max-w-2xl">
+        Every tool to write, publish, and maintain documentation, with AI built into all of it.
+      </p>
+    </Reveal>
+
+    {/* Primary CTA Button */}
+    <Reveal delay={120} class="mx-auto mt-10">
+      <div class="flex flex-col items-center justify-center gap-4">
+        <a
+          href="/pricing"
+          class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white hover:bg-brand-hover shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+        >
+          Start Free <Icon name="lucide:arrow-right" class="w-[18px] h-[18px]" />
+        </a>
+        <ul class="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+          {trust.map((t) => (
+            <li class="p-lt flex items-center gap-1.5 text-slate-600">
+              <Icon name="lucide:check" class="w-4 h-4 text-brand" /> {t}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Reveal>
+  </div>
+
+  <!-- Marquee -->
+  <div class="relative w-full overflow-hidden flex items-center py-8">
+    <div class="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 md:w-48 bg-gradient-to-r from-white to-transparent"></div>
+    <div class="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 md:w-48 bg-gradient-to-l from-white to-transparent"></div>
+
+    <div class="flex gap-6 items-center whitespace-nowrap animate-marquee">
+      {loop.map((feature) => (
+        <div class="flex flex-col items-center justify-center gap-[20px] p-[20px] w-[164px] h-[164px] bg-white rounded-[20px] border border-[#e2e8f0]/60 flex-shrink-0 transition-transform hover:scale-105">
+          <Icon name={feature.icon} class="w-10 h-10 text-brand" />
+          <span class="font-light text-slate-800 text-[14px] tracking-tight">{feature.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
