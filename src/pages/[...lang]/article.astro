@@ -11,12 +11,12 @@ export function getStaticPaths() {
 
 const article = {
   category: 'Product Updates',
-  title: 'Zylo May Update: New AI Features and Integrations',
+  title: 'Zylo May Update: New Agent Features and Integrations',
   author: 'Aaliyah Ramirez',
   date: 'June 12, 2024',
   readTime: '8 min read',
   lede:
-    "Hello Zylo community! We're excited to share our latest updates. Your feedback drives our roadmap, and May was a productive month for the team. We've been hard at work improving the editor, AI tooling, and integrations to make publishing docs faster than ever.",
+    "Hello Zylo community! We're excited to share our latest updates. Your feedback drives our roadmap, and May was a productive month for the team. We've been hard at work improving the agent builder, AI tooling, and integrations to make automating work faster than ever.",
 };
 
 const toc = [
@@ -47,9 +47,9 @@ const thumbs = [
 ];
 
 const related = [
-  { category: 'AI & Docs', title: 'Let AI Answer From Your Knowledge Base — Accurately', author: 'Dev Sharma' },
-  { category: 'Tutorials', title: 'Publish Your First Docs Site in Under 10 Minutes', author: 'Nadia Khan' },
-  { category: 'Tips & Tricks', title: 'Why Structured Docs Win: A Practical Guide', author: 'Lena Petrova' },
+  { category: 'AI & Automation', title: 'Let an Agent Handle Your Inbox — Reliably', author: 'Dev Sharma' },
+  { category: 'Tutorials', title: 'Build Your First AI Agent in Under 10 Minutes', author: 'Nadia Khan' },
+  { category: 'Tips & Tricks', title: 'Why Guardrails Win: A Practical Guide to Safe Agents', author: 'Lena Petrova' },
 ];
 
 const initials = (name: string) =>
@@ -58,7 +58,7 @@ const initials = (name: string) =>
 
 <Layout
   title="Blog Article — Zylo"
-  description="Product updates, writing tips, and stories from the Zylo team."
+  description="Product updates, automation tips, and stories from the Zylo team."
 >
   <Navbar />
   <main id="main" class="pt-32 pb-8">
@@ -123,9 +123,9 @@ const initials = (name: string) =>
               <h2 class="h4 text-slate-900">Enhanced Analytics Dashboard</h2>
               <p class="p-lg">
                 On May 5, 2024, we launched our enhanced analytics dashboard. This update gives you deeper insight
-                into how readers use your docs — real-time page views, search queries that returned no results,
-                and the articles driving the most engagement. Open the new dashboard from your Zylo workspace
-                to start optimizing your content.
+                into how your agents run — real-time run counts, steps that failed or retried,
+                and the automations driving the most value. Open the new dashboard from your Zylo workspace
+                to start optimizing your agents.
               </p>
               <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
             </section>
@@ -133,9 +133,9 @@ const initials = (name: string) =>
             <section id="mailsync" class="flex scroll-mt-28 flex-col gap-7">
               <h2 class="h4 text-slate-900">New Integration: GitHub Sync</h2>
               <p class="p-lg">
-                On May 15, 2024, we shipped two-way GitHub Sync. Connect a repository and your docs stay in lockstep
-                with your codebase — edit in Markdown, open a pull request, and Zylo publishes the moment it merges.
-                Reviewers get a live preview link on every PR, so docs ship with the feature, not weeks later.
+                On May 15, 2024, we shipped two-way GitHub Sync. Connect a repository and your agents stay in lockstep
+                with your codebase — define them as code, open a pull request, and Zylo deploys the moment it merges.
+                Reviewers get a live test-run link on every PR, so automations ship with the feature, not weeks later.
               </p>
               <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
             </section>
@@ -143,9 +143,9 @@ const initials = (name: string) =>
             <section id="performance" class="flex scroll-mt-28 flex-col gap-7">
               <h2 class="h4 text-slate-900">Performance Improvements &amp; Fixes</h2>
               <p class="p-lg">
-                We rebuilt the publishing pipeline this month. Pages now render faster, search indexes update
-                instantly, and the editor stays responsive even on very large knowledge bases. Here's a quick look
-                at a typical deploy configuration:
+                We rebuilt the execution engine this month. Agents now start faster, run logs stream
+                instantly, and the builder stays responsive even on very large workflows. Here's a quick look
+                at a typical agent configuration:
               </p>
 
               <!-- Code snippet -->
@@ -154,28 +154,28 @@ const initials = (name: string) =>
                   <span class="text-sm font-medium text-slate-300">zylo.config.yml</span>
                   <button type="button" class="rounded-md bg-white/10 px-3 py-1 text-xs font-medium text-slate-200 transition-colors hover:bg-white/20">Copy</button>
                 </div>
-                <pre class="overflow-x-auto px-5 py-4 text-sm leading-relaxed text-slate-100"><code>site:
-  name: My Docs
-  domain: docs.example.com
-  theme: auto        # light · dark · auto
+                <pre class="overflow-x-auto px-5 py-4 text-sm leading-relaxed text-slate-100"><code>agent:
+  name: Inbox Triage
+  model: claude        # gpt · claude · open
+  trigger: email.received
 
-build:
-  source: ./content
-  ai_chat: true
-  search: instant</code></pre>
+run:
+  tools: [gmail, slack]
+  approvals: true
+  logs: verbose</code></pre>
               </div>
 
               <h3 id="notable" class="h5 scroll-mt-28 text-slate-900">Notable Fixes</h3>
               <p class="p-lg">
-                Resolved a rare issue where draft revisions could overwrite published content. Improved mobile
-                rendering for wide tables and code blocks. Hardened SSO sessions so team members stay signed in
+                Resolved a rare issue where a retry could run an agent step twice. Improved handling of
+                rate-limited tool calls. Hardened SSO sessions so team members stay signed in
                 across subdomains.
               </p>
 
               <!-- Callout -->
               <div class="rounded-2xl bg-amber-50 px-6 py-8 text-center">
                 <p class="text-lg font-semibold text-slate-900">
-                  Missed last month? Read the Zylo April Update: Editor Refresh &amp; Roles.
+                  Missed last month? Read the Zylo April Update: Builder Refresh &amp; Roles.
                 </p>
               </div>
             </section>
@@ -190,7 +190,7 @@ build:
               <figure class="flex items-start gap-6 rounded-2xl border border-slate-200 border-l-4 border-l-brand bg-white p-8">
                 <Icon name="lucide:quote" class="h-9 w-9 shrink-0 text-brand" />
                 <blockquote class="text-xl leading-relaxed text-slate-900">
-                  Zylo transformed how our team ships documentation. The new analytics dashboard is a game-changer. Highly recommend! 😊
+                  Zylo transformed how our team automates work. The new analytics dashboard is a game-changer. Highly recommend! 😊
                 </blockquote>
               </figure>
 
@@ -199,7 +199,7 @@ build:
                 <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
                 <p class="p-lg">
                   We're thrilled that Zylo was featured on TechWave, a leading technology news platform. The
-                  recognition reflects our commitment to making documentation effortless for teams of every size.
+                  recognition reflects our commitment to making automation effortless for teams of every size.
                 </p>
                 <a href="/pricing" class="btn btn-primary btn-lg w-max">
                   Explore Pricing Plans
@@ -212,7 +212,7 @@ build:
                 <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
                 <p class="p-lg">
                   To celebrate the season, we're offering a limited-time discount on all Zylo plans — the perfect
-                  moment to upgrade your docs workflow and take your knowledge base to the next level.
+                  moment to upgrade your automation workflow and take your team's productivity to the next level.
                 </p>
                 <a href="#" class="btn btn-primary btn-lg w-max">
                   Join our Discord server
@@ -276,7 +276,7 @@ build:
       <div class="container-page py-20 md:py-28">
         <div class="mx-auto max-w-2xl text-center" data-reveal>
           <h2 class="h2 mb-5">Relevant Articles</h2>
-          <p class="p-lg">More guides on writing, publishing, and scaling documentation with Zylo.</p>
+          <p class="p-lg">More guides on building, connecting, and scaling AI agents with Zylo.</p>
         </div>
         <div class="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((post, i) => (
@@ -347,7 +347,7 @@ build:
   </script>
 
   <Footer
-    ctaTitle="Get the Best Docs Insights, Weekly"
-    ctaSubtitle="Join the Zylo newsletter — no spam, just useful writing. 🚀"
+    ctaTitle="Get the Best Automation Insights, Weekly"
+    ctaSubtitle="Join the Zylo newsletter — no spam, just useful playbooks. 🚀"
   />
 </Layout>

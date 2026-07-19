@@ -2,16 +2,16 @@
 import SectionHeading from '@/components/widgets/SectionHeading.astro';
 
 const benefits = [
-  { image: '/home/Write the Way You Think.png', title: 'Write the Way You Think', body: 'Turn rough notes and screenshots into clean, structured documentation.', bgColor: '#FFEEF6' },
-  { image: '/home/Publish Without the Hassle.png', title: 'Publish Without the Hassle', body: 'No code, no setup. Your docs go live on a beautiful site instantly.', bgColor: '#F3EEFF' },
-  { image: '/home/Faster Writing with AI.png', title: 'Faster Writing with AI', body: 'Draft, rewrite, and translate in seconds with AI built in.', bgColor: '#FFF6EE' },
+  { image: '/home/Write the Way You Think.png', title: 'Describe It in Plain Words', body: 'Turn a plain-language prompt into a working AI agent — no code, no flowcharts.', bgColor: '#FFEEF6' },
+  { image: '/home/Publish Without the Hassle.png', title: 'Ship Without the Setup', body: 'No infra, no glue code. Your agents go live and start working instantly.', bgColor: '#F3EEFF' },
+  { image: '/home/Faster Writing with AI.png', title: 'Real Work, Done by AI', body: 'Draft, summarize, route, and act across your tools in seconds with AI built in.', bgColor: '#FFF6EE' },
 ];
 const colors = benefits.map((b) => b.bgColor);
 ---
 
 <section id="benefits" class="section bg-white">
   <div class="container-page">
-    <SectionHeading title="Docs That Work as Hard as You Do" />
+    <SectionHeading title="AI That Works as Hard as You Do" />
 
     <div class="mt-16 flex flex-col lg:flex-row items-start gap-12 lg:gap-24 relative" data-benefits data-colors={JSON.stringify(colors)}>
       {/* Left Side: Scrolling Features */}

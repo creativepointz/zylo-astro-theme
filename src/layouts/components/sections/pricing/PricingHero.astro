@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 ---
 
 <section
@@ -13,5 +14,13 @@
       Choose the plan that's right for you. No hidden fees. Cancel anytime. <br class="hidden md:block"/>
       Save 2 months with annual billing.
     </p>
+    <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="#plans" class="btn-primary btn-lg">
+        Start Free <Icon name="lucide:arrow-right" class="h-[18px] w-[18px]" />
+      </a>
+      <a href="/contact" class="btn-secondary btn-lg">
+        Talk to sales
+      </a>
+    </div>
   </div>
 </section>

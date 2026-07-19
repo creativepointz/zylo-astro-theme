@@ -21,37 +21,37 @@ const thumbs = [
 
 const featured = {
   category: 'Product Updates',
-  title: 'Introducing AI Chat on Every Published Zylo Site',
+  title: 'Introducing Multi-Step Agents That Reason and Act',
   excerpt:
-    'Readers can now ask questions in plain language and get instant answers pulled straight from your docs. No setup, no training — it works the moment you publish.',
+    'Agents can now chain reasoning, call your tools, and complete real work end to end — with full run logs and human approvals. No setup, no glue code — it works the moment you deploy.',
   author: 'Alistair Miles',
   thumb: 'from-indigo-600 via-violet-600 to-sky-500',
 };
 
-const categories = ['All', 'Product Updates', 'Tutorials', 'AI & Docs', 'Tips & Tricks', 'More'];
+const categories = ['All', 'Product Updates', 'Tutorials', 'AI & Automation', 'Tips & Tricks', 'More'];
 
 const latest = [
-  { category: 'AI & Docs', title: 'Let AI Answer From Your Knowledge Base — Accurately', author: 'Dev Sharma' },
-  { category: 'Tutorials', title: 'Publish Your First Docs Site in Under 10 Minutes', author: 'Nadia Khan' },
-  { category: 'Tips & Tricks', title: 'Why Structured Docs Win: A Practical Guide', author: 'Lena Petrova' },
-  { category: 'Product Updates', title: 'Custom Domains and Branding, Now on Every Plan', author: 'Nadia Khan' },
-  { category: 'Tips & Tricks', title: 'Writing Docs That Rank: SEO for Documentation', author: 'Lena Petrova' },
-  { category: 'AI & Docs', title: 'Translate Your Entire Knowledge Base With One Click', author: 'Dev Sharma' },
+  { category: 'AI & Automation', title: 'Let an Agent Handle Your Inbox — Reliably', author: 'Dev Sharma' },
+  { category: 'Tutorials', title: 'Build Your First AI Agent in Under 10 Minutes', author: 'Nadia Khan' },
+  { category: 'Tips & Tricks', title: 'Why Guardrails Win: A Practical Guide to Safe Agents', author: 'Lena Petrova' },
+  { category: 'Product Updates', title: 'Model Routing and Human Approvals, Now on Every Plan', author: 'Nadia Khan' },
+  { category: 'Tips & Tricks', title: 'Automations That Scale: Designing for Reliability', author: 'Lena Petrova' },
+  { category: 'AI & Automation', title: 'Connect Your Whole Stack With One-Click Integrations', author: 'Dev Sharma' },
 ];
 
 const popular = [
-  { category: 'Tutorials', title: 'From Notion to Zylo: Migrating Without Losing Formatting', author: 'Dev Sharma' },
-  { category: 'AI & Docs', title: 'Rewrite, Shorten, and Simplify With the AI Editor', author: 'Nadia Khan' },
-  { category: 'Tips & Tricks', title: 'Organizing Large Docs: Categories, Tags, and Search', author: 'Lena Petrova' },
-  { category: 'Product Updates', title: 'Roles & Permissions for Growing Documentation Teams', author: 'Nadia Khan' },
-  { category: 'Tutorials', title: 'Update Docs From Screenshots in Seconds', author: 'Dev Sharma' },
-  { category: 'Tips & Tricks', title: 'Light, Dark, and On-Brand: Theming Your Docs', author: 'Lena Petrova' },
+  { category: 'Tutorials', title: 'From Zapier to Zylo: Migrating Without the Rework', author: 'Dev Sharma' },
+  { category: 'AI & Automation', title: 'Reason, Decide, and Act With Multi-Step Agents', author: 'Nadia Khan' },
+  { category: 'Tips & Tricks', title: 'Debugging Agents: Run Logs, Retries, and Alerts', author: 'Lena Petrova' },
+  { category: 'Product Updates', title: 'Roles & Permissions for Growing Automation Teams', author: 'Nadia Khan' },
+  { category: 'Tutorials', title: 'Trigger Automations From Any Event in Seconds', author: 'Dev Sharma' },
+  { category: 'Tips & Tricks', title: 'GPT, Claude, or Open: Choosing the Right Model', author: 'Lena Petrova' },
 ];
 
 const stories = [
-  { category: 'Customer Stories', title: 'How Anya Built a Self-Serve Help Center With Zylo', author: 'Dev Sharma' },
-  { category: 'Customer Stories', title: "Leo's Team Cut Support Tickets in Half With Better Docs", author: 'Nadia Khan' },
-  { category: 'Customer Stories', title: "Omar Scaled Docs Across 10 Sites Without Hiring Writers", author: 'Lena Petrova' },
+  { category: 'Customer Stories', title: 'How Anya Automated Her Whole Support Queue With Zylo', author: 'Dev Sharma' },
+  { category: 'Customer Stories', title: "Leo's Team Cut Manual Ops in Half With AI Agents", author: 'Nadia Khan' },
+  { category: 'Customer Stories', title: "Omar Scaled Automations Across 10 Workspaces Without Hiring", author: 'Lena Petrova' },
 ];
 
 const initials = (name: string) =>
@@ -60,7 +60,7 @@ const initials = (name: string) =>
 
 <Layout
   title="Blog — Zylo"
-  description="Product updates, writing tips, and stories from the Zylo team."
+  description="Product updates, automation tips, and stories from the Zylo team."
 >
   <Navbar />
   <main id="main">
@@ -184,7 +184,7 @@ const initials = (name: string) =>
         <div class="mx-auto max-w-2xl text-center" data-reveal>
           <h2 class="h2 mb-5">Most Popular</h2>
           <p class="p-lg">
-            The guides our readers come back to most — practical playbooks for writing, publishing, and scaling docs with Zylo.
+            The guides our readers come back to most — practical playbooks for building, connecting, and scaling AI agents with Zylo.
           </p>
         </div>
 
@@ -218,7 +218,7 @@ const initials = (name: string) =>
         <div class="mx-auto max-w-2xl text-center" data-reveal>
           <h2 class="h2 mb-5">Success Stories</h2>
           <p class="p-lg">
-            Real teams using Zylo to ship documentation that customers — and AI — actually understand.
+            Real teams using Zylo to automate the work that used to eat their week.
           </p>
         </div>
 
@@ -278,7 +278,7 @@ const initials = (name: string) =>
   </script>
 
   <Footer
-    ctaTitle="Get the Best Docs Insights, Weekly"
-    ctaSubtitle="Join the Zylo newsletter — no spam, just useful writing. 🚀"
+    ctaTitle="Get the Best Automation Insights, Weekly"
+    ctaSubtitle="Join the Zylo newsletter — no spam, just useful playbooks. 🚀"
   />
 </Layout>

@@ -45,40 +45,37 @@ const plans = [
 ];
 
 const usageFeatures = [
-  { name: 'sites', values: ['1', '1', '3', '10'] },
-  { name: 'Docs per site', values: ['1', '3', 'Unlimited', 'Unlimited'] },
-  { name: 'Articles', values: ['20', '100', 'Unlimited', 'Unlimited'] },
+  { name: 'workspaces', values: ['1', '1', '3', '10'] },
+  { name: 'Agents per workspace', values: ['1', '3', 'Unlimited', 'Unlimited'] },
+  { name: 'Agent runs / month', values: ['100', '1,000', 'Unlimited', 'Unlimited'] },
   { name: 'Team members', values: ['1', '2', '5', '15'] },
-  { name: 'AI actions / month', values: ['25', '200', 'Unlimited', 'Unlimited'] },
+  { name: 'AI model calls / month', values: ['500', '5,000', 'Unlimited', 'Unlimited'] },
 ];
 
 const featureCategories = [
   {
-    name: 'Editor & Publishing',
+    name: 'Builder & Runtime',
     features: [
-      { name: 'Visual block editor', values: [true, true, true, true] },
-      { name: 'Rich media (images, video)', values: [true, true, true, true] },
-      { name: 'Code blocks & highlighting', values: [true, true, true, true] },
-      { name: 'Public knowledge base', values: [true, true, true, true] },
-      { name: 'Private / internal docs', values: [true, true, true, true] },
-      { name: 'Light & dark mode', values: [true, true, true, true] },
-      { name: 'Mobile-ready output', values: [true, true, true, true] },
-      { name: 'SEO optimization', values: [true, true, true, true] },
-      { name: 'Custom domain', values: [false, true, true, true] },
-      { name: 'Custom branding', values: [false, true, true, true] },
+      { name: 'Visual agent builder', values: [true, true, true, true] },
+      { name: 'Multi-step workflows', values: [true, true, true, true] },
+      { name: 'Live test runs', values: [true, true, true, true] },
+      { name: 'Scheduling & triggers', values: [true, true, true, true] },
+      { name: 'Webhooks', values: [true, true, true, true] },
+      { name: 'Run logs & history', values: [true, true, true, true] },
+      { name: 'Retries & error handling', values: [true, true, true, true] },
+      { name: 'Version control for agents', values: [true, true, true, true] },
+      { name: 'Human approvals', values: [false, true, true, true] },
+      { name: 'Custom guardrails', values: [false, true, true, true] },
       { name: 'Remove Zylo badge', values: [false, 'Optional', true, true] },
     ]
   },
   {
-    name: 'AI Tools',
+    name: 'AI Models',
     features: [
-      { name: 'AI chat on published site', values: [true, true, true, true] },
-      { name: 'Rewrite, shorten, expand, simplify', values: [true, true, true, true] },
-      { name: 'Simplify with presets', values: [true, true, true, true] },
-      { name: 'Proofread & polish', values: [true, true, true, true] },
-      { name: 'Update from screenshots', values: [true, true, true, true] },
-      { name: 'AI translations', values: [true, true, true, true] },
-      { name: 'Copy for ChatGPT / Claude', values: [true, true, true, true] },
+      { name: 'GPT models', values: [true, true, true, true] },
+      { name: 'Claude models', values: [true, true, true, true] },
+      { name: 'Open models', values: [true, true, true, true] },
+      { name: 'Model routing', values: [false, true, true, true] },
       { name: 'Bring your own AI key', values: [true, true, true, true] },
     ]
   },
@@ -87,16 +84,17 @@ const featureCategories = [
     features: [
       { name: 'Team collaboration', values: [true, true, true, true] },
       { name: 'Roles & permissions', values: [false, true, true, true] },
-      { name: 'White-label', values: [false, false, false, true] },
+      { name: 'Audit logs', values: [false, false, true, true] },
+      { name: 'SSO / SAML', values: [false, false, false, true] },
     ]
   },
   {
     name: 'Integrations & Analytics',
     features: [
       { name: 'GitHub sync', values: [false, true, true, true] },
-      { name: 'Google Analytics & Tag Manager', values: [false, true, true, true] },
-      { name: 'Page analytics', values: [false, false, true, true] },
-      { name: 'Article analytics', values: [false, false, true, true] },
+      { name: 'Slack, email & CRM connectors', values: [false, true, true, true] },
+      { name: 'Usage analytics', values: [false, false, true, true] },
+      { name: 'Cost analytics', values: [false, false, true, true] },
       { name: 'API access', values: [false, false, false, true] },
     ]
   },
@@ -111,9 +109,9 @@ const featureCategories = [
 ];
 ---
 
-<section class="pb-24">
+<section id="plans" class="scroll-mt-28 pb-24">
   <div class="container-page">
-    
+
     <!-- Billing Toggle -->
     <div class="flex justify-center mb-16">
       <div class="inline-flex items-center gap-3 rounded-full bg-white p-1.5 border border-slate-200">
@@ -216,8 +214,14 @@ const featureCategories = [
           ))}
         </tbody>
       </table>
-      <div class="mt-8 text-center text-sm text-slate-500 bg-brand-subtle/50 py-4 rounded-xl border border-brand/10">
-        <Icon name="lucide:info" class="inline-block h-4 w-4 mr-1 -mt-0.5 text-brand" /> OpenAPI import is coming soon to paid plans. Annual plans include 2 months free.
+      <div class="mt-8 flex flex-col gap-2 text-center text-sm text-slate-500 bg-brand-subtle/50 py-4 px-6 rounded-xl border border-brand/10">
+        <p>
+          <span class="font-medium text-slate-700">A run</span> is one full execution of an agent, start to finish.
+          <span class="font-medium text-slate-700">An AI model call</span> is a single request to an AI model within a run.
+        </p>
+        <p>
+          <Icon name="lucide:info" class="inline-block h-4 w-4 mr-1 -mt-0.5 text-brand" /> More connectors ship every month. Annual plans include 2 months free.
+        </p>
       </div>
     </div>
   </div>

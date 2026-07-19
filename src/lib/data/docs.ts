@@ -10,57 +10,57 @@ export interface DocCategory {
 
 export const categories: DocCategory[] = [
   {
-    slug: 'storegrowth',
-    name: 'StoreGrowth',
-    description: 'StoreGrowth simplifies sales and customer integration.',
+    slug: 'getting-started',
+    name: 'Getting Started',
+    description: 'Set up your workspace and build your first AI agent in minutes.',
     articles: 17,
     tileBg: '#f1f8ff',
-    icon: 'lucide:trending-up',
+    icon: 'lucide:rocket',
     iconColor: 'text-blue-500'
   },
   {
-    slug: 'cartpulse',
-    name: 'CartPulse',
-    description: 'CartPulse recovers lost sales with personalized email campaigns.',
+    slug: 'building-agents',
+    name: 'Building Agents',
+    description: 'Turn plain-language prompts into multi-step agents that reason and act.',
     articles: 29,
     tileBg: '#fef6ff',
-    icon: 'lucide:mail',
+    icon: 'lucide:bot',
     iconColor: 'text-fuchsia-500'
   },
   {
-    slug: 'texty',
-    name: 'Texty',
-    description: 'Texty delivers real-time SMS alerts for orders and updates.',
+    slug: 'integrations',
+    name: 'Integrations',
+    description: 'Connect Slack, email, CRMs, and more with one-click connectors.',
     articles: 10,
     tileBg: '#fff3f3',
-    icon: 'lucide:message-square',
+    icon: 'lucide:plug',
     iconColor: 'text-red-500'
   },
   {
-    slug: 'wc-conversion-tracking',
-    name: 'WC Conversion Tracking',
-    description: 'Recover abandoned carts with automated email campaigns.',
+    slug: 'workflows-triggers',
+    name: 'Workflows & Triggers',
+    description: 'Run agents on a schedule, a webhook, or any event in your stack.',
     articles: 34,
     tileBg: '#f8f2ff',
-    icon: 'lucide:bar-chart-3',
+    icon: 'lucide:workflow',
     iconColor: 'text-violet-500'
   },
   {
-    slug: 'tryaura',
-    name: 'TryAura',
-    description: 'TryAura enhances images and adds virtual try-on features.',
+    slug: 'models-keys',
+    name: 'Models & Keys',
+    description: 'Use GPT, Claude, or open models, and bring your own API key.',
     articles: 22,
     tileBg: '#fff9e3',
-    icon: 'lucide:image',
+    icon: 'lucide:brain-circuit',
     iconColor: 'text-amber-500'
   },
   {
-    slug: 'cart-pilot',
-    name: 'Cart Pilot',
-    description: 'Salicio AI assistant helps customers find and buy products.',
+    slug: 'monitoring-logs',
+    name: 'Monitoring & Logs',
+    description: 'Trace every run, debug failures, and set alerts that keep agents healthy.',
     articles: 15,
     tileBg: '#f5f1ff',
-    icon: 'lucide:shopping-cart',
+    icon: 'lucide:activity',
     iconColor: 'text-indigo-500'
   }
 ];

@@ -3,11 +3,14 @@ import Layout from '@/layouts/Base.astro';
 import Navbar from '@/components/global/header/Navbar.astro';
 import Hero from '@/components/sections/Hero.astro';
 import MakersMarquee from '@/components/sections/MakersMarquee.astro';
+import Outcomes from '@/components/sections/Outcomes.astro';
+import UseCases from '@/components/sections/UseCases.astro';
 import PromoCards from '@/components/sections/PromoCards.astro';
 import Audience from '@/components/sections/Audience.astro';
 import Benefits from '@/components/sections/Benefits.astro';
 import HowItWorks from '@/components/sections/HowItWorks.astro';
 import Features from '@/components/sections/Features.astro';
+import PriceWedge from '@/components/sections/PriceWedge.astro';
 import WhyZylo from '@/components/sections/WhyZylo.astro';
 import FAQ from '@/components/sections/FAQ.astro';
 import Footer from '@/components/global/Footer.astro';
@@ -18,7 +21,10 @@ export function getStaticPaths() {
 }
 ---
 
-<Layout>
+<Layout
+  title="Zylo — No-Code AI Agents & Automation Platform"
+  description="Build no-code AI agents that automate real work across your tools. From $19/mo, bring your own model, no lock-in. Start free."
+>
   <a
     href="#main"
     class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-white"
@@ -31,11 +37,14 @@ export function getStaticPaths() {
   <main id="main">
     <Hero />
     <MakersMarquee />
+    <Outcomes />
+    <UseCases />
     <PromoCards />
     <Audience />
     <Benefits />
     <HowItWorks />
     <Features />
+    <PriceWedge />
     <WhyZylo />
     <FAQ />
   </main>

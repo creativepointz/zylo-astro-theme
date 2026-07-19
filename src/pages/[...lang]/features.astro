@@ -6,6 +6,7 @@ import FeatureHero from '@/components/sections/features/FeatureHero.astro';
 import FeatureRow from '@/components/sections/features/FeatureRow.astro';
 import FeatureBento from '@/components/sections/features/FeatureBento.astro';
 import FeatureTestimonial from '@/components/sections/features/FeatureTestimonial.astro';
+import UseCases from '@/components/sections/UseCases.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
 
 export function getStaticPaths() {
@@ -14,14 +15,14 @@ export function getStaticPaths() {
 
 const featureRows = [
   {
-    eyebrow: 'Write with AI, Not From Scratch',
-    heading: 'Your AI writing partner.',
-    description: 'Polish rough drafts, fix tone, and keep docs current without rewriting them by hand.',
+    eyebrow: 'Build with AI, Not From Scratch',
+    heading: 'Your AI automation partner.',
+    description: 'Turn a plain-language prompt into a working agent, then tune it without writing code.',
     points: [
-      'Rewrite, shorten, expand, and simplify',
-      'Update docs from screenshots',
-      'Proofread and polish in one click',
-      'Translate into multiple languages',
+      'Describe a task, get a working agent',
+      'Multi-step reasoning and tool use',
+      'Human approvals and guardrails',
+      'Run on a schedule or any trigger',
       'Bring your own AI key'
     ],
     placeholderImage: '/features/Your AI writing partner..png',
@@ -29,29 +30,29 @@ const featureRows = [
     reverse: false
   },
   {
-    eyebrow: 'Beautiful by Default',
-    heading: 'Docs that look designed.',
-    description: 'Every site looks modern and professional out of the box. No designer needed.',
+    eyebrow: 'Reliable by Default',
+    heading: 'Automations you can trust.',
+    description: 'Every run is logged, traceable, and easy to debug. No black boxes.',
     points: [
-      'Clean, fast published sites',
-      'Custom domain support',
-      'Light and dark modes',
-      'Mobile-ready output',
-      'Your branding and logo'
+      'Full run logs and history',
+      'Retries and error handling',
+      'Live test runs before you ship',
+      'Version control for every agent',
+      'Alerts when something breaks'
     ],
     placeholderImage: '/features/Docs that look designed..png',
     bgColor: '#FFE4F1',
     reverse: true
   },
   {
-    eyebrow: 'Made for the AI Era',
-    heading: 'Found by humans and AI alike.',
-    description: 'Your docs work as well for ChatGPT and Claude as they do for your readers.',
+    eyebrow: 'Built for the AI Era',
+    heading: 'Any model, your choice.',
+    description: 'Zylo works with GPT, Claude, and open models — swap them without rebuilding.',
     points: [
-      'Copy any page for ChatGPT or Claude',
-      'AI chat on your published site',
-      'Clean structure AI tools can read',
-      'SEO-friendly pages'
+      'Use GPT, Claude, or open models',
+      'Bring your own API key',
+      'Route tasks to the best model',
+      'No lock-in, ever'
     ],
     placeholderImage: '/features/Found by humans and AI alike..png',
     bgColor: '#FFEEE4',
@@ -59,13 +60,13 @@ const featureRows = [
   },
   {
     eyebrow: 'Built for Teams',
-    heading: 'Write together, ship together.',
-    description: 'Invite your team, set roles, and keep everyone in sync.',
+    heading: 'Automate together, scale together.',
+    description: 'Invite your team, set roles, and keep every automation in sync.',
     points: [
       'Roles and permissions',
-      'Multiple doc sites',
-      'Shared workspace',
-      'Page analytics'
+      'Multiple workspaces',
+      'Shared agent library',
+      'Usage analytics'
     ],
     placeholderImage: '/features/Write together, ship together..png',
     bgColor: '#E7FCE6',
@@ -77,8 +78,8 @@ const featureRows = [
     description: 'Zylo plugs into the tools your team already uses.',
     points: [
       'GitHub sync',
-      'OpenAPI import (coming soon)',
-      'API access',
+      'Slack, email, and CRM connectors',
+      'Webhooks and API access',
       'Google Analytics and Tag Manager'
     ],
     placeholderImage: '/features/Fits how you already work..png',
@@ -90,13 +91,16 @@ const featureRows = [
 
 <Layout
   title="Features — Zylo"
-  description="Explore the visual editor, AI assistant, and publishing tools that make Zylo the easiest way to write documentation."
+  description="Explore the visual builder, AI agents, and integrations that make Zylo the easiest way to automate real work."
 >
   <Navbar />
   <main id="main">
     <!-- Hero -->
     <FeatureHero />
-    
+
+    <!-- What you can build -->
+    <UseCases />
+
     <!-- Features -->
     <div class="bg-[#ffffff] pb-24">
       <div class="container-page flex flex-col gap-10">

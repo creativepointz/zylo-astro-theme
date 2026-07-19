@@ -23,21 +23,21 @@ const nav = [
     icon: 'lucide:circle-arrow-right',
     open: true,
     items: [
-      { label: 'How to Create Great Doc' },
-      { label: 'How to Create Team', active: true },
-      { label: 'How to Keep Doc' }
+      { label: 'Build Your First Agent' },
+      { label: 'Invite Your Team', active: true },
+      { label: 'Connect a Tool' }
     ]
   },
   { label: 'Settings', icon: 'lucide:settings' },
   { label: 'Ask and Search', icon: 'lucide:map-pin' },
-  { label: 'Writing in the Editor', icon: 'lucide:pencil' },
+  { label: 'Building Agents', icon: 'lucide:bot' },
   { label: 'Collaboration', icon: 'lucide:message-square' },
   { label: 'Templates', icon: 'lucide:layout-template', leaf: true },
-  { label: 'Sharing', icon: 'lucide:share-2' },
+  { label: 'Workflows & Triggers', icon: 'lucide:workflow' },
   { label: 'Import & Export', icon: 'lucide:arrow-down-up' },
   { label: 'API & Integrations', icon: 'lucide:box' },
   { label: 'Security', icon: 'lucide:shield-check' },
-  { label: 'Analytics', icon: 'lucide:bar-chart-3' },
+  { label: 'Monitoring & Logs', icon: 'lucide:activity' },
   { label: 'Pricing & Billing', icon: 'lucide:circle-dollar-sign' },
   { label: 'Support & Bug Reports', icon: 'lucide:life-buoy' }
 ];
@@ -45,8 +45,8 @@ const nav = [
 const roles = [
   'Owners: Every workspace has a single owner who has full permission to manage all settings in a workspace, including deleting the workspace.',
   'Admins: Admins can access most workspace settings, including updating the billing options, and adding or removing workspace members. After the owner, every additional workspace member in a Free workspace is an admin by default.',
-  'Creators (paid plans only): Creators can create, edit, and share presentations, but can’t access workspace settings or add new members.',
-  'Commenters (paid plans only): Commenter is a user role for members of Pro and Business workspaces that allows them to browse the workspace, and open, view, and comment on decks without extra cost.'
+  'Creators (paid plans only): Creators can build, edit, and run agents, but can’t access workspace settings or add new members.',
+  'Commenters (paid plans only): Commenter is a user role for members of Pro and Business workspaces that allows them to browse the workspace, and open, view, and comment on agents without extra cost.'
 ];
 
 // Right "On this page" table of contents
@@ -156,7 +156,7 @@ const toc = [
 
             <p class="p-rg text-slate-600">
               Workspace roles allow each workspace to set up granular controls that manage what users have
-              access to. With roles you can set up permissions for presentations, folders, billing settings,
+              access to. With roles you can set up permissions for agents, folders, billing settings,
               and workspace management.
             </p>
 
@@ -229,10 +229,10 @@ const toc = [
             <div class="mt-6 flex items-center justify-between gap-4">
               <a href="#" class="flex items-center gap-2.5 text-sm text-slate-900 transition-colors hover:text-brand">
                 <Icon name="lucide:arrow-left" class="h-5 w-5 shrink-0" />
-                <span class="truncate">How to Create a Post Form</span>
+                <span class="truncate">Build Your First Agent</span>
               </a>
               <a href="#" class="flex items-center gap-2.5 text-sm text-brand transition-colors hover:underline">
-                <span class="truncate">Field Visibility Option</span>
+                <span class="truncate">Connect a Tool</span>
                 <Icon name="lucide:arrow-right" class="h-5 w-5 shrink-0" />
               </a>
             </div>

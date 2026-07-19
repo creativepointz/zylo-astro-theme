@@ -5,17 +5,17 @@ import Reveal from '@/components/widgets/Reveal.astro';
 const trust = ['Free plan', 'No credit card required', 'Bring your own AI key'];
 
 const marqueeFeatures = [
-  { icon: 'lucide:sparkles', name: 'AI Assistant' },
-  { icon: 'lucide:pencil', name: 'Visual Editor' },
-  { icon: 'lucide:globe', name: 'Custom Domains' },
-  { icon: 'lucide:languages', name: 'Translations' },
-  { icon: 'lucide:image', name: 'Media Library' },
-  { icon: 'lucide:search', name: 'SEO Optimized' },
+  { icon: 'lucide:bot', name: 'AI Agents' },
+  { icon: 'lucide:pencil', name: 'Visual Builder' },
+  { icon: 'lucide:plug', name: 'Integrations' },
+  { icon: 'lucide:workflow', name: 'Workflows' },
+  { icon: 'lucide:clock', name: 'Scheduling' },
+  { icon: 'lucide:webhook', name: 'Webhooks' },
   { icon: 'lucide:shield', name: 'Permissions' },
   { icon: 'lucide:users', name: 'Team Sync' },
   { icon: 'lucide:github', name: 'GitHub Sync' },
   { icon: 'lucide:code', name: 'API Access' },
-  { icon: 'lucide:layout-template', name: 'Custom Branding' },
+  { icon: 'lucide:scroll-text', name: 'Run Logs' },
 ];
 const loop = [...marqueeFeatures, ...marqueeFeatures, ...marqueeFeatures];
 ---
@@ -32,19 +32,27 @@ const loop = [...marqueeFeatures, ...marqueeFeatures, ...marqueeFeatures];
         <span class="text-brand">Nothing You Don't.</span>
       </h1>
       <p class="p-xl mx-auto mt-6 max-w-2xl">
-        Every tool to write, publish, and maintain documentation, with AI built into all of it.
+        Every tool to build, connect, and run AI agents, with automation built into all of it.
       </p>
     </Reveal>
 
     {/* Primary CTA Button */}
     <Reveal delay={120} class="mx-auto mt-10">
       <div class="flex flex-col items-center justify-center gap-4">
-        <a
-          href="/pricing"
-          class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white hover:bg-brand-hover shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
-        >
-          Start Free <Icon name="lucide:arrow-right" class="w-[18px] h-[18px]" />
-        </a>
+        <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="/pricing"
+            class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white hover:bg-brand-hover shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+          >
+            Start Free <Icon name="lucide:arrow-right" class="w-[18px] h-[18px]" />
+          </a>
+          <a
+            href="#use-cases"
+            class="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-base font-semibold text-slate-900 transition-colors duration-200 hover:bg-slate-50"
+          >
+            See it in action
+          </a>
+        </div>
         <ul class="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
           {trust.map((t) => (
             <li class="p-lt flex items-center gap-1.5 text-slate-600">

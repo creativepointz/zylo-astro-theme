@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import Reveal from '@/components/widgets/Reveal.astro';
 
 const trust = ['Free plan', 'No credit card required', 'Bring your own AI key'];
+const heroAlt = 'Zylo dashboard — build, run, and monitor AI agents in one place';
 ---
 
 <section
@@ -12,31 +13,36 @@ const trust = ['Free plan', 'No credit card required', 'Bring your own AI key'];
 >
   <div class="container-page relative z-10 pt-20 text-center md:pt-24">
     <Reveal class="mx-auto max-w-3xl">
-      <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-brand/30 bg-white/70 backdrop-blur-sm px-3 py-1 text-sm font-medium text-brand">
-        <Icon name="lucide:sparkles" class="w-4 h-4" /> AI-native documentation
-      </span>
-      <h1 class="h1 text-slate-900 leading-tight">
-        Beautiful Docs.
+      <h1 class="h1 text-white leading-tight">
+        Automate the Busywork.
         <br />
-        <span class="text-brand">Written by Anyone.</span>
+        <span class="text-brand">Let AI Do the Rest.</span>
       </h1>
-      <p class="p-xl mx-auto mt-6 max-w-xl">
-        Create, update, and publish beautiful documentation with AI. No code, no hassle.
+      <p class="p-xl mx-auto mt-6 max-w-xl text-slate-300">
+        Build AI agents and automations that handle real work across your tools. No code, no hassle.
       </p>
     </Reveal>
 
     {/* Primary CTA Button */}
     <Reveal delay={120} class="mx-auto mt-10">
       <div class="flex flex-col items-center justify-center gap-4">
-        <a
-          href="/pricing"
-          class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white hover:bg-brand-hover shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
-        >
-          Start Free <Icon name="lucide:arrow-right" class="w-[18px] h-[18px]" />
-        </a>
+        <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="/pricing"
+            class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white hover:bg-brand-hover shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+          >
+            Start Free <Icon name="lucide:arrow-right" class="w-[18px] h-[18px]" />
+          </a>
+          <a
+            href="#use-cases"
+            class="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/25 px-8 text-base font-semibold text-white transition-colors duration-200 hover:bg-white/10"
+          >
+            See what you can build
+          </a>
+        </div>
         <ul class="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
           {trust.map((t) => (
-            <li class="p-lt flex items-center gap-1.5 text-slate-600">
+            <li class="p-lt flex items-center gap-1.5 text-slate-300">
               <Icon name="lucide:check" class="w-4 h-4 text-brand" /> {t}
             </li>
           ))}
@@ -49,7 +55,7 @@ const trust = ['Free plan', 'No credit card required', 'Bring your own AI key'];
       <div class="mx-auto max-w-5xl overflow-hidden rounded-t-xl border-t border-x border-b-0 border-slate-200/60 shadow-2xl">
         <img
           src="/home/zylo-hero.png"
-          alt="Zylo dashboard — manage docs, articles, and feedback in one place"
+          alt={heroAlt}
           width={1320}
           height={880}
           class="w-full block"

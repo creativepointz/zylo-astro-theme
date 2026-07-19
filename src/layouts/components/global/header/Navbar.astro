@@ -11,27 +11,28 @@ const links = [
 ---
 
 <header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4" data-navbar>
-  <nav class="flex h-14 items-center justify-between border border-slate-200/80 bg-white/80 backdrop-blur-md rounded-full px-6 shadow-sm" aria-label="Primary">
+  <nav class="flex h-14 items-center justify-between rounded-full px-6 border border-transparent transition-colors duration-300" aria-label="Primary" data-nav>
     <a href="/" class="flex items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
-      <img src="/zylo_beta.svg" alt="Zylo" width="130" height="24" class="h-6 w-auto" />
+      <img src="/zylo.svg" alt="Zylo" width="65" height="24" class="h-6 w-auto" />
     </a>
 
     <ul class="hidden items-center gap-8 md:flex">
       {links.map((l) => (
         <li>
-          <a href={l.href} class="text-sm font-medium text-[#0F172B] transition-colors hover:text-brand">{l.label}</a>
+          <a href={l.href} class="text-sm font-medium transition-colors" data-nav-link>{l.label}</a>
         </li>
       ))}
     </ul>
 
     <div class="hidden items-center gap-4 md:flex">
-      <a href="#" class="text-sm font-medium text-[#0F172B] hover:text-brand transition-colors">Sign In</a>
+      <a href="#" class="text-sm font-medium transition-colors" data-nav-link>Sign In</a>
       <a href="/pricing" class="inline-flex h-8 items-center justify-center bg-brand text-white hover:bg-brand-hover px-4 text-xs font-semibold rounded-full transition duration-200">Start Free</a>
     </div>
 
     <button
       type="button"
-      class="btn -mr-2 inline-flex h-9 w-9 items-center justify-center text-slate-600 md:hidden"
+      class="btn -mr-2 inline-flex h-9 w-9 items-center justify-center md:hidden"
+    data-nav-link
       aria-label="Open menu"
       aria-expanded="false"
       data-menu-toggle
@@ -57,7 +58,30 @@ const links = [
   </div>
 </header>
 
+<style>
+  /* Default: over dark hero — light content */
+  [data-nav-link] { color: rgb(255 255 255 / 0.8); }
+  [data-nav-link]:hover { color: rgb(255 255 255); }
+
+  /* Scrolled onto light background — solid pill + dark content */
+  [data-nav][data-scrolled] {
+    background-color: rgb(255 255 255 / 0.85);
+    border-color: rgb(226 232 240 / 0.8);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+  [data-nav][data-scrolled] [data-nav-link] { color: #0f172b; }
+  [data-nav][data-scrolled] [data-nav-link]:hover { color: var(--color-brand, #4f39f6); }
+</style>
+
 <script>
+  const nav = document.querySelector('[data-nav]');
+  if (nav) {
+    const onScroll = () => nav.toggleAttribute('data-scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
   const header = document.querySelector('[data-navbar]');
   const toggle = header?.querySelector('[data-menu-toggle]');
   const menu = header?.querySelector('[data-mobile-menu]');

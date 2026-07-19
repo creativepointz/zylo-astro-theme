@@ -45,15 +45,15 @@ export const entries: ChangelogEntry[] = [
     slug: 'september-2024',
     date: 'Sep 10, 2024',
     version: 'v2025.20',
-    title: 'New in Zylo: Faster Backup Navigation, Smarter Live Chat & Platform Reliability',
+    title: 'New in Zylo: Faster Run History, Smarter Live Chat & Platform Reliability',
     tags: ['New', 'Improvement', 'Fix'],
     excerpt:
-      'This release focuses on improving everyday usability and platform reliability across Zylo — pagination for large doc libraries, a smarter live chat experience, and a batch of stability fixes.',
+      'This release focuses on improving everyday usability and platform reliability across Zylo — pagination for large agent libraries, a smarter live chat experience, and a batch of stability fixes.',
     cta: 'Discover More',
     thumb: 'from-indigo-600 via-violet-600 to-sky-500',
     intro: [
       'This release focuses on improving everyday usability and platform reliability across Zylo.',
-      "We've introduced pagination for the docs library to make managing large collections faster and smoother, improved the live chat experience, and shipped several fixes to publishing, search, and platform stability workflows.",
+      "We've introduced pagination for the agent library to make managing large collections faster and smoother, improved the live chat experience, and shipped several fixes to run history, search, and platform stability workflows.",
       "Let's take a look at what's new."
     ],
     sections: [
@@ -62,16 +62,16 @@ export const entries: ChangelogEntry[] = [
         title: 'Enhancements',
         subsections: [
           {
-            heading: 'Pagination on the Docs Library',
+            heading: 'Pagination on the Agent Library',
             paragraphs: [
-              'Managing workspaces with extensive doc histories just became much easier.',
-              "We've added pagination to the docs library, allowing Zylo to load records more efficiently and helping you navigate large collections without performance slowdowns."
+              'Managing workspaces with extensive run histories just became much easier.',
+              "We've added pagination to the agent library, allowing Zylo to load records more efficiently and helping you navigate large collections without performance slowdowns."
             ],
             benefits: [
               'Faster page loading',
-              'Better performance on workspaces with many docs',
+              'Better performance on workspaces with many agents',
               'Smoother navigation across your library',
-              'Improved overall content management experience'
+              'Improved overall automation management experience'
             ]
           },
           {
@@ -93,8 +93,8 @@ export const entries: ChangelogEntry[] = [
         icon: '🛠️',
         title: 'Bug Fixes',
         bullets: [
-          'Improved publish-failure handling for a more reliable publishing experience.',
-          'Fixed the post-publish redirect toggle behavior.',
+          'Improved run-failure handling for a more reliable execution experience.',
+          'Fixed the post-run notification toggle behavior.',
           'Enhanced backup operations with additional fixes and reliability improvements.',
           'Applied several platform-wide stability improvements and performance tweaks.'
         ]
@@ -102,15 +102,15 @@ export const entries: ChangelogEntry[] = [
     ],
     callout: {
       quote: 'Still have questions? See Zylo in action!',
-      body: 'Book a free 15-minute 1:1 demo with our specialist and see how easily you can write, publish, and scale your documentation — on your own domain or through Zylo-managed hosting.',
+      body: 'Book a free 15-minute 1:1 demo with our specialist and see how easily you can build, run, and scale your AI agents — with your own models or through Zylo-managed infrastructure.',
       ctaLabel: 'Book a Live Demo',
       ctaHref: '/contact'
     },
     outro: {
       title: 'Wrapping Up',
       paragraphs: [
-        'This release is focused on making Zylo faster, cleaner, and more reliable for day-to-day documentation work.',
-        'From easier library navigation and smarter interface behavior to publishing and backup reliability improvements, these updates are designed to improve your workflow without changing how you work.',
+        'This release is focused on making Zylo faster, cleaner, and more reliable for day-to-day automation work.',
+        'From easier library navigation and smarter interface behavior to run history and backup reliability improvements, these updates are designed to improve your workflow without changing how you work.',
         'As always, thank you for building with Zylo. More improvements are already on the way.'
       ]
     }
@@ -145,7 +145,7 @@ export const entries: ChangelogEntry[] = [
           {
             heading: 'Audit Logs for Every Workspace',
             paragraphs: [
-              'Every workspace now records an audit trail of role changes, publishes, and setting updates.',
+              'Every workspace now records an audit trail of role changes, agent runs, and setting updates.',
               'Export logs anytime for compliance, or filter by member to review recent activity at a glance.'
             ],
             benefits: ['Exportable compliance logs', 'Per-member activity filtering', 'Full visibility into changes']
@@ -190,12 +190,12 @@ export const entries: ChangelogEntry[] = [
         title: 'Enhancements',
         subsections: [
           {
-            heading: 'Faster Publishing Pipeline',
+            heading: 'Faster Execution Engine',
             paragraphs: [
-              'We rebuilt the publishing pipeline.',
-              'Pages render faster, search indexes update instantly, and the editor stays responsive even on very large knowledge bases.'
+              'We rebuilt the execution engine.',
+              'Agents start faster, run logs stream instantly, and the builder stays responsive even on very large workflows.'
             ],
-            benefits: ['Instant search indexing', 'Faster page renders', 'Responsive editor at scale']
+            benefits: ['Instant log streaming', 'Faster agent starts', 'Responsive builder at scale']
           }
         ]
       },
@@ -203,8 +203,8 @@ export const entries: ChangelogEntry[] = [
         icon: '🛠️',
         title: 'Bug Fixes',
         bullets: [
-          'Resolved a rare issue where draft revisions could overwrite published content.',
-          'Improved mobile rendering for wide tables and code blocks.',
+          'Resolved a rare issue where a retry could run an agent step twice.',
+          'Improved handling of rate-limited tool calls.',
           'Squashed dozens of smaller bugs reported by the community.'
         ]
       }

@@ -2,8 +2,8 @@
 import { Icon } from 'astro-icon/components';
 
 const {
-  ctaTitle = 'Start Writing Today',
-  ctaSubtitle = 'Your next doc is 10 minutes away.',
+  ctaTitle = 'Start Automating Today',
+  ctaSubtitle = 'Your first AI agent is 10 minutes away.',
 } = Astro.props;
 
 const year = new Date().getFullYear();
@@ -83,6 +83,9 @@ const columns = [
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
       <a href="/pricing" class="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#5047E5] hover:bg-indigo-50 transition-all duration-150 active:scale-[0.98]">
         Start Free
+      </a>
+      <a href="/contact" class="inline-flex h-11 items-center justify-center rounded-full border border-white/30 px-6 text-sm font-semibold text-white hover:bg-white/10 transition-all duration-150 active:scale-[0.98]">
+        Book a demo
       </a>
     </div>
   </div>
