@@ -2,249 +2,99 @@
 import Layout from '@/layouts/Base.astro';
 import Navbar from '@/components/global/header/Navbar.astro';
 import Footer from '@/components/global/Footer.astro';
+import Reveal from '@/components/widgets/Reveal.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
 
 export function getStaticPaths() {
   return generatePaths();
 }
-
-type Block =
-  | { type: 'p'; text: string }
-  | { type: 'h3'; text: string }
-  | { type: 'ul'; items: string[] };
-
-interface Section {
-  title: string;
-  blocks: Block[];
-}
-
-const lastUpdated = 'July 1, 2026';
-
-const intro =
-  'Zylo is built and operated by Zylo Theme. This Privacy Policy explains what information we collect when you use Zylo, how we use it, and the choices you have. By using Zylo, you agree to the practices described below.';
-
-const sections: Section[] = [
-  {
-    title: 'Information We Collect',
-    blocks: [
-      { type: 'h3', text: 'a. Information You Provide to Us' },
-      { type: 'p', text: 'When you interact with Zylo, we may collect:' },
-      {
-        type: 'ul',
-        items: [
-          'Your full name',
-          'Your email address',
-          'Your company or organization name',
-          'Billing address',
-          'Account credentials',
-          'Purchase and license information',
-          'Support communications and attachments'
-        ]
-      },
-      { type: 'p', text: 'This information is collected when you:' },
-      {
-        type: 'ul',
-        items: [
-          'Create an account to get started',
-          'Purchase a plan to use our services',
-          'Contact support for assistance',
-          'Subscribe to updates or marketing communications'
-        ]
-      },
-      { type: 'h3', text: 'b. Automatically Collected Information' },
-      { type: 'p', text: 'When you use Zylo, we automatically collect certain technical data:' },
-      {
-        type: 'ul',
-        items: [
-          'IP address',
-          'Browser type and version',
-          'Device identifiers',
-          'Time zone',
-          'Referring URLs',
-          'Pages viewed and interactions'
-        ]
-      },
-      { type: 'p', text: 'We collect this data using cookies and similar technologies, log files, web beacons, and analytics tools.' }
-    ]
-  },
-  {
-    title: 'Cookies, Analytics, and Advertising',
-    blocks: [
-      { type: 'p', text: 'Zylo uses cookies and tracking technologies to keep you signed in, remember your preferences, understand how our product is used, and improve performance.' },
-      { type: 'p', text: 'We use tools such as:' },
-      {
-        type: 'ul',
-        items: [
-          'Plausible Analytics for simple, privacy-friendly tracking',
-          'Google Analytics and Google Tag Manager for product insights',
-          'Error monitoring tools such as Sentry for proactive error detection'
-        ]
-      },
-      { type: 'p', text: 'You can control cookies through your browser settings. Disabling some cookies may affect how Zylo works.' }
-    ]
-  },
-  {
-    title: 'Account and License Data',
-    blocks: [
-      { type: 'p', text: 'When you create a Zylo account, we store account-related data including:' },
-      {
-        type: 'ul',
-        items: [
-          'Personal and company details',
-          'License keys and activation history',
-          'Login activity and IP addresses',
-          'Purchase and billing records'
-        ]
-      },
-      { type: 'p', text: 'This data is used to manage access, licensing, support, and security.' }
-    ]
-  },
-  {
-    title: 'Payments',
-    blocks: [
-      { type: 'p', text: 'Payments for Zylo plans are processed by third-party payment providers, including Stripe, FastSpring, and Lemon Squeezy.' },
-      { type: 'p', text: 'Zylo does not store full payment card details. We receive limited transaction information necessary for invoicing, licensing, and support. Each payment provider processes your data according to their own privacy policies.' }
-    ]
-  },
-  {
-    title: 'Agent and Integration Data',
-    blocks: [
-      { type: 'p', text: 'Zylo connects to services you choose to integrate, such as GitHub sync, OpenAPI imports, and analytics providers.' },
-      { type: 'h3', text: 'a. Your Content' },
-      { type: 'p', text: 'We process the agent configurations, data, and settings you create or upload solely to provide the Zylo service — to store, run, and monitor your automations.' },
-      { type: 'h3', text: 'b. Telemetry and Usage Data' },
-      { type: 'p', text: 'Some Zylo products use a third-party telemetry SDK or similar tools to collect limited telemetry, such as app version, platform version, and basic usage or error data. No sensitive content is collected through telemetry. Telemetry helps us improve stability, performance, and product quality.' }
-    ]
-  },
-  {
-    title: 'Communications',
-    blocks: [
-      { type: 'p', text: 'We may contact you via email or in-app notifications for:' },
-      {
-        type: 'ul',
-        items: [
-          'Account and transactional messages',
-          'Product updates and announcements',
-          'Marketing communications',
-          'Support-related notices'
-        ]
-      },
-      { type: 'p', text: 'You can opt out of marketing communications at any time using the unsubscribe link or your account preferences.' }
-    ]
-  },
-  {
-    title: 'Support Access and Logs',
-    blocks: [
-      { type: 'p', text: 'When you request support, we may request temporary access to your workspace and review debug logs, screenshots, or error reports. All access is permission-based, limited to the support issue, and revoked once resolved. Support data is not retained longer than necessary.' }
-    ]
-  },
-  {
-    title: 'Sharing Your Information',
-    blocks: [
-      { type: 'p', text: 'We share personal information only when necessary, including with:' },
-      {
-        type: 'ul',
-        items: [
-          'Payment processors',
-          'Analytics and marketing service providers',
-          'Customer support and communication tools',
-          'Legal or regulatory authorities when required by law'
-        ]
-      },
-      { type: 'p', text: 'We do not sell personal data.' }
-    ]
-  },
-  {
-    title: 'International Data Transfers',
-    blocks: [
-      { type: 'p', text: 'Zylo operates globally. Your information may be transferred to and processed in the United States and other countries where our service providers are located. We take appropriate safeguards to protect your data in accordance with applicable laws.' }
-    ]
-  },
-  {
-    title: 'Your Rights',
-    blocks: [
-      { type: 'p', text: 'Depending on your location, you may have rights under GDPR, UK GDPR, CCPA/CPRA, and other laws, including the right to:' },
-      {
-        type: 'ul',
-        items: [
-          'Access your personal data',
-          'Correct or update your data',
-          'Request deletion',
-          'Object to or restrict processing'
-        ]
-      },
-      { type: 'p', text: 'To exercise these rights, contact us using the details below.' }
-    ]
-  },
-  {
-    title: 'Data Retention',
-    blocks: [
-      { type: 'p', text: 'We retain personal information only as long as necessary to provide our services, meet legal, accounting, and security requirements, and resolve disputes. You may request deletion of your data at any time, subject to legal obligations.' }
-    ]
-  },
-  {
-    title: 'Minors',
-    blocks: [{ type: 'p', text: 'Zylo is not intended for individuals under the age of 18.' }]
-  },
-  {
-    title: 'Changes to This Policy',
-    blocks: [
-      { type: 'p', text: 'We may update this Privacy Policy to reflect changes in our practices, technology, or legal requirements. Updates will be posted on this page with a revised “Last updated” date.' }
-    ]
-  },
-  {
-    title: 'Contact Us',
-    blocks: [
-      { type: 'p', text: 'If you have questions or concerns about this Privacy Policy or your data, contact us at privacy@zylo.co.' },
-      { type: 'p', text: 'Zylo Theme — Zylo.co' }
-    ]
-  }
-];
 ---
 
-<Layout
-  title="Privacy Policy — Zylo"
-  description="Learn what information Zylo collects, how it's used, and the choices you have."
->
+<Layout title="Privacy policy | Zylo" description="Official Privacy Policy and Data Handling Disclosures for Zylo.">
   <Navbar />
-  <main id="main">
-    <!-- Hero -->
-    <section
-      class="relative overflow-hidden pt-40 pb-12 md:pt-48"
-      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
-    >
-      <div class="container-page">
-        <div class="mx-auto max-w-3xl" data-reveal>
-          <h1 class="h1 mb-4">Privacy Policy</h1>
-          <p class="p-lt text-slate-500">Last updated: {lastUpdated}</p>
-          <p class="p-lg mt-8">{intro}</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- Body -->
-    <section class="bg-white pb-24">
-      <div class="container-page">
-        <div class="mx-auto flex max-w-3xl flex-col gap-12">
-          {sections.map((section, i) => (
-            <section class="flex flex-col gap-5">
-              <h2 class="h5 text-slate-900">{i + 1}. {section.title}</h2>
-              {section.blocks.map((block) => (
-                block.type === 'h3' ? (
-                  <h3 class="h6 text-slate-900">{block.text}</h3>
-                ) : block.type === 'ul' ? (
-                  <ul class="flex list-disc flex-col gap-2 pl-6 marker:text-slate-300">
-                    {block.items.map((item) => <li class="p-rg text-slate-600">{item}</li>)}
-                  </ul>
-                ) : (
-                  <p class="p-rg text-slate-600">{block.text}</p>
-                )
-              ))}
-            </section>
-          ))}
-        </div>
-      </div>
-    </section>
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-4xl mx-auto px-4">
+      <Reveal class="mb-12 text-center">
+        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+          Legal &amp; Privacy
+        </span>
+        <h1 class="text-4xl font-bold text-slate-900 font-heading mb-4">Privacy policy | Zylo</h1>
+        <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Last Updated: October 9th 2025</p>
+      </Reveal>
+
+      <Reveal delay={100} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm space-y-10 text-slate-600 leading-relaxed text-base">
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900 font-heading">1. Who we are</h2>
+          <p>
+            Zylo (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;) operates this website and is responsible for your personal
+            data. If you have questions about this policy or your rights, contact us at
+            <a href="mailto:support@zylo.co" class="font-medium text-slate-900 underline underline-offset-4">support@zylo.co</a>
+          </p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Zylo Limited</li>
+            <li>10 Queen Street Place</li>
+            <li>City of London, London EC4R 1AG</li>
+            <li>United Kingdom</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900 font-heading">2. What information we collect</h2>
+          <p>When you join our waitlist, community, or contact us, we may collect:</p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Your name (if provided)</li>
+            <li>Your email address</li>
+            <li>Your company name (if provided)</li>
+            <li>Any other information you voluntarily share</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900 font-heading">3. How we use your information</h2>
+          <p>We process your personal data to:</p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Send updates about the Zylo community and product</li>
+            <li>Invite you to events, beta programs, and early access</li>
+            <li>Share relevant marketing tips, resources, and offers</li>
+            <li>Improve our products and services through feedback</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900 font-heading">4. Legal basis under GDPR</h2>
+          <p>We only process your data when we have a lawful basis:</p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Consent: You agreed to receive emails (via the consent box or form text)</li>
+            <li>Legitimate interest: To send service-related updates about your waitlist registration</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900 font-heading">5. How long we keep your data</h2>
+          <p>We keep your information until you unsubscribe or request deletion.</p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900 font-heading">6. Who we share your data with</h2>
+          <p>We do not sell your personal data.</p>
+          <p>We may share it with trusted third parties that help us deliver our services, including:</p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>Email service providers (for sending updates)</li>
+            <li>Analytics tools (to understand and improve our services)</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-bold text-slate-900 font-heading">7. Unsubscribing</h2>
+          <p>
+            You can unsubscribe from our emails at any time by clicking the unsubscribe link or
+            replying with &quot;unsubscribe.&quot;
+          </p>
+        </section>
+      </Reveal>
+    </div>
   </main>
+
   <Footer />
 </Layout>

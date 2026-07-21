@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+import Reveal from '@/components/widgets/Reveal.astro';
+
+const tools = [
+  { name: 'LiveChat', icon: 'lucide:message-square' },
+  { name: 'Chat Widget', icon: 'lucide:message-circle' },
+  { name: 'HelpDesk', icon: 'lucide:life-buoy' },
+  { name: 'Shopify', icon: 'lucide:shopping-bag' },
+  { name: 'Zapier', icon: 'lucide:zap' },
+  { name: 'Notion', icon: 'lucide:file-text' },
+  { name: 'Slack', icon: 'lucide:hash' },
+  { name: 'Zendesk', icon: 'lucide:headphones' },
+];
+---
+
+<section id="integrations" class="py-24 bg-white border-b border-slate-200/60">
+  <div class="container-page max-w-6xl mx-auto px-4">
+    <Reveal class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-4 leading-tight">
+        Zylo works with the tools you use.
+      </h2>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+        Connect your workflows with integrations that actually work. Use our off-the-shelf integrations, or build a custom integration with our REST API.
+      </p>
+    </Reveal>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      {tools.map((t, idx) => (
+        <Reveal delay={idx * 40}>
+          <div class="group flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-slate-50/50 px-5 py-4 hover:bg-white hover:border-brand/40 hover:shadow-lg transition-all h-full">
+            <span class="w-10 h-10 rounded-xl bg-white border border-slate-200 flex items-center justify-center text-slate-900 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-colors shrink-0">
+              <Icon name={t.icon} class="w-5 h-5" />
+            </span>
+            <span class="text-sm font-semibold text-slate-900 font-heading">{t.name}</span>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+
+    <Reveal class="text-center mt-12">
+      <a href="/integrations" class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-slate-900 px-7 text-sm font-semibold text-white hover:bg-brand transition-colors shadow-md">
+        See all integrations <Icon name="lucide:arrow-right" class="w-4 h-4" />
+      </a>
+    </Reveal>
+  </div>
+</section>

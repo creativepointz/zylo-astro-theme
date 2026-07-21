@@ -1,38 +1,142 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-const links = [
-  { label: 'Features', href: '/features' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Docs', href: '/docs' },
+const companyLinks = [
   { label: 'About Us', href: '/about-us' },
+  { label: 'Career', href: '/career' },
+  { label: 'Career Details', href: '/career-details' },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'Our Team', href: '/team' },
+  { label: 'Service', href: '/service' },
+  { label: 'Testimonials', href: '/testimonial' },
+  { label: 'Customer', href: '/customer' },
+  { label: 'Customer Details', href: '/customer-details' },
+  { label: 'Changelog', href: '/changelog' },
+];
+
+const featureLinks = [
+  { label: 'Features Overview', href: '/features', desc: 'See how others are using Zylo' },
+  { label: 'Analytics', href: '/analytics', desc: 'Dynamic content solutions' },
+  { label: 'Whitepaper', href: '/whitepaper', desc: 'Store & manage data securely' },
+  { label: 'Process', href: '/process', desc: 'Our unique selling points' },
+  { label: 'Integrations', href: '/integrations', desc: 'Collaborate across tools' },
+  { label: 'Brandkit', href: '/brandkit', desc: 'Logos & design assets' },
+  { label: 'Download App', href: '/downloads', desc: 'Get the mobile & desktop app' },
+];
+
+const resourceLinks = [
+  { label: 'Blog', href: '/blog' },
+  { label: 'Blog Details', href: '/article' },
+  { label: 'FAQs', href: '/faq' },
+  { label: 'Legal', href: '/legal' },
+  { label: 'Glossary', href: '/glossary' },
+  { label: 'Glossary Details', href: '/glossary-details' },
+  { label: 'Support', href: '/support' },
+  { label: 'Contact Us', href: '/contact' },
+];
+
+const supportLinks = [
+  { label: 'Sign In', href: '/sign-in' },
+  { label: 'Create Account', href: '/register' },
+  { label: 'Affiliate Program', href: '/affiliate' },
+  { label: 'Referral Program', href: '/referral-program' },
+  { label: 'Terms of Service', href: '/terms-of-service' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Affiliate Policy', href: '/affiliate-policy' },
+  { label: 'Refund Policy', href: '/refund-policy' },
 ];
 ---
 
-<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-4xl px-4" data-navbar>
+<header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-6xl px-4" data-navbar>
   <nav class="flex h-14 items-center justify-between rounded-full px-6 border border-transparent transition-colors duration-300" aria-label="Primary" data-nav>
     <a href="/" class="flex items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand">
       <img src="/zylo.svg" alt="Zylo" width="65" height="24" class="h-6 w-auto" />
     </a>
 
-    <ul class="hidden items-center gap-8 md:flex">
-      {links.map((l) => (
-        <li>
-          <a href={l.href} class="text-sm font-medium transition-colors" data-nav-link>{l.label}</a>
-        </li>
-      ))}
+    <ul class="hidden items-center gap-6 lg:flex">
+      {/* Company Dropdown */}
+      <li class="relative group">
+        <button type="button" class="inline-flex items-center gap-1.5 text-sm font-medium py-2 transition-colors" data-nav-link>
+          Company <Icon name="lucide:chevron-down" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+        </button>
+        <div class="absolute top-full left-0 hidden group-hover:block pt-3 w-80">
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl grid grid-cols-2 gap-1 text-slate-800">
+            {companyLinks.map((item) => (
+              <a href={item.href} class="rounded-lg px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-brand transition-colors">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </li>
+
+      {/* Features Dropdown */}
+      <li class="relative group">
+        <button type="button" class="inline-flex items-center gap-1.5 text-sm font-medium py-2 transition-colors" data-nav-link>
+          Features <Icon name="lucide:chevron-down" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+        </button>
+        <div class="absolute top-full -left-12 hidden group-hover:block pt-3 w-[460px]">
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl grid grid-cols-2 gap-2 text-slate-800">
+            {featureLinks.map((item) => (
+              <a href={item.href} class="group/item rounded-xl p-2.5 hover:bg-slate-50 transition-colors">
+                <div class="text-xs font-semibold text-slate-900 group-hover/item:text-brand flex items-center justify-between">
+                  {item.label}
+                  <Icon name="lucide:arrow-up-right" class="w-3 h-3 opacity-0 group-hover/item:opacity-100 transition-opacity" />
+                </div>
+                <div class="text-[11px] text-slate-500 mt-0.5">{item.desc}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </li>
+
+      {/* Pricing Direct */}
+      <li>
+        <a href="/pricing" class="text-sm font-medium transition-colors" data-nav-link>Pricing</a>
+      </li>
+
+      {/* Resources Dropdown */}
+      <li class="relative group">
+        <button type="button" class="inline-flex items-center gap-1.5 text-sm font-medium py-2 transition-colors" data-nav-link>
+          Resources <Icon name="lucide:chevron-down" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+        </button>
+        <div class="absolute top-full left-0 hidden group-hover:block pt-3 w-64">
+          <div class="rounded-2xl border border-slate-200 bg-white p-3 shadow-xl flex flex-col gap-1 text-slate-800">
+            {resourceLinks.map((item) => (
+              <a href={item.href} class="rounded-lg px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 hover:text-brand transition-colors">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </li>
+
+      {/* Support & Legal Dropdown */}
+      <li class="relative group">
+        <button type="button" class="inline-flex items-center gap-1.5 text-sm font-medium py-2 transition-colors" data-nav-link>
+          Support <Icon name="lucide:chevron-down" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+        </button>
+        <div class="absolute top-full right-0 hidden group-hover:block pt-3 w-72">
+          <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-xl grid grid-cols-2 gap-1 text-slate-800">
+            {supportLinks.map((item) => (
+              <a href={item.href} class="rounded-lg px-2.5 py-1.5 text-[11px] font-medium text-slate-700 hover:bg-slate-50 hover:text-brand transition-colors">
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </li>
     </ul>
 
-    <div class="hidden items-center gap-4 md:flex">
-      <a href="#" class="text-sm font-medium transition-colors" data-nav-link>Sign In</a>
+    <div class="hidden items-center gap-3 lg:flex">
+      <a href="/sign-in" class="text-xs font-semibold transition-colors" data-nav-link>Sign In</a>
       <a href="/pricing" class="inline-flex h-8 items-center justify-center bg-brand text-white hover:bg-brand-hover px-4 text-xs font-semibold rounded-full transition duration-200">Start Free</a>
     </div>
 
     <button
       type="button"
-      class="btn -mr-2 inline-flex h-9 w-9 items-center justify-center md:hidden"
-    data-nav-link
+      class="btn -mr-2 inline-flex h-9 w-9 items-center justify-center lg:hidden"
+      data-nav-link
       aria-label="Open menu"
       aria-expanded="false"
       data-menu-toggle
@@ -43,18 +147,49 @@ const links = [
   </nav>
 
   {/* Mobile capsule menu */}
-  <div class="absolute top-16 left-4 right-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-lg md:hidden hidden" data-mobile-menu>
-    <ul class="flex flex-col gap-1">
-      {links.map((l) => (
-        <li>
-          <a href={l.href} class="flex h-10 items-center text-sm font-medium text-[#0F172B] hover:text-brand" data-menu-link>{l.label}</a>
-        </li>
-      ))}
-      <li class="mt-3 flex flex-col gap-2 pt-3 border-t border-slate-100">
-        <a href="#" class="btn h-10 text-sm border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-full" data-menu-link>Sign in</a>
-        <a href="/pricing" class="btn h-10 text-sm bg-brand text-white hover:bg-brand-hover rounded-full font-semibold" data-menu-link>Start Free</a>
-      </li>
-    </ul>
+  <div class="absolute top-16 left-4 right-4 max-h-[80vh] overflow-y-auto rounded-2xl border border-slate-200 bg-white p-5 shadow-lg lg:hidden hidden" data-mobile-menu>
+    <div class="flex flex-col gap-4">
+      <div>
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Company</div>
+        <div class="grid grid-cols-2 gap-1">
+          {companyLinks.map((l) => (
+            <a href={l.href} class="py-1 text-xs font-medium text-slate-700 hover:text-brand" data-menu-link>{l.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-slate-100">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Features</div>
+        <div class="grid grid-cols-2 gap-1">
+          {featureLinks.map((l) => (
+            <a href={l.href} class="py-1 text-xs font-medium text-slate-700 hover:text-brand" data-menu-link>{l.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-slate-100">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Resources</div>
+        <div class="grid grid-cols-2 gap-1">
+          {resourceLinks.map((l) => (
+            <a href={l.href} class="py-1 text-xs font-medium text-slate-700 hover:text-brand" data-menu-link>{l.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-slate-100">
+        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Support & Account</div>
+        <div class="grid grid-cols-2 gap-1">
+          {supportLinks.map((l) => (
+            <a href={l.href} class="py-1 text-xs font-medium text-slate-700 hover:text-brand" data-menu-link>{l.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2 pt-3 border-t border-slate-100">
+        <a href="/sign-in" class="btn h-9 text-xs border border-slate-200 text-slate-700 hover:bg-slate-50 rounded-full flex items-center justify-center font-medium" data-menu-link>Sign in</a>
+        <a href="/pricing" class="btn h-9 text-xs bg-brand text-white hover:bg-brand-hover rounded-full font-semibold flex items-center justify-center" data-menu-link>Start Free</a>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -105,3 +240,4 @@ const links = [
     links.forEach((l) => l.addEventListener('click', () => setOpen(false)));
   }
 </script>
+

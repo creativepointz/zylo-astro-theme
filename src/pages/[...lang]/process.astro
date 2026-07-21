@@ -1,0 +1,106 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import Reveal from '@/components/widgets/Reveal.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+import { Icon } from 'astro-icon/components';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const steps = [
+  { num: '1', title: 'Create your Free Account in Seconds' },
+  { num: '2', title: 'Import Contacts, Leads, and deals Easily.' },
+  { num: '3', title: 'Customize your sales pipeline and task flows.' },
+];
+
+const stepDesc = 'Minimal, organized structure to help you manage, sort, & access every task.';
+
+const faqAnswer =
+  'A generative AI chatbot is an advanced type of chatbot that uses artificial intelligence to create dynamic, human-like responses in real time rather than solely on predefined scripts or answers.';
+
+const faqs = [
+  'Can I test ChatBot for free?',
+  'What is a generative AI chatbot?',
+  'How does a generative AI chatbot work?',
+  'How do AI chatbots benefit customer support?',
+  'Can ChatBot be integrated with LiveChat?',
+  'Can I test ChatBot for free?',
+];
+---
+
+<Layout title="Learn how it works — Zylo Process" description="Use Zylo for free as long as you want, or upgrade to get access to our best features for work and team projects.">
+  <Navbar />
+
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-6xl mx-auto px-4">
+      {/* 1. Header Banner */}
+      <Reveal class="text-center max-w-3xl mx-auto mb-16">
+        <div class="flex items-center justify-center mb-6">
+          <div class="relative flex items-center">
+            <div class="z-10 -rotate-12 rounded-2xl border-4 border-white bg-[#F0E3DB] w-14 h-14 flex items-center justify-center text-lg font-bold text-slate-900 font-heading">1</div>
+            <div class="z-20 -mx-4 -translate-y-2.5 rounded-2xl border-4 border-white bg-[#E3E8E4] w-14 h-14 flex items-center justify-center text-lg font-bold text-slate-900 font-heading shadow-lg">2</div>
+            <div class="z-10 rotate-12 rounded-2xl border-4 border-white bg-[#E7E7FD] w-14 h-14 flex items-center justify-center text-lg font-bold text-slate-900 font-heading">3</div>
+          </div>
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-bold text-slate-900 font-heading tracking-tight mb-3">
+          Learn how it works
+        </h1>
+        <p class="text-base text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Use Zylo for free as long as you want, or upgrade to get access to our best features for work and team projects.
+        </p>
+      </Reveal>
+
+      {/* 2. Process Steps */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+        {steps.map((s, idx) => (
+          <Reveal delay={idx * 80}>
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:border-brand/40 hover:shadow-lg transition-all h-full flex flex-col justify-between">
+              <div>
+                <div class="w-12 h-12 rounded-2xl bg-brand text-white font-bold text-base flex items-center justify-center mb-6 font-heading shadow-md">
+                  {s.num}
+                </div>
+                <h2 class="text-xl font-bold text-slate-900 font-heading mb-3 leading-snug">{s.title}</h2>
+                <p class="text-slate-600 text-sm leading-relaxed mb-7">{stepDesc}</p>
+              </div>
+              <a href="/pricing" class="inline-flex items-center gap-2 text-xs font-semibold text-brand hover:gap-3 transition-all">
+                Get Started <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* 3. FAQ */}
+      <Reveal class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+          FAQ
+        </span>
+        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-4">
+          Commonly asked questions
+        </h2>
+        <p class="text-base text-slate-600 leading-relaxed">
+          Offer live chat support to your customers. Our chatbot seamlessly transitions to human agents when needed.
+        </p>
+      </Reveal>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        {faqs.map((q, idx) => (
+          <Reveal delay={idx * 50}>
+            <details class="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm open:shadow-md transition-all">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer list-none text-base font-bold text-slate-900 font-heading">
+                {q}
+                <Icon name="lucide:plus" class="w-5 h-5 shrink-0 text-brand transition-transform group-open:rotate-45" />
+              </summary>
+              <p class="text-slate-600 text-sm leading-relaxed mt-4">{faqAnswer}</p>
+            </details>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

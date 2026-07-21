@@ -2,85 +2,106 @@
 import Layout from '@/layouts/Base.astro';
 import Navbar from '@/components/global/header/Navbar.astro';
 import Footer from '@/components/global/Footer.astro';
-import { Icon } from 'astro-icon/components';
-import { entries, tagStyles } from '@/lib/data/changelog';
+import Reveal from '@/components/widgets/Reveal.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
+import { Icon } from 'astro-icon/components';
 
 export function getStaticPaths() {
   return generatePaths();
 }
+
+const socials = [
+  { icon: 'lucide:facebook', label: 'Facebook' },
+  { icon: 'lucide:instagram', label: 'Instagram' },
+  { icon: 'lucide:twitter', label: 'Twitter' },
+  { icon: 'lucide:linkedin', label: 'LinkedIn' },
+];
+
+const releases = [
+  {
+    date: 'Jan 04, 2026',
+    title: 'Slack ticket form field requirements',
+    paragraphs: [
+      'You can now train your agent using support tickets as a data source. Tickets are supported for Zendesk and Salesforce, allowing your agent to learn directly from real customer conversations.',
+      'This feature is available on the Pro plan.',
+      'To get started, go to Sources → Tickets and connect your Zendesk or Salesforce account.',
+    ],
+  },
+  {
+    date: 'Jan 04, 2026',
+    title: 'Task comments',
+    paragraphs: [
+      'Contacts can now be assigned custom roles to limit their access with granular permissions. For example. the admin can see all issues & a regional manager can see all issues tagged with a specific region',
+    ],
+  },
+  {
+    date: 'Jan 04, 2026',
+    title: 'Audit Logs',
+    paragraphs: [
+      'Audit Logs capture events and include clear actor information to improve traceability across account-level changes such as settings updates, user management actions, and more',
+    ],
+  },
+  {
+    date: 'Jan 04, 2026',
+    title: 'Product intelligence',
+    paragraphs: [
+      'Native ingestion of Gemini Google Meet call recordings. Like other call recording integrations, all extracted call context flows into Zylo features including account notebooks, AI fields, and more',
+    ],
+  },
+];
 ---
 
-<Layout
-  title="Changelog — Zylo"
-  description="All the latest updates, improvements, and fixes to Zylo."
->
+<Layout title="Changelog" description="Follow us and stay up to date with everything Zylo!">
   <Navbar />
-  <main id="main">
-    <!-- Hero -->
-    <section
-      class="relative overflow-hidden pt-40 pb-24 md:pt-48"
-      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
-    >
-      <div class="container-page">
-        <div class="mx-auto max-w-3xl text-center" data-reveal>
-          <h1 class="h1 mb-7">Changelog</h1>
-          <p class="p-xl mx-auto max-w-2xl">
-            All the latest updates, improvements, and fixes to Zylo.
-          </p>
-        </div>
 
-        <!-- Subscribe -->
-        <form class="mx-auto mt-14 flex w-full max-w-[560px] flex-col gap-3 sm:flex-row" data-reveal>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            class="flex-1 rounded-md border border-slate-200 bg-white px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
-          />
-          <button type="submit" class="btn-primary btn-lg shrink-0">
-            Stay Updated
-            <Icon name="lucide:send" class="h-5 w-5" />
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Timeline -->
-    <section class="bg-white pb-24">
-      {entries.map((entry) => (
-        <div class="border-t border-slate-200 last:border-b">
-          <div class="container-page">
-            <div class="mx-auto flex max-w-[960px] flex-col gap-8 py-12 md:flex-row md:gap-12">
-              <!-- Date column -->
-              <div class="flex shrink-0 flex-col gap-2 md:w-40 md:py-2">
-                <p class="text-lg font-semibold text-slate-700">{entry.date}</p>
-                <p class="p-lt text-slate-400">{entry.version}</p>
-              </div>
-
-              <!-- Content column -->
-              <div class="flex flex-1 flex-col gap-10" data-reveal>
-                <div class={`aspect-[1622/886] w-full overflow-hidden rounded-xl bg-gradient-to-br ${entry.thumb}`}>
-                  <div class="h-full w-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
-                </div>
-                <div class="flex flex-col gap-4">
-                  <div class="flex flex-wrap gap-2">
-                    {entry.tags.map((tag) => (
-                      <span class={`rounded-full px-3 py-1 text-xs font-semibold ${tagStyles[tag] ?? 'bg-slate-100 text-slate-600'}`}>{tag}</span>
-                    ))}
-                  </div>
-                  <h2 class="h4 text-slate-900">
-                    <a href={`/changelog/${entry.slug}`} class="transition-colors hover:text-brand">{entry.title}</a>
-                  </h2>
-                  <p class="p-lg">{entry.excerpt}</p>
-                </div>
-                <a href={`/changelog/${entry.slug}`} class="btn-primary btn-md w-max">{entry.cta}</a>
-              </div>
-            </div>
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-5xl mx-auto px-4">
+      {/* 1. Header */}
+      <Reveal class="mb-16">
+        <h1 class="text-4xl sm:text-6xl font-bold text-slate-900 font-heading tracking-tight mb-8">
+          Changelog
+        </h1>
+        <div class="flex flex-wrap items-center justify-center gap-6 rounded-3xl md:rounded-full bg-slate-200/60 px-6 py-4">
+          <p class="text-lg text-slate-900">Follow us and stay up to date with everything Zylo!</p>
+          <div class="flex items-center gap-3">
+            {socials.map((s) => (
+              <a href="#" aria-label={s.label} class="text-brand hover:text-brand-hover transition-colors">
+                <Icon name={s.icon} class="w-5 h-5" />
+              </a>
+            ))}
           </div>
         </div>
-      ))}
-    </section>
+      </Reveal>
+
+      {/* 2. Timeline List */}
+      <div class="space-y-8 mb-14">
+        {releases.map((r, idx) => (
+          <Reveal delay={idx * 80}>
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm flex flex-col md:flex-row gap-8">
+              <div class="md:w-40 shrink-0">
+                <span class="text-sm font-semibold text-slate-400">{r.date}</span>
+              </div>
+              <div class="flex-1">
+                <h2 class="text-2xl font-bold text-slate-900 font-heading mb-4">{r.title}</h2>
+                <div class="space-y-4 text-base text-slate-600 leading-relaxed">
+                  {r.paragraphs.map((p) => (
+                    <p>{p}</p>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* 3. Load more */}
+      <Reveal class="text-center">
+        <button type="button" class="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-xs font-semibold text-slate-800 hover:bg-brand hover:text-white hover:border-brand transition-colors">
+          Load more <Icon name="lucide:arrow-down" class="w-4 h-4" />
+        </button>
+      </Reveal>
+    </div>
   </main>
+
   <Footer />
 </Layout>

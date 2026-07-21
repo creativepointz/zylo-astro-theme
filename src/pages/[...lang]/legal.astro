@@ -1,0 +1,85 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import Reveal from '@/components/widgets/Reveal.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const presentation = [
+  {
+    label: 'Owner:',
+    value:
+      'Zylo – 32 rue des jeuneurs 75002 Paris – SIREN Paris 394 148 167 Zylo USA & CBI Telecommunications 437 44th St SW, Grand Rapids, MI 49548',
+  },
+  { label: 'Publication manager:', value: 'Charles DEPLANQUE' },
+  { label: 'Website creation & design:', value: 'Belal Mahmud' },
+  { label: 'Web host:', value: 'OVH – 2 rue Kellermann – 59100 Roubaix' },
+];
+
+const dataManagement = [
+  'In France, personal data is protected by law no. 78-87 of January 6, 1978, law no. 2004-801 of August 6, 2004, article L. 226-13 of the Criminal Code and the European Directive of October 24, 1995..',
+  'When using the Zylo site, the following information may be collected: the URL of the links via which the user has accessed the site, the user’s access provider, the user’s Internet protocol (IP) address.',
+  'No personal data of the site user is published without the user’s knowledge, exchanged, transferred, assigned or sold on any medium whatsoever to third parties. Only the assumption of the purchase of Zylo and its rights would allow the transmission of the said information to the eventual purchaser who would in turn be bound by the same obligation of conservation and modification of the data with respect to the user of the site.',
+];
+---
+
+<Layout title="Zylo legal notice" description="Legal notice for the Zylo website: website presentation, description of provided services, and personal data management.">
+  <Navbar />
+
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-4xl mx-auto px-4">
+      {/* 1. Legal notice intro */}
+      <Reveal class="mb-14">
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-6">
+          Zylo legal notice
+        </h1>
+        <p class="text-base text-slate-600 leading-relaxed">
+          You are visiting the website https://zylo.co, owned and operated by Zylo, hereinafter, the OWNER.
+        </p>
+      </Reveal>
+
+      {/* 2. Website presentation */}
+      <Reveal delay={80} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 font-heading mb-6">1. Website presentation</h2>
+        <div class="space-y-5">
+          {presentation.map((item) => (
+            <p class="text-base text-slate-600 leading-relaxed">
+              <span class="font-semibold text-slate-900">{item.label}</span> {item.value}
+            </p>
+          ))}
+        </div>
+      </Reveal>
+
+      {/* 3. Description of provided services */}
+      <Reveal delay={120} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 font-heading mb-6">2. Description of provided services</h2>
+        <p class="text-base text-slate-600 leading-relaxed mb-5">
+          The purpose of the Zylo website is to provide information concerning all of the company’s activities. Zylo to
+          provide information on the site that is as accurate as possible. However, Zylo cannot be held responsible for
+          any omissions, inaccuracies or failure to update information, whether caused by Zylo or by third-party
+          partners conferring said information.
+        </p>
+        <p class="text-base text-slate-600 leading-relaxed">
+          All details regarding the website are provided for information purposes only, and is subject to
+          modifications. Furthermore, the website’s content is not exhaustive.
+        </p>
+      </Reveal>
+
+      {/* 4. Personal data management */}
+      <Reveal delay={160} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm">
+        <h2 class="text-2xl font-bold text-slate-900 font-heading mb-6">3. Personal data management</h2>
+        <div class="space-y-5">
+          {dataManagement.map((p) => (
+            <p class="text-base text-slate-600 leading-relaxed">{p}</p>
+          ))}
+        </div>
+      </Reveal>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

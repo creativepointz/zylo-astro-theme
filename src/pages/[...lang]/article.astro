@@ -2,352 +2,321 @@
 import Layout from '@/layouts/Base.astro';
 import Navbar from '@/components/global/header/Navbar.astro';
 import Footer from '@/components/global/Footer.astro';
-import { Icon } from 'astro-icon/components';
+import Reveal from '@/components/widgets/Reveal.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
+import { Icon } from 'astro-icon/components';
 
 export function getStaticPaths() {
   return generatePaths();
 }
 
-const article = {
-  category: 'Product Updates',
-  title: 'Zylo May Update: New Agent Features and Integrations',
-  author: 'Aaliyah Ramirez',
-  date: 'June 12, 2024',
-  readTime: '8 min read',
-  lede:
-    "Hello Zylo community! We're excited to share our latest updates. Your feedback drives our roadmap, and May was a productive month for the team. We've been hard at work improving the agent builder, AI tooling, and integrations to make automating work faster than ever.",
-};
-
-const toc = [
-  { id: 'analytics', label: 'Enhanced Analytics Dashboard' },
-  { id: 'mailsync', label: 'New Integration: GitHub Sync' },
-  { id: 'performance', label: 'Performance Improvements & Fixes' },
-  { id: 'notable', label: 'Notable Fixes', sub: true },
-  { id: 'marketing', label: 'Community Updates' },
-  { id: 'featured', label: 'Zylo Featured on TechWave', sub: true },
-  { id: 'offer', label: 'Summer Savings: Limited-Time Offer', sub: true },
+const shareLinks = [
+  { label: 'Facebook', icon: 'lucide:facebook' },
+  { label: 'X', icon: 'lucide:twitter' },
+  { label: 'LinkedIn', icon: 'lucide:linkedin' },
+  { label: 'Vimeo', icon: 'lucide:video' },
 ];
 
-const tags = ['Month in review', 'Release notes'];
-const categories = ['News', 'Release Note', 'Product'];
-
-const shares = [
-  { name: 'Facebook', icon: 'lucide:facebook' },
-  { name: 'Twitter', icon: 'lucide:twitter' },
-  { name: 'YouTube', icon: 'lucide:youtube' },
-  { name: 'LinkedIn', icon: 'lucide:linkedin' },
-  { name: 'Instagram', icon: 'lucide:instagram' },
+const selectorList = [
+  'Type selector (e.g p, span, etc.)',
+  'Class selector (e.g .element, .sidebar, etc.)',
+  'ID selector (e.g #header)',
 ];
 
-const thumbs = [
-  'from-indigo-500 to-violet-600',
-  'from-sky-500 to-indigo-600',
-  'from-fuchsia-500 to-indigo-600',
-];
+const tags = ['Blog', 'Creative', 'Portfolio', 'Theme', 'WordPress'];
 
-const related = [
-  { category: 'AI & Automation', title: 'Let an Agent Handle Your Inbox — Reliably', author: 'Dev Sharma' },
-  { category: 'Tutorials', title: 'Build Your First AI Agent in Under 10 Minutes', author: 'Nadia Khan' },
-  { category: 'Tips & Tricks', title: 'Why Guardrails Win: A Practical Guide to Safe Agents', author: 'Lena Petrova' },
+const comments = [
+  {
+    author: 'By James Taylor',
+    date: 'January 2, 2024',
+    body: "I love this theme. Sometimes it's difficult to work with some themes, because even if they are created with Elementor, you can't edit all the things with Elementor.",
+  },
+  {
+    author: 'By Oliver Williams',
+    date: 'January 2, 2024',
+    body: 'They have really taken their time to work on the appearance of the theme, also, they have a very interactive client assistance service, I like it!',
+  },
 ];
-
-const initials = (name: string) =>
-  name.split(' ').map((n) => n[0]).join('').slice(0, 2).toUpperCase();
 ---
 
-<Layout
-  title="Blog Article — Zylo"
-  description="Product updates, automation tips, and stories from the Zylo team."
->
+<Layout title="Control your online banking while earning rewards — Zylo Blog" description="Resources article from Zylo on online banking, rewards, and modern product engineering.">
   <Navbar />
-  <main id="main" class="pt-32 pb-8">
-    <div class="container-page">
-      <div class="grid gap-10 lg:grid-cols-[180px_minmax(0,1fr)_260px] xl:gap-14">
-        <!-- Share rail -->
-        <aside class="hidden lg:block">
-          <div class="sticky top-28 rounded-2xl border border-slate-200 bg-white p-5">
-            <p class="mb-4 text-lg font-semibold text-slate-900">Share on</p>
-            <div class="flex flex-wrap gap-2.5">
-              {shares.map((s) => (
-                <a
-                  href="#"
-                  aria-label={`Share on ${s.name}`}
-                  class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 text-slate-500 transition-colors hover:border-brand hover:bg-brand-subtle hover:text-brand"
-                >
-                  <Icon name={s.icon} class="h-[18px] w-[18px]" />
-                </a>
-              ))}
+
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-4xl mx-auto px-4">
+      {/* 1. Header */}
+      <Reveal class="mb-10">
+        <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline mb-6">
+          <Icon name="lucide:arrow-left" class="w-4 h-4" /> Back to blog
+        </a>
+        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+          Resources
+        </span>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 font-heading tracking-tight leading-tight">
+          Control your online banking while earning rewards.
+        </h1>
+      </Reveal>
+
+      {/* 2. Author + share */}
+      <Reveal delay={80} class="mb-12">
+        <div class="flex flex-wrap items-center justify-between gap-6 pb-8 border-b border-slate-200">
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-brand text-white flex items-center justify-center font-bold font-heading text-xl">
+              R
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-slate-900 font-heading">Richard</h2>
+              <p class="text-sm text-slate-500">Community Organiser</p>
             </div>
           </div>
-        </aside>
-
-        <!-- Article -->
-        <article class="mx-auto w-full max-w-[760px]">
-          <!-- Hero image -->
-          <div class="relative mb-10 h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-violet-600 to-sky-500 md:h-[420px]">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
+          <div class="flex items-center gap-1.5">
+            {shareLinks.map((s) => (
+              <a
+                href="#"
+                aria-label={s.label}
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:border-brand/40 hover:text-brand transition-colors"
+              >
+                <Icon name={s.icon} class="w-4 h-4" />
+              </a>
+            ))}
           </div>
-
-          <!-- Meta -->
-          <div class="mb-8 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-500">
-            <div class="flex flex-wrap items-center gap-x-8 gap-y-2">
-              <span>By <a href="#" class="font-medium text-slate-900 underline underline-offset-2">{article.author}</a></span>
-              <span>{article.date}</span>
-            </div>
-            <span>{article.readTime}</span>
-          </div>
-
-          <!-- Title + lede -->
-          <h1 class="h3 mb-7">{article.title}</h1>
-          <p class="p-lg mb-14">{article.lede}</p>
-
-          <!-- Quick Navigation -->
-          <div class="mb-14 rounded-2xl bg-slate-50 p-8">
-            <h2 class="h5 mb-6">Quick Navigation</h2>
-            <ul class="flex flex-col gap-3">
-              {toc.map((item) => (
-                <li class={item.sub ? 'pl-7' : ''}>
-                  <a href={`#${item.id}`} class="flex items-start gap-3 text-slate-600 transition-colors hover:text-brand">
-                    <Icon name="lucide:chevron-right" class="mt-1 h-4 w-4 shrink-0 text-brand" />
-                    <span>{item.label}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Body -->
-          <div class="article-body flex flex-col gap-7 text-slate-600">
-            <section id="analytics" class="flex scroll-mt-28 flex-col gap-7">
-              <h2 class="h4 text-slate-900">Enhanced Analytics Dashboard</h2>
-              <p class="p-lg">
-                On May 5, 2024, we launched our enhanced analytics dashboard. This update gives you deeper insight
-                into how your agents run — real-time run counts, steps that failed or retried,
-                and the automations driving the most value. Open the new dashboard from your Zylo workspace
-                to start optimizing your agents.
-              </p>
-              <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
-            </section>
-
-            <section id="mailsync" class="flex scroll-mt-28 flex-col gap-7">
-              <h2 class="h4 text-slate-900">New Integration: GitHub Sync</h2>
-              <p class="p-lg">
-                On May 15, 2024, we shipped two-way GitHub Sync. Connect a repository and your agents stay in lockstep
-                with your codebase — define them as code, open a pull request, and Zylo deploys the moment it merges.
-                Reviewers get a live test-run link on every PR, so automations ship with the feature, not weeks later.
-              </p>
-              <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
-            </section>
-
-            <section id="performance" class="flex scroll-mt-28 flex-col gap-7">
-              <h2 class="h4 text-slate-900">Performance Improvements &amp; Fixes</h2>
-              <p class="p-lg">
-                We rebuilt the execution engine this month. Agents now start faster, run logs stream
-                instantly, and the builder stays responsive even on very large workflows. Here's a quick look
-                at a typical agent configuration:
-              </p>
-
-              <!-- Code snippet -->
-              <div class="overflow-hidden rounded-2xl border border-slate-200 bg-slate-900">
-                <div class="flex items-center justify-between border-b border-white/10 px-5 py-3">
-                  <span class="text-sm font-medium text-slate-300">zylo.config.yml</span>
-                  <button type="button" class="rounded-md bg-white/10 px-3 py-1 text-xs font-medium text-slate-200 transition-colors hover:bg-white/20">Copy</button>
-                </div>
-                <pre class="overflow-x-auto px-5 py-4 text-sm leading-relaxed text-slate-100"><code>agent:
-  name: Inbox Triage
-  model: claude        # gpt · claude · open
-  trigger: email.received
-
-run:
-  tools: [gmail, slack]
-  approvals: true
-  logs: verbose</code></pre>
-              </div>
-
-              <h3 id="notable" class="h5 scroll-mt-28 text-slate-900">Notable Fixes</h3>
-              <p class="p-lg">
-                Resolved a rare issue where a retry could run an agent step twice. Improved handling of
-                rate-limited tool calls. Hardened SSO sessions so team members stay signed in
-                across subdomains.
-              </p>
-
-              <!-- Callout -->
-              <div class="rounded-2xl bg-amber-50 px-6 py-8 text-center">
-                <p class="text-lg font-semibold text-slate-900">
-                  Missed last month? Read the Zylo April Update: Builder Refresh &amp; Roles.
-                </p>
-              </div>
-            </section>
-
-            <section id="marketing" class="flex scroll-mt-28 flex-col gap-9">
-              <div class="flex flex-col gap-6">
-                <h2 class="h4 text-slate-900">Community Updates</h2>
-                <p class="p-lg">In May, we focused on expanding our reach and engaging the community. A few highlights:</p>
-              </div>
-
-              <!-- Quote -->
-              <figure class="flex items-start gap-6 rounded-2xl border border-slate-200 border-l-4 border-l-brand bg-white p-8">
-                <Icon name="lucide:quote" class="h-9 w-9 shrink-0 text-brand" />
-                <blockquote class="text-xl leading-relaxed text-slate-900">
-                  Zylo transformed how our team automates work. The new analytics dashboard is a game-changer. Highly recommend! 😊
-                </blockquote>
-              </figure>
-
-              <div id="featured" class="flex scroll-mt-28 flex-col gap-6">
-                <h3 class="h5 text-slate-900">Zylo Featured on TechWave</h3>
-                <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
-                <p class="p-lg">
-                  We're thrilled that Zylo was featured on TechWave, a leading technology news platform. The
-                  recognition reflects our commitment to making automation effortless for teams of every size.
-                </p>
-                <a href="/pricing" class="btn btn-primary btn-lg w-max">
-                  Explore Pricing Plans
-                  <Icon name="lucide:arrow-right" class="h-5 w-5" />
-                </a>
-              </div>
-
-              <div id="offer" class="flex scroll-mt-28 flex-col gap-6">
-                <h3 class="h5 text-slate-900">Summer Savings: Limited-Time Offer</h3>
-                <div class="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200"></div>
-                <p class="p-lg">
-                  To celebrate the season, we're offering a limited-time discount on all Zylo plans — the perfect
-                  moment to upgrade your automation workflow and take your team's productivity to the next level.
-                </p>
-                <a href="#" class="btn btn-primary btn-lg w-max">
-                  Join our Discord server
-                  <Icon name="lucide:arrow-right" class="h-5 w-5" />
-                </a>
-              </div>
-            </section>
-
-            <p class="h5 mt-4 text-slate-900">
-              That's all for May! Thanks for being part of the Zylo community — more updates soon. 🚀✨
-            </p>
-          </div>
-
-          <!-- Divider -->
-          <hr class="my-12 border-slate-200" />
-
-          <!-- Category + Tags -->
-          <div class="flex flex-col gap-5">
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="text-base font-medium text-slate-900">Category:</span>
-              {categories.map((c, i) => (
-                <span class={`rounded-full px-5 py-2 text-sm font-medium ${i === 1 ? 'bg-brand text-white' : 'border border-slate-200 text-slate-700'}`}>{c}</span>
-              ))}
-            </div>
-            <div class="flex flex-wrap items-center gap-3">
-              <span class="text-base font-medium text-slate-900">Tags:</span>
-              {tags.map((t) => (
-                <span class="rounded-full border border-slate-200 px-5 py-2 text-sm font-medium text-slate-700">{t}</span>
-              ))}
-            </div>
-          </div>
-        </article>
-
-        <!-- TOC rail -->
-        <aside class="hidden lg:block">
-          <nav class="sticky top-28 rounded-2xl border border-slate-200 bg-white p-5">
-            <div class="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-900">
-              <Icon name="lucide:list" class="h-4 w-4 text-brand" />
-              On this page
-            </div>
-            <ul class="flex flex-col">
-              {toc.map((item) => (
-                <li>
-                  <a
-                    href={`#${item.id}`}
-                    data-toc-link={item.id}
-                    class={`block border-l-2 border-transparent py-2 text-sm text-slate-500 transition-colors hover:text-brand ${item.sub ? 'pl-7' : 'pl-3'}`}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </aside>
-      </div>
-    </div>
-
-    <!-- Relevant Articles -->
-    <section class="mt-8 bg-slate-50/60">
-      <div class="container-page py-20 md:py-28">
-        <div class="mx-auto max-w-2xl text-center" data-reveal>
-          <h2 class="h2 mb-5">Relevant Articles</h2>
-          <p class="p-lg">More guides on building, connecting, and scaling AI agents with Zylo.</p>
         </div>
-        <div class="mt-16 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
-          {related.map((post, i) => (
-            <a href="/article" class="group flex flex-col gap-5">
-              <div class={`relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br ${thumbs[i % thumbs.length]}`}>
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
-              </div>
-              <div class="flex flex-col gap-4">
-                <span class="inline-flex w-max items-center rounded-full border border-slate-200 px-3.5 py-1.5 text-sm font-medium text-slate-700">
-                  {post.category}
-                </span>
-                <h3 class="h6 transition-colors group-hover:text-brand">{post.title}</h3>
-                <div class="flex items-center gap-3">
-                  <span class="flex h-7 w-7 items-center justify-center rounded-full bg-brand-subtle text-[10px] font-semibold text-brand">
-                    {initials(post.author)}
-                  </span>
-                  <span class="text-sm font-medium text-slate-600">{post.author}</span>
-                </div>
-              </div>
+      </Reveal>
+
+      {/* 3. Article body */}
+      <Reveal delay={120} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm text-slate-700 leading-relaxed text-base mb-12">
+        <p class="mb-6">
+          We love to bring designs to life as a developer, and I aim to do this using whatever front end tools
+          are necessary. My preferred tools are more modern javascript libraries like React.js but I like to use
+          whatever is best for the websites needs. There are several reasons why a business would consider
+          a rebrand and it doesn&rsquo;t necessarily mean the business has been unsuccessful.
+        </p>
+        <p class="mb-10">
+          But in order that you may see whence all this born error of those who accuse pleasure and praise
+          pain, I will open the whole matter, and explain the very things which were said by that discoverer of
+          truth and, as it were, the architect of a happy life.
+        </p>
+
+        <h2 class="text-2xl font-bold text-slate-900 font-heading mb-4">Using a Query</h2>
+        <p class="mb-10">
+          We love to bring designs to life as a developer, and I aim to do this using whatever front end tools are
+          necessary. My preferred tools are more modern javascript libraries like React.js but I like to use
+          whatever is best for the websites needs. There are several reasons why a business would consider a
+          rebrand and it doesn&rsquo;t necessarily mean the business has been unsuccessful.
+        </p>
+        <p class="mb-10">
+          Vestibulum ante ipsum primis in faucibus enim. In aliquam tempus porta. Mauris vel finibus risus.
+          Maecenas egestas mi sed neque finibus, nec faucibus ipsum aliquet. Duis scelerisque at odio vel
+          tempus. Morbi a tincidunt nunc, id rutrum erat. Fusce egestas quam vel facilisis tempor. Morbi non
+          orci elementum, sollicitudin mauris laoreet, luctus est. Donec in mi lorem.
+        </p>
+
+        <div class="flex items-start gap-6 mb-10">
+          <Icon name="lucide:quote" class="w-10 h-10 text-brand flex-none" />
+          <div class="flex flex-col gap-4">
+            <blockquote class="text-slate-900 text-2xl md:text-3xl font-semibold font-heading leading-snug tracking-tight">
+              &ldquo;Success is the result of perfection, hard work, learning from failure, loyalty, &amp;
+              persistence&rdquo;
+            </blockquote>
+            <span class="text-sm font-semibold text-slate-500">Phil Martinez</span>
+          </div>
+        </div>
+
+        <p class="mb-10">
+          Vestibulum ante ipsum primis in faucibus enim. In aliquam tempus porta. Mauris vel finibus risus.
+          Maecenas egestas mi sed neque finibus, nec faucibus ipsum aliquet. Duis scelerisque at odio vel
+          tempus. Morbi a tincidunt nunc, id rutrum erat. Fusce egestas quam vel facilisis tempor. Morbi non
+          orci elementum, sollicitudin mauris laoreet, luctus est. Donec in mi lorem.
+        </p>
+
+        <h2 class="text-2xl font-bold text-slate-900 font-heading mb-4">On the specificity of selectors</h2>
+        <p class="mb-6">
+          The specificity of the : <span class="text-brand font-semibold">not()</span> pseudo-class is the
+          specificity of its argument. The :not() pseudo-class does not add to the selector specificity, unlike
+          other pseudo-classes.
+        </p>
+        <p class="mb-6">
+          The <span class="text-brand font-semibold">simple selector</span> that:
+          <span class="text-brand font-semibold">not()</span> takes as an argument can be any of the following:
+        </p>
+        <ul class="space-y-2.5 mb-10">
+          {selectorList.map((item) => (
+            <li class="flex items-start gap-2">
+              <Icon name="lucide:check" class="w-4 h-4 text-brand mt-1 flex-none" />
+              <span>{item}</span>
+            </li>
+          ))}
+          <li class="flex items-start gap-2">
+            <Icon name="lucide:check" class="w-4 h-4 text-brand mt-1 flex-none" />
+            <span>
+              Pseudo-class selector e.g: <span class="text-brand font-semibold">first-child, :last-of-type</span>
+            </span>
+          </li>
+        </ul>
+
+        <div class="rounded-3xl border border-slate-200 bg-slate-50/50 p-6 md:p-8 font-mono text-sm text-slate-700 mb-10">
+          <div>{'li:not(.old)::after {'}</div>
+          <div class="pl-8 my-2">
+            <div>{'content: "New!";'}</div>
+            <div>{'color: deepPink;'}</div>
+          </div>
+          <div>{'}'}</div>
+        </div>
+
+        <p>
+          The specificity of the : <span class="text-brand font-semibold">not()</span> pseudo-class is the
+          specificity of its argument. The :not() pseudo-class does not add to the selector specificity, unlike
+          other pseudo-classes.
+        </p>
+      </Reveal>
+
+      {/* 4. Tags */}
+      <Reveal delay={140} class="mb-12">
+        <div class="flex flex-wrap items-center gap-2 text-sm">
+          <span class="font-semibold text-slate-900 mr-1">Tagged with:</span>
+          {tags.map((t) => (
+            <a
+              href="#"
+              class="px-4 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-brand/40 hover:text-brand transition-colors"
+            >
+              {t}
             </a>
           ))}
         </div>
-      </div>
-    </section>
+      </Reveal>
+
+      {/* 5. About Author */}
+      <Reveal delay={160} class="mb-12">
+        <div class="rounded-3xl bg-slate-900 p-8 md:p-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+          <div class="w-24 h-24 flex-none rounded-full bg-brand text-white flex items-center justify-center font-bold font-heading text-2xl">
+            PB
+          </div>
+          <div class="flex flex-col gap-3">
+            <div>
+              <span class="text-xs font-semibold text-slate-400 tracking-wide">About Author</span>
+              <h3 class="text-xl font-bold text-white font-heading mt-1">Peter Bowman</h3>
+            </div>
+            <p class="text-slate-300 text-base leading-relaxed max-w-2xl">
+              Phasellus et ipsum justo. Aenean fringilla a fermentum mauris non venenatis. Praesent at nulla
+              aliquam ligula.
+            </p>
+            <div class="flex items-center justify-center sm:justify-start gap-4 mt-1 text-slate-400">
+              {shareLinks.map((s) => (
+                <a href="#" aria-label={s.label} class="hover:text-white transition-colors">
+                  <Icon name={s.icon} class="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Reveal>
+
+      {/* 6. Next Post */}
+      <Reveal delay={180} class="mb-12">
+        <a
+          href="/article"
+          class="group block rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:border-brand/40 hover:shadow-lg transition-all"
+        >
+          <span class="inline-flex items-center gap-2 text-xs font-semibold text-brand uppercase tracking-wider mb-3">
+            Next Post <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          </span>
+          <h3 class="text-2xl font-bold text-slate-900 font-heading tracking-tight group-hover:text-brand transition-colors">
+            Tips for thriving in our virtual world
+          </h3>
+        </a>
+      </Reveal>
+
+      {/* 7. Comments */}
+      <Reveal delay={200} class="mb-12">
+        <h3 class="text-2xl font-bold text-slate-900 font-heading mb-6">Comments(02)</h3>
+        <div class="space-y-5">
+          {comments.map((c) => (
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+              <div class="flex flex-wrap items-center gap-3 mb-3">
+                <h4 class="text-base font-bold text-slate-900 font-heading">{c.author}</h4>
+                <span class="text-xs text-slate-400">{c.date}</span>
+              </div>
+              <p class="text-slate-600 text-sm leading-relaxed mb-4">{c.body}</p>
+              <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold text-brand hover:underline">
+                Reply <Icon name="lucide:corner-down-left" class="w-4 h-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+      </Reveal>
+
+      {/* 8. Leave a Reply */}
+      <Reveal delay={220}>
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm">
+          <div class="mb-8">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 font-heading tracking-tight mb-2">
+              Leave a Reply
+            </h2>
+            <p class="text-sm text-slate-600">
+              Your email address will not be published. Required fields are marked *
+            </p>
+          </div>
+
+          <form class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="flex flex-col gap-2">
+                <label for="name" class="text-sm font-semibold text-slate-900">Name *</label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-full text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
+                />
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="email" class="text-sm font-semibold text-slate-900">Email*</label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-full text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="website" class="text-sm font-semibold text-slate-900">Website</label>
+              <input
+                type="url"
+                id="website"
+                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-full text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
+              />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="comment" class="text-sm font-semibold text-slate-900">Comment *</label>
+              <textarea
+                id="comment"
+                rows="6"
+                required
+                class="w-full px-5 py-4 bg-white border border-slate-200 rounded-3xl text-slate-900 resize-none focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"></textarea>
+            </div>
+
+            <div class="flex items-start gap-3 pt-2">
+              <input id="checkbox" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand" />
+              <label for="checkbox" class="text-sm text-slate-600 cursor-pointer">
+                Save my name, email, and website in this browser for the next time I comment.
+              </label>
+            </div>
+
+            <div class="pt-4">
+              <button
+                type="submit"
+                class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-slate-900 px-8 text-sm font-semibold text-white hover:bg-brand transition-colors shadow-md"
+              >
+                Post comment <Icon name="lucide:send" class="w-4 h-4" />
+              </button>
+            </div>
+          </form>
+        </div>
+      </Reveal>
+    </div>
   </main>
 
-  <script>
-    // TOC scrollspy + copy button
-    const links = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
-    const sections = Array.from(links)
-      .map((l) => document.getElementById(l.dataset.tocLink!))
-      .filter(Boolean) as HTMLElement[];
-
-    const setActive = (id: string) => {
-      links.forEach((l) => {
-        const on = l.dataset.tocLink === id;
-        l.classList.toggle('border-brand', on);
-        l.classList.toggle('text-brand', on);
-        l.classList.toggle('font-medium', on);
-        l.classList.toggle('border-transparent', !on);
-        l.classList.toggle('text-slate-500', !on);
-      });
-    };
-
-    if (sections.length && 'IntersectionObserver' in window) {
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) setActive(e.target.id);
-          });
-        },
-        { rootMargin: '-20% 0px -70% 0px', threshold: 0 }
-      );
-      sections.forEach((s) => io.observe(s));
-    }
-
-    document.querySelectorAll('button').forEach((btn) => {
-      if (btn.textContent?.trim() === 'Copy') {
-        btn.addEventListener('click', () => {
-          const code = btn.closest('div')?.parentElement?.querySelector('code')?.textContent ?? '';
-          navigator.clipboard?.writeText(code);
-          const original = btn.textContent;
-          btn.textContent = 'Copied';
-          setTimeout(() => (btn.textContent = original), 1500);
-        });
-      }
-    });
-  </script>
-
-  <Footer
-    ctaTitle="Get the Best Automation Insights, Weekly"
-    ctaSubtitle="Join the Zylo newsletter — no spam, just useful playbooks. 🚀"
-  />
+  <Footer />
 </Layout>

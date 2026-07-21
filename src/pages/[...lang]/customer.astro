@@ -1,0 +1,145 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import Reveal from '@/components/widgets/Reveal.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+import { Icon } from 'astro-icon/components';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const filters = [
+  { label: 'Product', options: ['AI Chatbot', 'CRM Software', 'Email Marketing Tool', 'Project Management App', 'Analytics Dashboard'] },
+  { label: 'Category', options: ['Marketing', 'Development', 'Design', 'Business', 'Productivity'] },
+  { label: 'Use case', options: ['Customer Support', 'Lead Generation', 'Team Collaboration', 'Data Analysis', 'Content Creation'] },
+  { label: 'Industry', options: ['Healthcare', 'Finance', 'E-commerce', 'Education', 'Technology'] },
+];
+
+const stories = [
+  'How 15Five addresses integration issues',
+  'How Zensai closed more than USD 300K in ARR',
+  'Slack boosts team communication workflows',
+  'Notion simplifies project documentation',
+  'HubSpot automates marketing campaigns',
+  'Zoom enhances remote collaboration tools',
+  'Trello organizes daily workflow management',
+  'Asana streamlines task tracking systems',
+  'Salesforce improves customer relationship data',
+  'Monday.com powers agile business operations',
+  'Canva accelerates creative design processes',
+  'Airtable centralizes team productivity systems',
+];
+
+const customerQuote = "This platform completely changed how our support team operates. From intelligent workflows to real-time analytics everything is designed to scale. We now handle more than double the number of support tickets with the same team without compromising service quality.";
+
+const customerVoices = [
+  { name: 'Richard', role: 'Community Organiser' },
+  { name: 'Richard', role: 'Community Organiser' },
+  { name: 'Rudra Ghosh', role: 'Community Organiser' },
+  { name: 'Richard', role: 'Community Organiser' },
+];
+---
+
+<Layout title="Customer — Zylo Customers Are Reducing Churn" description="See how teams use Zylo to reduce churn and scale customer operations.">
+  <Navbar />
+
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-6xl mx-auto px-4">
+      {/* 1. Hero Header */}
+      <Reveal class="text-center max-w-4xl mx-auto mb-14">
+        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+          Customer
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-bold text-slate-900 font-heading tracking-tight">
+          Zylo customers are reducing churn
+        </h1>
+      </Reveal>
+
+      {/* 2. Filter Bar */}
+      <Reveal class="flex flex-wrap gap-4 mb-12">
+        {filters.map((f) => (
+          <select
+            aria-label={f.label}
+            class="h-12 w-[210px] max-w-full rounded-xl border border-slate-200 bg-white px-5 text-sm font-medium text-slate-600 focus:border-brand focus:outline-none"
+          >
+            <option>{f.label}</option>
+            {f.options.map((o) => <option>{o}</option>)}
+          </select>
+        ))}
+        <form class="relative flex-1 min-w-[220px]" action="#">
+          <label class="sr-only" for="customer-search">Search...</label>
+          <input
+            id="customer-search"
+            type="search"
+            name="q"
+            placeholder="Search..."
+            class="h-12 w-full rounded-xl border border-slate-200 bg-white pl-5 pr-12 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none"
+          />
+          <button type="submit" aria-label="Search" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-brand transition-colors">
+            <Icon name="lucide:search" class="w-4 h-4" />
+          </button>
+        </form>
+      </Reveal>
+
+      {/* 3. Grid of 12 Customer Stories */}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        {stories.map((title, idx) => (
+          <Reveal delay={idx * 50}>
+            <a href="/case-studies" class="group rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:border-brand/40 hover:shadow-lg transition-all h-full flex flex-col justify-between">
+              <h2 class="text-lg font-bold text-slate-900 font-heading mb-8 group-hover:text-brand transition-colors leading-snug">{title}</h2>
+              <div class="flex items-center justify-between">
+                <span class="rounded-full border border-slate-200 px-3 py-0.5 text-xs font-semibold text-slate-800">HRIS</span>
+                <span class="w-7 h-7 rounded-full bg-slate-100 text-brand flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors">
+                  <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </a>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* 4. Testimonials Section */}
+      <Reveal class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-5 shadow-sm">
+          Testimonials
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight">
+          Experiences shared by our customers
+        </h2>
+      </Reveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {customerVoices.map((c, idx) => (
+          <Reveal delay={idx * 70}>
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm h-full">
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-full bg-brand text-white font-bold flex items-center justify-center font-heading text-sm">
+                  {c.name[0]}
+                </div>
+                <div>
+                  <h4 class="font-bold text-slate-900 font-heading text-sm">{c.name}</h4>
+                  <p class="text-xs text-slate-500">{c.role}</p>
+                </div>
+              </div>
+              <p class="text-slate-600 text-base leading-relaxed">&ldquo;{customerQuote}&rdquo;</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* 5. Bottom Pill CTA */}
+      <Reveal class="text-center">
+        <div class="inline-flex flex-wrap items-center justify-center gap-5 rounded-full bg-slate-900/5 p-3 pl-6">
+          <span class="text-base text-slate-900">What&rsquo;s your work finance</span>
+          <a href="/contact" class="inline-flex h-10 items-center justify-center rounded-full bg-brand px-6 text-xs font-semibold text-white hover:bg-brand-hover transition-colors">
+            See how default works
+          </a>
+        </div>
+      </Reveal>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

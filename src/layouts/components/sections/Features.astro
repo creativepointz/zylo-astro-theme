@@ -1,155 +1,125 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Reveal from '@/components/widgets/Reveal.astro';
-
-const features = [
-  {
-    icon: 'lucide:mouse-pointer-click',
-    title: 'Visual Builder',
-    eyebrow: 'No Code Required',
-    tagline: 'Build an agent like you sketch a flow.',
-    image: '/home/Visual Editor.png',
-    points: [
-      'No code or config files needed',
-      'Drag, drop, and wire up steps with ease',
-      'Test runs preview instantly in the browser',
-    ],
-  },
-  {
-    icon: 'lucide:bot',
-    title: 'AI Agents',
-    eyebrow: 'AI-Native Automation',
-    tagline: 'Reason, decide, and act in seconds.',
-    image: '/home/AI Assistant.png',
-    points: [
-      'Turn a plain-language prompt into a working agent',
-      'Let agents read, summarize, and act on your data',
-      'Run on a schedule or trigger on any event',
-      'Bring your own API key for maximum privacy & custom rates',
-    ],
-  },
-  {
-    icon: 'lucide:plug',
-    title: 'Connect Your Stack',
-    eyebrow: 'Native Integrations',
-    tagline: 'Plug into the tools you already use.',
-    image: '/home/Beautiful Published Sites.png',
-    points: [
-      'One-click connectors for Slack, email, CRM, and more',
-      'Secure OAuth with granular, revocable access',
-      'Webhooks and API access for anything custom',
-    ],
-  },
-  {
-    icon: 'lucide:brain-circuit',
-    title: 'Built for the AI Era',
-    eyebrow: 'Any Model, Your Choice',
-    tagline: 'Swap models without rebuilding a thing.',
-    image: '/home/Made for the AI Era.png',
-    points: [
-      'Works with GPT, Claude, and open models',
-      'Full run logs so every decision is traceable',
-      'Guardrails and approvals keep humans in the loop',
-    ],
-  },
-];
 ---
 
-<section id="features" class="section bg-gradient-to-b from-white via-[#ffebf0] via-[40%] to-[#8ab7f9] border-y border-[#f1f5f9] overflow-hidden" data-features>
-  <div class="container-page">
-    {/* Header section */}
-    <div class="flex flex-col items-center text-center max-w-[700px] mx-auto mb-12">
-      <Reveal>
-        <p class="text-[#4f46e5] text-[16px] font-semibold tracking-[1.28px] uppercase mb-4">Solutions ( 4 )</p>
-      </Reveal>
+<section id="features" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+  {/* Glow Accents */}
+  <div class="absolute inset-0 pointer-events-none select-none">
+    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand/20 blur-[150px] rounded-full"></div>
+  </div>
+
+  <div class="container-page max-w-6xl mx-auto px-4 relative z-10">
+    <Reveal class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block border border-white/20 bg-white/10 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-indigo-200 mb-4 backdrop-blur-md">
+        Features
+      </span>
+      <h2 class="text-3xl sm:text-5xl font-bold font-heading tracking-tight mb-4 leading-tight">
+        Features built for real work
+      </h2>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+        Experience features that take your productivity to the next level.
+      </p>
+    </Reveal>
+
+    {/* Top Row: 2 Big Feature Cards */}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
       <Reveal delay={100}>
-        <h2 class="text-[42px] md:text-[52px] font-semibold text-[#0f172b] leading-[1.2] tracking-tight font-heading">
-          Build. Connect. Automate. Ship faster.
-        </h2>
+        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-2xl font-bold font-heading mb-3 text-white">Custom workspace</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              A dedicated environment in Zylo that brings together all your workflows, AI key configurations, and team members in one place.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-slate-950 p-4">
+            <img src="/home/zylo-hero.png" alt="Custom Workspace" class="w-full rounded-xl block object-cover h-44" />
+          </div>
+        </div>
+      </Reveal>
+
+      <Reveal delay={150}>
+        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-2xl font-bold font-heading mb-3 text-white">Progress tracking</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Real-time monitoring for your active agent workflows. Track execution times, error rates, and automated task status live.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-slate-950 p-4">
+            <img src="/home/zylo-hero.png" alt="Progress Tracking" class="w-full rounded-xl block object-cover h-44" />
+          </div>
+        </div>
       </Reveal>
     </div>
 
-    {/* Tab Switcher */}
-    <Reveal delay={200} class="flex flex-wrap justify-center items-center gap-4 mb-16">
-      {features.map((item, idx) => (
-        <button
-          type="button"
-          data-tab-btn
-          data-idx={idx}
-          class={`flex items-center gap-2 px-[16px] py-[10px] font-semibold text-[14px] transition-all duration-200 rounded-full cursor-pointer ${idx === 0 ? 'bg-[#4f46e5] text-white shadow-md' : 'text-[#0f172b] hover:bg-white/50'}`}
-        >
-          <Icon name={item.icon} class="w-4 h-4" />
-          <span>{item.title}</span>
-        </button>
-      ))}
-    </Reveal>
-
-    {/* Tab Panels */}
-    <Reveal delay={300}>
-      {features.map((f, i) => (
-        <div data-tab-panel data-idx={i} class={i === 0 ? '' : 'hidden'}>
-          <div class="bg-white rounded-[24px] p-8 md:p-[40px] lg:p-[48px] w-full flex flex-col lg:flex-row gap-10 lg:gap-[60px] items-center shadow-xl shadow-indigo-900/5">
-            {/* Left info column */}
-            <div class="flex-1 space-y-8 lg:max-w-[50%] w-full text-left">
-              <div>
-                <span class="text-[#4f46e5] text-[12px] font-semibold tracking-[0.96px] uppercase">{f.eyebrow}</span>
-                <h3 class="text-[36px] lg:text-[42px] font-heading text-[#0f172b] leading-[1.2] mt-4 tracking-tight">
-                  <span class="font-semibold">{f.title}.</span>{' '}
-                  <span class="font-normal text-[#45556c]">{f.tagline}</span>
-                </h3>
-              </div>
-
-              <ul class="space-y-4">
-                {f.points.map((p) => (
-                  <li class="flex items-start gap-3 text-[16px] text-[#45556c] leading-[24px]">
-                    <Icon name="lucide:circle-check" class="w-6 h-6 shrink-0 text-[#4f46e5]" aria-hidden="true" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <div class="pt-4">
-                <a href="#start" class="inline-flex items-center gap-2 bg-[#4f46e5] text-white px-[20px] py-[12px] rounded-full text-[14px] font-medium hover:bg-indigo-700 transition duration-200">
-                  Get started free <Icon name="lucide:arrow-right" class="w-[18px] h-[18px]" />
-                </a>
-              </div>
+    {/* Bottom Row: 3 Feature Cards */}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Card 1: Team Collaboration */}
+      <Reveal delay={200}>
+        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold font-heading mb-3 text-white">Collaborate with your team</h3>
+            <p class="text-slate-300 text-xs leading-relaxed mb-6">
+              Invite teammates or partners to share projects and work together, seamlessly organized.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-brand/20 border border-brand/30 p-6 text-center flex flex-col items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-brand text-white flex items-center justify-center font-bold text-xl mb-3 shadow-lg">
+              Zylo
             </div>
+            <span class="text-xs font-semibold text-indigo-200">Unified Team Access</span>
+          </div>
+        </div>
+      </Reveal>
 
-            {/* Right column: Image Showcase */}
-            <div class="flex-1 w-full">
-              <img
-                src={f.image}
-                alt={f.title}
-                class="w-full h-auto object-contain"
-              />
+      {/* Card 2: Track Your Success */}
+      <Reveal delay={240}>
+        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+          <div>
+            <span class="inline-block rounded-full bg-emerald-500/20 text-emerald-300 px-3 py-1 text-xs font-bold mb-4">
+              103 Tasks Completed
+            </span>
+            <h3 class="text-xl font-bold font-heading mb-2 text-white">Track your success</h3>
+            <p class="text-slate-300 text-xs leading-relaxed mb-6">
+              Maintaining a good work-life balance and a positive attitude is important for mental well-being.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-center">
+            <div>
+              <div class="text-lg font-bold font-heading text-brand">99%</div>
+              <div class="text-[10px] text-slate-400 font-medium">On time</div>
+            </div>
+            <div>
+              <div class="text-lg font-bold font-heading text-brand">18 hrs</div>
+              <div class="text-[10px] text-slate-400 font-medium">Time saved</div>
+            </div>
+            <div>
+              <div class="text-lg font-bold font-heading text-brand">100%</div>
+              <div class="text-[10px] text-slate-400 font-medium">Priority met</div>
             </div>
           </div>
         </div>
-      ))}
-    </Reveal>
+      </Reveal>
+
+      {/* Card 3: Action Needed */}
+      <Reveal delay={280}>
+        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-bold font-heading mb-3 text-white">Your action needed</h3>
+            <p class="text-slate-300 text-xs leading-relaxed mb-6">
+              We've reviewed your application, and there are a few things you'll need to adjust before it can be approved.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-amber-500/10 border border-amber-500/30 p-4 text-amber-300 text-xs font-semibold flex items-center justify-between">
+            <span class="flex items-center gap-2">
+              <Icon name="lucide:alert-circle" class="w-4 h-4 text-amber-400" /> Human Review Required
+            </span>
+            <Icon name="lucide:chevron-right" class="w-4 h-4" />
+          </div>
+        </div>
+      </Reveal>
+    </div>
   </div>
 </section>
-
-<script>
-  const root = document.querySelector('[data-features]');
-  if (root) {
-    const btns = Array.from(root.querySelectorAll('[data-tab-btn]'));
-    const panels = Array.from(root.querySelectorAll('[data-tab-panel]'));
-
-    btns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const idx = btn.getAttribute('data-idx');
-        btns.forEach((b) => {
-          const on = b === btn;
-          b.classList.toggle('bg-[#4f46e5]', on);
-          b.classList.toggle('text-white', on);
-          b.classList.toggle('shadow-md', on);
-          b.classList.toggle('text-[#0f172b]', !on);
-          b.classList.toggle('hover:bg-white/50', !on);
-        });
-        panels.forEach((p) => p.classList.toggle('hidden', p.getAttribute('data-idx') !== idx));
-      });
-    });
-
-  }
-</script>

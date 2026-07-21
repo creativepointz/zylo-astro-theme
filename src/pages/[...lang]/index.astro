@@ -3,15 +3,11 @@ import Layout from '@/layouts/Base.astro';
 import Navbar from '@/components/global/header/Navbar.astro';
 import Hero from '@/components/sections/Hero.astro';
 import MakersMarquee from '@/components/sections/MakersMarquee.astro';
-import Outcomes from '@/components/sections/Outcomes.astro';
-import UseCases from '@/components/sections/UseCases.astro';
-import PromoCards from '@/components/sections/PromoCards.astro';
-import Audience from '@/components/sections/Audience.astro';
-import Benefits from '@/components/sections/Benefits.astro';
 import HowItWorks from '@/components/sections/HowItWorks.astro';
 import Features from '@/components/sections/Features.astro';
-import PriceWedge from '@/components/sections/PriceWedge.astro';
 import WhyZylo from '@/components/sections/WhyZylo.astro';
+import PriceWedge from '@/components/sections/PriceWedge.astro';
+import Integrations from '@/components/sections/Integrations.astro';
 import FAQ from '@/components/sections/FAQ.astro';
 import Footer from '@/components/global/Footer.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
@@ -22,8 +18,8 @@ export function getStaticPaths() {
 ---
 
 <Layout
-  title="Zylo — No-Code AI Agents & Automation Platform"
-  description="Build no-code AI agents that automate real work across your tools. From $19/mo, bring your own model, no lock-in. Start free."
+  title="Zylo — SaaS & AI Startup Technology Platform"
+  description="Where teams move faster & work gets done. Map out tasks, work together effortlessly, and follow progress all from one unified tool."
 >
   <a
     href="#main"
@@ -37,17 +33,16 @@ export function getStaticPaths() {
   <main id="main">
     <Hero />
     <MakersMarquee />
-    <Outcomes />
-    <UseCases />
-    <PromoCards />
-    <Audience />
-    <Benefits />
     <HowItWorks />
     <Features />
-    <PriceWedge />
     <WhyZylo />
+    <PriceWedge />
+    <Integrations />
     <FAQ />
   </main>
 
-  <Footer />
+  <Footer
+    ctaTitle="Make the first step toward managing your tasks more effectively."
+    ctaSubtitle="Where teams move faster & work gets done."
+  />
 </Layout>

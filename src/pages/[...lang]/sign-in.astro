@@ -1,0 +1,102 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import Reveal from '@/components/widgets/Reveal.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+import { Icon } from 'astro-icon/components';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+---
+
+<Layout title="Login — Welcome To Your Zylo System" description="Sign in with email or continue with Google to access your Zylo system.">
+  <Navbar />
+
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-6xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+        {/* 1. Welcome panel */}
+        <Reveal class="lg:col-span-5">
+          <div class="h-full rounded-3xl bg-slate-900 p-10 flex flex-col justify-between">
+            <h1 class="text-3xl sm:text-4xl font-bold text-white font-heading tracking-tight leading-tight">
+              Welcome To Your Zylo System.
+            </h1>
+            <div class="mt-12 grid grid-cols-2 gap-4">
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <Icon name="lucide:layout-dashboard" class="w-6 h-6 text-white mb-3" />
+                <p class="text-xs font-medium text-slate-300 leading-relaxed">Real-time collaboration</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <Icon name="lucide:shield-check" class="w-6 h-6 text-white mb-3" />
+                <p class="text-xs font-medium text-slate-300 leading-relaxed">Two factor authentication (2FA)</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <Icon name="lucide:sparkles" class="w-6 h-6 text-white mb-3" />
+                <p class="text-xs font-medium text-slate-300 leading-relaxed">AI-Powered task assistant</p>
+              </div>
+              <div class="rounded-3xl border border-white/10 bg-white/5 p-5">
+                <Icon name="lucide:bar-chart-3" class="w-6 h-6 text-white mb-3" />
+                <p class="text-xs font-medium text-slate-300 leading-relaxed">Time tracking &amp; productivity reports</p>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* 2. Sign in form */}
+        <Reveal delay={100} class="lg:col-span-7">
+          <div class="h-full rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm">
+            <h2 class="text-2xl font-bold text-slate-900 font-heading mb-8">Register Account</h2>
+
+            <div class="flex flex-wrap gap-3 mb-8">
+              <a href="#" class="inline-flex h-14 items-center gap-2.5 rounded-2xl border border-slate-200 px-8 text-sm font-medium text-slate-900 hover:border-slate-900 transition-colors">
+                <Icon name="lucide:globe" class="w-5 h-5" />
+                Continue with Google
+              </a>
+              <a href="#" class="inline-flex h-14 items-center justify-center rounded-2xl border border-slate-200 px-8 text-slate-900 hover:border-slate-900 transition-colors">
+                <Icon name="lucide:command" class="w-5 h-5" />
+              </a>
+            </div>
+
+            <div class="flex items-center gap-4 mb-8">
+              <span class="h-px flex-1 bg-slate-200"></span>
+              <span class="text-sm text-slate-500">Or Sign In with email</span>
+              <span class="h-px flex-1 bg-slate-200"></span>
+            </div>
+
+            <form class="space-y-5">
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1.5">Your Email</label>
+                <input type="email" required class="w-full h-14 rounded-2xl border border-slate-200 px-5 text-sm text-slate-900 focus:border-brand focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1.5">Password</label>
+                <input type="password" required class="w-full h-14 rounded-2xl border border-slate-200 px-5 text-sm text-slate-900 focus:border-brand focus:outline-none" />
+              </div>
+
+              <div class="flex items-center justify-between gap-4">
+                <label class="flex items-center gap-2 text-sm text-slate-500 cursor-pointer">
+                  <input type="checkbox" class="rounded border-slate-300 text-brand focus:ring-brand" />
+                  Remember me
+                </label>
+                <a href="#" class="text-sm text-slate-900 hover:text-brand transition-colors">Forgot password ?</a>
+              </div>
+            </form>
+
+            <div class="mt-8">
+              <button type="submit" class="inline-flex h-14 items-center justify-center rounded-2xl bg-brand px-20 text-sm font-semibold text-white hover:bg-slate-900 transition-colors shadow-md">
+                Register
+              </button>
+              <p class="mt-8 text-sm text-slate-500">
+                Don't have account ? <a href="/register" class="font-medium text-brand hover:underline">Register</a>
+              </p>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

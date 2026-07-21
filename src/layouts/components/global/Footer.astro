@@ -4,45 +4,54 @@ import { Icon } from 'astro-icon/components';
 const {
   ctaTitle = 'Start Automating Today',
   ctaSubtitle = 'Your first AI agent is 10 minutes away.',
+  ctaPrimary = 'Subscribe now',
 } = Astro.props;
 
 const year = new Date().getFullYear();
 
 const columns = [
   {
-    title: 'Platform',
+    title: 'Platform & Features',
     links: [
-      { label: 'Features', href: '/features' },
-      { label: 'Integrations', href: '#' },
+      { label: 'Features Overview', href: '/features' },
+      { label: 'Analytics', href: '/analytics' },
+      { label: 'Integrations', href: '/integrations' },
+      { label: 'Process', href: '/process' },
       { label: 'Pricing', href: '/pricing' },
-      { label: 'Changelog', href: '/changelog' },
-    ],
-  },
-  {
-    title: 'Solutions',
-    links: [
-      { label: 'Startups', href: '#' },
-      { label: 'Enterprise', href: '#' },
-      { label: 'E-commerce', href: '#' },
-      { label: 'Agencies', href: '#' },
+      { label: 'Downloads', href: '/downloads' },
     ],
   },
   {
     title: 'Company',
     links: [
       { label: 'About Us', href: '/about-us' },
-      { label: 'Careers', href: '#' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'Careers', href: '/career' },
+      { label: 'Our Team', href: '/team' },
+      { label: 'Services', href: '/service' },
+      { label: 'Testimonials', href: '/testimonial' },
+      { label: 'Customers', href: '/customer' },
     ],
   },
   {
-    title: 'Legal',
+    title: 'Resources',
     links: [
+      { label: 'Blog', href: '/blog' },
+      { label: 'Case Studies', href: '/case-studies' },
+      { label: 'Whitepaper', href: '/whitepaper' },
+      { label: 'Glossary', href: '/glossary' },
+      { label: 'Brandkit', href: '/brandkit' },
+      { label: 'Changelog', href: '/changelog' },
+    ],
+  },
+  {
+    title: 'Support & Legal',
+    links: [
+      { label: 'Help & Support', href: '/support' },
+      { label: 'FAQs', href: '/faq' },
+      { label: 'Contact Us', href: '/contact' },
+      { label: 'Affiliate Program', href: '/affiliate' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Service', href: '/terms-of-service' },
-      { label: 'Cookie Policy', href: '/cookie-policy' },
-      { label: 'Security', href: '#' },
     ],
   },
 ];
@@ -82,7 +91,7 @@ const columns = [
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
       <a href="/pricing" class="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#5047E5] hover:bg-indigo-50 transition-all duration-150 active:scale-[0.98]">
-        Start Free
+        {ctaPrimary}
       </a>
       <a href="/contact" class="inline-flex h-11 items-center justify-center rounded-full border border-white/30 px-6 text-sm font-semibold text-white hover:bg-white/10 transition-all duration-150 active:scale-[0.98]">
         Book a demo
@@ -98,6 +107,13 @@ const columns = [
         <a href="/" class="inline-block">
           <img src="/zylo-white.svg" alt="Zylo" width="133" height="32" class="h-8 w-auto" />
         </a>
+        <p class="text-sm text-indigo-100/80 max-w-xs leading-relaxed">
+          Bring your website idea to life by guided SaaS assistance
+        </p>
+        <ul class="space-y-1 text-sm text-indigo-100/80">
+          <li><a href="tel:+80600008899" class="hover:text-white transition-colors">+806 (000) 88 99</a></li>
+          <li><a href="mailto:contact@zylo.co" class="hover:text-white transition-colors">contact@zylo.co</a></li>
+        </ul>
         <div class="flex items-center gap-3 pt-2">
           <a href="#" aria-label="Instagram" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-indigo-150 transition-all duration-150 hover:border-white hover:bg-white/10 hover:text-white">
             <Icon name="lucide:instagram" class="w-[18px] h-[18px]" />

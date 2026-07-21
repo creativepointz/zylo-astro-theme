@@ -2,126 +2,131 @@
 import Layout from '@/layouts/Base.astro';
 import Navbar from '@/components/global/header/Navbar.astro';
 import Footer from '@/components/global/Footer.astro';
-import { Icon } from 'astro-icon/components';
+import Reveal from '@/components/widgets/Reveal.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
+import { Icon } from 'astro-icon/components';
 
 export function getStaticPaths() {
   return generatePaths();
 }
 
-const infoCards = [
-  {
-    title: 'I Have a Technical Question?',
-    description: 'Find solutions to all technical problems that you are facing.',
-    cta: 'Submit a Ticket',
-    href: '#',
-    bg: '#f5effc'
-  },
-  {
-    title: 'Explore Our Knowledgebase',
-    description:
-      'Find detailed setup guides, tutorials, and technical information for building and running agents.',
-    cta: 'Read the Docs',
-    href: '/docs',
-    bg: '#fcf3ef'
-  }
+const offices = [
+  { country: 'Colombia', address: 'Bogota D.C., Colombia, b. a 181 C No. 930 Ap 202', main: false },
+  { country: 'France', address: '9 Pearse Street, Kinsale, Cork, P17 AH66, Ireland', main: true },
+  { country: 'Egypt', address: "Av. Cordoba 1309, 3'A, City of Buenos Aires, Egypt", main: false },
+];
+
+const demoDetails = [
+  { icon: 'lucide:mail', value: 'contact@zylo.co', href: 'mailto:contact@zylo.co' },
+  { icon: 'lucide:phone', value: '+1-202-555-0144', href: 'tel:+12025550144' },
+  { icon: 'lucide:map-pin', value: '35Park Avenue, Uk', href: '#' },
 ];
 ---
 
-<Layout
-  title="Contact Us — Zylo"
-  description="Have a question or feedback? Get in touch with the Zylo team."
->
+<Layout title="Contact us — Zylo" description="Our support team is here to assist you reach out anytime.">
   <Navbar />
-  <main id="main">
-    <!-- Hero -->
-    <section
-      class="relative overflow-hidden pt-40 pb-24 md:pt-48"
-      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
-    >
-      <div class="container-page">
-        <div class="mx-auto max-w-3xl text-center" data-reveal>
-          <h1 class="h1 mb-7">We'd Love to Hear From You</h1>
-          <p class="p-xl mx-auto max-w-2xl">
-            Zylo builds practical AI automation tools. Whether you have a question, feedback, or a
-            partnership idea, our team is here to help.
-          </p>
-        </div>
-      </div>
-    </section>
 
-    <!-- Content -->
-    <section class="bg-white pb-24">
-      <div class="container-page">
-        <div class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-3" data-reveal>
-        <!-- Form card -->
-        <form class="flex flex-col gap-10 rounded-xl border border-slate-200 bg-white p-10 lg:col-span-2">
-          <div class="flex flex-col gap-6">
-            <div class="flex flex-col gap-6 sm:flex-row">
-              <label class="flex flex-1 flex-col gap-4">
-                <span class="text-lg text-slate-900">First Name</span>
-                <input
-                  type="text"
-                  name="first-name"
-                  placeholder="First Name"
-                  class="rounded-md border border-slate-200 px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
-                />
-              </label>
-              <label class="flex flex-1 flex-col gap-4">
-                <span class="text-lg text-slate-900">Last Name</span>
-                <input
-                  type="text"
-                  name="last-name"
-                  placeholder="Last Name"
-                  class="rounded-md border border-slate-200 px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
-                />
-              </label>
-            </div>
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-6xl mx-auto px-4">
+      {/* 1. Contact hero */}
+      <Reveal class="text-center max-w-3xl mx-auto mb-16">
+        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+          Contact us
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-bold text-slate-900 font-heading tracking-tight">
+          Our support team is here to assist you reach out anytime.
+        </h1>
+      </Reveal>
 
-            <label class="flex flex-col gap-4">
-              <span class="text-lg text-slate-900">Email</span>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                class="rounded-md border border-slate-200 px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
-              />
-            </label>
-
-            <label class="flex flex-col gap-4">
-              <span class="text-lg text-slate-900">Message</span>
-              <textarea
-                name="message"
-                rows="4"
-                placeholder="Write Your Message"
-                class="resize-y rounded-md border border-slate-200 px-5 py-4 text-base text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/30"
-              ></textarea>
-            </label>
-          </div>
-
-          <button type="submit" class="btn-primary btn-lg w-max">Submit Message</button>
-        </form>
-
-        <!-- Info cards -->
-        <div class="flex flex-col gap-8 lg:col-span-1">
-          {infoCards.map((card) => (
-            <div
-              class="flex flex-1 flex-col justify-between gap-8 rounded-xl border border-slate-200 p-8"
-              style={`background:${card.bg}`}
-            >
-              <div class="flex flex-col gap-3">
-                <h2 class="h6 text-slate-900">{card.title}</h2>
-                <p class="p-rg text-slate-500">{card.description}</p>
+      {/* 2. Offices */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+        {offices.map((o, idx) => (
+          <Reveal delay={idx * 80}>
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm h-full">
+              <div class="flex items-center justify-between gap-3 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+                  <Icon name="lucide:map-pin" class="w-6 h-6" />
+                </div>
+                {o.main && (
+                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold text-slate-700">
+                    Main Office
+                  </span>
+                )}
               </div>
-              <a href={card.href} class="btn-secondary btn-md w-max">
-                {card.cta}
-                <Icon name="lucide:arrow-right" class="h-5 w-5" />
-              </a>
+              <h2 class="text-xl font-bold text-slate-900 font-heading mb-2">{o.country}</h2>
+              <p class="text-slate-600 text-sm leading-relaxed">{o.address}</p>
             </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* 3. Let's contact us form */}
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-20">
+        <Reveal>
+          <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+            Let’s contact us
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-4">
+            Get in touch with our support for help.
+          </h2>
+          <p class="text-lg text-slate-600 leading-relaxed">
+            We accept smoke signals, but modern communication works better today.
+          </p>
+        </Reveal>
+
+        <Reveal delay={100} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-xl">
+          <form class="space-y-4">
+            <input
+              type="text"
+              placeholder="Your full name"
+              class="w-full rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none"
+            />
+            <input
+              type="text"
+              placeholder="Your email address"
+              class="w-full rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none"
+            />
+            <textarea
+              rows="4"
+              placeholder="Write your message"
+              class="w-full resize-none rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none"
+            ></textarea>
+            <label class="flex items-center gap-2 text-sm text-slate-600">
+              <input type="checkbox" class="h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand" />
+              I agree to receive marketing materials
+            </label>
+            <button
+              type="submit"
+              class="w-full rounded-full bg-brand py-3.5 text-sm font-semibold text-white hover:bg-brand-hover transition-colors shadow-lg"
+            >
+              Send Analysis
+            </button>
+          </form>
+        </Reveal>
+      </div>
+
+      {/* 4. Book a Demo */}
+      <Reveal class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm text-center">
+        <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-2">Book a Demo!</h2>
+        <p class="text-lg text-slate-600 leading-relaxed mb-10">
+          We will contact again after receive your request in 24h
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {demoDetails.map((d) => (
+            <a
+              href={d.href}
+              class="group rounded-3xl border border-slate-200 bg-slate-50/60 p-6 hover:border-brand/40 hover:bg-white transition-all flex flex-col items-center gap-3"
+            >
+              <span class="w-10 h-10 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+                <Icon name={d.icon} class="w-5 h-5" />
+              </span>
+              <span class="text-sm font-semibold text-slate-900 group-hover:text-brand transition-colors">{d.value}</span>
+            </a>
           ))}
         </div>
-      </div>
-    </section>
+      </Reveal>
+    </div>
   </main>
+
   <Footer />
 </Layout>

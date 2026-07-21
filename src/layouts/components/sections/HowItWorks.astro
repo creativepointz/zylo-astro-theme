@@ -1,53 +1,44 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Reveal from '@/components/widgets/Reveal.astro';
-import SectionHeading from '@/components/widgets/SectionHeading.astro';
 
 const steps = [
-  { n: '01', title: 'Describe the task', description: 'Tell Zylo what you want done in plain language. No code, no flowcharts.' },
-  { n: '02', title: 'Connect your tools', description: 'Plug in the apps and data your agent needs — Slack, email, CRM, and more.' },
-  { n: '03', title: 'Build with AI', description: 'Zylo turns your prompt into a working agent you can tune in real time.' },
-  { n: '04', title: 'Ship and automate', description: 'Deploy instantly. Your agent runs on a schedule or on every trigger.' },
+  { icon: 'lucide:user-plus', title: 'Create free account', desc: 'Elevate your efficiency and streamline your workflow by setting up your team workspace in 2 minutes.' },
+  { icon: 'lucide:users-round', title: 'Invite team members', desc: 'Bring your team together and grant role-based access for collaborative automation building.' },
+  { icon: 'lucide:zap', title: 'Instantly improve workflow', desc: 'Connect 100+ tools and deploy autonomous AI agents to eliminate manual tasks instantly.' },
+  { icon: 'lucide:bar-chart-2', title: 'Track progress', desc: 'Monitor execution health, cost savings, and task performance live from your dashboard.' },
 ];
 ---
 
-<section id="how" class="section bg-[#f8f8f8] border-y border-[#f1f5f9]">
-  <div class="container-page text-center">
-    {/* Section Heading */}
-    <div class="mx-auto mb-10 max-w-2xl text-center">
-      <SectionHeading
-        title="How it works"
-        intro="Discover the AI workspace that turns plain-language prompts into agents, connects your tools, and automates the work end to end."
-      />
-      <Reveal delay={140} class="mt-8">
-        <a
-          href="#start"
-          class="inline-flex h-[48px] items-center justify-center bg-[#4f46e5] text-white hover:bg-indigo-700 px-[24px] text-[16px] font-medium rounded-full transition duration-200"
-        >
-          Start building
-        </a>
-      </Reveal>
+<section id="process" class="py-24 bg-white border-b border-slate-200/60">
+  <div class="container-page max-w-6xl mx-auto px-4">
+    <Reveal class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-4 leading-tight">
+        Start improving productivity with just 4 steps
+      </h2>
+      <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+        Transform your team's potential into performance. Witness the real results that our tool brings to the table, amplifying collaboration and productivity.
+      </p>
+    </Reveal>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      {steps.map((s, idx) => (
+        <Reveal delay={idx * 80}>
+          <div class="group rounded-3xl border border-slate-200/80 bg-slate-50/50 p-7 hover:bg-white hover:border-brand/40 hover:shadow-xl transition-all h-full">
+            <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-colors shadow-sm">
+              <Icon name={s.icon} class="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
+            </div>
+            <h3 class="font-bold text-slate-900 text-lg font-heading mb-2">{s.title}</h3>
+            <p class="text-slate-600 text-xs leading-relaxed font-normal">{s.desc}</p>
+          </div>
+        </Reveal>
+      ))}
     </div>
 
-    {/* 4-Column Horizontal Cards Layout */}
-    <Reveal delay={200} class="mt-16 text-left">
-      <div class="bg-white/70 border border-[#e2e8f0]/80 rounded-[16px] overflow-hidden flex flex-col lg:flex-row">
-        {steps.map((s, i) => (
-          <div
-            class={`flex-1 flex flex-col justify-between p-6 lg:px-[24px] lg:py-[24px] xl:p-8 bg-white min-h-[350px] lg:min-h-[420px] ${
-              i !== 0 ? 'border-t lg:border-t-0 lg:border-l border-[#e7ecf3]' : ''
-            }`}
-          >
-            <div class="flex items-start justify-between">
-              <span class="text-[36px] font-bold tracking-tight text-[#4f46e5] leading-none font-heading">{s.n}</span>
-            </div>
-
-            <div class="mt-12 lg:mt-auto">
-              <h5 class="h5 mb-3 tracking-tight">{s.title}</h5>
-              <p class="text-[13px] xl:text-[14px] text-[#45556c] opacity-90 leading-relaxed">{s.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+    <Reveal class="text-center">
+      <a href="/process" class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-slate-900 px-7 text-sm font-semibold text-white hover:bg-brand transition-colors shadow-md">
+        See all process <Icon name="lucide:arrow-right" class="w-4 h-4" />
+      </a>
     </Reveal>
   </div>
 </section>

@@ -1,0 +1,101 @@
+---
+import Layout from '@/layouts/Base.astro';
+import Navbar from '@/components/global/header/Navbar.astro';
+import Footer from '@/components/global/Footer.astro';
+import Reveal from '@/components/widgets/Reveal.astro';
+import { generatePaths } from '@/lib/utils/i18nUtils';
+import { Icon } from 'astro-icon/components';
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+
+const bullets = [
+  'Clear comparison of single- vs multi-tenant models',
+  'Costs, complexity, and trade-offs — explained plain and simple',
+  'Tips to improve existing SaaS products if you need to scale',
+];
+
+const stats = [
+  { icon: 'lucide:download', label: '500+ downloads by C-levels' },
+  { icon: 'lucide:compass', label: 'Guided by our architect with 9+ SaaS built' },
+  { icon: 'lucide:file-search', label: 'Detailed case study inside' },
+];
+
+const cards = [
+  'Embrace the Power of SaaS for Banking Evolution',
+  'Accelerate Digital Transformation in Modern Banking',
+  'Unlock Scalable Growth with Smart Banking Solutions',
+  'Empower Financial Innovation Through SaaS Technology',
+  'Revolutionize Customer Experience in the Banking Sector',
+  'Drive Secure and Agile Banking Operations with SaaS',
+];
+---
+
+<Layout title="Finding the architecture that fits your SaaS — Zylo Whitepaper" description="Multi-tenant, single-tenant — which will better support your SaaS? All answers are packed into this white paper.">
+  <Navbar />
+
+  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+    <div class="container-page max-w-6xl mx-auto px-4">
+      {/* 1. Manifesto / Hero */}
+      <Reveal class="max-w-3xl mx-auto text-center mb-16">
+        <h1 class="text-4xl md:text-6xl font-bold text-slate-900 font-heading tracking-tight leading-[1.08] mb-6">
+          Finding the architecture<br class="hidden sm:block" /> that fits your SaaS
+        </h1>
+        <p class="text-lg text-slate-600 leading-relaxed mb-8">
+          Multi-tenant, single-tenant — which will better support your SaaS? We cornered our software architect and asked them all about architecture models, how they pick the right setup, and how to fix one for an up-and-running product.
+        </p>
+
+        <p class="text-base font-bold text-slate-900 font-heading mb-4">All answers are packed into this white paper:</p>
+        <ul class="space-y-3 text-left max-w-xl mx-auto mb-10">
+          {bullets.map((b) => (
+            <li class="flex items-start gap-3 text-sm text-slate-600 leading-relaxed">
+              <Icon name="lucide:check" class="w-4 h-4 mt-0.5 shrink-0 text-brand" />
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+
+        <a href="/pricing" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 text-sm font-semibold text-white hover:bg-brand-hover transition-colors shadow-lg">
+          Join now <Icon name="lucide:arrow-right" class="w-4 h-4" />
+        </a>
+      </Reveal>
+
+      {/* 2. Feature stats */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+        {stats.map((s, idx) => (
+          <Reveal delay={idx * 80}>
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:shadow-md transition-all h-full flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-brand/10 text-brand flex items-center justify-center shrink-0">
+                <Icon name={s.icon} class="w-6 h-6" />
+              </div>
+              <p class="text-base font-bold text-slate-900 font-heading leading-snug">{s.label}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* 3. Whitepaper cards */}
+      <Reveal class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 font-heading tracking-tight leading-tight">
+          Thorough research, verified data, and practical SaaS strategies.
+        </h2>
+      </Reveal>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {cards.map((title, idx) => (
+          <Reveal delay={idx * 60}>
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:border-brand/40 hover:shadow-lg transition-all h-full flex flex-col justify-between">
+              <h3 class="text-xl font-bold text-slate-900 font-heading mb-6 leading-snug">{title}</h3>
+              <a href="/blog" class="inline-flex items-center gap-2 text-xs font-semibold text-brand hover:gap-3 transition-all">
+                Read more <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

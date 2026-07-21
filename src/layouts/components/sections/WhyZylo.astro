@@ -1,106 +1,72 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Reveal from '@/components/widgets/Reveal.astro';
-import SectionHeading from '@/components/widgets/SectionHeading.astro';
 
-const bentoItems = [
+const reviews = [
   {
-    image: '/home/Visual Editor.png',
-    title: 'No Engineers Required',
-    body: 'Skip the brittle scripts and dev backlog. Describe an agent in plain words and Zylo builds it.',
-    className: 'col-span-1 md:col-span-2 lg:col-start-1 lg:col-span-2 lg:row-start-1 bg-white',
+    author: 'Richard',
+    role: 'Community Organiser',
+    company: 'CloudScale',
+    quote: 'This platform completely changed how our support team operates. From intelligent workflows to real-time analytics, everything is designed to scale. We now handle more than double the number of tickets with the same team without compromising service quality.',
   },
   {
-    image: '/features/Fits how you already work..png',
-    title: 'Connects Everywhere',
-    body: 'Native connectors for the tools you already run. No glue code, no maintenance.',
-    className: 'col-span-1 md:col-span-1 lg:col-start-3 lg:col-span-1 lg:row-start-1 bg-white',
+    author: 'Rudra Ghosh',
+    role: 'Product Lead',
+    company: 'Fintech Flow',
+    quote: 'Connecting custom LLM endpoints and databases took literally minutes. The reliability and low latency execution have made Zylo an indispensable part of our core product infrastructure.',
   },
   {
-    image: '/features/Export Anytime.png',
-    title: 'No Lock-In',
-    body: 'Use our AI or bring your own key — no forced markup on every token. Export your agents anytime.',
-    className: 'col-span-1 md:col-span-1 lg:col-start-1 lg:col-span-1 lg:row-start-2 bg-white',
-  },
-  {
-    image: '/home/Made for the AI Era.png',
-    title: 'A Price That Fits',
-    body: 'Start free. Paid plans from <span class="font-semibold tabular-nums text-[#0f172b]">$19/mo</span>, not $300.',
-    className: 'col-span-1 md:col-span-2 lg:col-start-1 lg:col-span-1 lg:row-start-3 bg-white',
+    author: 'Sarah Jenkins',
+    role: 'VP of Operations',
+    company: 'HyperLogistics',
+    quote: 'We saved over 150 hours per team member per month. The visual workflow canvas makes it effortless for anyone on our team to build automated AI pipelines.',
   },
 ];
 ---
 
-<section id="why" class="py-24 bg-[#efefff]">
-  <div class="container-page">
-    <SectionHeading
-      title="Why Zylo Over the Alternatives?"
-      intro="Dev-built scripts break and need engineers. Enterprise platforms cost $300+ a month. Zylo gives you real agents, your own models, and no lock-in — at a price small teams can actually afford."
-    />
+<section id="testimonials" class="py-24 bg-white border-b border-slate-200/60 overflow-hidden">
+  <div class="container-page max-w-6xl mx-auto px-4">
+    <Reveal class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+      <div>
+        <span class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2 block">Testimonials</span>
+        <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight leading-tight">
+          Experiences shared by <br class="hidden sm:inline" /> our customers
+        </h2>
+      </div>
+      <a href="/testimonial" class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-slate-900 px-6 text-sm font-semibold text-white hover:bg-brand transition-colors shadow-sm shrink-0">
+        See all testimonials <Icon name="lucide:arrow-right" class="w-4 h-4" />
+      </a>
+    </Reveal>
 
-    {/* Bento Grid */}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 mt-16">
-      {bentoItems.map(({ image, title, body, className }, i) => (
-        <Reveal
-          delay={(i % 3) * 80}
-          class={`group overflow-hidden rounded-[20px] border border-[#e2e8f0] transition duration-300 hover:z-10 hover:shadow-lg flex flex-col ${className}`}
-        >
-          <div class="flex w-full flex-1 items-center justify-center overflow-hidden p-6 min-h-[150px]">
-            <img
-              src={image}
-              alt={title}
-              class="max-h-full max-w-full object-contain opacity-90 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100"
-            />
-          </div>
-          <div class="mt-auto p-8 pt-0">
-            <h3 class="text-[24px] font-semibold text-[#0f172b] mb-3 font-heading leading-tight">{title}</h3>
-            <p class="text-[18px] text-[#45556c] leading-[27px]" set:html={body}></p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {reviews.map((r, idx) => (
+        <Reveal delay={idx * 80}>
+          <div class="rounded-3xl border border-slate-200 bg-slate-50/50 p-8 hover:bg-white hover:shadow-xl transition-all h-full flex flex-col justify-between">
+            <div class="mb-8">
+              <div class="flex items-center gap-1 text-amber-400 mb-6">
+                <Icon name="lucide:star" class="w-4 h-4 fill-current" />
+                <Icon name="lucide:star" class="w-4 h-4 fill-current" />
+                <Icon name="lucide:star" class="w-4 h-4 fill-current" />
+                <Icon name="lucide:star" class="w-4 h-4 fill-current" />
+                <Icon name="lucide:star" class="w-4 h-4 fill-current" />
+              </div>
+              <p class="text-slate-700 text-sm leading-relaxed font-normal italic">
+                "{r.quote}"
+              </p>
+            </div>
+
+            <div class="pt-6 border-t border-slate-200/80 flex items-center gap-4">
+              <div class="w-11 h-11 rounded-full bg-brand text-white font-bold flex items-center justify-center font-heading text-sm shadow-md">
+                {r.author[0]}
+              </div>
+              <div>
+                <h4 class="font-bold text-slate-900 text-sm font-heading">{r.author}</h4>
+                <p class="text-xs text-slate-500">{r.role}, <span class="font-semibold text-slate-800">{r.company}</span></p>
+              </div>
+            </div>
           </div>
         </Reveal>
       ))}
-
-      {/* Featured: Backed by a trusted team */}
-      <Reveal
-        delay={80}
-        class="col-span-1 md:col-span-2 lg:col-start-2 lg:col-span-2 lg:row-start-2 lg:row-span-2 rounded-[20px] text-white p-8 md:p-10 transition duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden group flex flex-col"
-        style={{ backgroundImage: 'linear-gradient(212deg, rgb(79, 70, 229) -10%, rgb(15, 23, 43) 45%)' }}
-      >
-        <div class="relative z-10 flex-1 flex flex-col">
-          <div class="flex items-center mb-6">
-            <span class="inline-flex items-center justify-center h-8 w-8 rounded-lg bg-white/10">
-              <Icon name="lucide:shield-check" class="w-[18px] h-[18px] text-white" aria-hidden="true" />
-            </span>
-          </div>
-          <div class="mb-10">
-            <h3 class="text-[36px] font-semibold text-white mb-2 font-heading leading-tight">Backed by a Trusted Team</h3>
-            <p class="text-[20px] text-[#cad5e2] max-w-xl leading-[30px]">
-              <span class="font-bold text-white">12,000+</span> teams and{' '}
-              <span class="font-bold text-white">10+</span> years of shipping. Zylo runs your
-              automations on a foundation you can trust.
-            </p>
-          </div>
-
-          {/* Purple Stats Grid */}
-          <div class="mt-auto bg-[#2c277f] rounded-[16px] px-8 py-6 grid grid-cols-2 gap-y-8 gap-x-8 max-w-[514px]">
-            <div>
-              <h4 class="text-[36px] font-semibold text-white mb-1 font-heading leading-tight">12k+</h4>
-              <p class="text-[18px] text-[#cad5e2]">Teams Automating</p>
-            </div>
-            <div>
-              <h4 class="text-[36px] font-semibold text-white mb-1 font-heading leading-tight">4M+</h4>
-              <p class="text-[18px] text-[#cad5e2]">Runs / Month</p>
-            </div>
-            <div>
-              <h4 class="text-[36px] font-semibold text-white mb-1 font-heading leading-tight">99.9%</h4>
-              <p class="text-[18px] text-[#cad5e2]">Run Reliability</p>
-            </div>
-            <div>
-              <h4 class="text-[36px] font-semibold text-white mb-1 font-heading leading-tight">160+</h4>
-              <p class="text-[18px] text-[#cad5e2]">Countries Served</p>
-            </div>
-          </div>
-        </div>
-      </Reveal>
     </div>
   </div>
 </section>
