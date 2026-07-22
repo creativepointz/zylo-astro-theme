@@ -10,18 +10,16 @@ export function getStaticPaths() {
   return generatePaths();
 }
 
-const mainQuote = "Our growth plateaued until we started using Zylo. The AI spotted trends we never saw and guided us with actionable tips. With improved targeting, our customer acquisition cost dropped by 20%. Zylo pays for itself within weeks.";
-
 const testimonials = [
-  { name: 'Richard', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
-  { name: 'Oliver', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
-  { name: 'Richard', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
-  { name: 'Amelia', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
-  { name: 'Noah', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
-  { name: 'George', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
-  { name: 'Ravi Ganatra', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
-  { name: 'Imdat Cimsit', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
-  { name: 'Trian Dominguez', role: 'CEO SPX', rating: '4.9', quote: mainQuote },
+  { name: 'Richard Lee', role: 'Operations Director at CloudScale', rating: '5.0', quote: 'This platform completely changed how our support team operates. We now handle more than double the tickets with the same team.' },
+  { name: 'Oliver Vance', role: 'Tech Lead at Fintech Flow', rating: '4.9', quote: 'Connecting our custom endpoints and databases took literally minutes. The execution reliability is unmatched.' },
+  { name: 'Amelia Chen', role: 'VP of Product at VentureLab', rating: '4.8', quote: 'We saved over 150 hours per team member per month. The visual workflow canvas is extremely intuitive.' },
+  { name: 'Noah Miller', role: 'Co-Founder at SaaSify', rating: '5.0', quote: 'Onboarding new teammates used to take days of training. Now, they can build and deploy working automations on day one.' },
+  { name: 'George Wright', role: 'Director of Support at SecureBank', rating: '4.9', quote: 'Zylo has eliminated all manual data entry between our CRM and task tracking tools. Absolute lifesaver!' },
+  { name: 'Ravi Ganatra', role: 'VP Operations at HyperLogistics', rating: '5.0', quote: 'The real-time trace logs let us debug broken API webhooks instantly. Our uptime has never been better.' },
+  { name: 'Imdat Cimsit', role: 'CTO at DataPivot', rating: '4.9', quote: 'Zylo pays for itself in weeks. We automated all billing sync tasks and reduced custom scripting costs.' },
+  { name: 'Trian Dominguez', role: 'Engineering Manager at Lovable', rating: '4.9', quote: 'We integrated Slack, Notion, and Jira with custom conditional alerts. Setup was completely code-free.' },
+  { name: 'Sarah Jenkins', role: 'Product Lead at VentureLab', rating: '4.8', quote: 'The visual canvas and conditional logic triggers let us coordinate multi-step workflows without complex coding.' }
 ];
 ---
 
@@ -90,10 +88,10 @@ const testimonials = [
       <div class="container-page max-w-3xl py-16 md:py-24 text-center">
         <Reveal>
           <h2 class="h2 mb-4">
-            Start planning smarter and more meaningful user experiences
+            Start automating your team's workflow operations today
           </h2>
           <p class="p-rg mb-8">
-            Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual and interactive effects all in one platform.
+            Zylo delivers a visually intuitive workflow builder, providing your team with smooth tool connections and reliable execution logs all in one platform.
           </p>
           <div class="flex flex-wrap justify-center gap-3">
             <a href="/pricing" class="btn-primary btn-lg">Subscribe now</a>

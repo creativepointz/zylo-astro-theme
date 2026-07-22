@@ -13,14 +13,14 @@ export function getStaticPaths() {
 const brands = ['CloudScale', 'DataPivot', 'VentureLab', 'SaaSify', 'SecureBank', 'HyperLogistics'];
 
 const integrations = [
-  { name: 'LiveChat', desc: 'Improve your customer services working side by side with a bot.', icon: 'lucide:message-square' },
-  { name: 'Chat Widget', desc: 'Add a beautiful, customizable chat widget to your website.', icon: 'lucide:bot' },
-  { name: 'HelpDesk', desc: 'Improve your customer services working side by side with a bot.', icon: 'lucide:headphones' },
-  { name: 'Shopify', desc: 'Offer 24/7 personalized customer service and drive sales performance.', icon: 'lucide:shopping-cart' },
-  { name: 'Zapier', desc: 'Improve your customer services working side by side with a bot.', icon: 'lucide:zap' },
-  { name: 'Notion', desc: 'Improve your customer services working side by side with a bot.', icon: 'lucide:file-text' },
-  { name: 'Slack', desc: 'Improve your customer services working side by side with a bot.', icon: 'lucide:slack' },
-  { name: 'Zendesk', desc: 'Add a beautiful, customizable chat widget to your website.', icon: 'lucide:life-buoy' },
+  { name: 'LiveChat', desc: 'Automatically sync chat logs and customer transcripts to CRM contacts.', icon: 'lucide:message-square' },
+  { name: 'Chat Widget', desc: 'Embed interactive forms and quick-action bots directly on your site.', icon: 'lucide:bot' },
+  { name: 'HelpDesk', desc: 'Escalate resolved chats to priority support tickets automatically.', icon: 'lucide:headphones' },
+  { name: 'Shopify', desc: 'Trigger fulfillment notifications and sync customer profiles in real-time.', icon: 'lucide:shopping-cart' },
+  { name: 'Zapier', desc: 'Bridge Zylo with thousands of external web applications in one click.', icon: 'lucide:zap' },
+  { name: 'Notion', desc: 'Sync task progress and database records to your internal knowledge base.', icon: 'lucide:file-text' },
+  { name: 'Slack', desc: 'Receive execution logs and team alerts directly in your active channels.', icon: 'lucide:slack' },
+  { name: 'Zendesk', desc: 'Automate ticket routing and update status records across support teams.', icon: 'lucide:life-buoy' },
 ];
 
 const setupPoints = [
@@ -36,7 +36,7 @@ const stats = [
 ];
 ---
 
-<Layout title="Chatbot Integrations — Connect ChatBot with your favorite tools and apps" description="Connect ChatBot with your favorite tools and apps.">
+<Layout title="Workflow Integrations — Connect Zylo with your favorite tools and apps" description="Connect Zylo with your favorite tools and apps to automate work across systems.">
   <Navbar />
 
   <main id="main" class="bg-canvas">
@@ -47,10 +47,10 @@ const stats = [
         <Reveal class="text-center max-w-4xl mx-auto">
           <span class="eyebrow mb-6 inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas px-3 py-1">
             <Icon name="lucide:sparkles" class="w-3.5 h-3.5 text-brand" />
-            Chatbot Integrations
+            App Integrations
           </span>
           <h1 class="hero-display mb-6">
-            Connect ChatBot with your<br class="hidden sm:inline" /> favorite tools and apps
+            Connect Zylo with your<br class="hidden sm:inline" /> favorite tools and apps
           </h1>
           <p class="subtitle max-w-2xl mx-auto mb-8">
             Plug Zylo into the tools your team already runs on and let work move between them on its own.

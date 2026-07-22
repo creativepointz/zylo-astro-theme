@@ -20,7 +20,7 @@
 /* Changelog tag badge colors live in src/data/changelog.ts (not auto-scanned) — safelist them */
 @source inline("bg-surface text-steel ring-hairline bg-brand/15 text-brand-annotate bg-brand-tag/15 text-brand-tag ring-1 ring-inset");
 
-/* ---- Zylo design tokens (DESIGN.md — Mintlify design system) ---- */
+/* ---- Zylo design tokens (DESIGN.md — Zylo design system) ---- */
 @theme {
   --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-heading: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;

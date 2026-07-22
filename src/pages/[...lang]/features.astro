@@ -14,37 +14,37 @@ const brands = ['CloudScale', 'DataPivot', 'VentureLab', 'SaaSify', 'SecureBank'
 
 /* 5-up feature grid — icon + label + one line */
 const featureGrid = [
-  { icon: 'lucide:zap', title: 'Super Fast', desc: 'Lightning-fast payments that are secure and instantly completed.' },
-  { icon: 'lucide:send', title: 'Instant payment', desc: 'Move money in second with a seamless digital banking experience.' },
-  { icon: 'lucide:shield-check', title: 'Safe & secure', desc: 'Built with layered protection for total data and transaction privacy.' },
-  { icon: 'lucide:trending-up', title: 'Build for sale', desc: 'Grow without limits with flexible, scalable payment systems.' },
-  { icon: 'lucide:receipt-text', title: 'Rich Transaction Detail', desc: 'Get rich transaction data to build smarter authorization approvals.' },
+  { icon: 'lucide:zap', title: 'Lightning Execution', desc: 'Run automated workflows and trigger webhooks instantly across your tools.' },
+  { icon: 'lucide:send', title: 'Visual Builder', desc: 'Map your workflow visually with an intuitive drag-and-drop canvas.' },
+  { icon: 'lucide:shield-check', title: 'Safe & Secure', desc: 'Built with enterprise-grade encryption and full audit logs for compliance.' },
+  { icon: 'lucide:trending-up', title: 'Scale Automatically', desc: 'Run thousands of concurrent tasks without performance drops.' },
+  { icon: 'lucide:receipt-text', title: 'Detailed Trace Logs', desc: 'Get deep execution reports and step-by-step logs to debug pipelines.' },
 ];
 
 const paymentFeatures = [
-  { icon: 'lucide:globe', title: 'Global Payment Acceptance', desc: 'Accept cards globally with seamless multi currency payments—online or in-store.' },
-  { icon: 'lucide:credit-card', title: 'Payment Gateways', desc: 'Accept cards globally with seamless multi currency payments—online or in-store.' },
+  { icon: 'lucide:globe', title: 'Global App Ecosystem', desc: 'Connect Slack, Notion, Jira, GitHub, and 100+ integrations seamlessly.' },
+  { icon: 'lucide:credit-card', title: 'Custom API Integrations', desc: 'Connect private systems and internal databases with custom authentication.' },
 ];
 
 const howSteps = [
   { step: 'Step 01', title: 'Sign up for free.' },
-  { step: 'Step 02', title: 'Import or start fresh' },
-  { step: 'Step 03', title: 'Paste the job details' },
+  { step: 'Step 02', title: 'Connect your stack.' },
+  { step: 'Step 03', title: 'Build your first workflow.' },
 ];
 
-const stepDesc = 'To be able to create an account, input your email address & password.';
+const stepDesc = 'Create an account in minutes with your work email to start building workflows.';
 
 const browseCards = [
-  'Browse 20+ templates from all type of categories for your project!',
-  'Browse 20+ templates from all type of categories for your project!',
-  'Browse 20+ templates from all type of categories for your project!',
+  'Browse 20+ workflow templates to kickstart your team automation!',
+  'Connect 100+ tools with pre-built data synchronization recipes.',
+  'Enable AI agents to automatically handle repetitive administrative tasks.',
 ];
 
 const aboutPoints = [
   'Connect globally, collaborate seamlessly',
-  'Smart automation for faster financial operations',
-  'Seamless payments and multi-currency support',
-  'Real-time financial insights and analytics',
+  'Smart automation for faster business operations',
+  'Unified task monitoring and error handling',
+  'Real-time operational insights and analytics',
 ];
 
 const stats = [
@@ -54,12 +54,12 @@ const stats = [
 ];
 
 const testimonialQuote =
-  '“Our growth plateaued until we started using Zylo. The AI spotted trends we never saw and guided us with actionable tips. With improved targeting, our customer acquisition cost dropped by 20%. Zylo pays for itself within weeks.”';
+  '“Our efficiency plateaued until we started using Zylo. The visual canvas helped us automate manual syncing, and our team saved over 150 hours per month. Zylo paid for itself within weeks.”';
 
 const testimonials = ['Richard', 'Oliver', 'Amelia'];
 ---
 
-<Layout title="More features — Smart payment solution for your business" description="Zylo's fully integrated platform is built to handle your payment needs seamlessly.">
+<Layout title="More features — Smart automation solution for your business" description="Zylo's fully integrated platform is built to handle your automation needs seamlessly.">
   <Navbar />
 
   <main id="main" class="bg-canvas">
@@ -72,10 +72,10 @@ const testimonials = ['Richard', 'Oliver', 'Amelia'];
             More features
           </span>
           <h1 class="hero-display mb-6">
-            Smart payment<br class="hidden sm:inline" /> solution for your business
+            Smart automation<br class="hidden sm:inline" /> solution for your business
           </h1>
           <p class="subtitle max-w-2xl mx-auto mb-8">
-            Everything you need to move money, issue cards, and get paid — in one connected platform.
+            Everything you need to connect your tools, automate workflows, and coordinate tasks — in one platform.
           </p>
           <div class="flex flex-wrap items-center justify-center gap-3">
             <a href="/pricing" class="btn-primary btn-lg">
@@ -98,7 +98,7 @@ const testimonials = ['Richard', 'Oliver', 'Amelia'];
       <div class="container-page text-center">
         <Reveal>
           <p class="eyebrow mb-8">
-            Rated <span class="text-ink">4.9/5</span> from over 450 review
+            Rated <span class="text-ink">4.9/5</span> from over 450 reviews
           </p>
           <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-8 items-center justify-items-center">
             {brands.map((b) => (
@@ -135,9 +135,9 @@ const testimonials = ['Richard', 'Oliver', 'Amelia'];
         {/* Row 1 — text left */}
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <Reveal>
-            <h2 class="h2 mb-5">Complete Payment Solution</h2>
+            <h2 class="h2 mb-5">Complete Operations Control</h2>
             <p class="p-rg">
-              Zylo's fully integrated platform is built to handle your payment needs seamlessly, whether you need to issue cards, accept payments, or move money more efficiently.
+              Zylo's fully integrated platform is built to handle your automation needs seamlessly, whether you need to connect API endpoints, sync databases, or deploy AI agents.
             </p>
           </Reveal>
           <Reveal delay={100}>
@@ -160,9 +160,9 @@ const testimonials = ['Richard', 'Oliver', 'Amelia'];
         {/* Row 2 — text right */}
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <Reveal class="lg:order-2">
-            <h2 class="h2 mb-5">Accept online payments</h2>
+            <h2 class="h2 mb-5">Build and monitor pipelines</h2>
             <p class="p-rg mb-8">
-              The easiest way to accept payments for phone plans and manage AutoPay, refunds, payouts and more. Fully embedded in Zylo Connect.
+              The easiest way to trigger workflows, run scheduled tasks, and monitor active runs in real-time. Fully integrated with your operations stack.
             </p>
             <a href="/contact" class="btn-primary btn-md">
               Contact sales <Icon name="lucide:arrow-right" class="w-4 h-4" />
@@ -170,7 +170,7 @@ const testimonials = ['Richard', 'Oliver', 'Amelia'];
           </Reveal>
           <Reveal delay={100} class="lg:order-1">
             <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-card)] overflow-hidden">
-              <img src="/placeholder.png" alt="Zylo payments overview" class="w-full rounded-md block" />
+              <img src="/placeholder.png" alt="Zylo workflow dashboard" class="w-full rounded-md block" />
             </div>
           </Reveal>
         </div>

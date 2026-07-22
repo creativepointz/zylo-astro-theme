@@ -10,19 +10,53 @@ export function getStaticPaths() {
   return generatePaths();
 }
 
-const tabs = ['General', 'Alerts', 'Reports', 'Exports', 'API', 'Media monitoring'];
-
-const questions = [
-  'How does an AI resume builder work?',
-  'Can the AI customize resumes for different jobs?',
-  'Does it improve my chances of getting hired?',
-  'Does it have templates for different industries?',
-  'What file formats can I download (PDF, TXT, DOCX)?',
-  'What file formats can I download (PDF, TXT, DOCX)?',
+const faqData = [
+  {
+    category: 'General',
+    questions: [
+      { q: 'How does Zylo automate our daily tasks?', a: 'Zylo uses intelligent triggers and data connectors to map and execute workflows. You can visually configure steps, map fields between tools, and let our agents handle repetitive tasks autonomously.' },
+      { q: 'Is there a free trial available?', a: 'Yes! We offer a 14-day free trial on our Starter and Growth plans, with no credit card required to sign up.' },
+      { q: 'What is the limit on active workflows?', a: 'Starter plans support up to 20 active workflows, Growth plans up to 100, and Enterprise plans offer unlimited workflows.' }
+    ]
+  },
+  {
+    category: 'Alerts',
+    questions: [
+      { q: 'Can I set up real-time error notifications?', a: 'Yes. Zylo can send immediate alerts via Slack, email, or custom webhooks when a critical step in your workflow fails.' },
+      { q: 'How do I customize alert conditions?', a: 'You can configure conditional filters on any workflow step to trigger alerts only for specific error codes or high-priority accounts.' }
+    ]
+  },
+  {
+    category: 'Reports',
+    questions: [
+      { q: 'What analytics are included in my dashboard?', a: 'You can track task execution counts, success rates, average runs per hour, and total cost/time savings metrics.' },
+      { q: 'Can I export operational reports?', a: 'Yes, reports can be downloaded in PDF and CSV formats, or synced directly to Google Sheets or Notion databases.' }
+    ]
+  },
+  {
+    category: 'Exports',
+    questions: [
+      { q: 'What file formats are supported for exports?', a: 'Zylo supports exporting task logs and data in JSON, CSV, PDF, and Markdown format.' },
+      { q: 'Can I schedule automated weekly exports?', a: 'Absolutely. You can set a cron-like trigger to run background exports of your logs and metrics weekly.' }
+    ]
+  },
+  {
+    category: 'API',
+    questions: [
+      { q: 'Do you offer a public API?', a: 'Yes, Zylo provides a fully documented REST API to trigger workflows, fetch execution logs, and manage connectors programmatically.' },
+      { q: 'Can I connect custom endpoints?', a: 'Yes, our Custom HTTP block allows you to make authenticated GET/POST requests to any secure internal or external API endpoint.' }
+    ]
+  },
+  {
+    category: 'Media monitoring',
+    questions: [
+      { q: 'How does media monitoring work?', a: 'Zylo can scan social media feeds, RSS feeds, or news APIs for specific keywords and feed that data directly into your workflows.' },
+      { q: 'Can I analyze sentiment automatically?', a: 'Yes, you can plug in our AI Sentiment Analysis block to score text data before routing it to your team channels.' }
+    ]
+  }
 ];
 
-const answer =
-  'A generative AI chatbot is an advanced type of chatbot that uses artificial intelligence to create dynamic, human-like responses in real time rather than solely on predefined scripts or answers.';
+const tabs = faqData.map(f => f.category);
 
 const helpCards = [
   {
@@ -97,19 +131,19 @@ const helpCards = [
     {/* 3. Accordion list */}
     <div class="container-page pb-16 md:pb-24">
       <div class="max-w-3xl mx-auto">
-        {tabs.map((t, tabIdx) => (
+        {faqData.map((group, tabIdx) => (
           <div data-faq-panel={String(tabIdx)} class="space-y-3" style={tabIdx === 0 ? '' : 'display:none'}>
-            {questions.map((q, idx) => (
+            {group.questions.map((item, idx) => (
               <Reveal delay={idx * 50}>
                 <details class="group rounded-md border border-hairline-soft bg-canvas p-6 [&_summary::-webkit-details-marker]:hidden">
                   <summary class="flex cursor-pointer items-center justify-between gap-4">
-                    <span class="h5">{q}</span>
+                    <span class="h5">{item.q}</span>
                     <Icon
                       name="lucide:chevron-down"
                       class="w-4 h-4 shrink-0 text-steel transition-transform group-open:rotate-180"
                     />
                   </summary>
-                  <p class="p-rg mt-4">{answer}</p>
+                  <p class="p-rg mt-4 text-stone">{item.a}</p>
                 </details>
               </Reveal>
             ))}

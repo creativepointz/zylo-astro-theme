@@ -11,25 +11,25 @@ export function getStaticPaths() {
 }
 
 const features = [
-  { title: 'Product Quality:', desc: 'Automatically syncs across all your devices. You can also access them anywhere.' },
-  { title: 'On Demand Design:', desc: 'Images, videos, PDFs and audio files are supported.' },
-  { title: 'Choice of Service:', desc: 'Whatever your business needs, you can choose a service.' },
+  { title: 'Workflow Automation:', desc: 'Automatically syncs applicant data across all your connected databases and communication channels.' },
+  { title: 'Visual Canvas:', desc: 'Build, test, and debug pipelines with a visual drag-and-drop builder without writing custom scripts.' },
+  { title: 'Granular Permissions:', desc: 'Secure workspaces with role-based access control, keeping candidate data private and compliant.' },
 ];
 
 const meta = [
-  { label: 'Industry', value: 'Fintech solutions' },
-  { label: 'Company size', value: '5,000 – 10,000 employees' },
-  { label: 'Founded', value: 'Since 1999' },
+  { label: 'Industry', value: 'Education & Non-Profit' },
+  { label: 'Company size', value: '1,000 – 5,000 employees' },
+  { label: 'Founded', value: 'Since 2012' },
 ];
 
 const stats = [
-  { value: '55,000+', label: 'Managed tasks with ERP' },
-  { value: '8hrs/week', label: 'Saved for each user' },
-  { value: '5,000 – 10,000', label: 'Employees on the platform' },
+  { value: '55,000+', label: 'Managed applications synced' },
+  { value: '8hrs/week', label: 'Saved for each coordinator' },
+  { value: '1,000 – 5,000', label: 'Members on the platform' },
 ];
 ---
 
-<Layout title="Case Studies — Zylo" description="How Zylo created a complete application management system for their fellowship programme in Saas.">
+<Layout title="Case Studies — Zylo" description="How Zylo built a unified operations dashboard for global enterprise teams.">
   <Navbar />
 
   <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
@@ -38,10 +38,10 @@ const stats = [
       <Reveal class="text-center max-w-3xl mx-auto mb-16">
         <span class="eyebrow mb-4 block">Case study</span>
         <h1 class="h1 mb-5">
-          Zylo created a complete application management system for their fellowship programme in Saas
+          Zylo built a unified application management system for global fellowship programs
         </h1>
         <p class="subtitle">
-          &ldquo;Thanks to Stacker, the Zylo Fellows team each gets 8 hours or roughly one working day &ndash; back per week&rdquo;
+          &ldquo;Thanks to Zylo, the fellows operations team each gets 8 hours &ndash; roughly one working day &ndash; back per week&rdquo;
         </p>
       </Reveal>
 
@@ -72,7 +72,7 @@ const stats = [
             <div>
               <h2 class="h5 mb-3">About</h2>
               <p class="p-sm">
-                Zylo is a modern SaaS platform built to simplify business operations and accelerate growth. We help teams manage data, automate workflows, and make smarter decisions with a confidence. From startups to our enterprises, Zylo grows with your business.
+                Zylo is a modern SaaS platform built to simplify business operations and accelerate growth. We help teams manage data, automate workflows, and make smarter decisions with confidence. From startups to enterprises, Zylo grows with your business.
               </p>
             </div>
             {meta.map((m) => (
@@ -95,12 +95,12 @@ const stats = [
         {/* Content */}
         <Reveal delay={150} class="lg:col-span-2 space-y-12">
           <section class="space-y-4">
-            <h2 class="h3">Measure conversion performance</h2>
+            <h2 class="h3">Measure operational performance</h2>
             <p class="p-rg">
-              IT company content is important for a number of reasons. First, it can help you attract potential customers. When you create content that is relevant to your target audience, you position yourself as an expert in your field and increase the chances that potential customers will find you. IT company content can help you educate potential customers about your products and services.
+              Managing applicant data and coordination across dozens of hosts used to take days of manual tracking. By implementing Zylo's workflow automation, the fellows team was able to sync application submissions directly with their CRM and internal databases. This eliminated manual data entry completely, ensuring that updates are reflected in real-time across all systems.
             </p>
             <p class="p-rg">
-              We are committed to providing our clients with the highest quality IT services and support. We understand that IT is essential for your business, and we will work tirelessly to help you achieve your business goals.
+              The operations team can now monitor the status of every application from a single dashboard. Automated triggers send notifications to internal reviewers as soon as new submissions arrive, keeping the evaluation process moving smoothly.
             </p>
           </section>
 
@@ -117,31 +117,31 @@ const stats = [
           </section>
 
           <section class="space-y-6">
-            <h2 class="h3">The Challange</h2>
+            <h2 class="h3">The Challenge</h2>
             <p class="p-rg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas interdum, orci at dapibus massa ante pharetra tellus. Maecenas interdum, orci at euismod dapibus. Lorem ipsum dolor sit amet.
+              Prior to using Zylo, the team relied on a fragmented stack of spreadsheets, form builders, and manual email alerts. Reviewers frequently missed notification deadlines, and candidate data became out-of-sync between recruitment and operations boards. They needed a secure, unified platform that could automate data syncs and trigger alerts programmatically.
             </p>
             <blockquote class="rounded-lg border border-hairline bg-canvas p-8">
               <p class="h4 mb-6 leading-snug">
-                We're committed to changing the way of mobile UX. We believe that mobile UX has the power to make a real difference in people's lives.
+                We're committed to simplifying operational complexity. We believe that automation has the power to free teams from repetitive manual work, allowing them to focus on high-impact initiatives.
               </p>
               <footer class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-full bg-surface text-ink text-sm font-semibold flex items-center justify-center">R</div>
                 <div>
                   <p class="h6">Ralph Edwards</p>
-                  <p class="p-lt">New York</p>
+                  <p class="p-lt">Program Director</p>
                 </div>
               </footer>
             </blockquote>
           </section>
 
           <section class="space-y-4">
-            <h2 class="h3">Clarity across the supply chain</h2>
+            <h2 class="h3">Clarity across the operational pipeline</h2>
             <p class="p-rg">
-              IT company content is important for a number of reasons. First, it can help you attract potential customers. When you create content that is relevant to your target audience, you position yourself as an expert in your field and increase the chances that potential customers will find you. IT company content can help you educate potential customers about your products and services.
+              With Zylo, every step of the fellowship lifecycle is automated. From candidate intake to onboarding and final evaluations, data flows seamlessly between Slack, Notion, and their custom database. The team has full visibility and control over who has access to private applicant records.
             </p>
             <p class="p-rg">
-              We are committed to providing our clients with the highest quality IT services and support. We understand that IT is essential for your business, and we will work tirelessly to help you achieve your business goals.
+              By centralizing operations, the Zylo Fellows program scaled their intake by 40% without hiring additional coordinators, proving that automated systems are the key to efficient scaling.
             </p>
             <ul class="space-y-4 pt-2">
               {features.map((f) => (
