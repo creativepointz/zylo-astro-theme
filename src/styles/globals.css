@@ -1,68 +1,88 @@
 @import 'tailwindcss';
 
-/* ---- Local Fonts ---- */
+/* ---- Local Fonts (DESIGN.md §Typography — Inter for UI prose, Geist Mono for code) ---- */
 @font-face {
-  font-family: 'Fustat';
+  font-family: 'Inter';
   font-style: normal;
-  font-weight: 200 800;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/fustat-latin.woff2') format('woff2');
+  src: url('/fonts/inter-latin.woff2') format('woff2');
 }
 
 @font-face {
-  font-family: 'Poppins';
+  font-family: 'Geist Mono';
   font-style: normal;
-  font-weight: 400;
+  font-weight: 100 900;
   font-display: swap;
-  src: url('/fonts/poppins-400-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('/fonts/poppins-500-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('/fonts/poppins-600-latin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('/fonts/poppins-700-latin.woff2') format('woff2');
+  src: url('/fonts/geist-mono-latin.woff2') format('woff2');
 }
 
 /* Changelog tag badge colors live in src/data/changelog.ts (not auto-scanned) — safelist them */
-@source inline("bg-indigo-50 text-indigo-700 ring-indigo-600/20 bg-violet-50 text-violet-700 ring-violet-600/20 bg-sky-50 text-sky-700 ring-sky-600/20 bg-emerald-50 text-emerald-700 ring-emerald-600/20 bg-amber-50 text-amber-700 ring-amber-600/20 ring-1 ring-inset");
+@source inline("bg-surface text-steel ring-hairline bg-brand/15 text-brand-annotate bg-brand-tag/15 text-brand-tag ring-1 ring-inset");
 
-/* ---- Zylo design tokens (DESIGN-home.md §1) ---- */
+/* ---- Zylo design tokens (DESIGN.md — Mintlify design system) ---- */
 @theme {
-  --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-heading: 'Fustat', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-heading: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', Menlo, Consolas, monospace;
 
-  --color-brand: #4f46e5;
-  /* Indigo 600 */
-  --color-brand-hover: #4338ca;
-  /* Indigo 700 */
-  --color-brand-subtle: #eef2ff;
-  /* Indigo 50 */
+  /* Brand & accent */
+  --color-brand: #00d4a4;
+  /* Mint — accent CTAs, active states only */
+  --color-brand-hover: #00b48a;
+  /* Deep mint — pressed */
+  --color-brand-subtle: #7cebcb;
+  /* Soft mint */
+  --color-brand-tag: #3772cf;
+  --color-brand-warn: #c37d0d;
+  --color-brand-annotate: #1ba673;
+  --color-brand-error: #d45656;
 
-  --color-dark-bg: #171a21;
-  /* dark charcoal */
-  --color-dark-surface: #2b303b;
-  /* Dark card surface */
+  /* Primary action (black pill dominates marketing) */
+  --color-primary: #0a0a0a;
+  --color-on-primary: #ffffff;
 
-  --radius-lg: 8px;
-  --radius-xl: 12px;
+  /* Hero atmospherics */
+  --color-hero-sky-from: #87a8c8;
+  --color-hero-sky-to: #f5e9d8;
+  --color-hero-dark-from: #1a3d4a;
+  --color-hero-dark-to: #2d5a4f;
+  --color-testimonial-orange: #f55a3c;
+  --color-testimonial-orange-deep: #cc3a1f;
+
+  /* Surface */
+  --color-canvas: #ffffff;
+  --color-canvas-dark: #0a0a0a;
+  --color-surface: #f7f7f7;
+  --color-surface-soft: #fafafa;
+  --color-surface-code: #1c1c1e;
+  --color-hairline: #e5e5e5;
+  --color-hairline-soft: #ededed;
+  --color-hairline-dark: #1f1f1f;
+
+  /* Text */
+  --color-ink: #0a0a0a;
+  --color-charcoal: #1c1c1e;
+  --color-slate-ink: #3a3a3c;
+  --color-steel: #5a5a5c;
+  --color-stone: #888888;
+  --color-muted: #a8a8aa;
+  --color-on-dark: #ffffff;
+  --color-on-dark-muted: #b3b3b3;
+
+  /* Radius — tightly disciplined scale */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+
+  /* Elevation */
+  --shadow-subtle: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --shadow-card: 0 4px 12px 0 rgb(0 0 0 / 0.08);
+  --shadow-mockup: 0 24px 48px -8px rgb(0 0 0 / 0.12);
+  --shadow-brand: 0 8px 24px rgb(0 212 164 / 0.08);
 }
 
 html {
@@ -84,7 +104,14 @@ html {
 }
 
 body {
-  @apply bg-white font-sans text-slate-900 antialiased;
+  @apply bg-canvas font-sans text-ink antialiased;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: var(--font-mono);
 }
 
 /* Base button — @utility so variants can @apply it (Tailwind v4) */
@@ -166,88 +193,108 @@ body {
   }
 }
 
-/* ---- Type scale (exact px/LH from spec) ---- */
+/* ---- Type scale (DESIGN.md §Typography — Inter, tight negative tracking on display sizes) ---- */
 @layer components {
+  .hero-display {
+    @apply font-semibold text-[36px] leading-[1.05] tracking-[-2px] text-ink sm:text-[44px] md:text-[56px] lg:text-[72px];
+  }
+
   .h1 {
-    @apply font-semibold text-[44px] leading-[1.2] tracking-[-0.02em] text-slate-900 md:text-[68px] md:leading-[1.25];
-    font-family: var(--font-heading);
+    @apply font-semibold text-[36px] leading-[1.1] tracking-[-1px] text-ink md:text-[48px];
   }
 
   .h2 {
-    @apply font-semibold text-[34px] leading-[1.2] tracking-[-0.02em] text-slate-900 md:text-[52px];
-    font-family: var(--font-heading);
+    @apply font-semibold text-[28px] leading-[1.2] tracking-[-0.5px] text-ink md:text-[36px];
   }
 
   .h3 {
-    @apply font-semibold text-[28px] leading-[1.3] text-slate-900 md:text-[42px];
-    font-family: var(--font-heading);
+    @apply font-semibold text-[24px] leading-[1.25] text-ink md:text-[28px];
   }
 
   .h4 {
-    @apply font-semibold text-[28px] leading-[1.2] text-slate-900 md:text-[36px];
-    font-family: var(--font-heading);
+    @apply font-semibold text-[20px] leading-[1.3] text-ink md:text-[22px];
   }
 
   .h5 {
-    @apply font-semibold text-2xl leading-[1.3] text-slate-900 md:text-[30px];
-    font-family: var(--font-heading);
+    @apply font-semibold text-[18px] leading-[1.4] text-ink;
   }
 
   .h6 {
-    @apply font-semibold text-xl leading-[1.3] text-slate-900 md:text-2xl;
-    font-family: var(--font-heading);
+    @apply font-semibold text-base leading-[1.4] text-ink;
   }
 
-  .display-1 {
-    @apply font-semibold text-base leading-[1.2] tracking-[0.08em] uppercase text-brand;
-    font-family: var(--font-heading);
+  .display-lg {
+    @apply font-semibold text-[40px] leading-[1.1] tracking-[-1.5px] text-ink md:text-[56px];
   }
 
-  .display-2 {
-    @apply font-semibold text-lg leading-[1.3] text-brand;
-    font-family: var(--font-heading);
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase leading-[1.4] tracking-[0.5px] text-steel;
   }
 
-  .p-xl {
-    @apply text-xl leading-[1.5] text-slate-600;
+  .subtitle {
+    @apply text-lg leading-[1.5] text-steel;
   }
 
   .p-lg {
-    @apply text-lg leading-[1.5] text-slate-600;
-  }
-
-  .p-md {
-    @apply text-lg leading-[1.5] text-slate-600;
+    @apply text-lg leading-[1.5] text-steel;
   }
 
   .p-rg {
-    @apply text-base leading-[1.5] text-slate-700;
+    @apply text-base leading-[1.5] text-steel;
+  }
+
+  .p-sm {
+    @apply text-sm leading-[1.5] text-steel;
   }
 
   .p-lt {
-    @apply text-sm leading-[1.3] text-slate-400;
+    @apply text-[13px] leading-[1.4] text-stone;
   }
 
   /* ---- Button variants (base `btn` defined as @utility below) ---- */
+  /* Black pill — dominant CTA on light surfaces */
   .btn-primary {
-    @apply btn bg-brand text-white hover:bg-brand-hover;
+    @apply btn bg-primary text-on-primary hover:bg-charcoal active:bg-charcoal disabled:bg-hairline disabled:text-muted;
+  }
+
+  /* Mint pill — reserved for brand-accent moments, one per viewport */
+  .btn-accent {
+    @apply btn bg-brand text-primary hover:bg-brand-hover;
+  }
+
+  /* White pill — for use on dark hero bands */
+  .btn-on-dark {
+    @apply btn bg-on-dark text-primary hover:bg-surface;
   }
 
   .btn-secondary {
-    @apply btn border border-slate-200 bg-white text-slate-900 hover:bg-slate-50;
+    @apply btn border border-hairline bg-transparent text-ink hover:bg-surface;
+  }
+
+  .btn-ghost {
+    @apply btn rounded-md bg-transparent px-3 py-2 text-ink hover:bg-surface;
   }
 
   .btn-lg {
-    @apply h-12 px-6 text-base;
+    @apply h-11 px-6 text-sm;
   }
 
   .btn-md {
-    @apply h-10 px-4 text-sm;
+    @apply h-10 px-5 text-sm;
+  }
+
+  /* ---- Surfaces ---- */
+  .card {
+    @apply rounded-lg border border-hairline bg-canvas p-6;
+  }
+
+  .card-feature {
+    @apply rounded-lg bg-surface p-8;
   }
 
   /* ---- Layout helpers ---- */
   .container-page {
-    @apply mx-auto w-full max-w-7xl px-6 md:px-8;
+    @apply mx-auto w-full max-w-[1280px] px-6 md:px-8;
   }
 
   .section {
@@ -256,16 +303,6 @@ body {
 
   /* ---- Icon tile ---- */
   .icon-tile {
-    @apply inline-flex h-12 w-12 items-center justify-center rounded-lg bg-brand-subtle text-brand;
-  }
-
-  /* ---- Footer dark-mode heading overrides ---- */
-  footer .h1,
-  footer .h2,
-  footer .h3,
-  footer .h4,
-  footer .h5,
-  footer .h6 {
-    color: #fff;
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-md border border-hairline bg-canvas text-ink;
   }
 }

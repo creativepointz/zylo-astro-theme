@@ -12,7 +12,7 @@ npm create astro@latest -- --template creativepointz/zylo-astro-theme
 
 - **11 pages, fully wired**: home, features, pricing, about, contact, blog, article, docs (listing + detail), changelog (timeline + detail), and legal pages (privacy, terms, cookies).
 - **Static, fast, zero client-side framework** — plain Astro components, minimal inline JS (mobile nav, scroll-reveal, marquee).
-- **Tailwind CSS v4** with a documented design-token system (colors, type scale, spacing, radius — see `DESIGN-home.md`).
+- **Tailwind CSS v4** with a documented design-token system (colors, type scale, spacing, radius, elevation — see `DESIGN.md`).
 - **`[...lang]` routing scaffold** ready for internationalization — ships English-only today with unprefixed URLs (`/`, `/pricing`), but adding a language is a one-line change to `src/config/language.json`.
 - **`@/` path aliases** (`@/components/*`, `@/layouts/*`, `@/lib/*`, `@/styles/*`) instead of relative `../../` imports.
 - **Content-driven docs & changelog**: both sections are powered by simple typed data files (`src/lib/data/docs.ts`, `src/lib/data/changelog.ts`) — add an entry, get a new page for free via `getStaticPaths`.
@@ -25,7 +25,7 @@ npm create astro@latest -- --template creativepointz/zylo-astro-theme
 /
 ├── public/
 │   ├── favicon.svg
-│   ├── fonts/                  # self-hosted Fustat + Poppins .woff2
+│   ├── fonts/                  # self-hosted Inter + Geist Mono .woff2
 │   ├── home/, features/        # page-specific images
 │   └── zylo*.svg            # wordmark logos
 ├── src/
@@ -76,7 +76,7 @@ All commands are run from the root of the project, from a terminal:
 ## 🎨 Customizing
 
 - **Content**: doc categories and changelog posts live in `src/lib/data/docs.ts` and `src/lib/data/changelog.ts` — edit the arrays, the routes regenerate automatically.
-- **Design tokens**: colors, type scale, spacing, and component classes (`.btn-*`, `.h1`–`.h6`, `.p-*`) are defined in `src/styles/globals.css` and documented in `DESIGN-home.md`.
+- **Design tokens**: colors, type scale, spacing, radius, elevation, and component classes (`.btn-*`, `.h1`–`.h6`, `.p-*`, `.card`, `.eyebrow`) are defined in `src/styles/globals.css` and documented in `DESIGN.md`.
 - **Logos**: the "Trusted by teams at" marquee (`src/layouts/components/sections/MakersMarquee.astro`) ships with generic placeholder wordmarks — swap in your own customer/partner logos.
 - **Legal pages**: `privacy-policy.astro`, `terms-of-service.astro`, and `cookie-policy.astro` contain sample copy with a `[Your Company Name]` placeholder. **Have these reviewed by your own counsel before publishing** — they are a starting point, not legal advice.
 - **i18n**: add a language by adding an entry to `src/config/language.json`; `generatePaths()` in `src/lib/utils/i18nUtils.ts` picks it up automatically for every static page.

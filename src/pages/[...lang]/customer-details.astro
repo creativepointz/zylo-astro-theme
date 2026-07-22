@@ -33,38 +33,38 @@ const highlights = [
 <Layout title="Customer Details — How Zensai Closed More Than USD 300K in ARR" description="How Zensai closed more than USD 300K in ARR within months of adding Zylo integrations.">
   <Navbar />
 
-  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
     <div class="container-page max-w-5xl mx-auto px-4">
       {/* 1. Hero */}
       <Reveal class="mb-12">
         <a href="/customer" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline mb-6">
           <Icon name="lucide:arrow-left" class="w-4 h-4" /> Customer
         </a>
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 font-heading tracking-tight leading-tight">
+        <h1 class="text-4xl md:text-5xl font-semibold text-ink font-heading tracking-tight leading-tight">
           How Zensai closed more than USD 300K in ARR within months of adding Zylo integrations
         </h1>
       </Reveal>
 
       {/* 2. About / Meta Panel */}
-      <Reveal delay={100} class="grid grid-cols-1 md:grid-cols-3 gap-8 rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm mb-12">
+      <Reveal delay={100} class="grid grid-cols-1 md:grid-cols-3 gap-8 rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)] mb-12">
         <div class="md:col-span-2">
-          <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3">About</h2>
-          <p class="text-slate-600 text-base leading-relaxed">
+          <h2 class="text-sm font-semibold uppercase tracking-wider text-stone mb-3">About</h2>
+          <p class="text-steel text-base leading-relaxed">
             Zylo is a modern SaaS platform built to simplify business operations and accelerate growth. We help teams manage data, automate workflows, and make smarter decisions with a confidence. From startups to our enterprises, Zylo grows with your business.
           </p>
         </div>
         <div class="space-y-6">
           {meta.map((m) => (
             <div>
-              <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-1">{m.label}</h3>
-              <p class="text-slate-900 font-semibold text-sm">{m.value}</p>
+              <h3 class="text-sm font-semibold uppercase tracking-wider text-stone mb-1">{m.label}</h3>
+              <p class="text-ink font-semibold text-sm">{m.value}</p>
             </div>
           ))}
           <div>
-            <h3 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-2">Share</h3>
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-stone mb-2">Share</h3>
             <div class="flex items-center gap-3">
               {socials.map((s) => (
-                <a href="#" aria-label={s.label} class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-600 hover:bg-brand hover:text-white hover:border-brand transition-colors">
+                <a href="#" aria-label={s.label} class="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-steel hover:bg-charcoal hover:text-on-primary hover:border-brand transition-colors">
                   <Icon name={s.icon} class="w-4 h-4" />
                 </a>
               ))}
@@ -74,29 +74,29 @@ const highlights = [
       </Reveal>
 
       {/* 3. Narrative Content */}
-      <Reveal delay={150} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm space-y-6 text-slate-600 leading-relaxed text-base">
-        <h2 class="text-2xl font-bold text-slate-900 font-heading">About Zensai</h2>
+      <Reveal delay={150} class="rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)] space-y-6 text-steel leading-relaxed text-base">
+        <h2 class="text-2xl font-semibold text-ink font-heading">About Zensai</h2>
         <p>
           Zensai is an AI-powered clinical platform that helps physicians identify medical conditions and streamline their daily workflows. Leveraging proprietary algorithms, Regard reviews the complete patient record to surface key insights, strengthen documentation accuracy, and simplify routine clinical tasks. The platform improves communication across care teams and ensures documentation supports accurate reimbursement. By connecting clinical and operational processes, Regard enables health systems to unlock more value from their data, reduce administrative burden, enhance patient care, and improve financial performance reimagining the healthcare experience, one note at a time.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 font-heading">The Challenge: Delayed invoicing slowed month-end closes</h2>
+        <h2 class="text-2xl font-semibold text-ink font-heading">The Challenge: Delayed invoicing slowed month-end closes</h2>
         <p>
           Regard&rsquo;s finance workflows relied on spreadsheets, scattered inputs, and manual cross referencing. Tina Cui, VP of Finance, had to track contract terms, implementation changes, and rev rec schedules across different files and Slack threads.
         </p>
 
-        <blockquote class="rounded-3xl bg-slate-50 border border-slate-200 p-8">
+        <blockquote class="rounded-lg bg-surface-soft border border-hairline p-8">
           <Icon name="lucide:quote" class="w-8 h-8 text-brand mb-4" />
-          <p class="text-lg text-slate-900 font-medium font-heading leading-relaxed mb-5">
+          <p class="text-lg text-ink font-medium font-heading leading-relaxed mb-5">
             We're committed to changing the way of mobile UX. We believe that mobile UX has the power to make a real difference in people's lives.
           </p>
           <footer class="text-sm">
-            <span class="font-bold text-slate-900">Ralph Edwards</span>
-            <span class="text-slate-500"> &mdash; New York</span>
+            <span class="font-semibold text-ink">Ralph Edwards</span>
+            <span class="text-stone"> &mdash; New York</span>
           </footer>
         </blockquote>
 
-        <h2 class="text-2xl font-bold text-slate-900 font-heading">Clarity across the supply chain</h2>
+        <h2 class="text-2xl font-semibold text-ink font-heading">Clarity across the supply chain</h2>
         <p>
           IT company content is important for a number of reasons. First, it can help you attract potential customers. When you create content that is relevant to your target audience, you position yourself as an expert in your field and increase the chances that potential customers will find you. IT company content can help you educate potential customers about your products and services.
         </p>
@@ -107,9 +107,9 @@ const highlights = [
         <div class="space-y-4 pt-2">
           {highlights.map((h) => (
             <div class="flex items-start gap-3">
-              <Icon name="lucide:check-circle" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-              <p class="text-sm text-slate-600">
-                <span class="font-bold text-slate-900">{h.title}</span> {h.desc}
+              <Icon name="lucide:check-circle" class="w-5 h-5 text-brand shrink-0 mt-0.5" />
+              <p class="text-sm text-steel">
+                <span class="font-semibold text-ink">{h.title}</span> {h.desc}
               </p>
             </div>
           ))}

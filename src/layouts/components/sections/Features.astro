@@ -3,101 +3,97 @@ import { Icon } from 'astro-icon/components';
 import Reveal from '@/components/widgets/Reveal.astro';
 ---
 
-<section id="features" class="py-24 bg-slate-900 text-white relative overflow-hidden">
-  {/* Glow Accents */}
-  <div class="absolute inset-0 pointer-events-none select-none">
-    <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-brand/20 blur-[150px] rounded-full"></div>
-  </div>
-
-  <div class="container-page max-w-6xl mx-auto px-4 relative z-10">
-    <Reveal class="text-center max-w-3xl mx-auto mb-16">
-      <span class="inline-block border border-white/20 bg-white/10 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider text-indigo-200 mb-4 backdrop-blur-md">
+{/* Dark inversion band — DESIGN.md §Colors: canvas-dark surface, hairline-dark rules, on-dark type */}
+<section id="features" class="section border-y border-hairline-dark bg-canvas-dark text-on-dark">
+  <div class="container-page">
+    <Reveal class="mx-auto mb-16 max-w-3xl text-center">
+      <span class="mb-4 inline-block rounded-full border border-hairline-dark px-4 py-1.5 text-[11px] font-semibold uppercase leading-[1.4] tracking-[0.5px] text-on-dark-muted">
         Features
       </span>
-      <h2 class="text-3xl sm:text-5xl font-bold font-heading tracking-tight mb-4 leading-tight">
+      <h2 class="h2 mb-4 text-on-dark">
         Features built for real work
       </h2>
-      <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-normal">
+      <p class="subtitle text-on-dark-muted">
         Experience features that take your productivity to the next level.
       </p>
     </Reveal>
 
     {/* Top Row: 2 Big Feature Cards */}
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+    <div class="mb-6 grid grid-cols-1 gap-6 md:grid-cols-2">
       <Reveal delay={100}>
-        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+        <div class="flex h-full flex-col justify-between rounded-lg border border-hairline-dark bg-charcoal p-8">
           <div>
-            <h3 class="text-2xl font-bold font-heading mb-3 text-white">Custom workspace</h3>
-            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            <h3 class="h4 mb-3 text-on-dark">Custom workspace</h3>
+            <p class="p-rg mb-6 text-on-dark-muted">
               A dedicated environment in Zylo that brings together all your workflows, AI key configurations, and team members in one place.
             </p>
           </div>
-          <div class="rounded-2xl border border-white/10 bg-slate-950 p-4">
-            <img src="/home/zylo-hero.png" alt="Custom Workspace" class="w-full rounded-xl block object-cover h-44" />
+          <div class="rounded-md border border-hairline-dark bg-canvas-dark p-3">
+            <img src="/home/zylo-hero.png" alt="Custom Workspace" class="block h-44 w-full rounded-sm object-cover" />
           </div>
         </div>
       </Reveal>
 
       <Reveal delay={150}>
-        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+        <div class="flex h-full flex-col justify-between rounded-lg border border-hairline-dark bg-charcoal p-8">
           <div>
-            <h3 class="text-2xl font-bold font-heading mb-3 text-white">Progress tracking</h3>
-            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            <h3 class="h4 mb-3 text-on-dark">Progress tracking</h3>
+            <p class="p-rg mb-6 text-on-dark-muted">
               Real-time monitoring for your active agent workflows. Track execution times, error rates, and automated task status live.
             </p>
           </div>
-          <div class="rounded-2xl border border-white/10 bg-slate-950 p-4">
-            <img src="/home/zylo-hero.png" alt="Progress Tracking" class="w-full rounded-xl block object-cover h-44" />
+          <div class="rounded-md border border-hairline-dark bg-canvas-dark p-3">
+            <img src="/home/zylo-hero.png" alt="Progress Tracking" class="block h-44 w-full rounded-sm object-cover" />
           </div>
         </div>
       </Reveal>
     </div>
 
     {/* Bottom Row: 3 Feature Cards */}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
       {/* Card 1: Team Collaboration */}
       <Reveal delay={200}>
-        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+        <div class="flex h-full flex-col justify-between rounded-lg border border-hairline-dark bg-charcoal p-8">
           <div>
-            <h3 class="text-xl font-bold font-heading mb-3 text-white">Collaborate with your team</h3>
-            <p class="text-slate-300 text-xs leading-relaxed mb-6">
+            <h3 class="h5 mb-3 text-on-dark">Collaborate with your team</h3>
+            <p class="p-sm mb-6 text-on-dark-muted">
               Invite teammates or partners to share projects and work together, seamlessly organized.
             </p>
           </div>
-          <div class="rounded-2xl bg-brand/20 border border-brand/30 p-6 text-center flex flex-col items-center justify-center">
-            <div class="w-16 h-16 rounded-full bg-brand text-white flex items-center justify-center font-bold text-xl mb-3 shadow-lg">
+          <div class="flex flex-col items-center justify-center rounded-md border border-hairline-dark bg-canvas-dark p-6 text-center">
+            <div class="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-brand text-sm font-semibold text-primary">
               Zylo
             </div>
-            <span class="text-xs font-semibold text-indigo-200">Unified Team Access</span>
+            <span class="text-[13px] font-medium text-on-dark-muted">Unified Team Access</span>
           </div>
         </div>
       </Reveal>
 
       {/* Card 2: Track Your Success */}
       <Reveal delay={240}>
-        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+        <div class="flex h-full flex-col justify-between rounded-lg border border-hairline-dark bg-charcoal p-8">
           <div>
-            <span class="inline-block rounded-full bg-emerald-500/20 text-emerald-300 px-3 py-1 text-xs font-bold mb-4">
+            <span class="mb-4 inline-block rounded-full bg-brand/15 px-3 py-1 text-[13px] font-semibold text-brand">
               103 Tasks Completed
             </span>
-            <h3 class="text-xl font-bold font-heading mb-2 text-white">Track your success</h3>
-            <p class="text-slate-300 text-xs leading-relaxed mb-6">
+            <h3 class="h5 mb-2 text-on-dark">Track your success</h3>
+            <p class="p-sm mb-6 text-on-dark-muted">
               Maintaining a good work-life balance and a positive attitude is important for mental well-being.
             </p>
           </div>
 
-          <div class="grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-center">
+          <div class="grid grid-cols-3 gap-2 border-t border-hairline-dark pt-4 text-center">
             <div>
-              <div class="text-lg font-bold font-heading text-brand">99%</div>
-              <div class="text-[10px] text-slate-400 font-medium">On time</div>
+              <div class="text-base font-semibold text-on-dark">99%</div>
+              <div class="text-xs font-medium text-on-dark-muted">On time</div>
             </div>
             <div>
-              <div class="text-lg font-bold font-heading text-brand">18 hrs</div>
-              <div class="text-[10px] text-slate-400 font-medium">Time saved</div>
+              <div class="text-base font-semibold text-on-dark">18 hrs</div>
+              <div class="text-xs font-medium text-on-dark-muted">Time saved</div>
             </div>
             <div>
-              <div class="text-lg font-bold font-heading text-brand">100%</div>
-              <div class="text-[10px] text-slate-400 font-medium">Priority met</div>
+              <div class="text-base font-semibold text-on-dark">100%</div>
+              <div class="text-xs font-medium text-on-dark-muted">Priority met</div>
             </div>
           </div>
         </div>
@@ -105,18 +101,18 @@ import Reveal from '@/components/widgets/Reveal.astro';
 
       {/* Card 3: Action Needed */}
       <Reveal delay={280}>
-        <div class="rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-colors h-full flex flex-col justify-between">
+        <div class="flex h-full flex-col justify-between rounded-lg border border-hairline-dark bg-charcoal p-8">
           <div>
-            <h3 class="text-xl font-bold font-heading mb-3 text-white">Your action needed</h3>
-            <p class="text-slate-300 text-xs leading-relaxed mb-6">
+            <h3 class="h5 mb-3 text-on-dark">Your action needed</h3>
+            <p class="p-sm mb-6 text-on-dark-muted">
               We've reviewed your application, and there are a few things you'll need to adjust before it can be approved.
             </p>
           </div>
-          <div class="rounded-2xl bg-amber-500/10 border border-amber-500/30 p-4 text-amber-300 text-xs font-semibold flex items-center justify-between">
+          <div class="flex items-center justify-between rounded-md border border-hairline-dark bg-canvas-dark p-4 text-[13px] font-medium text-on-dark">
             <span class="flex items-center gap-2">
-              <Icon name="lucide:alert-circle" class="w-4 h-4 text-amber-400" /> Human Review Required
+              <Icon name="lucide:alert-circle" class="h-4 w-4 text-brand-warn" /> Human Review Required
             </span>
-            <Icon name="lucide:chevron-right" class="w-4 h-4" />
+            <Icon name="lucide:chevron-right" class="h-4 w-4 text-on-dark-muted" />
           </div>
         </div>
       </Reveal>

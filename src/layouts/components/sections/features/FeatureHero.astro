@@ -27,7 +27,7 @@ const loop = [...marqueeFeatures, ...marqueeFeatures, ...marqueeFeatures];
   <!-- Content -->
   <div class="container-page relative z-10 pt-20 text-center md:pt-24 mb-16">
     <Reveal class="mx-auto max-w-4xl">
-      <h1 class="h1 text-slate-900 leading-tight">
+      <h1 class="h1 text-ink leading-tight">
         Everything You Need.<br />
         <span class="text-brand">Nothing You Don't.</span>
       </h1>
@@ -42,20 +42,20 @@ const loop = [...marqueeFeatures, ...marqueeFeatures, ...marqueeFeatures];
         <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href="/pricing"
-            class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-brand px-8 text-base font-semibold text-white hover:bg-brand-hover shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+            class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-semibold text-on-primary hover:bg-charcoal shadow-[var(--shadow-subtle)] hover:shadow-[var(--shadow-card)] transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
           >
             Start Free <Icon name="lucide:arrow-right" class="w-[18px] h-[18px]" />
           </a>
           <a
             href="#use-cases"
-            class="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-8 text-base font-semibold text-slate-900 transition-colors duration-200 hover:bg-slate-50"
+            class="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-hairline bg-canvas px-8 text-base font-semibold text-ink transition-colors duration-200 hover:bg-surface-soft"
           >
             See it in action
           </a>
         </div>
         <ul class="mt-4 flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
           {trust.map((t) => (
-            <li class="p-lt flex items-center gap-1.5 text-slate-600">
+            <li class="p-lt flex items-center gap-1.5 text-steel">
               <Icon name="lucide:check" class="w-4 h-4 text-brand" /> {t}
             </li>
           ))}
@@ -71,9 +71,9 @@ const loop = [...marqueeFeatures, ...marqueeFeatures, ...marqueeFeatures];
 
     <div class="flex gap-6 items-center whitespace-nowrap animate-marquee">
       {loop.map((feature) => (
-        <div class="flex flex-col items-center justify-center gap-[20px] p-[20px] w-[164px] h-[164px] bg-white rounded-[20px] border border-[#e2e8f0]/60 flex-shrink-0 transition-transform hover:scale-105">
+        <div class="flex flex-col items-center justify-center gap-[20px] p-[20px] w-[164px] h-[164px] bg-canvas rounded-[20px] border border-[#e2e8f0]/60 flex-shrink-0 transition-transform hover:scale-105">
           <Icon name={feature.icon} class="w-10 h-10 text-brand" />
-          <span class="font-light text-slate-800 text-[14px] tracking-tight">{feature.name}</span>
+          <span class="font-light text-ink text-[14px] tracking-tight">{feature.name}</span>
         </div>
       ))}
     </div>

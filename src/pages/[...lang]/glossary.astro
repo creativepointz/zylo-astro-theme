@@ -27,14 +27,14 @@ const termNames = [
 <Layout title="Web accessibility glossary — Zylo" description="Web accessibility is the inclusive practice of ensuring that people with disabilities do not face barriers that prevent interaction or access to websites on the World Wide Web.">
   <Navbar />
 
-  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
     <div class="container-page max-w-5xl mx-auto px-4">
       {/* 1. Header Banner */}
       <Reveal class="text-center max-w-3xl mx-auto mb-16">
-        <h1 class="text-4xl sm:text-6xl font-bold text-slate-900 font-heading tracking-tight mb-5">
+        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight mb-5">
           Web accessibility glossary
         </h1>
-        <p class="text-lg text-slate-600 leading-relaxed">
+        <p class="text-lg text-steel leading-relaxed">
           Web accessibility is the inclusive practice of ensuring that people with disabilities
           do not face barriers that prevent interaction or access to websites on
           the World Wide Web.
@@ -45,15 +45,15 @@ const termNames = [
       <Reveal delay={80} class="mb-10">
         <div
           id="glossary-tabs"
-          class="rounded-3xl border border-slate-200 bg-white py-5 px-3 flex gap-2.5 justify-center flex-wrap shadow-sm"
+          class="rounded-lg border border-hairline bg-canvas py-5 px-3 flex gap-2.5 justify-center flex-wrap shadow-[var(--shadow-subtle)]"
         >
           {letters.map((l, idx) => (
             <button
               type="button"
               data-letter={l}
               class:list={[
-                'glossary-tab w-9 h-9 inline-flex justify-center items-center rounded-xl text-lg font-semibold transition-all duration-300',
-                idx === 0 ? 'bg-brand text-white' : 'bg-slate-50 text-slate-600 hover:text-brand',
+                'glossary-tab w-9 h-9 inline-flex justify-center items-center rounded-md text-lg font-semibold transition-all duration-300',
+                idx === 0 ? 'bg-primary text-on-primary' : 'bg-surface-soft text-steel hover:text-brand',
               ]}
             >
               {l}
@@ -66,23 +66,23 @@ const termNames = [
       <div class="mb-16">
         {letters.map((l, idx) => (
           <div class="glossary-panel" data-panel={l} hidden={idx !== 0}>
-            <div class="rounded-3xl border border-slate-200 bg-white p-6 md:p-10 shadow-sm">
+            <div class="rounded-lg border border-hairline bg-canvas p-6 md:p-10 shadow-[var(--shadow-subtle)]">
               <div class="flex flex-col gap-6">
                 {termNames.map((t) => (
-                  <details class="group rounded-3xl border border-slate-200 overflow-hidden transition-all open:shadow-md open:bg-white">
+                  <details class="group rounded-lg border border-hairline overflow-hidden transition-all open:shadow-[var(--shadow-subtle)] open:bg-canvas">
                     <summary class="cursor-pointer list-none flex px-6 py-5 justify-between gap-4 items-center w-full">
-                      <span class="font-semibold text-left text-lg text-slate-900 font-heading flex items-center gap-4 flex-wrap">
-                        <span class="font-semibold text-base bg-brand text-white w-9 h-9 inline-flex justify-center items-center rounded-xl flex-none">
+                      <span class="font-semibold text-left text-lg text-ink font-heading flex items-center gap-4 flex-wrap">
+                        <span class="font-semibold text-base bg-primary text-on-primary w-9 h-9 inline-flex justify-center items-center rounded-md flex-none">
                           {l}
                         </span>
                         {t}
                       </span>
-                      <span class="flex-none w-8 h-8 border border-slate-200 inline-flex justify-center items-center rounded-full text-slate-500 transition-transform duration-300 group-open:rotate-45">
+                      <span class="flex-none w-8 h-8 border border-hairline inline-flex justify-center items-center rounded-full text-stone transition-transform duration-300 group-open:rotate-45">
                         <Icon name="lucide:plus" class="w-4 h-4" />
                       </span>
                     </summary>
                     <div class="px-6 pb-6 pl-[76px] max-sm:pl-6">
-                      <p class="text-slate-600 text-base leading-relaxed">{definition}</p>
+                      <p class="text-steel text-base leading-relaxed">{definition}</p>
                     </div>
                   </details>
                 ))}
@@ -107,10 +107,10 @@ const termNames = [
 
       tabs.forEach((t) => {
         const active = t === tab;
-        t.classList.toggle('bg-brand', active);
-        t.classList.toggle('text-white', active);
-        t.classList.toggle('bg-slate-50', !active);
-        t.classList.toggle('text-slate-600', !active);
+        t.classList.toggle('bg-primary', active);
+        t.classList.toggle('text-on-primary', active);
+        t.classList.toggle('bg-surface-soft', !active);
+        t.classList.toggle('text-steel', !active);
         t.classList.toggle('hover:text-brand', !active);
       });
 

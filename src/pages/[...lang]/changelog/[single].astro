@@ -38,7 +38,7 @@ const { entry, prev, next } = Astro.props as {
           <!-- Back link -->
           <a
             href="/changelog"
-            class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-slate-500 transition-colors hover:text-brand"
+            class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-stone transition-colors hover:text-brand"
           >
             <Icon name="lucide:arrow-left" class="h-4 w-4" />
             All posts
@@ -46,10 +46,10 @@ const { entry, prev, next } = Astro.props as {
 
           <!-- Meta -->
           <div class="mb-6 flex flex-wrap items-center gap-3">
-            <span class="text-lg font-semibold text-slate-700">{entry.date}</span>
-            <span class="rounded-full bg-brand-subtle px-3 py-1 text-sm font-medium text-brand">{entry.version}</span>
+            <span class="text-lg font-semibold text-steel">{entry.date}</span>
+            <span class="rounded-full bg-surface px-3 py-1 text-sm font-medium text-brand">{entry.version}</span>
             {entry.tags.map((tag) => (
-              <span class={`rounded-full px-3 py-1 text-xs font-semibold ${tagStyles[tag] ?? 'bg-slate-100 text-slate-600'}`}>{tag}</span>
+              <span class={`rounded-full px-3 py-1 text-xs font-semibold ${tagStyles[tag] ?? 'bg-surface text-steel'}`}>{tag}</span>
             ))}
           </div>
 
@@ -59,11 +59,11 @@ const { entry, prev, next } = Astro.props as {
     </section>
 
     <!-- Body -->
-    <section class="bg-white pb-24">
+    <section class="bg-canvas pb-24">
       <div class="container-page">
         <article class="mx-auto max-w-[760px]">
           <!-- Hero image -->
-          <div class={`aspect-[760/426] w-full overflow-hidden rounded-xl bg-gradient-to-br ${entry.thumb}`}>
+          <div class={`aspect-[760/426] w-full overflow-hidden rounded-md bg-gradient-to-br ${entry.thumb}`}>
             <div class="h-full w-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
           </div>
 
@@ -80,16 +80,16 @@ const { entry, prev, next } = Astro.props as {
 
                 {section.subsections?.map((sub) => (
                   <div class="flex flex-col gap-4">
-                    <h3 class="h6 text-slate-900">{sub.heading}</h3>
+                    <h3 class="h6 text-ink">{sub.heading}</h3>
                     {sub.paragraphs.map((p) => <p class="p-lg">{p}</p>)}
                     {sub.benefits && (
                       <div class="flex flex-col gap-3">
-                        <p class="font-semibold text-slate-900">Benefits</p>
+                        <p class="font-semibold text-ink">Benefits</p>
                         <ul class="flex flex-col gap-2">
                           {sub.benefits.map((b) => (
                             <li class="flex gap-3">
                               <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-brand" />
-                              <span class="p-rg text-slate-600">{b}</span>
+                              <span class="p-rg text-steel">{b}</span>
                             </li>
                           ))}
                         </ul>
@@ -115,7 +115,7 @@ const { entry, prev, next } = Astro.props as {
           <!-- Callout -->
           {entry.callout && (
             <figure class="mt-14 flex flex-col gap-5 border-l-4 border-brand pl-6">
-              <p class="text-lg font-semibold italic text-slate-900">{entry.callout.quote}</p>
+              <p class="text-lg font-semibold italic text-ink">{entry.callout.quote}</p>
               <p class="p-lg italic">{entry.callout.body}</p>
               <a href={entry.callout.ctaHref} class="btn-primary btn-md w-max">
                 {entry.callout.ctaLabel}
@@ -134,21 +134,21 @@ const { entry, prev, next } = Astro.props as {
 
           <!-- Prev / Next -->
           {(prev || next) && (
-            <nav class="mt-16 grid gap-4 border-t border-slate-200 pt-10 sm:grid-cols-2">
+            <nav class="mt-16 grid gap-4 border-t border-hairline pt-10 sm:grid-cols-2">
               {prev ? (
-                <a href={`/changelog/${prev.slug}`} class="group flex flex-col gap-1 rounded-xl border border-slate-200 p-5 transition-colors hover:border-brand">
-                  <span class="flex items-center gap-1.5 text-sm text-slate-500">
+                <a href={`/changelog/${prev.slug}`} class="group flex flex-col gap-1 rounded-md border border-hairline p-5 transition-colors hover:border-brand">
+                  <span class="flex items-center gap-1.5 text-sm text-stone">
                     <Icon name="lucide:arrow-left" class="h-4 w-4" /> Previous
                   </span>
-                  <span class="font-medium text-slate-900 transition-colors group-hover:text-brand">{prev.title}</span>
+                  <span class="font-medium text-ink transition-colors group-hover:text-brand">{prev.title}</span>
                 </a>
               ) : <span></span>}
               {next && (
-                <a href={`/changelog/${next.slug}`} class="group flex flex-col gap-1 rounded-xl border border-slate-200 p-5 text-right transition-colors hover:border-brand sm:col-start-2">
-                  <span class="flex items-center justify-end gap-1.5 text-sm text-slate-500">
+                <a href={`/changelog/${next.slug}`} class="group flex flex-col gap-1 rounded-md border border-hairline p-5 text-right transition-colors hover:border-brand sm:col-start-2">
+                  <span class="flex items-center justify-end gap-1.5 text-sm text-stone">
                     Next <Icon name="lucide:arrow-right" class="h-4 w-4" />
                   </span>
-                  <span class="font-medium text-slate-900 transition-colors group-hover:text-brand">{next.title}</span>
+                  <span class="font-medium text-ink transition-colors group-hover:text-brand">{next.title}</span>
                 </a>
               )}
             </nav>

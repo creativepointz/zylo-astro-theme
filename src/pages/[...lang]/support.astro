@@ -48,19 +48,19 @@ const faqAnswer =
 <Layout title="Support — Zylo Platform" description="It's always easy to contact our top-rated support team.">
   <Navbar />
 
-  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
     <div class="container-page max-w-6xl mx-auto px-4">
       {/* 1. Support top */}
       <Reveal class="text-center max-w-4xl mx-auto mb-20">
-        <h1 class="text-4xl sm:text-6xl font-bold text-slate-900 font-heading tracking-tight mb-6">
+        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight mb-6">
           See why our support is consistently called the best in the world saas solutions
         </h1>
-        <p class="text-lg text-slate-600 leading-relaxed mb-8">
+        <p class="text-lg text-steel leading-relaxed mb-8">
           It's always easy to contact our top-rated support team.
         </p>
         <div class="flex flex-wrap justify-center gap-3">
           {badges.map((b) => (
-            <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-800 shadow-sm">
+            <span class="inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas px-4 py-2 text-xs font-semibold text-ink shadow-[var(--shadow-subtle)]">
               <Icon name="lucide:award" class="w-4 h-4 text-brand" />
               {b}
             </span>
@@ -72,19 +72,19 @@ const faqAnswer =
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         {cards.map((c, idx) => (
           <Reveal delay={idx * 80}>
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm h-full">
-              <div class="w-12 h-12 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mb-6">
+            <div class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-subtle)] h-full">
+              <div class="w-12 h-12 rounded-md bg-brand/10 text-brand flex items-center justify-center mb-6">
                 <Icon name={c.icon} class="w-6 h-6" />
               </div>
-              <span class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-2">{c.eyebrow}</span>
-              <h2 class="text-2xl font-bold text-slate-900 font-heading mb-8">{c.title}</h2>
+              <span class="block text-xs font-semibold uppercase tracking-wider text-stone mb-2">{c.eyebrow}</span>
+              <h2 class="text-2xl font-semibold text-ink font-heading mb-8">{c.title}</h2>
               <div class="space-y-5">
                 {c.rows.map((r) => (
                   <div class="flex items-start gap-3">
                     <Icon name={r.icon} class="w-4 h-4 text-brand mt-1 shrink-0" />
                     <div>
-                      <span class="block text-xs font-semibold text-slate-500 mb-1">{r.label}</span>
-                      <a href={r.href} class="text-sm font-semibold text-slate-900 hover:text-brand transition-colors">
+                      <span class="block text-xs font-semibold text-stone mb-1">{r.label}</span>
+                      <a href={r.href} class="text-sm font-semibold text-ink hover:text-brand transition-colors">
                         {r.value}
                       </a>
                     </div>
@@ -97,19 +97,19 @@ const faqAnswer =
       </div>
 
       {/* 3. Self-serve articles callout */}
-      <Reveal delay={120} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm text-center mb-20">
-        <div class="w-12 h-12 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mx-auto mb-6">
+      <Reveal delay={120} class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-subtle)] text-center mb-20">
+        <div class="w-12 h-12 rounded-md bg-brand/10 text-brand flex items-center justify-center mx-auto mb-6">
           <Icon name="lucide:book-open" class="w-6 h-6" />
         </div>
-        <p class="text-base text-slate-600 leading-relaxed max-w-2xl mx-auto">
+        <p class="text-base text-steel leading-relaxed max-w-2xl mx-auto">
           If you prefer to do things yourself, we’ve also got articles teaching you how to use your new system.
         </p>
       </Reveal>
 
       {/* 4. Need help FAQ */}
       <Reveal class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-5">Need help?</h2>
-        <p class="text-lg text-slate-600 leading-relaxed">
+        <h2 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight mb-5">Need help?</h2>
+        <p class="text-lg text-steel leading-relaxed">
           Get quick answers and friendly assistance anytime you need.
         </p>
       </Reveal>
@@ -117,14 +117,14 @@ const faqAnswer =
       <div class="space-y-4 max-w-3xl mx-auto">
         {faqs.map((q, idx) => (
           <Reveal delay={idx * 50}>
-            <details class="group rounded-3xl border border-slate-200 bg-white p-6 shadow-sm cursor-pointer transition-all hover:shadow-md [&_summary::-webkit-details-marker]:hidden">
-              <summary class="flex items-center justify-between gap-4 font-bold text-slate-900 font-heading text-lg">
+            <details class="group rounded-lg border border-hairline bg-canvas p-6 shadow-[var(--shadow-subtle)] cursor-pointer transition-all hover:shadow-[var(--shadow-subtle)] [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex items-center justify-between gap-4 font-semibold text-ink font-heading text-lg">
                 <span>{q}</span>
-                <span class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform">
-                  <Icon name="lucide:chevron-down" class="w-4 h-4 text-slate-700" />
+                <span class="w-8 h-8 rounded-full bg-surface flex items-center justify-center shrink-0 group-open:rotate-180 transition-transform">
+                  <Icon name="lucide:chevron-down" class="w-4 h-4 text-steel" />
                 </span>
               </summary>
-              <p class="mt-4 text-slate-600 text-sm leading-relaxed border-t border-slate-100 pt-4 font-normal">
+              <p class="mt-4 text-steel text-sm leading-relaxed border-t border-hairline-soft pt-4 font-normal">
                 {faqAnswer}
               </p>
             </details>

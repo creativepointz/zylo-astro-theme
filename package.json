@@ -1,7 +1,7 @@
 {
   "name": "zylo-astro-theme",
   "description": "A polished, multi-page documentation & SaaS marketing theme for Astro — homepage, features, pricing, docs, changelog, blog, and legal pages, built with Tailwind CSS v4 and Lucide icons.",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "type": "module",
   "license": "MIT",
   "author": {

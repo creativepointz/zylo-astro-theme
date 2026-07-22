@@ -26,14 +26,14 @@ const demoDetails = [
 <Layout title="Contact us — Zylo" description="Our support team is here to assist you reach out anytime.">
   <Navbar />
 
-  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
     <div class="container-page max-w-6xl mx-auto px-4">
       {/* 1. Contact hero */}
       <Reveal class="text-center max-w-3xl mx-auto mb-16">
-        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
           Contact us
         </span>
-        <h1 class="text-4xl sm:text-6xl font-bold text-slate-900 font-heading tracking-tight">
+        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight">
           Our support team is here to assist you reach out anytime.
         </h1>
       </Reveal>
@@ -42,19 +42,19 @@ const demoDetails = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
         {offices.map((o, idx) => (
           <Reveal delay={idx * 80}>
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm h-full">
+            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] h-full">
               <div class="flex items-center justify-between gap-3 mb-4">
-                <div class="w-12 h-12 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+                <div class="w-12 h-12 rounded-md bg-brand/10 text-brand flex items-center justify-center">
                   <Icon name="lucide:map-pin" class="w-6 h-6" />
                 </div>
                 {o.main && (
-                  <span class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-semibold text-slate-700">
+                  <span class="rounded-full border border-hairline bg-surface-soft px-3 py-1 text-[11px] font-semibold text-steel">
                     Main Office
                   </span>
                 )}
               </div>
-              <h2 class="text-xl font-bold text-slate-900 font-heading mb-2">{o.country}</h2>
-              <p class="text-slate-600 text-sm leading-relaxed">{o.address}</p>
+              <h2 class="text-xl font-semibold text-ink font-heading mb-2">{o.country}</h2>
+              <p class="text-steel text-sm leading-relaxed">{o.address}</p>
             </div>
           </Reveal>
         ))}
@@ -63,41 +63,41 @@ const demoDetails = [
       {/* 3. Let's contact us form */}
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start mb-20">
         <Reveal>
-          <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+          <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
             Let’s contact us
           </span>
-          <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-4">
+          <h2 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight mb-4">
             Get in touch with our support for help.
           </h2>
-          <p class="text-lg text-slate-600 leading-relaxed">
+          <p class="text-lg text-steel leading-relaxed">
             We accept smoke signals, but modern communication works better today.
           </p>
         </Reveal>
 
-        <Reveal delay={100} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-xl">
+        <Reveal delay={100} class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-card)]">
           <form class="space-y-4">
             <input
               type="text"
               placeholder="Your full name"
-              class="w-full rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none"
+              class="w-full rounded-md border border-hairline px-5 py-3 text-sm text-ink placeholder:text-stone focus:border-brand focus:outline-none"
             />
             <input
               type="text"
               placeholder="Your email address"
-              class="w-full rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none"
+              class="w-full rounded-md border border-hairline px-5 py-3 text-sm text-ink placeholder:text-stone focus:border-brand focus:outline-none"
             />
             <textarea
               rows="4"
               placeholder="Write your message"
-              class="w-full resize-none rounded-xl border border-slate-200 px-5 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-brand focus:outline-none"
+              class="w-full resize-none rounded-md border border-hairline px-5 py-3 text-sm text-ink placeholder:text-stone focus:border-brand focus:outline-none"
             ></textarea>
-            <label class="flex items-center gap-2 text-sm text-slate-600">
-              <input type="checkbox" class="h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand" />
+            <label class="flex items-center gap-2 text-sm text-steel">
+              <input type="checkbox" class="h-4 w-4 rounded border-hairline text-brand focus:ring-brand" />
               I agree to receive marketing materials
             </label>
             <button
               type="submit"
-              class="w-full rounded-full bg-brand py-3.5 text-sm font-semibold text-white hover:bg-brand-hover transition-colors shadow-lg"
+              class="w-full rounded-full bg-primary py-3.5 text-sm font-semibold text-on-primary hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]"
             >
               Send Analysis
             </button>
@@ -106,21 +106,21 @@ const demoDetails = [
       </div>
 
       {/* 4. Book a Demo */}
-      <Reveal class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm text-center">
-        <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-2">Book a Demo!</h2>
-        <p class="text-lg text-slate-600 leading-relaxed mb-10">
+      <Reveal class="rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)] text-center">
+        <h2 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight mb-2">Book a Demo!</h2>
+        <p class="text-lg text-steel leading-relaxed mb-10">
           We will contact again after receive your request in 24h
         </p>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {demoDetails.map((d) => (
             <a
               href={d.href}
-              class="group rounded-3xl border border-slate-200 bg-slate-50/60 p-6 hover:border-brand/40 hover:bg-white transition-all flex flex-col items-center gap-3"
+              class="group rounded-lg border border-hairline bg-surface-soft/60 p-6 hover:border-brand/40 hover:bg-canvas transition-all flex flex-col items-center gap-3"
             >
-              <span class="w-10 h-10 rounded-2xl bg-brand/10 text-brand flex items-center justify-center">
+              <span class="w-10 h-10 rounded-md bg-brand/10 text-brand flex items-center justify-center">
                 <Icon name={d.icon} class="w-5 h-5" />
               </span>
-              <span class="text-sm font-semibold text-slate-900 group-hover:text-brand transition-colors">{d.value}</span>
+              <span class="text-sm font-semibold text-ink group-hover:text-brand transition-colors">{d.value}</span>
             </a>
           ))}
         </div>

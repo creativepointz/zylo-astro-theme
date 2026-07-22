@@ -3,43 +3,40 @@ import { Icon } from 'astro-icon/components';
 import Reveal from '@/components/widgets/Reveal.astro';
 ---
 
-<section id="top" class="relative overflow-hidden pt-32 pb-20 bg-slate-50/70 border-b border-slate-200/60">
-  {/* Soft Background Glow Effects */}
-  <div class="absolute inset-0 pointer-events-none select-none z-0">
-    <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-tr from-indigo-200/40 via-emerald-100/30 to-brand/10 blur-[120px] rounded-full"></div>
-  </div>
-
-  <div class="container-page max-w-6xl mx-auto px-4 relative z-10">
+{/* hero-band-sky — DESIGN.md §Signature Components: full-bleed sky-to-cream gradient, 120px rhythm */}
+<section
+  id="top"
+  class="relative overflow-hidden border-b border-hairline pt-24 pb-16 md:pt-[120px] md:pb-[120px]"
+  style="background: linear-gradient(180deg, var(--color-hero-sky-from) 0%, var(--color-hero-sky-to) 100%);"
+>
+  <div class="container-page relative">
     {/* Headline & Email Form */}
     <div class="flex justify-center text-center">
-      <div class="max-w-4xl mx-auto">
+      <div class="mx-auto max-w-4xl">
         <Reveal>
-          <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-1.5 text-sm font-semibold text-slate-800 shadow-sm mb-6">
-            <span class="rounded-full bg-emerald-500 px-2.5 py-0.5 text-xs font-semibold text-white">New</span>
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas px-4 py-1.5 text-sm font-medium text-ink">
+            <span class="rounded-full bg-brand px-2.5 py-0.5 text-[13px] font-semibold text-primary">New</span>
             <span>Smart task management</span>
           </div>
-          <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold text-slate-900 tracking-tight leading-[1.05] font-heading mb-6">
+          <h1 class="hero-display mb-6">
             Where teams move faster &amp; work gets done
           </h1>
-          <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal mb-8">
+          <p class="subtitle mx-auto mb-8 max-w-2xl text-charcoal">
             Map out tasks, work together effortlessly, and follow progress all from one beautifully unified tool.
           </p>
         </Reveal>
 
         {/* Email Subscription Bar */}
-        <Reveal delay={100} class="max-w-xl mx-auto mb-16">
-          <form class="relative flex flex-col sm:flex-row items-center gap-2 p-2 rounded-full border border-slate-300/80 bg-white shadow-xl focus-within:border-brand">
+        <Reveal delay={100} class="mx-auto mb-16 max-w-xl">
+          <form class="relative flex flex-col items-center gap-2 rounded-full border border-hairline bg-canvas p-2 focus-within:border-brand sm:flex-row">
             <input
               type="email"
               placeholder="Business email address"
               required
-              class="w-full bg-transparent px-5 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none"
+              class="w-full bg-transparent px-5 py-3 text-base text-ink placeholder-stone focus:outline-none"
             />
-            <button
-              type="submit"
-              class="w-full sm:w-auto inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-full bg-brand px-7 text-sm font-semibold text-white hover:bg-brand-hover transition-colors shadow-md"
-            >
-              Subscribe now <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            <button type="submit" class="btn-accent btn-lg w-full shrink-0 sm:w-auto">
+              Subscribe now <Icon name="lucide:arrow-right" class="h-4 w-4" />
             </button>
           </form>
         </Reveal>
@@ -47,61 +44,61 @@ import Reveal from '@/components/widgets/Reveal.astro';
     </div>
 
     {/* 3-Column Preview Grid */}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-end mt-4">
+    <div class="mt-4 grid grid-cols-1 items-end gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {/* Column 1: Progress Card + Preview */}
       <Reveal delay={120} class="space-y-6">
-        <div class="rounded-3xl border border-slate-200/80 bg-white p-7 shadow-lg">
-          <div class="flex items-center gap-4 mb-8">
-            <div class="w-14 h-14 rounded-2xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg font-heading shadow-md">
-              <Icon name="lucide:layers" class="w-7 h-7 text-brand" />
+        <div class="rounded-lg border border-hairline-soft bg-canvas p-6">
+          <div class="mb-8 flex items-center gap-4">
+            <div class="icon-tile h-12 w-12 rounded-md bg-primary text-on-primary">
+              <Icon name="lucide:layers" class="h-6 w-6 text-brand" />
             </div>
             <div>
-              <h3 class="font-bold text-slate-900 text-lg font-heading">Design branding</h3>
-              <p class="text-xs font-semibold text-slate-500">Teacher: Jack Wins</p>
+              <h3 class="h5">Design branding</h3>
+              <p class="p-lt">Teacher: Jack Wins</p>
             </div>
           </div>
-          <div class="flex justify-between items-center text-xs font-bold text-slate-900 mb-2">
+          <div class="mb-2 flex items-center justify-between text-[13px] font-medium text-ink">
             <span>Progress</span>
             <span class="text-brand">38%</span>
           </div>
-          <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden p-0.5">
-            <div class="bg-brand h-full rounded-full w-[38%] transition-all duration-1000"></div>
+          <div class="h-2 w-full overflow-hidden rounded-full bg-surface">
+            <div class="h-full w-[38%] rounded-full bg-brand transition-all duration-1000"></div>
           </div>
         </div>
 
-        <div class="rounded-3xl border border-slate-200 bg-white p-3 shadow-lg">
-          <img src="/home/zylo-hero.png" alt="Zylo preview" class="w-full rounded-2xl block object-cover h-48" />
+        <div class="rounded-lg border border-hairline-soft bg-canvas p-2">
+          <img src="/home/zylo-hero.png" alt="Zylo preview" class="block h-48 w-full rounded-md object-cover" />
         </div>
       </Reveal>
 
-      {/* Column 2: Center Main Dashboard Card */}
+      {/* Column 2: Center Main Dashboard Card — hero-product-mockup */}
       <Reveal delay={160} class="lg:col-span-1">
-        <div class="rounded-3xl border border-slate-200 bg-white p-3 shadow-2xl overflow-hidden">
-          <div class="rounded-2xl bg-slate-900 text-white p-6 mb-3">
-            <div class="flex items-center justify-between text-xs font-semibold text-slate-400 mb-4">
-              <span class="rounded-full bg-emerald-500/20 text-emerald-400 px-3 py-1 font-semibold">Active Workflow</span>
+        <div class="overflow-hidden rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-mockup)]">
+          <div class="mb-2 rounded-md bg-canvas-dark p-6 text-on-dark">
+            <div class="mb-4 flex items-center justify-between text-[13px] text-on-dark-muted">
+              <span class="rounded-full bg-brand/15 px-3 py-1 font-medium text-brand">Active Workflow</span>
               <span>Live Monitor</span>
             </div>
-            <div class="text-xl font-bold font-heading mb-1">AI Automation Pipeline</div>
-            <div class="text-xs text-slate-300">Executing 1,482 daily tasks autonomously</div>
+            <div class="mb-1 text-[22px] font-semibold leading-[1.3] text-on-dark">AI Automation Pipeline</div>
+            <div class="text-[13px] text-on-dark-muted">Executing 1,482 daily tasks autonomously</div>
           </div>
-          <img src="/home/zylo-hero.png" alt="Main Dashboard Showcase" class="w-full rounded-2xl block object-cover h-64" />
+          <img src="/home/zylo-hero.png" alt="Main Dashboard Showcase" class="block h-64 w-full rounded-md object-cover" />
         </div>
       </Reveal>
 
       {/* Column 3: Analytics & Tasks Cards */}
       <Reveal delay={200} class="space-y-6">
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg space-y-3">
+        <div class="space-y-3 rounded-lg border border-hairline-soft bg-canvas p-6">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Completed Tasks</span>
-            <span class="rounded-full bg-emerald-100 text-emerald-700 px-2.5 py-0.5 text-xs font-bold">+103 Done</span>
+            <span class="eyebrow">Completed Tasks</span>
+            <span class="rounded-full bg-brand/15 px-2.5 py-0.5 text-[13px] font-semibold text-brand-annotate">+103 Done</span>
           </div>
-          <div class="text-3xl font-bold text-slate-900 font-heading">99.8%</div>
-          <div class="text-xs text-slate-500 font-medium">On-time automation delivery SLA</div>
+          <div class="h3">99.8%</div>
+          <div class="p-lt">On-time automation delivery SLA</div>
         </div>
 
-        <div class="rounded-3xl border border-slate-200 bg-white p-3 shadow-lg">
-          <img src="/home/zylo-hero.png" alt="Analytics Preview" class="w-full rounded-2xl block object-cover h-48" />
+        <div class="rounded-lg border border-hairline-soft bg-canvas p-2">
+          <img src="/home/zylo-hero.png" alt="Analytics Preview" class="block h-48 w-full rounded-md object-cover" />
         </div>
       </Reveal>
     </div>

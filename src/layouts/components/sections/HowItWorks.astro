@@ -10,34 +10,34 @@ const steps = [
 ];
 ---
 
-<section id="process" class="py-24 bg-white border-b border-slate-200/60">
-  <div class="container-page max-w-6xl mx-auto px-4">
-    <Reveal class="text-center max-w-3xl mx-auto mb-16">
-      <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-4 leading-tight">
+<section id="process" class="section border-b border-hairline bg-canvas">
+  <div class="container-page">
+    <Reveal class="mx-auto mb-16 max-w-3xl text-center">
+      <h2 class="h2 mb-4">
         Start improving productivity with just 4 steps
       </h2>
-      <p class="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
+      <p class="subtitle">
         Transform your team's potential into performance. Witness the real results that our tool brings to the table, amplifying collaboration and productivity.
       </p>
     </Reveal>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+    <div class="mb-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {steps.map((s, idx) => (
         <Reveal delay={idx * 80}>
-          <div class="group rounded-3xl border border-slate-200/80 bg-slate-50/50 p-7 hover:bg-white hover:border-brand/40 hover:shadow-xl transition-all h-full">
-            <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200 text-slate-900 flex items-center justify-center mb-6 group-hover:bg-brand group-hover:text-white group-hover:border-brand transition-colors shadow-sm">
-              <Icon name={s.icon} class="w-6 h-6 transition-transform duration-300 group-hover:scale-110" />
+          <div class="card h-full transition-shadow duration-200 hover:shadow-[var(--shadow-card)]">
+            <div class="icon-tile mb-6">
+              <Icon name={s.icon} class="h-5 w-5" />
             </div>
-            <h3 class="font-bold text-slate-900 text-lg font-heading mb-2">{s.title}</h3>
-            <p class="text-slate-600 text-xs leading-relaxed font-normal">{s.desc}</p>
+            <h3 class="h5 mb-2">{s.title}</h3>
+            <p class="p-sm">{s.desc}</p>
           </div>
         </Reveal>
       ))}
     </div>
 
     <Reveal class="text-center">
-      <a href="/process" class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-slate-900 px-7 text-sm font-semibold text-white hover:bg-brand transition-colors shadow-md">
-        See all process <Icon name="lucide:arrow-right" class="w-4 h-4" />
+      <a href="/process" class="btn-primary btn-lg">
+        See all process <Icon name="lucide:arrow-right" class="h-4 w-4" />
       </a>
     </Reveal>
   </div>

@@ -117,28 +117,28 @@ const sections: Section[] = [
       <div class="container-page">
         <div class="mx-auto max-w-3xl" data-reveal>
           <h1 class="h1 mb-4">Cookie Policy</h1>
-          <p class="p-lt text-slate-500">Last updated: {lastUpdated}</p>
+          <p class="p-lt text-stone">Last updated: {lastUpdated}</p>
           <p class="p-lg mt-8">{intro}</p>
         </div>
       </div>
     </section>
 
     <!-- Body -->
-    <section class="bg-white pb-24">
+    <section class="bg-canvas pb-24">
       <div class="container-page">
         <div class="mx-auto flex max-w-3xl flex-col gap-12">
           {sections.map((section, i) => (
             <section class="flex flex-col gap-5">
-              <h2 class="h5 text-slate-900">{i + 1}. {section.title}</h2>
+              <h2 class="h5 text-ink">{i + 1}. {section.title}</h2>
               {section.blocks.map((block) => (
                 block.type === 'h3' ? (
-                  <h3 class="h6 text-slate-900">{block.text}</h3>
+                  <h3 class="h6 text-ink">{block.text}</h3>
                 ) : block.type === 'ul' ? (
-                  <ul class="flex list-disc flex-col gap-2 pl-6 marker:text-slate-300">
-                    {block.items.map((item) => <li class="p-rg text-slate-600">{item}</li>)}
+                  <ul class="flex list-disc flex-col gap-2 pl-6 marker:text-on-dark-muted">
+                    {block.items.map((item) => <li class="p-rg text-steel">{item}</li>)}
                   </ul>
                 ) : (
-                  <p class="p-rg text-slate-600">{block.text}</p>
+                  <p class="p-rg text-steel">{block.text}</p>
                 )
               ))}
             </section>

@@ -57,83 +57,52 @@ const columns = [
 ];
 ---
 
-<footer class="text-indigo-100 overflow-hidden relative" style={{ background: '#5047E5' }}>
-  {/* SVG Background Layer */}
-  <div class="absolute inset-0 w-full h-full pointer-events-none select-none z-0">
-    <svg class="w-full h-full" viewBox="0 0 1920 861" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <g clip-path="url(#clip0_7194_6706)">
-        <rect width="1920" height="861" fill="#5047E5"></rect>
-        <g filter="url(#filter0_f_7194_6706)">
-          <circle cx="960.5" cy="903.5" r="1150.5" fill="#010002"></circle>
-        </g>
-      </g>
-      <defs>
-        <filter id="filter0_f_7194_6706" x="-690" y="-747" width="3301" height="3301" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-          <feGaussianBlur stdDeviation="250" result="effect1_foregroundBlur_7194_6706"></feGaussianBlur>
-        </filter>
-        <clipPath id="clip0_7194_6706">
-          <rect width="1920" height="861" fill="white"></rect>
-        </clipPath>
-      </defs>
-    </svg>
-  </div>
+{/* Closing CTA band — surface-tinted, black pill primary + mint accent secondary */}
+<section id="start" class="border-t border-hairline bg-surface-soft">
+  <div class="container-page flex flex-col items-center py-24 text-center md:py-[96px]">
+    <h2 class="display-lg max-w-3xl">{ctaTitle}</h2>
+    <p class="subtitle mt-5 max-w-xl">{ctaSubtitle}</p>
 
-  {/* Central CTA Heading and Buttons */}
-  <div id="start" class="container-page flex flex-col items-center text-center py-20 md:py-28 max-w-4xl mx-auto px-4 relative z-10">
-    <h2 class="text-4xl md:text-[56px] font-bold text-white tracking-tight leading-[1.12] font-heading">
-      {ctaTitle}
-    </h2>
-    <p class="text-lg md:text-xl text-indigo-100/90 mt-4 max-w-xl">
-      {ctaSubtitle}
-    </p>
-
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-      <a href="/pricing" class="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#5047E5] hover:bg-indigo-50 transition-all duration-150 active:scale-[0.98]">
-        {ctaPrimary}
-      </a>
-      <a href="/contact" class="inline-flex h-11 items-center justify-center rounded-full border border-white/30 px-6 text-sm font-semibold text-white hover:bg-white/10 transition-all duration-150 active:scale-[0.98]">
-        Book a demo
-      </a>
+    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/pricing" class="btn-primary btn-lg">{ctaPrimary}</a>
+      <a href="/contact" class="btn-secondary btn-lg">Book a demo</a>
     </div>
   </div>
+</section>
 
-  {/* Main Link Grid */}
-  <div class="container-page py-16 border-t border-white/10 relative z-10">
+<footer class="border-t border-hairline bg-canvas">
+  <div class="container-page py-16">
     <div class="grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-6">
-      {/* Brand & Socials Column */}
-      <div class="col-span-2 md:col-span-2 space-y-4">
+      {/* Brand column */}
+      <div class="col-span-2 space-y-4">
         <a href="/" class="inline-block">
-          <img src="/zylo-white.svg" alt="Zylo" width="133" height="32" class="h-8 w-auto" />
+          <img src="/zylo.svg" alt="Zylo" width="133" height="32" class="h-7 w-auto" />
         </a>
-        <p class="text-sm text-indigo-100/80 max-w-xs leading-relaxed">
+        <p class="p-sm max-w-xs">
           Bring your website idea to life by guided SaaS assistance
         </p>
-        <ul class="space-y-1 text-sm text-indigo-100/80">
-          <li><a href="tel:+80600008899" class="hover:text-white transition-colors">+806 (000) 88 99</a></li>
-          <li><a href="mailto:contact@zylo.co" class="hover:text-white transition-colors">contact@zylo.co</a></li>
+        <ul class="space-y-1">
+          <li><a href="tel:+80600008899" class="p-sm transition-colors hover:text-ink">+806 (000) 88 99</a></li>
+          <li><a href="mailto:contact@zylo.co" class="p-sm transition-colors hover:text-ink">contact@zylo.co</a></li>
         </ul>
-        <div class="flex items-center gap-3 pt-2">
-          <a href="#" aria-label="Instagram" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-indigo-150 transition-all duration-150 hover:border-white hover:bg-white/10 hover:text-white">
-            <Icon name="lucide:instagram" class="w-[18px] h-[18px]" />
+        <div class="flex items-center gap-2 pt-2">
+          <a href="#" aria-label="Instagram" class="icon-tile transition-colors hover:bg-surface">
+            <Icon name="lucide:instagram" class="h-4 w-4" />
           </a>
-          <a href="#" aria-label="Play" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-indigo-150 transition-all duration-150 hover:border-white hover:bg-white/10 hover:text-white">
-            <Icon name="lucide:play" class="w-[18px] h-[18px] ml-0.5" />
+          <a href="#" aria-label="YouTube" class="icon-tile transition-colors hover:bg-surface">
+            <Icon name="lucide:play" class="h-4 w-4" />
           </a>
         </div>
       </div>
 
-      {/* Links Columns */}
+      {/* Link columns */}
       {columns.map((col) => (
         <nav aria-label={col.title} class="col-span-1">
-          <h5 class="mb-4 text-sm font-semibold text-white font-heading">
-            {col.title}
-          </h5>
-          <ul class="space-y-3">
+          <h5 class="mb-4 text-sm font-medium text-ink">{col.title}</h5>
+          <ul class="space-y-2.5">
             {col.links.map((link) => (
               <li>
-                <a href={link.href} class="text-sm text-indigo-100/80 transition-colors duration-150 hover:text-white">
+                <a href={link.href} class="text-sm text-steel transition-colors hover:text-ink">
                   {link.label}
                 </a>
               </li>
@@ -144,21 +113,13 @@ const columns = [
     </div>
   </div>
 
-  {/* Bottom Bar */}
-  <div class="border-t border-white/10 relative z-10">
-    <div class="container-page py-6 flex flex-col items-center justify-between gap-4 sm:flex-row text-[13px] text-indigo-200/70">
+  <div class="border-t border-hairline-soft">
+    <div class="container-page flex flex-col items-center justify-between gap-4 py-6 text-[13px] text-stone sm:flex-row">
       <p>© {year} Zylo.co. All rights reserved.</p>
       <div class="flex items-center gap-6">
-        <a href="/terms-of-service" class="hover:text-white transition-colors">Terms of Service</a>
-        <a href="/privacy-policy" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="/terms-of-service" class="transition-colors hover:text-ink">Terms of Service</a>
+        <a href="/privacy-policy" class="transition-colors hover:text-ink">Privacy Policy</a>
       </div>
     </div>
-  </div>
-
-  {/* Standalone ZYLO Watermark — bottom of footer */}
-  <div class="w-full overflow-hidden relative z-0 pointer-events-none select-none">
-    <span class="block text-center font-bold text-[#5047E5] whitespace-nowrap leading-[0.75] tracking-[-0.04em] text-[20vw] opacity-[0.08] font-heading">
-      Zylo
-    </span>
   </div>
 </footer>

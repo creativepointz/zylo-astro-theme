@@ -9,28 +9,28 @@ const personas = [
 ];
 ---
 
-<section id="audience" class="py-24 bg-[#efefff]">
+<section id="audience" class="section bg-surface-soft">
   <div class="container-page">
     <SectionHeading
       title="Built for Lean Teams That Do More With Less"
       intro="Zylo is made for the ops, support, and founding teams who keep everything running — and want AI to take the repetitive work off their plate. No developers, no scripts required."
     />
-    <div class="grid grid-cols-1 gap-0 md:grid-cols-3">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
       {personas.map(({ image, label, use }, i) => (
         <Reveal
           delay={i * 80}
-          class="group flex flex-col overflow-hidden rounded-[20px] border border-[#e2e8f0] bg-white transition duration-300 ease-out hover:z-10 hover:shadow-lg"
+          class="group flex flex-col overflow-hidden rounded-lg border border-hairline bg-canvas transition duration-200 ease-out hover:shadow-[var(--shadow-card)]"
         >
-          <div class="flex h-44 w-full items-center justify-center overflow-hidden p-6 md:h-52">
+          <div class="flex h-44 w-full items-center justify-center overflow-hidden border-b border-hairline-soft bg-surface-soft p-6 md:h-52">
             <img
               src={image}
               alt={label}
-              class="max-h-full max-w-full object-contain opacity-90 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100"
+              class="max-h-full max-w-full object-contain"
             />
           </div>
-          <div class="mt-auto flex flex-col p-6 md:p-8">
-            <h3 class="mb-3 font-heading text-xl font-semibold leading-tight text-[#0f172b] md:text-2xl">{label}</h3>
-            <p class="text-base leading-relaxed text-[#45556c]">{use}</p>
+          <div class="mt-auto flex flex-col p-6">
+            <h3 class="h4 mb-3">{label}</h3>
+            <p class="p-rg">{use}</p>
           </div>
         </Reveal>
       ))}

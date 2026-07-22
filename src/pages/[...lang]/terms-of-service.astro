@@ -14,19 +14,19 @@ export function getStaticPaths() {
 <Layout title="Terms of service | Zylo" description="Terms of Service governing the use of the Zylo platform and services.">
   <Navbar />
 
-  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
     <div class="container-page max-w-4xl mx-auto px-4">
       <Reveal class="mb-12 text-center">
-        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
           Legal Agreement
         </span>
-        <h1 class="text-4xl font-bold text-slate-900 font-heading mb-4">Terms of service | Zylo</h1>
-        <p class="text-xs text-slate-400 font-semibold uppercase tracking-wider">Last Updated: October 9th 2025</p>
+        <h1 class="text-4xl font-semibold text-ink font-heading mb-4">Terms of service | Zylo</h1>
+        <p class="text-xs text-stone font-semibold uppercase tracking-wider">Last Updated: October 9th 2025</p>
       </Reveal>
 
-      <Reveal delay={100} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm space-y-10 text-slate-600 leading-relaxed text-base">
+      <Reveal delay={100} class="rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)] space-y-10 text-steel leading-relaxed text-base">
         <section class="space-y-3">
-          <h2 class="text-xl font-bold text-slate-900 font-heading">1. Agreement to Terms</h2>
+          <h2 class="text-xl font-semibold text-ink font-heading">1. Agreement to Terms</h2>
           <p>
             By accessing or using Zylo&apos;s platform and services (&quot;Services&quot;), you agree to be bound by these
             Terms of Service (&quot;Terms&quot;). If you disagree with any part of these terms, you may not access our
@@ -37,7 +37,7 @@ export function getStaticPaths() {
         </section>
 
         <section class="space-y-3">
-          <h2 class="text-xl font-bold text-slate-900 font-heading">2. Description of Services</h2>
+          <h2 class="text-xl font-semibold text-ink font-heading">2. Description of Services</h2>
           <p>
             Zylo provides an AI-powered SEO and AEO (Answer Engine Optimization) platform that
             helps businesses improve their visibility in search results and AI-powered search engines.
@@ -53,7 +53,7 @@ export function getStaticPaths() {
         </section>
 
         <section class="space-y-3">
-          <h2 class="text-xl font-bold text-slate-900 font-heading">3. Account Registration and Security</h2>
+          <h2 class="text-xl font-semibold text-ink font-heading">3. Account Registration and Security</h2>
           <p>To use certain features of our Services, you must register for an account. You agree to:</p>
           <ul class="list-disc pl-5 space-y-2">
             <li>Provide accurate, current, and complete information during registration</li>
@@ -69,7 +69,7 @@ export function getStaticPaths() {
         </section>
 
         <section class="space-y-3">
-          <h2 class="text-xl font-bold text-slate-900 font-heading">4. Acceptable Use Policy</h2>
+          <h2 class="text-xl font-semibold text-ink font-heading">4. Acceptable Use Policy</h2>
           <p>You agree not to use our Services to:</p>
           <ul class="list-disc pl-5 space-y-2">
             <li>Violate any applicable laws or regulations</li>
@@ -83,7 +83,7 @@ export function getStaticPaths() {
         </section>
 
         <section class="space-y-4">
-          <h2 class="text-xl font-bold text-slate-900 font-heading">5. Refund policy</h2>
+          <h2 class="text-xl font-semibold text-ink font-heading">5. Refund policy</h2>
           <p>
             Try Zylo risk-free. Not satisfied? Request a full refund within 14 days quick, simple, and
             stress-free. Your satisfaction comes first. If Zylo isn&apos;t right for you, get a full refund
@@ -91,7 +91,7 @@ export function getStaticPaths() {
           </p>
           <a
             href="/refund-policy"
-            class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800"
+            class="inline-flex items-center gap-2 rounded-full bg-canvas-dark px-6 py-3 text-sm font-semibold text-on-dark transition hover:bg-charcoal"
           >
             <span>Know more about refund policy</span>
             <Icon name="lucide:arrow-right" class="h-4 w-4" />
@@ -99,27 +99,27 @@ export function getStaticPaths() {
         </section>
 
         <section class="space-y-3">
-          <h2 class="text-xl font-bold text-slate-900 font-heading">6. Payment and Subscription Terms</h2>
+          <h2 class="text-xl font-semibold text-ink font-heading">6. Payment and Subscription Terms</h2>
           <p>
-            <span class="font-medium text-slate-900">Pricing:</span> We offer various subscription plans with different features and pricing. Current
+            <span class="font-medium text-ink">Pricing:</span> We offer various subscription plans with different features and pricing. Current
             pricing is available on our website and may change with notice to existing subscribers.
           </p>
           <p>
-            <span class="font-medium text-slate-900">Bills:</span> Subscriptions are billed in advance on a recurring basis (monthly or annually).
+            <span class="font-medium text-ink">Bills:</span> Subscriptions are billed in advance on a recurring basis (monthly or annually).
             You authorize us to charge your payment method for all fees incurred.
           </p>
           <p>
-            <span class="font-medium text-slate-900">Cancellation:</span> You may cancel your subscription at any time. Cancellations take effect at
+            <span class="font-medium text-ink">Cancellation:</span> You may cancel your subscription at any time. Cancellations take effect at
             the end of the current billing period. We do not provide refunds for partial
             subscription periods.
           </p>
         </section>
 
         <section class="space-y-3">
-          <h2 class="text-xl font-bold text-slate-900 font-heading">7. Privacy policy</h2>
+          <h2 class="text-xl font-semibold text-ink font-heading">7. Privacy policy</h2>
           <p>
             Your privacy is important to us. Our collection and use of personal information is governed
-            by our <a href="/privacy-policy" class="font-medium text-slate-900 underline underline-offset-4">Privacy Policy</a>, which is incorporated into these Terms by reference. By using our
+            by our <a href="/privacy-policy" class="font-medium text-ink underline underline-offset-4">Privacy Policy</a>, which is incorporated into these Terms by reference. By using our
             Services, you consent to our data practices as described in the Privacy Policy.
           </p>
         </section>

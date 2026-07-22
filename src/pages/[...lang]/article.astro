@@ -42,31 +42,31 @@ const comments = [
 <Layout title="Control your online banking while earning rewards — Zylo Blog" description="Resources article from Zylo on online banking, rewards, and modern product engineering.">
   <Navbar />
 
-  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
     <div class="container-page max-w-4xl mx-auto px-4">
       {/* 1. Header */}
       <Reveal class="mb-10">
         <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline mb-6">
           <Icon name="lucide:arrow-left" class="w-4 h-4" /> Back to blog
         </a>
-        <span class="inline-block border border-slate-200 bg-white px-4 py-1.5 rounded-full text-xs font-semibold text-slate-800 uppercase tracking-wider mb-6 shadow-sm">
+        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
           Resources
         </span>
-        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 font-heading tracking-tight leading-tight">
+        <h1 class="text-4xl md:text-5xl font-semibold text-ink font-heading tracking-tight leading-tight">
           Control your online banking while earning rewards.
         </h1>
       </Reveal>
 
       {/* 2. Author + share */}
       <Reveal delay={80} class="mb-12">
-        <div class="flex flex-wrap items-center justify-between gap-6 pb-8 border-b border-slate-200">
+        <div class="flex flex-wrap items-center justify-between gap-6 pb-8 border-b border-hairline">
           <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-brand text-white flex items-center justify-center font-bold font-heading text-xl">
+            <div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center font-semibold font-heading text-xl">
               R
             </div>
             <div>
-              <h2 class="text-xl font-bold text-slate-900 font-heading">Richard</h2>
-              <p class="text-sm text-slate-500">Community Organiser</p>
+              <h2 class="text-xl font-semibold text-ink font-heading">Richard</h2>
+              <p class="text-sm text-stone">Community Organiser</p>
             </div>
           </div>
           <div class="flex items-center gap-1.5">
@@ -74,7 +74,7 @@ const comments = [
               <a
                 href="#"
                 aria-label={s.label}
-                class="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 hover:border-brand/40 hover:text-brand transition-colors"
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-canvas text-steel hover:border-brand/40 hover:text-brand transition-colors"
               >
                 <Icon name={s.icon} class="w-4 h-4" />
               </a>
@@ -84,7 +84,7 @@ const comments = [
       </Reveal>
 
       {/* 3. Article body */}
-      <Reveal delay={120} class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm text-slate-700 leading-relaxed text-base mb-12">
+      <Reveal delay={120} class="rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)] text-steel leading-relaxed text-base mb-12">
         <p class="mb-6">
           We love to bring designs to life as a developer, and I aim to do this using whatever front end tools
           are necessary. My preferred tools are more modern javascript libraries like React.js but I like to use
@@ -97,7 +97,7 @@ const comments = [
           truth and, as it were, the architect of a happy life.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 font-heading mb-4">Using a Query</h2>
+        <h2 class="text-2xl font-semibold text-ink font-heading mb-4">Using a Query</h2>
         <p class="mb-10">
           We love to bring designs to life as a developer, and I aim to do this using whatever front end tools are
           necessary. My preferred tools are more modern javascript libraries like React.js but I like to use
@@ -114,11 +114,11 @@ const comments = [
         <div class="flex items-start gap-6 mb-10">
           <Icon name="lucide:quote" class="w-10 h-10 text-brand flex-none" />
           <div class="flex flex-col gap-4">
-            <blockquote class="text-slate-900 text-2xl md:text-3xl font-semibold font-heading leading-snug tracking-tight">
+            <blockquote class="text-ink text-2xl md:text-3xl font-semibold font-heading leading-snug tracking-tight">
               &ldquo;Success is the result of perfection, hard work, learning from failure, loyalty, &amp;
               persistence&rdquo;
             </blockquote>
-            <span class="text-sm font-semibold text-slate-500">Phil Martinez</span>
+            <span class="text-sm font-semibold text-stone">Phil Martinez</span>
           </div>
         </div>
 
@@ -129,7 +129,7 @@ const comments = [
           orci elementum, sollicitudin mauris laoreet, luctus est. Donec in mi lorem.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 font-heading mb-4">On the specificity of selectors</h2>
+        <h2 class="text-2xl font-semibold text-ink font-heading mb-4">On the specificity of selectors</h2>
         <p class="mb-6">
           The specificity of the : <span class="text-brand font-semibold">not()</span> pseudo-class is the
           specificity of its argument. The :not() pseudo-class does not add to the selector specificity, unlike
@@ -154,7 +154,7 @@ const comments = [
           </li>
         </ul>
 
-        <div class="rounded-3xl border border-slate-200 bg-slate-50/50 p-6 md:p-8 font-mono text-sm text-slate-700 mb-10">
+        <div class="rounded-lg border border-hairline bg-surface-soft p-6 md:p-8 font-mono text-sm text-steel mb-10">
           <div>{'li:not(.old)::after {'}</div>
           <div class="pl-8 my-2">
             <div>{'content: "New!";'}</div>
@@ -173,11 +173,11 @@ const comments = [
       {/* 4. Tags */}
       <Reveal delay={140} class="mb-12">
         <div class="flex flex-wrap items-center gap-2 text-sm">
-          <span class="font-semibold text-slate-900 mr-1">Tagged with:</span>
+          <span class="font-semibold text-ink mr-1">Tagged with:</span>
           {tags.map((t) => (
             <a
               href="#"
-              class="px-4 py-1.5 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-brand/40 hover:text-brand transition-colors"
+              class="px-4 py-1.5 rounded-full border border-hairline bg-canvas text-steel hover:border-brand/40 hover:text-brand transition-colors"
             >
               {t}
             </a>
@@ -187,22 +187,22 @@ const comments = [
 
       {/* 5. About Author */}
       <Reveal delay={160} class="mb-12">
-        <div class="rounded-3xl bg-slate-900 p-8 md:p-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
-          <div class="w-24 h-24 flex-none rounded-full bg-brand text-white flex items-center justify-center font-bold font-heading text-2xl">
+        <div class="rounded-lg bg-canvas-dark p-8 md:p-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
+          <div class="w-24 h-24 flex-none rounded-full bg-primary text-on-primary flex items-center justify-center font-semibold font-heading text-2xl">
             PB
           </div>
           <div class="flex flex-col gap-3">
             <div>
-              <span class="text-xs font-semibold text-slate-400 tracking-wide">About Author</span>
-              <h3 class="text-xl font-bold text-white font-heading mt-1">Peter Bowman</h3>
+              <span class="text-xs font-semibold text-stone tracking-wide">About Author</span>
+              <h3 class="text-xl font-semibold text-on-dark font-heading mt-1">Peter Bowman</h3>
             </div>
-            <p class="text-slate-300 text-base leading-relaxed max-w-2xl">
+            <p class="text-on-dark-muted text-base leading-relaxed max-w-2xl">
               Phasellus et ipsum justo. Aenean fringilla a fermentum mauris non venenatis. Praesent at nulla
               aliquam ligula.
             </p>
-            <div class="flex items-center justify-center sm:justify-start gap-4 mt-1 text-slate-400">
+            <div class="flex items-center justify-center sm:justify-start gap-4 mt-1 text-stone">
               {shareLinks.map((s) => (
-                <a href="#" aria-label={s.label} class="hover:text-white transition-colors">
+                <a href="#" aria-label={s.label} class="hover:text-on-dark transition-colors">
                   <Icon name={s.icon} class="w-4 h-4" />
                 </a>
               ))}
@@ -215,12 +215,12 @@ const comments = [
       <Reveal delay={180} class="mb-12">
         <a
           href="/article"
-          class="group block rounded-3xl border border-slate-200 bg-white p-8 shadow-sm hover:border-brand/40 hover:shadow-lg transition-all"
+          class="group block rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all"
         >
           <span class="inline-flex items-center gap-2 text-xs font-semibold text-brand uppercase tracking-wider mb-3">
             Next Post <Icon name="lucide:arrow-right" class="w-4 h-4" />
           </span>
-          <h3 class="text-2xl font-bold text-slate-900 font-heading tracking-tight group-hover:text-brand transition-colors">
+          <h3 class="text-2xl font-semibold text-ink font-heading tracking-tight group-hover:text-brand transition-colors">
             Tips for thriving in our virtual world
           </h3>
         </a>
@@ -228,15 +228,15 @@ const comments = [
 
       {/* 7. Comments */}
       <Reveal delay={200} class="mb-12">
-        <h3 class="text-2xl font-bold text-slate-900 font-heading mb-6">Comments(02)</h3>
+        <h3 class="text-2xl font-semibold text-ink font-heading mb-6">Comments(02)</h3>
         <div class="space-y-5">
           {comments.map((c) => (
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)]">
               <div class="flex flex-wrap items-center gap-3 mb-3">
-                <h4 class="text-base font-bold text-slate-900 font-heading">{c.author}</h4>
-                <span class="text-xs text-slate-400">{c.date}</span>
+                <h4 class="text-base font-semibold text-ink font-heading">{c.author}</h4>
+                <span class="text-xs text-stone">{c.date}</span>
               </div>
-              <p class="text-slate-600 text-sm leading-relaxed mb-4">{c.body}</p>
+              <p class="text-steel text-sm leading-relaxed mb-4">{c.body}</p>
               <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold text-brand hover:underline">
                 Reply <Icon name="lucide:corner-down-left" class="w-4 h-4" />
               </a>
@@ -247,12 +247,12 @@ const comments = [
 
       {/* 8. Leave a Reply */}
       <Reveal delay={220}>
-        <div class="rounded-3xl border border-slate-200 bg-white p-8 md:p-12 shadow-sm">
+        <div class="rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)]">
           <div class="mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 font-heading tracking-tight mb-2">
+            <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading tracking-tight mb-2">
               Leave a Reply
             </h2>
-            <p class="text-sm text-slate-600">
+            <p class="text-sm text-steel">
               Your email address will not be published. Required fields are marked *
             </p>
           </div>
@@ -260,46 +260,46 @@ const comments = [
           <form class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="flex flex-col gap-2">
-                <label for="name" class="text-sm font-semibold text-slate-900">Name *</label>
+                <label for="name" class="text-sm font-semibold text-ink">Name *</label>
                 <input
                   type="text"
                   id="name"
                   required
-                  class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-full text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
+                  class="w-full px-5 py-3.5 bg-canvas border border-hairline rounded-full text-ink focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
                 />
               </div>
               <div class="flex flex-col gap-2">
-                <label for="email" class="text-sm font-semibold text-slate-900">Email*</label>
+                <label for="email" class="text-sm font-semibold text-ink">Email*</label>
                 <input
                   type="email"
                   id="email"
                   required
-                  class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-full text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
+                  class="w-full px-5 py-3.5 bg-canvas border border-hairline rounded-full text-ink focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
                 />
               </div>
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="website" class="text-sm font-semibold text-slate-900">Website</label>
+              <label for="website" class="text-sm font-semibold text-ink">Website</label>
               <input
                 type="url"
                 id="website"
-                class="w-full px-5 py-3.5 bg-white border border-slate-200 rounded-full text-slate-900 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
+                class="w-full px-5 py-3.5 bg-canvas border border-hairline rounded-full text-ink focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
               />
             </div>
 
             <div class="flex flex-col gap-2">
-              <label for="comment" class="text-sm font-semibold text-slate-900">Comment *</label>
+              <label for="comment" class="text-sm font-semibold text-ink">Comment *</label>
               <textarea
                 id="comment"
                 rows="6"
                 required
-                class="w-full px-5 py-4 bg-white border border-slate-200 rounded-3xl text-slate-900 resize-none focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"></textarea>
+                class="w-full px-5 py-4 bg-canvas border border-hairline rounded-lg text-ink resize-none focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"></textarea>
             </div>
 
             <div class="flex items-start gap-3 pt-2">
-              <input id="checkbox" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-slate-300 text-brand focus:ring-brand" />
-              <label for="checkbox" class="text-sm text-slate-600 cursor-pointer">
+              <input id="checkbox" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-hairline text-brand focus:ring-brand" />
+              <label for="checkbox" class="text-sm text-steel cursor-pointer">
                 Save my name, email, and website in this browser for the next time I comment.
               </label>
             </div>
@@ -307,7 +307,7 @@ const comments = [
             <div class="pt-4">
               <button
                 type="submit"
-                class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-slate-900 px-8 text-sm font-semibold text-white hover:bg-brand transition-colors shadow-md"
+                class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-canvas-dark px-8 text-sm font-semibold text-on-dark hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]"
               >
                 Post comment <Icon name="lucide:send" class="w-4 h-4" />
               </button>

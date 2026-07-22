@@ -26,33 +26,33 @@ const meta = [
 <Layout title="Case Studies — Zylo" description="How Zylo created a complete application management system for their fellowship programme in Saas.">
   <Navbar />
 
-  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
     <div class="container-page max-w-6xl mx-auto px-4">
       {/* 1. Hero */}
       <Reveal class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
         <div>
-          <h1 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight leading-tight mb-8">
+          <h1 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight leading-tight mb-8">
             Zylo created a complete application management system for their fellowship programme in Saas
           </h1>
-          <p class="text-lg text-slate-600 leading-relaxed mb-12">
+          <p class="text-lg text-steel leading-relaxed mb-12">
             “Thanks to Stacker, the Zylo Fellows team each gets 8 hours or roughly one working day – back per week”
           </p>
           <div class="flex flex-wrap gap-2">
-            <div class="rounded-3xl bg-slate-900 text-white px-8 py-7">
-              <div class="text-3xl font-bold font-heading mb-2 tracking-tight">55,000+</div>
+            <div class="rounded-lg bg-canvas-dark text-on-dark px-8 py-7">
+              <div class="text-3xl font-semibold font-heading mb-2 tracking-tight">55,000+</div>
               <p class="text-sm">Managed tasks with ERP</p>
             </div>
-            <div class="rounded-3xl bg-brand text-white px-8 py-7">
-              <div class="text-3xl font-bold font-heading mb-2 tracking-tight">8hrs/week</div>
+            <div class="rounded-lg bg-primary text-on-primary px-8 py-7">
+              <div class="text-3xl font-semibold font-heading mb-2 tracking-tight">8hrs/week</div>
               <p class="text-sm">Saved for each user</p>
             </div>
           </div>
         </div>
-        <div class="rounded-3xl border border-slate-200 bg-white p-3 shadow-2xl relative overflow-hidden">
-          <img src="/home/zylo-hero.png" alt="Zylo case study" class="w-full rounded-2xl block" />
-          <div class="absolute bottom-8 left-8 right-8 rounded-2xl bg-slate-900/70 backdrop-blur-md px-7 py-6 text-white">
+        <div class="rounded-lg border border-hairline bg-canvas p-3 shadow-[var(--shadow-card)] relative overflow-hidden">
+          <img src="/home/zylo-hero.png" alt="Zylo case study" class="w-full rounded-md block" />
+          <div class="absolute bottom-8 left-8 right-8 rounded-md bg-canvas-dark/70 backdrop-blur-md px-7 py-6 text-on-dark">
             <p class="text-lg font-semibold font-heading mb-1">Leonie Hoerster</p>
-            <p class="text-sm text-slate-200">Saved for each user</p>
+            <p class="text-sm text-on-dark-muted">Saved for each user</p>
           </div>
         </div>
       </Reveal>
@@ -61,22 +61,22 @@ const meta = [
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Sidebar */}
         <Reveal delay={100} class="lg:col-span-1">
-          <div class="lg:sticky lg:top-28 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm space-y-8">
+          <div class="lg:sticky lg:top-28 rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] space-y-8">
             <div>
-              <h2 class="text-xl font-bold text-slate-900 font-heading mb-3">About</h2>
-              <p class="text-sm text-slate-600 leading-relaxed">
+              <h2 class="text-xl font-semibold text-ink font-heading mb-3">About</h2>
+              <p class="text-sm text-steel leading-relaxed">
                 Zylo is a modern SaaS platform built to simplify business operations and accelerate growth. We help teams manage data, automate workflows, and make smarter decisions with a confidence. From startups to our enterprises, Zylo grows with your business.
               </p>
             </div>
             {meta.map((m) => (
-              <div class="pt-6 border-t border-slate-100">
-                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">{m.label}</p>
-                <p class="text-base font-semibold text-slate-900 font-heading">{m.value}</p>
+              <div class="pt-6 border-t border-hairline-soft">
+                <p class="text-xs font-semibold text-stone uppercase tracking-wider mb-2">{m.label}</p>
+                <p class="text-base font-semibold text-ink font-heading">{m.value}</p>
               </div>
             ))}
-            <div class="pt-6 border-t border-slate-100">
-              <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Share</p>
-              <div class="flex items-center gap-3 text-slate-400">
+            <div class="pt-6 border-t border-hairline-soft">
+              <p class="text-xs font-semibold text-stone uppercase tracking-wider mb-3">Share</p>
+              <div class="flex items-center gap-3 text-stone">
                 <a href="#" aria-label="LinkedIn" class="hover:text-brand transition-colors"><Icon name="lucide:linkedin" class="w-4 h-4" /></a>
                 <a href="#" aria-label="Twitter" class="hover:text-brand transition-colors"><Icon name="lucide:twitter" class="w-4 h-4" /></a>
                 <a href="#" aria-label="Facebook" class="hover:text-brand transition-colors"><Icon name="lucide:facebook" class="w-4 h-4" /></a>
@@ -86,9 +86,9 @@ const meta = [
         </Reveal>
 
         {/* Content */}
-        <Reveal delay={150} class="lg:col-span-2 space-y-12 text-slate-600 leading-relaxed">
+        <Reveal delay={150} class="lg:col-span-2 space-y-12 text-steel leading-relaxed">
           <section class="space-y-4">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 font-heading">Measure conversion performance</h2>
+            <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">Measure conversion performance</h2>
             <p class="text-base">
               IT company content is important for a number of reasons. First, it can help you attract potential customers. When you create content that is relevant to your target audience, you position yourself as an expert in your field and increase the chances that potential customers will find you. IT company content can help you educate potential customers about your products and services.
             </p>
@@ -98,38 +98,38 @@ const meta = [
           </section>
 
           <section>
-            <h3 class="text-xl md:text-2xl font-bold text-slate-900 font-heading mb-6">Going Beyond the Usual</h3>
+            <h3 class="text-xl md:text-2xl font-semibold text-ink font-heading mb-6">Going Beyond the Usual</h3>
             <ul class="space-y-4">
               {features.map((f) => (
                 <li class="flex items-start gap-3 text-base">
-                  <Icon name="lucide:check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-1.5" />
-                  <span><span class="font-semibold text-slate-900">{f.title}</span> {f.desc}</span>
+                  <Icon name="lucide:check-circle" class="w-4 h-4 text-brand shrink-0 mt-1.5" />
+                  <span><span class="font-semibold text-ink">{f.title}</span> {f.desc}</span>
                 </li>
               ))}
             </ul>
           </section>
 
           <section class="space-y-6">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 font-heading">The Challange</h2>
+            <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">The Challange</h2>
             <p class="text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas interdum, orci at dapibus massa ante pharetra tellus. Maecenas interdum, orci at euismod dapibus. Lorem ipsum dolor sit amet.
             </p>
-            <blockquote class="rounded-3xl border border-slate-200 bg-white p-8 md:p-10 shadow-sm">
-              <p class="text-xl md:text-2xl font-medium text-slate-900 font-heading leading-snug mb-6">
+            <blockquote class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-subtle)]">
+              <p class="text-xl md:text-2xl font-medium text-ink font-heading leading-snug mb-6">
                 We're committed to changing the way of mobile UX. We believe that mobile UX has the power to make a real difference in people's lives.
               </p>
               <footer class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-slate-900 text-white text-sm font-bold flex items-center justify-center font-heading">R</div>
+                <div class="w-10 h-10 rounded-full bg-canvas-dark text-on-dark text-sm font-semibold flex items-center justify-center font-heading">R</div>
                 <div>
-                  <p class="text-sm font-semibold text-slate-900">Ralph Edwards</p>
-                  <p class="text-xs text-slate-600">New York</p>
+                  <p class="text-sm font-semibold text-ink">Ralph Edwards</p>
+                  <p class="text-xs text-steel">New York</p>
                 </div>
               </footer>
             </blockquote>
           </section>
 
           <section class="space-y-4">
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 font-heading">Clarity across the supply chain</h2>
+            <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">Clarity across the supply chain</h2>
             <p class="text-base">
               IT company content is important for a number of reasons. First, it can help you attract potential customers. When you create content that is relevant to your target audience, you position yourself as an expert in your field and increase the chances that potential customers will find you. IT company content can help you educate potential customers about your products and services.
             </p>
@@ -139,8 +139,8 @@ const meta = [
             <ul class="space-y-4 pt-2">
               {features.map((f) => (
                 <li class="flex items-start gap-3 text-base">
-                  <Icon name="lucide:check-circle" class="w-4 h-4 text-emerald-500 shrink-0 mt-1.5" />
-                  <span><span class="font-semibold text-slate-900">{f.title}</span> {f.desc}</span>
+                  <Icon name="lucide:check-circle" class="w-4 h-4 text-brand shrink-0 mt-1.5" />
+                  <span><span class="font-semibold text-ink">{f.title}</span> {f.desc}</span>
                 </li>
               ))}
             </ul>

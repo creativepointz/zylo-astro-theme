@@ -9,7 +9,7 @@ const benefits = [
 const colors = benefits.map((b) => b.bgColor);
 ---
 
-<section id="benefits" class="section bg-white">
+<section id="benefits" class="section bg-canvas">
   <div class="container-page">
     <SectionHeading title="AI That Works as Hard as You Do" />
 
@@ -26,8 +26,8 @@ const colors = benefits.map((b) => b.bgColor);
             <div class="lg:hidden mb-8 p-6 rounded-[24px]" style={{ backgroundColor: b.bgColor }}>
               <img src={b.image} alt={b.title} class="w-full h-auto block" />
             </div>
-            <h3 class="h3 mb-4 text-slate-900">{b.title}</h3>
-            <p class="p-md text-slate-600">{b.body}</p>
+            <h3 class="h3 mb-4 text-ink">{b.title}</h3>
+            <p class="p-md text-steel">{b.body}</p>
           </div>
         ))}
       </div>

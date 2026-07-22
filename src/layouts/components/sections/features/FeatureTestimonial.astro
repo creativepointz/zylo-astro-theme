@@ -5,31 +5,31 @@ import { Icon } from 'astro-icon/components';
 <div class="w-full flex flex-col lg:flex-row gap-6">
   {/* Left: Testimonial */}
   <div class="flex-1 lg:flex-[2] bg-[#0f172b] p-8 md:p-12 rounded-[24px] flex flex-col justify-between gap-10">
-    <div class="flex items-center gap-2 text-white/90">
-      <Icon name="lucide:zap" class="w-6 h-6 fill-current text-indigo-400" />
-      <span class="font-heading font-bold tracking-tight text-xl">Acme Corp</span>
+    <div class="flex items-center gap-2 text-on-dark/90">
+      <Icon name="lucide:zap" class="w-6 h-6 fill-current text-brand" />
+      <span class="font-heading font-semibold tracking-tight text-xl">Acme Corp</span>
     </div>
     
-    <p class="h5 !text-white leading-[1.4] tracking-tight font-normal">
+    <p class="h5 !text-on-dark leading-[1.4] tracking-tight font-normal">
       "Zylo automated the busywork that used to eat our week, letting us focus on great products."
     </p>
 
     <div class="flex items-center gap-4">
-      <div class="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center shrink-0 border border-indigo-400/30">
-        <Icon name="lucide:user" class="w-6 h-6 text-indigo-300" />
+      <div class="w-14 h-14 rounded-full bg-surface flex items-center justify-center shrink-0 border border-hairline-dark">
+        <Icon name="lucide:user" class="w-6 h-6 text-brand" />
       </div>
       <div>
-        <p class="font-heading font-semibold text-lg text-white">Sarah Jenkins</p>
-        <p class="p-lt !text-slate-400 font-medium">VP of Engineering at Acme Corp</p>
+        <p class="font-heading font-semibold text-lg text-on-dark">Sarah Jenkins</p>
+        <p class="p-lt !text-stone font-medium">VP of Engineering at Acme Corp</p>
       </div>
     </div>
   </div>
 
   {/* Right: Stat */}
-  <div class="flex-1 lg:flex-[1] bg-slate-50 p-8 md:p-12 rounded-[24px] border border-slate-100 flex flex-col justify-end min-h-[300px] relative overflow-hidden">
+  <div class="flex-1 lg:flex-[1] bg-surface-soft p-8 md:p-12 rounded-[24px] border border-hairline-soft flex flex-col justify-end min-h-[300px] relative overflow-hidden">
     {/* Decorative background element mimicking Figma design */}
-    <div class="absolute top-0 right-0 w-full h-[60%] bg-gradient-to-bl from-indigo-100/50 to-transparent"></div>
-    <div class="absolute -top-24 -right-24 w-64 h-64 bg-indigo-400/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-0 right-0 w-full h-[60%] bg-transparent"></div>
+    <div class="absolute -top-24 -right-24 w-64 h-64 bg-transparent"></div>
     
     <div class="relative z-10">
       <p class="h1 !text-[56px] md:!text-[72px] tracking-tighter leading-none mb-4">

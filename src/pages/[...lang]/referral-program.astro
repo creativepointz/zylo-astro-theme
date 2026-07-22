@@ -60,35 +60,35 @@ const faqs = [
 <Layout title="Referral Program — Make up to $69.85 in commission" description="Make up to $69.85 in commission on every referred sale.">
   <Navbar />
 
-  <main id="main" class="pt-32 pb-24 bg-slate-50/50">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
     <div class="container-page max-w-6xl mx-auto px-4">
       {/* 1. Program header */}
       <Reveal class="text-center max-w-3xl mx-auto mb-12">
-        <h1 class="text-4xl sm:text-6xl font-bold text-slate-900 font-heading tracking-tight mb-5 leading-tight">
+        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight mb-5 leading-tight">
           Make up to $69.85 in commission on every referred sale.
         </h1>
-        <p class="text-lg text-slate-600 leading-relaxed">
+        <p class="text-lg text-steel leading-relaxed">
           It's always easy to contact our top-rated support team.
         </p>
       </Reveal>
 
       <Reveal delay={100} class="flex flex-wrap justify-center gap-5 mb-24">
         {badges.map((b) => (
-          <div class="flex items-center gap-3 rounded-3xl border border-slate-200 bg-white px-6 py-3.5 w-[270px] shadow-sm">
+          <div class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas px-6 py-3.5 w-[270px] shadow-[var(--shadow-subtle)]">
             <span class="w-10 h-10 shrink-0 rounded-full bg-brand/10 text-brand flex items-center justify-center">
               <Icon name={b.icon} class="w-5 h-5" />
             </span>
-            <p class="text-xs font-medium text-slate-900 leading-relaxed">{b.label}</p>
+            <p class="text-xs font-medium text-ink leading-relaxed">{b.label}</p>
           </div>
         ))}
       </Reveal>
 
       {/* 2. How it works */}
       <Reveal class="text-center max-w-3xl mx-auto mb-14">
-        <h2 class="text-3xl sm:text-5xl font-bold text-slate-900 font-heading tracking-tight mb-4">
+        <h2 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight mb-4">
           How it works
         </h2>
-        <p class="text-lg text-slate-600 leading-relaxed">
+        <p class="text-lg text-steel leading-relaxed">
           Tell a friend about Zylo and earn money when they are active for 30+ days.
         </p>
       </Reveal>
@@ -96,12 +96,12 @@ const faqs = [
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 items-stretch">
         {steps.map((s, idx) => (
           <Reveal delay={idx * 80}>
-            <div class="rounded-3xl border border-slate-200 bg-white p-8 text-center shadow-sm hover:border-brand/40 hover:shadow-lg transition-all h-full flex flex-col items-center">
-              <div class="w-16 h-16 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mb-8">
+            <div class="rounded-lg border border-hairline bg-canvas p-8 text-center shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all h-full flex flex-col items-center">
+              <div class="w-16 h-16 rounded-md bg-brand/10 text-brand flex items-center justify-center mb-8">
                 <Icon name={s.icon} class="w-7 h-7" />
               </div>
-              <h3 class="text-xl font-bold text-slate-900 font-heading mb-2">{s.title}</h3>
-              <p class="text-xs text-slate-600 leading-relaxed">{s.desc}</p>
+              <h3 class="text-xl font-semibold text-ink font-heading mb-2">{s.title}</h3>
+              <p class="text-xs text-steel leading-relaxed">{s.desc}</p>
             </div>
           </Reveal>
         ))}
@@ -110,10 +110,10 @@ const faqs = [
       {/* 3. FAQ */}
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <Reveal class="lg:col-span-5">
-          <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 font-heading tracking-tight mb-3">
+          <h2 class="text-3xl sm:text-4xl font-semibold text-ink font-heading tracking-tight mb-3">
             Need help?
           </h2>
-          <p class="text-slate-600 leading-relaxed">
+          <p class="text-steel leading-relaxed">
             Get quick answers and friendly assistance anytime you need.
           </p>
         </Reveal>
@@ -121,15 +121,15 @@ const faqs = [
         <div class="lg:col-span-7 space-y-3">
           {faqs.map((f, idx) => (
             <Reveal delay={idx * 60}>
-              <details class="group rounded-3xl border border-slate-200 bg-white px-7 py-5 shadow-sm">
+              <details class="group rounded-lg border border-hairline bg-canvas px-7 py-5 shadow-[var(--shadow-subtle)]">
                 <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
-                  <span class="text-base font-semibold text-slate-900 font-heading">{f.q}</span>
-                  <span class="shrink-0 w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-slate-500 group-open:bg-slate-900 group-open:text-white transition-colors">
+                  <span class="text-base font-semibold text-ink font-heading">{f.q}</span>
+                  <span class="shrink-0 w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-stone group-open:bg-canvas-dark group-open:text-on-dark transition-colors">
                     <Icon name="lucide:plus" class="w-4 h-4 group-open:hidden" />
                     <Icon name="lucide:minus" class="w-4 h-4 hidden group-open:block" />
                   </span>
                 </summary>
-                <p class="pt-4 text-sm text-slate-600 leading-relaxed">{f.a}</p>
+                <p class="pt-4 text-sm text-steel leading-relaxed">{f.a}</p>
               </details>
             </Reveal>
           ))}
