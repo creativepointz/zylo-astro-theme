@@ -21,87 +21,94 @@ const meta = [
   { label: 'Company size', value: '5,000 – 10,000 employees' },
   { label: 'Founded', value: 'Since 1999' },
 ];
+
+const stats = [
+  { value: '55,000+', label: 'Managed tasks with ERP' },
+  { value: '8hrs/week', label: 'Saved for each user' },
+  { value: '5,000 – 10,000', label: 'Employees on the platform' },
+];
 ---
 
 <Layout title="Case Studies — Zylo" description="How Zylo created a complete application management system for their fellowship programme in Saas.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-6xl mx-auto px-4">
-      {/* 1. Hero */}
-      <Reveal class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
-        <div>
-          <h1 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight leading-tight mb-8">
-            Zylo created a complete application management system for their fellowship programme in Saas
-          </h1>
-          <p class="text-lg text-steel leading-relaxed mb-12">
-            “Thanks to Stacker, the Zylo Fellows team each gets 8 hours or roughly one working day – back per week”
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <div class="rounded-lg bg-canvas-dark text-on-dark px-8 py-7">
-              <div class="text-3xl font-semibold font-heading mb-2 tracking-tight">55,000+</div>
-              <p class="text-sm">Managed tasks with ERP</p>
-            </div>
-            <div class="rounded-lg bg-primary text-on-primary px-8 py-7">
-              <div class="text-3xl font-semibold font-heading mb-2 tracking-tight">8hrs/week</div>
-              <p class="text-sm">Saved for each user</p>
-            </div>
-          </div>
-        </div>
-        <div class="rounded-lg border border-hairline bg-canvas p-3 shadow-[var(--shadow-card)] relative overflow-hidden">
-          <img src="/home/zylo-hero.png" alt="Zylo case study" class="w-full rounded-md block" />
-          <div class="absolute bottom-8 left-8 right-8 rounded-md bg-canvas-dark/70 backdrop-blur-md px-7 py-6 text-on-dark">
-            <p class="text-lg font-semibold font-heading mb-1">Leonie Hoerster</p>
-            <p class="text-sm text-on-dark-muted">Saved for each user</p>
-          </div>
-        </div>
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
+    {/* 1. Compact centered hero */}
+    <section class="container-page max-w-6xl">
+      <Reveal class="text-center max-w-3xl mx-auto mb-16">
+        <span class="eyebrow mb-4 block">Case study</span>
+        <h1 class="h1 mb-5">
+          Zylo created a complete application management system for their fellowship programme in Saas
+        </h1>
+        <p class="subtitle">
+          &ldquo;Thanks to Stacker, the Zylo Fellows team each gets 8 hours or roughly one working day &ndash; back per week&rdquo;
+        </p>
       </Reveal>
 
-      {/* 2. Details */}
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <Reveal delay={80}>
+        <img
+          src="/placeholder.png"
+          alt="Zylo application management case study"
+          loading="lazy"
+          class="mb-16 aspect-[16/9] w-full rounded-lg border border-hairline-soft bg-surface object-contain p-4"
+        />
+      </Reveal>
+
+      {/* 2. Stat row */}
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-20">
+        {stats.map((s, idx) => (
+          <Reveal delay={idx * 80} class="text-center">
+            <div class="display-lg mb-2">{s.value}</div>
+            <p class="p-sm">{s.label}</p>
+          </Reveal>
+        ))}
+      </div>
+
+      {/* 3. Story detail */}
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 mb-8">
         {/* Sidebar */}
         <Reveal delay={100} class="lg:col-span-1">
-          <div class="lg:sticky lg:top-28 rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] space-y-8">
+          <div class="lg:sticky lg:top-28 rounded-lg border border-hairline bg-canvas p-6 space-y-6">
             <div>
-              <h2 class="text-xl font-semibold text-ink font-heading mb-3">About</h2>
-              <p class="text-sm text-steel leading-relaxed">
+              <h2 class="h5 mb-3">About</h2>
+              <p class="p-sm">
                 Zylo is a modern SaaS platform built to simplify business operations and accelerate growth. We help teams manage data, automate workflows, and make smarter decisions with a confidence. From startups to our enterprises, Zylo grows with your business.
               </p>
             </div>
             {meta.map((m) => (
               <div class="pt-6 border-t border-hairline-soft">
-                <p class="text-xs font-semibold text-stone uppercase tracking-wider mb-2">{m.label}</p>
-                <p class="text-base font-semibold text-ink font-heading">{m.value}</p>
+                <p class="eyebrow mb-2">{m.label}</p>
+                <p class="h6">{m.value}</p>
               </div>
             ))}
             <div class="pt-6 border-t border-hairline-soft">
-              <p class="text-xs font-semibold text-stone uppercase tracking-wider mb-3">Share</p>
+              <p class="eyebrow mb-3">Share</p>
               <div class="flex items-center gap-3 text-stone">
-                <a href="#" aria-label="LinkedIn" class="hover:text-brand transition-colors"><Icon name="lucide:linkedin" class="w-4 h-4" /></a>
-                <a href="#" aria-label="Twitter" class="hover:text-brand transition-colors"><Icon name="lucide:twitter" class="w-4 h-4" /></a>
-                <a href="#" aria-label="Facebook" class="hover:text-brand transition-colors"><Icon name="lucide:facebook" class="w-4 h-4" /></a>
+                <a href="#" aria-label="LinkedIn" class="hover:text-ink transition-colors"><Icon name="lucide:linkedin" class="w-4 h-4" /></a>
+                <a href="#" aria-label="Twitter" class="hover:text-ink transition-colors"><Icon name="lucide:twitter" class="w-4 h-4" /></a>
+                <a href="#" aria-label="Facebook" class="hover:text-ink transition-colors"><Icon name="lucide:facebook" class="w-4 h-4" /></a>
               </div>
             </div>
           </div>
         </Reveal>
 
         {/* Content */}
-        <Reveal delay={150} class="lg:col-span-2 space-y-12 text-steel leading-relaxed">
+        <Reveal delay={150} class="lg:col-span-2 space-y-12">
           <section class="space-y-4">
-            <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">Measure conversion performance</h2>
-            <p class="text-base">
+            <h2 class="h3">Measure conversion performance</h2>
+            <p class="p-rg">
               IT company content is important for a number of reasons. First, it can help you attract potential customers. When you create content that is relevant to your target audience, you position yourself as an expert in your field and increase the chances that potential customers will find you. IT company content can help you educate potential customers about your products and services.
             </p>
-            <p class="text-base">
+            <p class="p-rg">
               We are committed to providing our clients with the highest quality IT services and support. We understand that IT is essential for your business, and we will work tirelessly to help you achieve your business goals.
             </p>
           </section>
 
           <section>
-            <h3 class="text-xl md:text-2xl font-semibold text-ink font-heading mb-6">Going Beyond the Usual</h3>
+            <h3 class="h4 mb-6">Going Beyond the Usual</h3>
             <ul class="space-y-4">
               {features.map((f) => (
-                <li class="flex items-start gap-3 text-base">
+                <li class="flex items-start gap-3 p-rg">
                   <Icon name="lucide:check-circle" class="w-4 h-4 text-brand shrink-0 mt-1.5" />
                   <span><span class="font-semibold text-ink">{f.title}</span> {f.desc}</span>
                 </li>
@@ -110,35 +117,35 @@ const meta = [
           </section>
 
           <section class="space-y-6">
-            <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">The Challange</h2>
-            <p class="text-base">
+            <h2 class="h3">The Challange</h2>
+            <p class="p-rg">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas interdum, orci at dapibus massa ante pharetra tellus. Maecenas interdum, orci at euismod dapibus. Lorem ipsum dolor sit amet.
             </p>
-            <blockquote class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-subtle)]">
-              <p class="text-xl md:text-2xl font-medium text-ink font-heading leading-snug mb-6">
+            <blockquote class="rounded-lg border border-hairline bg-canvas p-8">
+              <p class="h4 mb-6 leading-snug">
                 We're committed to changing the way of mobile UX. We believe that mobile UX has the power to make a real difference in people's lives.
               </p>
               <footer class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-canvas-dark text-on-dark text-sm font-semibold flex items-center justify-center font-heading">R</div>
+                <div class="w-10 h-10 rounded-full bg-surface text-ink text-sm font-semibold flex items-center justify-center">R</div>
                 <div>
-                  <p class="text-sm font-semibold text-ink">Ralph Edwards</p>
-                  <p class="text-xs text-steel">New York</p>
+                  <p class="h6">Ralph Edwards</p>
+                  <p class="p-lt">New York</p>
                 </div>
               </footer>
             </blockquote>
           </section>
 
           <section class="space-y-4">
-            <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">Clarity across the supply chain</h2>
-            <p class="text-base">
+            <h2 class="h3">Clarity across the supply chain</h2>
+            <p class="p-rg">
               IT company content is important for a number of reasons. First, it can help you attract potential customers. When you create content that is relevant to your target audience, you position yourself as an expert in your field and increase the chances that potential customers will find you. IT company content can help you educate potential customers about your products and services.
             </p>
-            <p class="text-base">
+            <p class="p-rg">
               We are committed to providing our clients with the highest quality IT services and support. We understand that IT is essential for your business, and we will work tirelessly to help you achieve your business goals.
             </p>
             <ul class="space-y-4 pt-2">
               {features.map((f) => (
-                <li class="flex items-start gap-3 text-base">
+                <li class="flex items-start gap-3 p-rg">
                   <Icon name="lucide:check-circle" class="w-4 h-4 text-brand shrink-0 mt-1.5" />
                   <span><span class="font-semibold text-ink">{f.title}</span> {f.desc}</span>
                 </li>
@@ -147,7 +154,23 @@ const meta = [
           </section>
         </Reveal>
       </div>
-    </div>
+    </section>
+
+    {/* 4. Closing CTA band */}
+    <section class="bg-surface-soft border-t border-hairline mt-20">
+      <div class="container-page max-w-3xl py-16 md:py-24 text-center">
+        <Reveal>
+          <h2 class="h2 mb-4">Run the same playbook</h2>
+          <p class="p-rg mb-8">
+            Map your process once in Zylo and let the workflows handle the rest — most teams are live in a week.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">Get started</a>
+            <a href="/customer" class="btn-secondary btn-lg">See more customers</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />

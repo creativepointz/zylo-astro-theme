@@ -2,6 +2,7 @@
 import Layout from '@/layouts/Base.astro';
 import Navbar from '@/components/global/header/Navbar.astro';
 import Footer from '@/components/global/Footer.astro';
+import Reveal from '@/components/widgets/Reveal.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
 
 export function getStaticPaths() {
@@ -101,6 +102,15 @@ const sections: Section[] = [
     ]
   }
 ];
+
+// Table of contents derived from the document's own clause headings.
+const slug = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
+const toc = sections.map((section, i) => ({
+  id: slug(section.title),
+  title: `${i + 1}. ${section.title}`
+}));
 ---
 
 <Layout
@@ -108,44 +118,85 @@ const sections: Section[] = [
   description="Learn how Zylo uses cookies and similar technologies."
 >
   <Navbar />
-  <main id="main">
-    <!-- Hero -->
-    <section
-      class="relative overflow-hidden pt-40 pb-12 md:pt-48"
-      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
-    >
+
+  <main id="main" class="bg-canvas pt-24 md:pt-[120px]">
+    {/* Compact hero */}
+    <section class="border-b border-hairline-soft pb-10">
       <div class="container-page">
-        <div class="mx-auto max-w-3xl" data-reveal>
+        <Reveal class="max-w-[720px]">
           <h1 class="h1 mb-4">Cookie Policy</h1>
-          <p class="p-lt text-stone">Last updated: {lastUpdated}</p>
-          <p class="p-lg mt-8">{intro}</p>
-        </div>
+          <p class="p-lt">Last updated: {lastUpdated}</p>
+        </Reveal>
       </div>
     </section>
 
-    <!-- Body -->
-    <section class="bg-canvas pb-24">
+    {/* 2-column legal document body */}
+    <section class="py-12 md:py-16">
       <div class="container-page">
-        <div class="mx-auto flex max-w-3xl flex-col gap-12">
-          {sections.map((section, i) => (
-            <section class="flex flex-col gap-5">
-              <h2 class="h5 text-ink">{i + 1}. {section.title}</h2>
-              {section.blocks.map((block) => (
-                block.type === 'h3' ? (
-                  <h3 class="h6 text-ink">{block.text}</h3>
-                ) : block.type === 'ul' ? (
-                  <ul class="flex list-disc flex-col gap-2 pl-6 marker:text-on-dark-muted">
-                    {block.items.map((item) => <li class="p-rg text-steel">{item}</li>)}
-                  </ul>
-                ) : (
-                  <p class="p-rg text-steel">{block.text}</p>
-                )
+        <div class="flex gap-12">
+          <aside class="hidden w-[240px] shrink-0 lg:block">
+            <nav class="sticky top-28 flex flex-col gap-2" aria-label="On this page">
+              <p class="eyebrow mb-2">On this page</p>
+              {toc.map((item) => (
+                <a href={`#${item.id}`} data-toc-link class="p-sm text-steel hover:text-ink">{item.title}</a>
               ))}
-            </section>
-          ))}
+            </nav>
+          </aside>
+
+          <div class="w-full max-w-[720px]">
+            <p class="p-rg mb-12">{intro}</p>
+
+            {sections.map((section, i) => (
+              <section
+                id={slug(section.title)}
+                class={`scroll-mt-28 py-12 ${i === sections.length - 1 ? '' : 'border-b border-hairline-soft'}`}
+              >
+                <h2 class="h3 mb-5">{i + 1}. {section.title}</h2>
+                <div class="space-y-4">
+                  {section.blocks.map((block) => (
+                    block.type === 'h3' ? (
+                      <h3 class="h5 pt-2">{block.text}</h3>
+                    ) : block.type === 'ul' ? (
+                      <ul class="list-disc space-y-2 pl-5 text-steel">
+                        {block.items.map((item) => <li class="p-rg">{item}</li>)}
+                      </ul>
+                    ) : (
+                      <p class="p-rg">{block.text}</p>
+                    )
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   </main>
+
   <Footer />
 </Layout>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]');
+  if (links.length) {
+    const setActive = (id: string) => {
+      links.forEach((l) => {
+        const on = l.getAttribute('href') === `#${id}`;
+        l.classList.toggle('text-ink', on);
+        l.classList.toggle('text-steel', !on);
+      });
+    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive((e.target as HTMLElement).id);
+        });
+      },
+      { rootMargin: '-120px 0px -70% 0px' }
+    );
+    links.forEach((l) => {
+      const target = document.querySelector(l.getAttribute('href') || '');
+      if (target) observer.observe(target);
+    });
+  }
+</script>

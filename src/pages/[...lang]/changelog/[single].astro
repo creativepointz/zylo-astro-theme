@@ -27,135 +27,127 @@ const { entry, prev, next } = Astro.props as {
 
 <Layout title={`${entry.title} — Zylo Changelog`} description={entry.excerpt}>
   <Navbar />
-  <main id="main">
-    <!-- Hero -->
-    <section
-      class="relative overflow-hidden pt-40 pb-12 md:pt-48"
-      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
-    >
-      <div class="container-page">
-        <div class="mx-auto max-w-[760px]">
-          <!-- Back link -->
-          <a
-            href="/changelog"
-            class="mb-10 inline-flex items-center gap-2 text-sm font-medium text-stone transition-colors hover:text-brand"
-          >
-            <Icon name="lucide:arrow-left" class="h-4 w-4" />
-            All posts
-          </a>
+  <main id="main" class="bg-canvas pt-24 md:pt-[120px] pb-24">
+    <div class="container-page">
+      <article class="mx-auto w-full max-w-[720px]">
+        <!-- Back link -->
+        <a
+          href="/changelog"
+          class="mb-8 inline-flex items-center gap-2 text-sm font-medium text-steel transition-colors hover:text-ink"
+        >
+          <Icon name="lucide:arrow-left" class="h-4 w-4" />
+          All posts
+        </a>
 
-          <!-- Meta -->
-          <div class="mb-6 flex flex-wrap items-center gap-3">
-            <span class="text-lg font-semibold text-steel">{entry.date}</span>
-            <span class="rounded-full bg-surface px-3 py-1 text-sm font-medium text-brand">{entry.version}</span>
+        <!-- Entry header -->
+        <header class="flex flex-col gap-4 border-b border-hairline pb-8">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="eyebrow">{entry.date}</span>
+            <span class="rounded-sm bg-surface px-2 py-0.5 font-mono text-[13px] font-semibold text-charcoal">{entry.version}</span>
             {entry.tags.map((tag) => (
-              <span class={`rounded-full px-3 py-1 text-xs font-semibold ${tagStyles[tag] ?? 'bg-surface text-steel'}`}>{tag}</span>
+              <span class={`rounded-sm px-2 py-0.5 text-[13px] font-semibold ${tagStyles[tag] ?? 'bg-brand-tag/15 text-brand-tag'}`}>{tag}</span>
             ))}
           </div>
 
-          <h1 class="h3">{entry.title}</h1>
+          <h1 class="h1">{entry.title}</h1>
+        </header>
+
+        <!-- Hero image -->
+        <img
+          src="/placeholder.png"
+          alt={entry.title}
+          loading="lazy"
+          class="mt-10 aspect-[760/426] w-full overflow-hidden rounded-lg border border-hairline-soft bg-surface object-contain p-4"
+        />
+
+        <!-- Intro -->
+        <div class="mt-10 flex flex-col gap-5">
+          {entry.intro.map((p) => <p class="p-rg">{p}</p>)}
         </div>
-      </div>
-    </section>
 
-    <!-- Body -->
-    <section class="bg-canvas pb-24">
-      <div class="container-page">
-        <article class="mx-auto max-w-[760px]">
-          <!-- Hero image -->
-          <div class={`aspect-[760/426] w-full overflow-hidden rounded-md bg-gradient-to-br ${entry.thumb}`}>
-            <div class="h-full w-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.25),transparent_55%)]"></div>
-          </div>
+        <!-- Sections -->
+        <div class="mt-4 flex flex-col">
+          {entry.sections.map((section) => (
+            <section class="mt-8 flex flex-col gap-5 border-t border-hairline-soft pt-8" data-reveal>
+              <h2 class="h3">{section.title}</h2>
 
-          <!-- Intro -->
-          <div class="mt-12 flex flex-col gap-5">
-            {entry.intro.map((p) => <p class="p-lg">{p}</p>)}
-          </div>
+              {section.subsections?.map((sub) => (
+                <div class="flex flex-col gap-4">
+                  <h3 class="h5">{sub.heading}</h3>
+                  {sub.paragraphs.map((p) => <p class="p-rg">{p}</p>)}
+                  {sub.benefits && (
+                    <div class="flex flex-col gap-3">
+                      <p class="text-sm font-medium text-ink">Benefits</p>
+                      <ul class="flex flex-col gap-2">
+                        {sub.benefits.map((b) => (
+                          <li class="flex gap-3">
+                            <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-brand" />
+                            <span class="p-rg">{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ))}
 
-          <!-- Sections -->
-          <div class="mt-12 flex flex-col gap-12">
-            {entry.sections.map((section) => (
-              <section class="flex flex-col gap-7" data-reveal>
-                <h2 class="h5 text-brand">{section.title}</h2>
-
-                {section.subsections?.map((sub) => (
-                  <div class="flex flex-col gap-4">
-                    <h3 class="h6 text-ink">{sub.heading}</h3>
-                    {sub.paragraphs.map((p) => <p class="p-lg">{p}</p>)}
-                    {sub.benefits && (
-                      <div class="flex flex-col gap-3">
-                        <p class="font-semibold text-ink">Benefits</p>
-                        <ul class="flex flex-col gap-2">
-                          {sub.benefits.map((b) => (
-                            <li class="flex gap-3">
-                              <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-brand" />
-                              <span class="p-rg text-steel">{b}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                ))}
-
-                {section.bullets && (
-                  <ul class="flex flex-col gap-3">
-                    {section.bullets.map((b) => (
-                      <li class="flex gap-3">
-                        <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-brand" />
-                        <span class="p-lg">{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </section>
-            ))}
-          </div>
-
-          <!-- Callout -->
-          {entry.callout && (
-            <figure class="mt-14 flex flex-col gap-5 border-l-4 border-brand pl-6">
-              <p class="text-lg font-semibold italic text-ink">{entry.callout.quote}</p>
-              <p class="p-lg italic">{entry.callout.body}</p>
-              <a href={entry.callout.ctaHref} class="btn-primary btn-md w-max">
-                {entry.callout.ctaLabel}
-                <Icon name="lucide:arrow-right" class="h-5 w-5" />
-              </a>
-            </figure>
-          )}
-
-          <!-- Outro -->
-          {entry.outro && (
-            <section class="mt-14 flex flex-col gap-6">
-              <h2 class="h5 text-brand">{entry.outro.title}</h2>
-              {entry.outro.paragraphs.map((p) => <p class="p-lg">{p}</p>)}
-            </section>
-          )}
-
-          <!-- Prev / Next -->
-          {(prev || next) && (
-            <nav class="mt-16 grid gap-4 border-t border-hairline pt-10 sm:grid-cols-2">
-              {prev ? (
-                <a href={`/changelog/${prev.slug}`} class="group flex flex-col gap-1 rounded-md border border-hairline p-5 transition-colors hover:border-brand">
-                  <span class="flex items-center gap-1.5 text-sm text-stone">
-                    <Icon name="lucide:arrow-left" class="h-4 w-4" /> Previous
-                  </span>
-                  <span class="font-medium text-ink transition-colors group-hover:text-brand">{prev.title}</span>
-                </a>
-              ) : <span></span>}
-              {next && (
-                <a href={`/changelog/${next.slug}`} class="group flex flex-col gap-1 rounded-md border border-hairline p-5 text-right transition-colors hover:border-brand sm:col-start-2">
-                  <span class="flex items-center justify-end gap-1.5 text-sm text-stone">
-                    Next <Icon name="lucide:arrow-right" class="h-4 w-4" />
-                  </span>
-                  <span class="font-medium text-ink transition-colors group-hover:text-brand">{next.title}</span>
-                </a>
+              {section.bullets && (
+                <ul class="flex flex-col gap-3">
+                  {section.bullets.map((b) => (
+                    <li class="flex gap-3">
+                      <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-brand" />
+                      <span class="p-rg">{b}</span>
+                    </li>
+                  ))}
+                </ul>
               )}
-            </nav>
-          )}
-        </article>
-      </div>
-    </section>
+            </section>
+          ))}
+        </div>
+
+        <!-- Callout -->
+        {entry.callout && (
+          <figure class="mt-12 flex flex-col gap-5 rounded-lg border border-hairline bg-surface-soft p-6">
+            <p class="h5 leading-[1.4]">{entry.callout.quote}</p>
+            <p class="p-rg">{entry.callout.body}</p>
+            <a href={entry.callout.ctaHref} class="btn-primary btn-md w-max">
+              {entry.callout.ctaLabel}
+              <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+          </figure>
+        )}
+
+        <!-- Outro -->
+        {entry.outro && (
+          <section class="mt-8 flex flex-col gap-5 border-t border-hairline-soft pt-8">
+            <h2 class="h3">{entry.outro.title}</h2>
+            {entry.outro.paragraphs.map((p) => <p class="p-rg">{p}</p>)}
+          </section>
+        )}
+
+        <!-- Prev / Next -->
+        {(prev || next) && (
+          <nav class="mt-12 grid gap-4 border-t border-hairline pt-8 sm:grid-cols-2">
+            {prev ? (
+              <a href={`/changelog/${prev.slug}`} class="group flex flex-col gap-1 rounded-md border border-hairline p-4 transition-colors hover:bg-surface-soft">
+                <span class="eyebrow flex items-center gap-1.5">
+                  <Icon name="lucide:arrow-left" class="h-3.5 w-3.5" /> Previous
+                </span>
+                <span class="text-sm font-medium text-ink transition-colors group-hover:text-brand">{prev.title}</span>
+              </a>
+            ) : <span></span>}
+            {next && (
+              <a href={`/changelog/${next.slug}`} class="group flex flex-col gap-1 rounded-md border border-hairline p-4 text-right transition-colors hover:bg-surface-soft sm:col-start-2">
+                <span class="eyebrow flex items-center justify-end gap-1.5">
+                  Next <Icon name="lucide:arrow-right" class="h-3.5 w-3.5" />
+                </span>
+                <span class="text-sm font-medium text-ink transition-colors group-hover:text-brand">{next.title}</span>
+              </a>
+            )}
+          </nav>
+        )}
+      </article>
+    </div>
   </main>
   <Footer />
 </Layout>

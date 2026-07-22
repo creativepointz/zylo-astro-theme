@@ -37,284 +37,366 @@ const comments = [
     body: 'They have really taken their time to work on the appearance of the theme, also, they have a very interactive client assistance service, I like it!',
   },
 ];
+
+// Table of contents derived from the headings rendered on this page
+const toc = [
+  { label: 'Using a Query', id: 'using-a-query', active: true },
+  { label: 'On the specificity of selectors', id: 'specificity-of-selectors' },
+  { label: 'About Author', id: 'about-author' },
+  { label: 'Next Post', id: 'next-post' },
+  { label: 'Comments(02)', id: 'comments' },
+  { label: 'Leave a Reply', id: 'leave-a-reply' },
+];
 ---
 
 <Layout title="Control your online banking while earning rewards — Zylo Blog" description="Resources article from Zylo on online banking, rewards, and modern product engineering.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-4xl mx-auto px-4">
-      {/* 1. Header */}
-      <Reveal class="mb-10">
-        <a href="/blog" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline mb-6">
-          <Icon name="lucide:arrow-left" class="w-4 h-4" /> Back to blog
-        </a>
-        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
-          Resources
-        </span>
-        <h1 class="text-4xl md:text-5xl font-semibold text-ink font-heading tracking-tight leading-tight">
-          Control your online banking while earning rewards.
-        </h1>
-      </Reveal>
-
-      {/* 2. Author + share */}
-      <Reveal delay={80} class="mb-12">
-        <div class="flex flex-wrap items-center justify-between gap-6 pb-8 border-b border-hairline">
-          <div class="flex items-center gap-4">
-            <div class="w-16 h-16 rounded-full bg-primary text-on-primary flex items-center justify-center font-semibold font-heading text-xl">
-              R
-            </div>
-            <div>
-              <h2 class="text-xl font-semibold text-ink font-heading">Richard</h2>
-              <p class="text-sm text-stone">Community Organiser</p>
-            </div>
-          </div>
-          <div class="flex items-center gap-1.5">
-            {shareLinks.map((s) => (
-              <a
-                href="#"
-                aria-label={s.label}
-                class="flex h-10 w-10 items-center justify-center rounded-full border border-hairline bg-canvas text-steel hover:border-brand/40 hover:text-brand transition-colors"
-              >
-                <Icon name={s.icon} class="w-4 h-4" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </Reveal>
-
-      {/* 3. Article body */}
-      <Reveal delay={120} class="rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)] text-steel leading-relaxed text-base mb-12">
-        <p class="mb-6">
-          We love to bring designs to life as a developer, and I aim to do this using whatever front end tools
-          are necessary. My preferred tools are more modern javascript libraries like React.js but I like to use
-          whatever is best for the websites needs. There are several reasons why a business would consider
-          a rebrand and it doesn&rsquo;t necessarily mean the business has been unsuccessful.
-        </p>
-        <p class="mb-10">
-          But in order that you may see whence all this born error of those who accuse pleasure and praise
-          pain, I will open the whole matter, and explain the very things which were said by that discoverer of
-          truth and, as it were, the architect of a happy life.
-        </p>
-
-        <h2 class="text-2xl font-semibold text-ink font-heading mb-4">Using a Query</h2>
-        <p class="mb-10">
-          We love to bring designs to life as a developer, and I aim to do this using whatever front end tools are
-          necessary. My preferred tools are more modern javascript libraries like React.js but I like to use
-          whatever is best for the websites needs. There are several reasons why a business would consider a
-          rebrand and it doesn&rsquo;t necessarily mean the business has been unsuccessful.
-        </p>
-        <p class="mb-10">
-          Vestibulum ante ipsum primis in faucibus enim. In aliquam tempus porta. Mauris vel finibus risus.
-          Maecenas egestas mi sed neque finibus, nec faucibus ipsum aliquet. Duis scelerisque at odio vel
-          tempus. Morbi a tincidunt nunc, id rutrum erat. Fusce egestas quam vel facilisis tempor. Morbi non
-          orci elementum, sollicitudin mauris laoreet, luctus est. Donec in mi lorem.
-        </p>
-
-        <div class="flex items-start gap-6 mb-10">
-          <Icon name="lucide:quote" class="w-10 h-10 text-brand flex-none" />
-          <div class="flex flex-col gap-4">
-            <blockquote class="text-ink text-2xl md:text-3xl font-semibold font-heading leading-snug tracking-tight">
-              &ldquo;Success is the result of perfection, hard work, learning from failure, loyalty, &amp;
-              persistence&rdquo;
-            </blockquote>
-            <span class="text-sm font-semibold text-stone">Phil Martinez</span>
-          </div>
-        </div>
-
-        <p class="mb-10">
-          Vestibulum ante ipsum primis in faucibus enim. In aliquam tempus porta. Mauris vel finibus risus.
-          Maecenas egestas mi sed neque finibus, nec faucibus ipsum aliquet. Duis scelerisque at odio vel
-          tempus. Morbi a tincidunt nunc, id rutrum erat. Fusce egestas quam vel facilisis tempor. Morbi non
-          orci elementum, sollicitudin mauris laoreet, luctus est. Donec in mi lorem.
-        </p>
-
-        <h2 class="text-2xl font-semibold text-ink font-heading mb-4">On the specificity of selectors</h2>
-        <p class="mb-6">
-          The specificity of the : <span class="text-brand font-semibold">not()</span> pseudo-class is the
-          specificity of its argument. The :not() pseudo-class does not add to the selector specificity, unlike
-          other pseudo-classes.
-        </p>
-        <p class="mb-6">
-          The <span class="text-brand font-semibold">simple selector</span> that:
-          <span class="text-brand font-semibold">not()</span> takes as an argument can be any of the following:
-        </p>
-        <ul class="space-y-2.5 mb-10">
-          {selectorList.map((item) => (
-            <li class="flex items-start gap-2">
-              <Icon name="lucide:check" class="w-4 h-4 text-brand mt-1 flex-none" />
-              <span>{item}</span>
-            </li>
-          ))}
-          <li class="flex items-start gap-2">
-            <Icon name="lucide:check" class="w-4 h-4 text-brand mt-1 flex-none" />
-            <span>
-              Pseudo-class selector e.g: <span class="text-brand font-semibold">first-child, :last-of-type</span>
-            </span>
-          </li>
-        </ul>
-
-        <div class="rounded-lg border border-hairline bg-surface-soft p-6 md:p-8 font-mono text-sm text-steel mb-10">
-          <div>{'li:not(.old)::after {'}</div>
-          <div class="pl-8 my-2">
-            <div>{'content: "New!";'}</div>
-            <div>{'color: deepPink;'}</div>
-          </div>
-          <div>{'}'}</div>
-        </div>
-
-        <p>
-          The specificity of the : <span class="text-brand font-semibold">not()</span> pseudo-class is the
-          specificity of its argument. The :not() pseudo-class does not add to the selector specificity, unlike
-          other pseudo-classes.
-        </p>
-      </Reveal>
-
-      {/* 4. Tags */}
-      <Reveal delay={140} class="mb-12">
-        <div class="flex flex-wrap items-center gap-2 text-sm">
-          <span class="font-semibold text-ink mr-1">Tagged with:</span>
-          {tags.map((t) => (
-            <a
-              href="#"
-              class="px-4 py-1.5 rounded-full border border-hairline bg-canvas text-steel hover:border-brand/40 hover:text-brand transition-colors"
-            >
-              {t}
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
+    <div class="container-page">
+      <div class="grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)] xl:grid-cols-[240px_minmax(0,1fr)_200px] xl:gap-16">
+        {/* Left rail: author, meta, share, tags */}
+        <aside class="hidden lg:block">
+          <div class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-8 overflow-y-auto pb-8">
+            <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium text-steel transition-colors hover:text-ink">
+              <Icon name="lucide:arrow-left" class="h-4 w-4" /> Back to blog
             </a>
-          ))}
-        </div>
-      </Reveal>
 
-      {/* 5. About Author */}
-      <Reveal delay={160} class="mb-12">
-        <div class="rounded-lg bg-canvas-dark p-8 md:p-10 flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left">
-          <div class="w-24 h-24 flex-none rounded-full bg-primary text-on-primary flex items-center justify-center font-semibold font-heading text-2xl">
-            PB
-          </div>
-          <div class="flex flex-col gap-3">
-            <div>
-              <span class="text-xs font-semibold text-stone tracking-wide">About Author</span>
-              <h3 class="text-xl font-semibold text-on-dark font-heading mt-1">Peter Bowman</h3>
+            <div class="flex flex-col gap-3 border-b border-hairline-soft pb-6">
+              <span class="eyebrow">Resources</span>
+              <div class="flex items-center gap-3">
+                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-on-primary font-semibold">
+                  R
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-ink">Richard</p>
+                  <p class="p-lt">Community Organiser</p>
+                </div>
+              </div>
             </div>
-            <p class="text-on-dark-muted text-base leading-relaxed max-w-2xl">
-              Phasellus et ipsum justo. Aenean fringilla a fermentum mauris non venenatis. Praesent at nulla
-              aliquam ligula.
-            </p>
-            <div class="flex items-center justify-center sm:justify-start gap-4 mt-1 text-stone">
+
+            <div class="flex flex-col gap-3 border-b border-hairline-soft pb-6">
+              <span class="eyebrow">Share</span>
+              <div class="flex items-center gap-1.5">
+                {shareLinks.map((s) => (
+                  <a
+                    href="#"
+                    aria-label={s.label}
+                    class="flex h-8 w-8 items-center justify-center rounded-sm border border-hairline bg-canvas text-steel transition-colors hover:bg-surface hover:text-ink"
+                  >
+                    <Icon name={s.icon} class="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <span class="eyebrow">Tagged with:</span>
+              <div class="flex flex-wrap gap-1.5">
+                {tags.map((t) => (
+                  <a
+                    href="#"
+                    class="rounded-sm bg-brand-tag/15 px-2 py-0.5 text-[13px] font-semibold text-brand-tag"
+                  >
+                    {t}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        {/* Center: prose column */}
+        <article class="w-full max-w-[720px]">
+          <Reveal class="mb-10 border-b border-hairline pb-8">
+            <a href="/blog" class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-steel transition-colors hover:text-ink lg:hidden">
+              <Icon name="lucide:arrow-left" class="h-4 w-4" /> Back to blog
+            </a>
+            <span class="eyebrow mb-4 block">Resources</span>
+            <h1 class="h1">Control your online banking while earning rewards.</h1>
+          </Reveal>
+
+          <Reveal delay={80}>
+            <img
+              src="/placeholder.png"
+              alt="Control your online banking while earning rewards."
+              loading="lazy"
+              class="mb-10 aspect-[16/9] w-full rounded-lg border border-hairline-soft bg-surface object-contain p-4"
+            />
+          </Reveal>
+
+          {/* Mobile author + share */}
+          <div class="mb-10 flex flex-wrap items-center justify-between gap-6 border-b border-hairline pb-8 lg:hidden">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-on-primary font-semibold">
+                R
+              </div>
+              <div>
+                <p class="text-sm font-medium text-ink">Richard</p>
+                <p class="p-lt">Community Organiser</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-1.5">
               {shareLinks.map((s) => (
-                <a href="#" aria-label={s.label} class="hover:text-on-dark transition-colors">
-                  <Icon name={s.icon} class="w-4 h-4" />
+                <a
+                  href="#"
+                  aria-label={s.label}
+                  class="flex h-8 w-8 items-center justify-center rounded-sm border border-hairline bg-canvas text-steel transition-colors hover:bg-surface hover:text-ink"
+                >
+                  <Icon name={s.icon} class="h-4 w-4" />
                 </a>
               ))}
             </div>
           </div>
-        </div>
-      </Reveal>
 
-      {/* 6. Next Post */}
-      <Reveal delay={180} class="mb-12">
-        <a
-          href="/article"
-          class="group block rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all"
-        >
-          <span class="inline-flex items-center gap-2 text-xs font-semibold text-brand uppercase tracking-wider mb-3">
-            Next Post <Icon name="lucide:arrow-right" class="w-4 h-4" />
-          </span>
-          <h3 class="text-2xl font-semibold text-ink font-heading tracking-tight group-hover:text-brand transition-colors">
-            Tips for thriving in our virtual world
-          </h3>
-        </a>
-      </Reveal>
-
-      {/* 7. Comments */}
-      <Reveal delay={200} class="mb-12">
-        <h3 class="text-2xl font-semibold text-ink font-heading mb-6">Comments(02)</h3>
-        <div class="space-y-5">
-          {comments.map((c) => (
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)]">
-              <div class="flex flex-wrap items-center gap-3 mb-3">
-                <h4 class="text-base font-semibold text-ink font-heading">{c.author}</h4>
-                <span class="text-xs text-stone">{c.date}</span>
-              </div>
-              <p class="text-steel text-sm leading-relaxed mb-4">{c.body}</p>
-              <a href="#" class="inline-flex items-center gap-2 text-xs font-semibold text-brand hover:underline">
-                Reply <Icon name="lucide:corner-down-left" class="w-4 h-4" />
-              </a>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* 8. Leave a Reply */}
-      <Reveal delay={220}>
-        <div class="rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)]">
-          <div class="mb-8">
-            <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading tracking-tight mb-2">
-              Leave a Reply
-            </h2>
-            <p class="text-sm text-steel">
-              Your email address will not be published. Required fields are marked *
+          {/* Article body */}
+          <Reveal delay={120} class="flex flex-col gap-6">
+            <p class="p-rg">
+              We love to bring designs to life as a developer, and I aim to do this using whatever front end tools
+              are necessary. My preferred tools are more modern javascript libraries like React.js but I like to use
+              whatever is best for the websites needs. There are several reasons why a business would consider
+              a rebrand and it doesn&rsquo;t necessarily mean the business has been unsuccessful.
             </p>
+            <p class="p-rg">
+              But in order that you may see whence all this born error of those who accuse pleasure and praise
+              pain, I will open the whole matter, and explain the very things which were said by that discoverer of
+              truth and, as it were, the architect of a happy life.
+            </p>
+
+            <section id="using-a-query" class="mt-8 flex scroll-mt-28 flex-col gap-6 border-t border-hairline-soft pt-8">
+              <h2 class="h3">Using a Query</h2>
+              <p class="p-rg">
+                We love to bring designs to life as a developer, and I aim to do this using whatever front end tools are
+                necessary. My preferred tools are more modern javascript libraries like React.js but I like to use
+                whatever is best for the websites needs. There are several reasons why a business would consider a
+                rebrand and it doesn&rsquo;t necessarily mean the business has been unsuccessful.
+              </p>
+              <p class="p-rg">
+                Vestibulum ante ipsum primis in faucibus enim. In aliquam tempus porta. Mauris vel finibus risus.
+                Maecenas egestas mi sed neque finibus, nec faucibus ipsum aliquet. Duis scelerisque at odio vel
+                tempus. Morbi a tincidunt nunc, id rutrum erat. Fusce egestas quam vel facilisis tempor. Morbi non
+                orci elementum, sollicitudin mauris laoreet, luctus est. Donec in mi lorem.
+              </p>
+
+              <figure class="flex items-start gap-6">
+                <Icon name="lucide:quote" class="h-8 w-8 flex-none text-brand" />
+                <div class="flex flex-col gap-3">
+                  <blockquote class="h3">
+                    &ldquo;Success is the result of perfection, hard work, learning from failure, loyalty, &amp;
+                    persistence&rdquo;
+                  </blockquote>
+                  <figcaption class="p-sm font-medium text-stone">Phil Martinez</figcaption>
+                </div>
+              </figure>
+
+              <p class="p-rg">
+                Vestibulum ante ipsum primis in faucibus enim. In aliquam tempus porta. Mauris vel finibus risus.
+                Maecenas egestas mi sed neque finibus, nec faucibus ipsum aliquet. Duis scelerisque at odio vel
+                tempus. Morbi a tincidunt nunc, id rutrum erat. Fusce egestas quam vel facilisis tempor. Morbi non
+                orci elementum, sollicitudin mauris laoreet, luctus est. Donec in mi lorem.
+              </p>
+            </section>
+
+            <section id="specificity-of-selectors" class="mt-8 flex scroll-mt-28 flex-col gap-6 border-t border-hairline-soft pt-8">
+              <h2 class="h3">On the specificity of selectors</h2>
+              <p class="p-rg">
+                The specificity of the : <code class="rounded-xs border border-hairline bg-surface px-1.5 font-mono text-[13px] font-medium text-charcoal">not()</code> pseudo-class is the
+                specificity of its argument. The :not() pseudo-class does not add to the selector specificity, unlike
+                other pseudo-classes.
+              </p>
+              <p class="p-rg">
+                The <code class="rounded-xs border border-hairline bg-surface px-1.5 font-mono text-[13px] font-medium text-charcoal">simple selector</code> that:
+                <code class="rounded-xs border border-hairline bg-surface px-1.5 font-mono text-[13px] font-medium text-charcoal">not()</code> takes as an argument can be any of the following:
+              </p>
+              <ul class="flex flex-col gap-2.5">
+                {selectorList.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <Icon name="lucide:check" class="mt-1 h-4 w-4 flex-none text-brand" />
+                    <span class="p-rg">{item}</span>
+                  </li>
+                ))}
+                <li class="flex items-start gap-2">
+                  <Icon name="lucide:check" class="mt-1 h-4 w-4 flex-none text-brand" />
+                  <span class="p-rg">
+                    Pseudo-class selector e.g: <code class="rounded-xs border border-hairline bg-surface px-1.5 font-mono text-[13px] font-medium text-charcoal">first-child, :last-of-type</code>
+                  </span>
+                </li>
+              </ul>
+
+              {/* Code block */}
+              <div class="overflow-hidden rounded-md bg-surface-code">
+                <div class="flex items-center justify-between border-b border-hairline-dark px-4 py-2">
+                  <span class="font-mono text-[13px] text-on-dark-muted">css</span>
+                  <button
+                    type="button"
+                    class="inline-flex items-center gap-1.5 rounded-sm border border-hairline-dark px-2 py-1 text-[13px] text-on-dark-muted transition-colors hover:text-on-dark"
+                  >
+                    <Icon name="lucide:copy" class="h-3.5 w-3.5" /> Copy
+                  </button>
+                </div>
+                <pre class="overflow-x-auto p-4 font-mono text-sm leading-[1.5] text-on-dark"><code>{'li:not(.old)::after {\n    content: "New!";\n    color: deepPink;\n}'}</code></pre>
+              </div>
+
+              <p class="p-rg">
+                The specificity of the : <code class="rounded-xs border border-hairline bg-surface px-1.5 font-mono text-[13px] font-medium text-charcoal">not()</code> pseudo-class is the
+                specificity of its argument. The :not() pseudo-class does not add to the selector specificity, unlike
+                other pseudo-classes.
+              </p>
+            </section>
+          </Reveal>
+
+          {/* Tags — mobile */}
+          <div class="mt-10 flex flex-wrap items-center gap-2 lg:hidden">
+            <span class="p-sm font-medium text-ink">Tagged with:</span>
+            {tags.map((t) => (
+              <a href="#" class="rounded-sm bg-brand-tag/15 px-2 py-0.5 text-[13px] font-semibold text-brand-tag">
+                {t}
+              </a>
+            ))}
           </div>
 
-          <form class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* About Author */}
+          <Reveal delay={160} id="about-author" class="mt-12 scroll-mt-28">
+            <div class="flex flex-col items-center gap-6 rounded-lg bg-canvas-dark p-8 text-center sm:flex-row sm:items-start sm:text-left">
+              <div class="flex h-16 w-16 flex-none items-center justify-center rounded-full bg-surface-code text-on-dark font-semibold">
+                PB
+              </div>
+              <div class="flex flex-col gap-3">
+                <div>
+                  <span class="eyebrow text-on-dark-muted">About Author</span>
+                  <h3 class="h5 mt-1 text-on-dark">Peter Bowman</h3>
+                </div>
+                <p class="p-rg text-on-dark-muted">
+                  Phasellus et ipsum justo. Aenean fringilla a fermentum mauris non venenatis. Praesent at nulla
+                  aliquam ligula.
+                </p>
+                <div class="mt-1 flex items-center justify-center gap-4 text-on-dark-muted sm:justify-start">
+                  {shareLinks.map((s) => (
+                    <a href="#" aria-label={s.label} class="transition-colors hover:text-on-dark">
+                      <Icon name={s.icon} class="h-4 w-4" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Next Post */}
+          <Reveal delay={180} id="next-post" class="mt-12 scroll-mt-28">
+            <a
+              href="/article"
+              class="group block rounded-lg border border-hairline bg-canvas p-6 transition-colors hover:bg-surface-soft"
+            >
+              <span class="eyebrow mb-2 inline-flex items-center gap-2">
+                Next Post <Icon name="lucide:arrow-right" class="h-4 w-4" />
+              </span>
+              <h3 class="h4">Tips for thriving in our virtual world</h3>
+            </a>
+          </Reveal>
+
+          {/* Comments */}
+          <Reveal delay={200} id="comments" class="mt-12 scroll-mt-28 border-t border-hairline-soft pt-10">
+            <h3 class="h4 mb-6">Comments(02)</h3>
+            <div class="flex flex-col gap-4">
+              {comments.map((c) => (
+                <div class="card">
+                  <div class="mb-2 flex flex-wrap items-center gap-3">
+                    <h4 class="h6">{c.author}</h4>
+                    <span class="p-lt">{c.date}</span>
+                  </div>
+                  <p class="p-rg mb-4">{c.body}</p>
+                  <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-ink transition-colors hover:text-brand">
+                    Reply <Icon name="lucide:corner-down-left" class="h-4 w-4" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          {/* Leave a Reply */}
+          <Reveal delay={220} id="leave-a-reply" class="mt-12 scroll-mt-28 border-t border-hairline-soft pt-10">
+            <div class="mb-8">
+              <h2 class="h3 mb-2">Leave a Reply</h2>
+              <p class="p-sm">Your email address will not be published. Required fields are marked *</p>
+            </div>
+
+            <form class="flex flex-col gap-6">
+              <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div class="flex flex-col gap-2">
+                  <label for="name" class="text-sm font-medium text-ink">Name *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    class="h-10 w-full rounded-md border border-hairline bg-canvas px-3 text-sm text-ink transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                  />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label for="email" class="text-sm font-medium text-ink">Email*</label>
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    class="h-10 w-full rounded-md border border-hairline bg-canvas px-3 text-sm text-ink transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
+                  />
+                </div>
+              </div>
+
               <div class="flex flex-col gap-2">
-                <label for="name" class="text-sm font-semibold text-ink">Name *</label>
+                <label for="website" class="text-sm font-medium text-ink">Website</label>
                 <input
-                  type="text"
-                  id="name"
-                  required
-                  class="w-full px-5 py-3.5 bg-canvas border border-hairline rounded-full text-ink focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
+                  type="url"
+                  id="website"
+                  class="h-10 w-full rounded-md border border-hairline bg-canvas px-3 text-sm text-ink transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"
                 />
               </div>
+
               <div class="flex flex-col gap-2">
-                <label for="email" class="text-sm font-semibold text-ink">Email*</label>
-                <input
-                  type="email"
-                  id="email"
+                <label for="comment" class="text-sm font-medium text-ink">Comment *</label>
+                <textarea
+                  id="comment"
+                  rows="6"
                   required
-                  class="w-full px-5 py-3.5 bg-canvas border border-hairline rounded-full text-ink focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
-                />
+                  class="w-full resize-none rounded-md border border-hairline bg-canvas px-3 py-2.5 text-sm text-ink transition-colors focus:border-brand focus:outline-none focus:ring-1 focus:ring-brand"></textarea>
               </div>
-            </div>
 
-            <div class="flex flex-col gap-2">
-              <label for="website" class="text-sm font-semibold text-ink">Website</label>
-              <input
-                type="url"
-                id="website"
-                class="w-full px-5 py-3.5 bg-canvas border border-hairline rounded-full text-ink focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"
-              />
-            </div>
+              <div class="flex items-start gap-3">
+                <input id="checkbox" type="checkbox" class="mt-0.5 h-4 w-4 rounded-xs border-hairline text-brand focus:ring-brand" />
+                <label for="checkbox" class="p-sm cursor-pointer">
+                  Save my name, email, and website in this browser for the next time I comment.
+                </label>
+              </div>
 
-            <div class="flex flex-col gap-2">
-              <label for="comment" class="text-sm font-semibold text-ink">Comment *</label>
-              <textarea
-                id="comment"
-                rows="6"
-                required
-                class="w-full px-5 py-4 bg-canvas border border-hairline rounded-lg text-ink resize-none focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-all"></textarea>
-            </div>
+              <div class="pt-2">
+                <button type="submit" class="btn-primary btn-md">
+                  Post comment <Icon name="lucide:send" class="h-4 w-4" />
+                </button>
+              </div>
+            </form>
+          </Reveal>
+        </article>
 
-            <div class="flex items-start gap-3 pt-2">
-              <input id="checkbox" type="checkbox" class="mt-0.5 h-4 w-4 rounded border-hairline text-brand focus:ring-brand" />
-              <label for="checkbox" class="text-sm text-steel cursor-pointer">
-                Save my name, email, and website in this browser for the next time I comment.
-              </label>
-            </div>
-
-            <div class="pt-4">
-              <button
-                type="submit"
-                class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-canvas-dark px-8 text-sm font-semibold text-on-dark hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]"
-              >
-                Post comment <Icon name="lucide:send" class="w-4 h-4" />
-              </button>
-            </div>
-          </form>
-        </div>
-      </Reveal>
+        {/* Right rail: table of contents */}
+        <aside class="hidden xl:block">
+          <nav class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-3 overflow-y-auto pb-8">
+            <span class="eyebrow">On this page</span>
+            <ul class="flex flex-col">
+              {toc.map((item) => (
+                <li>
+                  <a
+                    href={`#${item.id}`}
+                    class={`p-sm block py-1 transition-colors hover:text-ink ${
+                      item.active ? 'font-medium text-ink' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+      </div>
     </div>
   </main>
 

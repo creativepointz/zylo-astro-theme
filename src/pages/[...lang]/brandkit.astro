@@ -10,6 +10,12 @@ export function getStaticPaths() {
   return generatePaths();
 }
 
+const stats = [
+  { value: '100+', label: 'Business applications we integrate with' },
+  { value: '120+', label: 'Team members, fully remote' },
+  { value: '160+', label: 'Countries our users work from' },
+];
+
 const channels = [
   { label: 'X (Twitter)', icon: 'lucide:twitter' },
   { label: 'Facebook', icon: 'lucide:facebook' },
@@ -37,89 +43,126 @@ const kits = [
 <Layout title="Brandkit — Logos & Brand Assets" description="Brand assets and guidelines for Zylo Track. Download official logos, icons, and usage rules.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-5xl mx-auto px-4">
-      {/* 1. A bit about Zylo track */}
-      <Reveal class="mb-16">
-        <h1 class="text-4xl sm:text-5xl font-semibold text-ink font-heading tracking-tight mb-6 leading-tight">
-          A bit about Zylo track
-        </h1>
-        <p class="text-lg text-steel leading-relaxed mb-6">
-          Zylo Track provides time tracking and productivity tools to help businesses move away
-          from traditional work models towards flexible and remote work. Companies use Zylo
-          Track data to manage projects across teams and make better business decisions, from
-          project estimates and team planning, to profitability analysis, to accurate and
-          transparent client billing.
-        </p>
-        <p class="text-lg text-steel leading-relaxed">
-          We integrate with 100+ commonly used business applications and sync time entry data
-          across our mobile and desktop apps, Chrome, Firefox and Edge extensions, and
-          website. We are a bootstrapped, fully remote company with 120+ team members working
-          from 30+ countries, serving users from 160+ countries.
-        </p>
-      </Reveal>
+  <main id="main" class="bg-canvas">
+    {/* 1. Compact centered hero */}
+    <section class="pt-24 md:pt-[120px] pb-16">
+      <div class="container-page">
+        <Reveal class="mx-auto max-w-3xl text-center">
+          <span class="eyebrow mb-4 block">Brandkit</span>
+          <h1 class="h1 mb-5">A bit about Zylo track</h1>
+          <p class="subtitle mb-4">
+            Zylo Track provides time tracking and productivity tools to help businesses move away
+            from traditional work models towards flexible and remote work. Companies use Zylo
+            Track data to manage projects across teams and make better business decisions, from
+            project estimates and team planning, to profitability analysis, to accurate and
+            transparent client billing.
+          </p>
+          <p class="p-rg">
+            We integrate with 100+ commonly used business applications and sync time entry data
+            across our mobile and desktop apps, Chrome, Firefox and Edge extensions, and
+            website. We are a bootstrapped, fully remote company with 120+ team members working
+            from 30+ countries, serving users from 160+ countries.
+          </p>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href="#assets" class="btn-primary btn-lg">
+              Download Kit <Icon name="lucide:download" class="h-4 w-4" />
+            </a>
+            <a href="/contact" class="btn-secondary btn-lg">Ask about usage</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
 
-      {/* 2. Official Zylo track channels */}
-      <Reveal delay={80} class="mb-16">
-        <h2 class="text-2xl font-semibold text-ink font-heading tracking-tight mb-3">
-          Official Zylo track channels
-        </h2>
-        <p class="text-steel leading-relaxed mb-6">
-          We believe simplicity drives impact. By stripping away unnecessary clutter, we help
-          teams focus on what truly matters, making decisions faster and creating solutions
-          that are easy to understand and use.
-        </p>
-        <div class="flex flex-wrap gap-3">
+    {/* 2. Stat row */}
+    <section class="pb-20">
+      <div class="container-page">
+        <Reveal class="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-hairline bg-hairline sm:grid-cols-3">
+          {stats.map((s) => (
+            <div class="bg-canvas p-6 text-center">
+              <div class="h2 mb-2">{s.value}</div>
+              <p class="p-sm">{s.label}</p>
+            </div>
+          ))}
+        </Reveal>
+      </div>
+    </section>
+
+    {/* 3. Official channels */}
+    <section class="pb-20">
+      <div class="container-page">
+        <Reveal class="max-w-2xl">
+          <h2 class="h3 mb-3">Official Zylo track channels</h2>
+          <p class="p-rg mb-6">
+            We believe simplicity drives impact. By stripping away unnecessary clutter, we help
+            teams focus on what truly matters, making decisions faster and creating solutions
+            that are easy to understand and use.
+          </p>
+        </Reveal>
+        <Reveal delay={80} class="flex flex-wrap gap-3">
           {channels.map((c) => (
             <a
               href="#"
-              class="inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas px-5 py-2.5 text-sm font-semibold text-steel hover:border-brand/40 hover:text-brand transition-colors shadow-[var(--shadow-subtle)]"
+              class="inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas px-5 py-2.5 text-sm font-medium text-steel transition-colors hover:bg-surface hover:text-ink"
             >
-              <Icon name={c.icon} class="w-4 h-4" />
+              <Icon name={c.icon} class="h-4 w-4" />
               {c.label}
             </a>
           ))}
-        </div>
-      </Reveal>
-
-      {/* 3. Brand assets and guidelines */}
-      <Reveal delay={120} class="mb-10">
-        <h2 class="text-2xl font-semibold text-ink font-heading tracking-tight mb-3">
-          Brand assets and guidelines
-        </h2>
-        <p class="text-steel leading-relaxed">
-          Below, you will find Zylo Track assets. Please use the logos or icons as is. Please do not
-          modify or use them in a confusing way, including suggesting endorsement by Zylo
-          Track or collaboration with Zylo Track, unless previously approved by us.
-        </p>
-      </Reveal>
-
-      {/* 4. Download kits */}
-      <div class="space-y-6 mb-16">
-        {kits.map((k, idx) => (
-          <Reveal delay={idx * 80}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all">
-              <h2 class="text-xl font-semibold text-ink font-heading mb-3">{k.title}</h2>
-              <p class="text-steel text-sm leading-relaxed mb-4">{k.desc}</p>
-              <ul class="space-y-2 mb-6">
-                {k.options.map((o) => (
-                  <li class="flex items-start gap-2 text-sm text-steel">
-                    <Icon name="lucide:check" class="w-4 h-4 text-brand mt-0.5 flex-none" />
-                    <span>{o}</span>
-                  </li>
-                ))}
-              </ul>
-              <a
-                href="#"
-                class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-canvas-dark px-6 text-xs font-semibold text-on-dark hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]"
-              >
-                Download Kit <Icon name="lucide:download" class="w-4 h-4" />
-              </a>
-            </div>
-          </Reveal>
-        ))}
+        </Reveal>
       </div>
-    </div>
+    </section>
+
+    {/* 4. Brand assets */}
+    <section id="assets" class="pb-24">
+      <div class="container-page">
+        <Reveal class="mb-8 max-w-2xl">
+          <h2 class="h3 mb-3">Brand assets and guidelines</h2>
+          <p class="p-rg">
+            Below, you will find Zylo Track assets. Please use the logos or icons as is. Please do not
+            modify or use them in a confusing way, including suggesting endorsement by Zylo
+            Track or collaboration with Zylo Track, unless previously approved by us.
+          </p>
+        </Reveal>
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {kits.map((k, idx) => (
+            <Reveal delay={idx * 60}>
+              <div class="flex h-full flex-col rounded-lg border border-hairline bg-canvas p-6">
+                <span class="icon-tile mb-4">
+                  <Icon name="lucide:shapes" class="h-4 w-4" />
+                </span>
+                <h3 class="h5 mb-2">{k.title}</h3>
+                <p class="p-sm mb-5">{k.desc}</p>
+                <ul class="mb-6 space-y-2">
+                  {k.options.map((o) => (
+                    <li class="flex items-start gap-2 p-sm">
+                      <Icon name="lucide:check" class="mt-1 h-3.5 w-3.5 flex-none text-brand" />
+                      <span>{o}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="#" class="btn-secondary btn-md mt-auto self-start">
+                  Download Kit <Icon name="lucide:download" class="h-4 w-4" />
+                </a>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 5. Closing CTA band */}
+    <section class="bg-surface-soft py-16 md:py-20">
+      <div class="container-page">
+        <Reveal class="mx-auto max-w-2xl text-center">
+          <h2 class="h3 mb-4">Need an asset that isn't here?</h2>
+          <p class="p-rg mb-8">
+            Tell us where the logo will appear and we will send the right file, or approve the use if it needs a review.
+          </p>
+          <a href="/contact" class="btn-primary btn-lg">Contact the brand team</a>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />

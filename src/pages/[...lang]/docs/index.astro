@@ -9,6 +9,9 @@ import { generatePaths } from '@/lib/utils/i18nUtils';
 export function getStaticPaths() {
   return generatePaths();
 }
+
+// Table of contents derived from the category headings rendered on this page
+const toc = categories.map((cat, i) => ({ label: cat.name, id: cat.slug, active: i === 0 }));
 ---
 
 <Layout
@@ -16,77 +19,106 @@ export function getStaticPaths() {
   description="Everything you need to set up, customize, and get the most out of Zylo."
 >
   <Navbar />
-  <main id="main">
-    <!-- Hero -->
-    <section
-      class="relative overflow-hidden pt-40 pb-24 md:pt-48"
-      style="background: radial-gradient(46.71% 46.71% at 50% 0%, rgba(79, 70, 229, 0.20) 0%, rgba(167, 136, 217, 0.20) 21.11%, rgba(255, 202, 205, 0.20) 42.23%, rgba(255, 255, 255, 0) 100%), #FFF;"
-    >
-      <div class="container-page">
-        <div class="mx-auto max-w-3xl text-center" data-reveal>
-          <h1 class="h1 mb-7">Documentation</h1>
-          <p class="p-xl mx-auto max-w-2xl">
-            Everything you need to set up, customize, and get the most out of our tools.
-          </p>
-        </div>
+  <main id="main" class="bg-canvas pt-24 md:pt-[120px] pb-24">
+    <div class="container-page">
+      <div class="grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)] xl:grid-cols-[240px_minmax(0,1fr)_200px] xl:gap-16">
+        <!-- Left: docs sidebar nav -->
+        <aside class="hidden lg:block">
+          <nav class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-1 overflow-y-auto pb-8">
+            <span class="eyebrow px-3 pb-2 pt-4">Documentation</span>
+            {categories.map((cat, i) => (
+              <a
+                href={`/docs/${cat.slug}`}
+                class={`flex items-center gap-2 rounded-sm px-3 py-2 text-sm transition-colors ${
+                  i === 0 ? 'bg-surface font-medium text-ink' : 'text-steel hover:bg-surface-soft hover:text-ink'
+                }`}
+              >
+                <Icon name={cat.icon} stroke-width={1.75} class="h-4 w-4 shrink-0" />
+                {cat.name}
+              </a>
+            ))}
+          </nav>
+        </aside>
 
-        <!-- Search -->
-        <div class="mx-auto mt-14 w-full max-w-[500px]" data-reveal>
-          <label
-            class="flex items-center gap-4 rounded-md border border-hairline bg-canvas px-5 py-4 shadow-[var(--shadow-subtle)] transition focus-within:border-brand focus-within:ring-2 focus-within:ring-brand/30"
-          >
-            <Icon name="lucide:search" class="h-6 w-6 shrink-0 text-stone" />
-            <input
-              type="text"
-              placeholder="Search for topic or questions"
-              class="min-w-0 flex-1 bg-transparent text-base text-ink placeholder:text-stone focus:outline-none"
-            />
-            <kbd
-              class="shrink-0 font-sans text-base text-stone"
-            >⌘K</kbd>
-          </label>
-        </div>
-      </div>
-    </section>
+        <!-- Center: prose column -->
+        <div class="w-full max-w-[720px]">
+          <header class="flex flex-col gap-4 border-b border-hairline pb-8" data-reveal>
+            <h1 class="h1">Documentation</h1>
+            <p class="subtitle">
+              Everything you need to set up, customize, and get the most out of our tools.
+            </p>
+          </header>
 
-    <!-- Categories -->
-    <section class="bg-canvas pb-24">
-      <div class="container-page">
-        <div
-          class="mx-auto grid max-w-[1200px] grid-cols-1 gap-px overflow-hidden rounded-md border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {categories.map((cat) => (
-            <a
-              href={`/docs/${cat.slug}`}
-              class="group relative flex flex-col gap-6 bg-canvas p-10"
+          <!-- Search -->
+          <div class="mt-8" data-reveal>
+            <label
+              class="flex h-10 items-center gap-3 rounded-md border border-hairline bg-canvas px-3 transition focus-within:border-brand focus-within:ring-1 focus-within:ring-brand"
             >
-              <div class="flex items-start justify-between">
+              <Icon name="lucide:search" class="h-4 w-4 shrink-0 text-stone" />
+              <input
+                type="text"
+                placeholder="Search for topic or questions"
+                class="min-w-0 flex-1 bg-transparent text-sm text-ink placeholder:text-stone focus:outline-none"
+              />
+              <kbd class="shrink-0 rounded-xs border border-hairline bg-surface px-1.5 font-mono text-[13px] text-stone">⌘K</kbd>
+            </label>
+          </div>
+
+          <!-- Categories -->
+          <div class="mt-10 flex flex-col">
+            {categories.map((cat) => (
+              <a
+                id={cat.slug}
+                href={`/docs/${cat.slug}`}
+                class="group flex scroll-mt-28 items-start gap-4 border-b border-hairline-soft py-6 transition-colors hover:bg-surface-soft"
+              >
                 <span
-                  class="flex h-[72px] w-[72px] items-center justify-center rounded-full"
+                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-md"
                   style={`background:${cat.tileBg}`}
                 >
-                  <Icon name={cat.icon} class={`h-7 w-7 ${cat.iconColor}`} />
+                  <Icon name={cat.icon} class={`h-5 w-5 ${cat.iconColor}`} />
                 </span>
+
+                <div class="flex flex-1 flex-col gap-1">
+                  <h2 class="h6">{cat.name}</h2>
+                  <p class="p-rg">{cat.description}</p>
+                  <span class="rounded-sm bg-brand-tag/15 px-2 py-0.5 text-[13px] font-semibold text-brand-tag mt-2 w-max">
+                    {cat.articles} Articles
+                  </span>
+                </div>
+
                 <Icon
                   name="lucide:arrow-up-right"
                   stroke-width="1.5"
-                  class="h-8 w-8 text-brand opacity-0 transition-opacity group-hover:opacity-100"
+                  class="mt-1 h-5 w-5 shrink-0 text-stone transition-colors group-hover:text-ink"
                 />
-              </div>
-
-              <div class="flex flex-col gap-2">
-                <h3 class="h6">{cat.name}</h3>
-                <p class="p-rg text-stone">{cat.description}</p>
-              </div>
-
-              <span class="mt-auto text-sm font-medium text-brand underline">
-                {cat.articles} Articles
-              </span>
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
         </div>
+
+        <!-- Right: on this page -->
+        <aside class="hidden xl:block">
+          <nav class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-3 overflow-y-auto pb-8">
+            <span class="eyebrow">On this page</span>
+            <ul class="flex flex-col">
+              {toc.map((item) => (
+                <li>
+                  <a
+                    href={`#${item.id}`}
+                    class={`p-sm block py-1 transition-colors hover:text-ink ${
+                      item.active ? 'font-medium text-ink' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
       </div>
-    </section>
+    </div>
   </main>
   <Footer />
 </Layout>

@@ -1,0 +1,43 @@
+---
+import { Icon } from 'astro-icon/components';
+import Reveal from '@/components/widgets/Reveal.astro';
+
+/* 3-up latest posts. Titles reused from the theme's blog index. */
+const posts = [
+  { title: 'Embrace the Power of SaaS for Banking Evolution', tag: 'Product', date: 'Jan 04, 2026' },
+  { title: 'Control your online banking while earning rewards', tag: 'Guides', date: 'Jan 04, 2026' },
+  { title: 'Drive Secure and Agile Banking Operations with SaaS', tag: 'Engineering', date: 'Jan 04, 2026' },
+];
+---
+
+<section class="section border-b border-hairline bg-canvas">
+  <div class="container-page">
+    <Reveal class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div>
+        <span class="eyebrow mb-3 block">Latest</span>
+        <h2 class="h2">From the Zylo blog</h2>
+      </div>
+      <a href="/blog" class="btn-secondary btn-md shrink-0">
+        View all posts <Icon name="lucide:arrow-right" class="h-4 w-4" />
+      </a>
+    </Reveal>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {posts.map((p, idx) => (
+        <Reveal delay={idx * 60}>
+          <article class="flex h-full flex-col rounded-lg border border-hairline bg-canvas p-6 transition-colors hover:bg-surface-soft">
+            <img src="/placeholder.png" alt={p.title} loading="lazy" class="mb-5 aspect-[16/9] w-full rounded-md border border-hairline-soft bg-surface object-contain p-4" />
+            <div class="mb-3 flex items-center gap-3">
+              <span class="rounded-sm bg-surface px-2 py-0.5 text-[13px] font-medium text-steel">{p.tag}</span>
+              <span class="p-lt">{p.date}</span>
+            </div>
+            <h3 class="h5 mb-4">{p.title}</h3>
+            <a href="/article" class="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-ink hover:text-brand">
+              Read more <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+          </article>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>

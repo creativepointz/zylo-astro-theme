@@ -21,46 +21,55 @@ const reviews = [
     company: 'HyperLogistics',
     quote: 'We saved over 150 hours per team member per month. The visual workflow canvas makes it effortless for anyone on our team to build automated AI pipelines.',
   },
+  {
+    author: 'Marta Silva',
+    role: 'Head of Support',
+    company: 'SaaSify',
+    quote: 'Onboarding a new teammate used to take a week of shadowing. They now ship their first working automation on day one.',
+  },
 ];
 ---
 
-<section id="testimonials" class="py-24 bg-canvas border-b border-hairline-soft overflow-hidden">
-  <div class="container-page max-w-6xl mx-auto px-4">
+<section id="testimonials" class="section overflow-hidden border-b border-hairline bg-surface-soft">
+  <div class="container-page">
     <Reveal class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
       <div>
-        <span class="text-sm font-semibold text-stone uppercase tracking-wider mb-2 block">Testimonials</span>
-        <h2 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight leading-tight">
+        <span class="eyebrow mb-3 block">Testimonials</span>
+        <h2 class="h2">
           Experiences shared by <br class="hidden sm:inline" /> our customers
         </h2>
       </div>
-      <a href="/testimonial" class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-canvas-dark px-6 text-sm font-semibold text-on-dark hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)] shrink-0">
+      <a href="/testimonial" class="btn-secondary btn-md shrink-0">
         See all testimonials <Icon name="lucide:arrow-right" class="w-4 h-4" />
       </a>
     </Reveal>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
       {reviews.map((r, idx) => (
         <Reveal delay={idx * 80}>
-          <div class="rounded-lg border border-hairline bg-surface-soft p-8 hover:bg-canvas hover:shadow-[var(--shadow-card)] transition-all h-full flex flex-col justify-between">
-            <div class="mb-8">
-              <div class="flex items-center gap-1 text-brand-warn mb-6">
+          <div class="flex h-full flex-col justify-between rounded-lg border border-hairline bg-canvas p-6 transition-colors hover:bg-surface-soft">
+            <div class="mb-6">
+              <div class="mb-5 flex items-center gap-0.5 text-brand">
                 <Icon name="lucide:star" class="w-4 h-4 fill-current" />
                 <Icon name="lucide:star" class="w-4 h-4 fill-current" />
                 <Icon name="lucide:star" class="w-4 h-4 fill-current" />
                 <Icon name="lucide:star" class="w-4 h-4 fill-current" />
                 <Icon name="lucide:star" class="w-4 h-4 fill-current" />
               </div>
-              <p class="text-steel text-sm leading-relaxed font-normal italic">
+              <p class="p-sm text-charcoal">
                 "{r.quote}"
               </p>
             </div>
 
             <div class="pt-6 border-t border-hairline flex items-center gap-4">
-              <div class="w-11 h-11 rounded-full bg-primary text-on-primary font-semibold flex items-center justify-center font-heading text-sm shadow-[var(--shadow-subtle)]">
-                {r.author[0]}
-              </div>
+              <img
+                src="/placeholder.png"
+                alt={r.author}
+                loading="lazy"
+                class="h-11 w-11 shrink-0 rounded-full border border-hairline bg-surface object-cover"
+              />
               <div>
-                <h4 class="font-semibold text-ink text-sm font-heading">{r.author}</h4>
+                <h4 class="text-sm font-medium text-ink">{r.author}</h4>
                 <p class="text-xs text-stone">{r.role}, <span class="font-semibold text-ink">{r.company}</span></p>
               </div>
             </div>

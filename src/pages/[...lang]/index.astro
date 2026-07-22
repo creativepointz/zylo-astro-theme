@@ -3,12 +3,13 @@ import Layout from '@/layouts/Base.astro';
 import Navbar from '@/components/global/header/Navbar.astro';
 import Hero from '@/components/sections/Hero.astro';
 import MakersMarquee from '@/components/sections/MakersMarquee.astro';
-import HowItWorks from '@/components/sections/HowItWorks.astro';
-import Features from '@/components/sections/Features.astro';
+import LiveMetrics from '@/components/sections/LiveMetrics.astro';
+import FeatureGrid from '@/components/sections/FeatureGrid.astro';
+import CaseStudyGrid from '@/components/sections/CaseStudyGrid.astro';
+import ScaleStats from '@/components/sections/ScaleStats.astro';
+import StartupShowcase from '@/components/sections/StartupShowcase.astro';
 import WhyZylo from '@/components/sections/WhyZylo.astro';
-import PriceWedge from '@/components/sections/PriceWedge.astro';
-import Integrations from '@/components/sections/Integrations.astro';
-import FAQ from '@/components/sections/FAQ.astro';
+import BlogGrid from '@/components/sections/BlogGrid.astro';
 import Footer from '@/components/global/Footer.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
 
@@ -28,19 +29,39 @@ export function getStaticPaths() {
     Skip to content
   </a>
 
+  {/* 1. Header navigation */}
   <Navbar />
 
   <main id="main">
+    {/* 2. Hero — centered eyebrow chip, headline, CTA row, product mockup */}
     <Hero />
+
+    {/* 3. Social proof — stat line, stories link, logo wall */}
     <MakersMarquee />
-    <HowItWorks />
-    <Features />
+
+    {/* 4. Live metrics — 6-up realtime strip */}
+    <LiveMetrics />
+
+    {/* 5. Feature grid — 5-up capability list */}
+    <FeatureGrid />
+
+    {/* 6. Enterprise social proof — 2x2 case study cards */}
+    <CaseStudyGrid />
+
+    {/* 7. Scale stats — 3-up figures */}
+    <ScaleStats />
+
+    {/* 8. Startup showcase — horizontal card scroller */}
+    <StartupShowcase />
+
+    {/* 9. Testimonials — 4-up quote cards */}
     <WhyZylo />
-    <PriceWedge />
-    <Integrations />
-    <FAQ />
+
+    {/* 10. Blog — 3-up latest posts */}
+    <BlogGrid />
   </main>
 
+  {/* 11. Closing CTA band + 12. Footer */}
   <Footer
     ctaTitle="Make the first step toward managing your tasks more effectively."
     ctaSubtitle="Where teams move faster & work gets done."

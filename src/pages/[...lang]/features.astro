@@ -10,23 +10,20 @@ export function getStaticPaths() {
   return generatePaths();
 }
 
-const paymentFeatures = [
-  { icon: 'lucide:globe', title: 'Global Payment Acceptance', desc: 'Accept cards globally with seamless multi currency payments—online or in-store.' },
-  { icon: 'lucide:credit-card', title: 'Payment Gateways', desc: 'Accept cards globally with seamless multi currency payments—online or in-store.' },
-  { icon: 'lucide:receipt-text', title: 'Rich Transaction Detail', desc: 'Get rich transaction data to build smarter authorization approvals.' },
-];
+const brands = ['CloudScale', 'DataPivot', 'VentureLab', 'SaaSify', 'SecureBank', 'FintechX'];
 
-const stepCards = [
+/* 5-up feature grid — icon + label + one line */
+const featureGrid = [
   { icon: 'lucide:zap', title: 'Super Fast', desc: 'Lightning-fast payments that are secure and instantly completed.' },
   { icon: 'lucide:send', title: 'Instant payment', desc: 'Move money in second with a seamless digital banking experience.' },
   { icon: 'lucide:shield-check', title: 'Safe & secure', desc: 'Built with layered protection for total data and transaction privacy.' },
   { icon: 'lucide:trending-up', title: 'Build for sale', desc: 'Grow without limits with flexible, scalable payment systems.' },
+  { icon: 'lucide:receipt-text', title: 'Rich Transaction Detail', desc: 'Get rich transaction data to build smarter authorization approvals.' },
 ];
 
-const browseCards = [
-  'Browse 20+ templates from all type of categories for your project!',
-  'Browse 20+ templates from all type of categories for your project!',
-  'Browse 20+ templates from all type of categories for your project!',
+const paymentFeatures = [
+  { icon: 'lucide:globe', title: 'Global Payment Acceptance', desc: 'Accept cards globally with seamless multi currency payments—online or in-store.' },
+  { icon: 'lucide:credit-card', title: 'Payment Gateways', desc: 'Accept cards globally with seamless multi currency payments—online or in-store.' },
 ];
 
 const howSteps = [
@@ -37,10 +34,11 @@ const howSteps = [
 
 const stepDesc = 'To be able to create an account, input your email address & password.';
 
-const testimonialQuote =
-  '“Our growth plateaued until we started using Zylo. The AI spotted trends we never saw and guided us with actionable tips. With improved targeting, our customer acquisition cost dropped by 20%. Zylo pays for itself within weeks.”';
-
-const testimonials = ['Richard', 'Oliver', 'Richard', 'Amelia', 'Noah', 'George'];
+const browseCards = [
+  'Browse 20+ templates from all type of categories for your project!',
+  'Browse 20+ templates from all type of categories for your project!',
+  'Browse 20+ templates from all type of categories for your project!',
+];
 
 const aboutPoints = [
   'Connect globally, collaborate seamlessly',
@@ -48,205 +46,290 @@ const aboutPoints = [
   'Seamless payments and multi-currency support',
   'Real-time financial insights and analytics',
 ];
+
+const stats = [
+  { value: '4.9/5', label: 'Average customer rating' },
+  { value: '426', label: 'Reviews on Trustpilot' },
+  { value: '20+', label: 'Templates to start from' },
+];
+
+const testimonialQuote =
+  '“Our growth plateaued until we started using Zylo. The AI spotted trends we never saw and guided us with actionable tips. With improved targeting, our customer acquisition cost dropped by 20%. Zylo pays for itself within weeks.”';
+
+const testimonials = ['Richard', 'Oliver', 'Amelia'];
 ---
 
 <Layout title="More features — Smart payment solution for your business" description="Zylo's fully integrated platform is built to handle your payment needs seamlessly.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-6xl mx-auto px-4">
-      {/* 1. Hero */}
-      <Reveal class="text-center max-w-4xl mx-auto mb-24">
-        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
-          More features
-        </span>
-        <h1 class="text-4xl sm:text-6xl md:text-7xl font-semibold text-ink font-heading tracking-tight leading-[1.05] mb-8">
-          Smart payment<br class="hidden sm:block" /> solution for your business
-        </h1>
-        <p class="text-lg text-steel max-w-2xl mx-auto leading-relaxed">
-          Everything you need to move money, issue cards, and get paid — in one connected platform.
-        </p>
+  <main id="main" class="bg-canvas">
 
-        <div class="rounded-lg border border-hairline bg-canvas p-3 shadow-[var(--shadow-card)] overflow-hidden mt-12">
-          <img src="/home/zylo-hero.png" alt="Zylo Feature Dashboard" class="w-full rounded-md block" />
-        </div>
-      </Reveal>
-
-      {/* 2. Complete Payment Solution */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-3xl md:text-5xl font-semibold text-ink font-heading tracking-tight mb-5">
-          Complete Payment Solution
-        </h2>
-        <p class="text-base text-steel leading-relaxed">
-          Zylo's fully integrated platform is built to handle your payment needs seamlessly, whether you need to issue cards, accept payments, or move money more efficiently.
-        </p>
-      </Reveal>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        {paymentFeatures.map((f, idx) => (
-          <Reveal delay={idx * 80}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all h-full">
-              <div class="w-12 h-12 rounded-md bg-brand/10 text-brand flex items-center justify-center mb-6">
-                <Icon name={f.icon} class="w-6 h-6" />
-              </div>
-              <h3 class="text-xl font-semibold text-ink font-heading mb-3">{f.title}</h3>
-              <p class="text-steel text-sm leading-relaxed">{f.desc}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* 3. Step cards */}
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
-        {stepCards.map((s, idx) => (
-          <Reveal delay={idx * 60}>
-            <div class="rounded-lg border border-hairline bg-canvas p-7 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all h-full">
-              <div class="w-11 h-11 rounded-md bg-brand/10 text-brand flex items-center justify-center mb-5">
-                <Icon name={s.icon} class="w-5 h-5" />
-              </div>
-              <h3 class="text-lg font-semibold text-ink font-heading mb-2">{s.title}</h3>
-              <p class="text-steel text-xs leading-relaxed">{s.desc}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* 4. Accept online payments */}
-      <Reveal class="rounded-lg bg-canvas-dark text-on-dark p-10 md:p-16 text-center max-w-5xl mx-auto shadow-[var(--shadow-card)] mb-24">
-        <h2 class="text-3xl md:text-5xl font-semibold font-heading mb-5">Accept online payments</h2>
-        <p class="text-on-dark-muted max-w-2xl mx-auto text-base leading-relaxed mb-8">
-          The easiest way to accept payments for phone plans and manage AutoPay, refunds, payouts and more. Fully embedded in Zylo Connect.
-        </p>
-        <a href="/contact" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-base font-semibold text-on-primary hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]">
-          Contact sales <Icon name="lucide:arrow-right" class="w-5 h-5" />
-        </a>
-      </Reveal>
-
-      {/* 5. How does it even work? */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-12">
-        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
-          More features
-        </span>
-        <h2 class="text-3xl md:text-5xl font-semibold text-ink font-heading tracking-tight mb-5">
-          How does<br class="hidden sm:block" /> it even work?
-        </h2>
-        <p class="text-base text-steel leading-relaxed">
-          Use Zylo for free as long as you want, or upgrade to get access to our best features for work and team projects.
-        </p>
-      </Reveal>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-        {browseCards.map((text, idx) => (
-          <Reveal delay={idx * 70}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all h-full flex flex-col justify-between">
-              <p class="text-base font-semibold text-ink font-heading leading-snug mb-6">{text}</p>
-              <a href="/pricing" class="inline-flex items-center gap-2 text-xs font-semibold text-brand hover:gap-3 transition-all">
-                Browse <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
-              </a>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-        {howSteps.map((s, idx) => (
-          <Reveal delay={idx * 70}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all h-full">
-              <span class="inline-block rounded-full bg-brand/10 text-brand px-3 py-1 text-[11px] font-semibold uppercase tracking-wider mb-4">{s.step}</span>
-              <h3 class="text-xl font-semibold text-ink font-heading mb-3">{s.title}</h3>
-              <p class="text-steel text-sm leading-relaxed">{stepDesc}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* 6. Testimonials */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-12">
-        <span class="inline-flex items-center gap-2 border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink mb-6 shadow-[var(--shadow-subtle)]">
-          <Icon name="lucide:star" class="w-3.5 h-3.5 text-brand" />
-          See our 426 reviews on Trustpilot
-        </span>
-        <h2 class="text-3xl md:text-5xl font-semibold text-ink font-heading tracking-tight mb-5 leading-tight">
-          Trusted by Crypto<br class="hidden sm:block" /> Natives Worldwide
-        </h2>
-        <p class="text-base text-steel leading-relaxed mb-6">What's your work finance</p>
-        <a href="/pricing" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:gap-3 transition-all">
-          See how default works <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </a>
-      </Reveal>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {testimonials.map((name, idx) => (
-          <Reveal delay={idx * 60}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:shadow-[var(--shadow-subtle)] transition-all h-full flex flex-col justify-between">
-              <p class="text-steel text-sm leading-relaxed mb-6">{testimonialQuote}</p>
-              <div class="flex items-center justify-between border-t border-hairline pt-5">
-                <div>
-                  <div class="text-sm font-semibold text-ink font-heading">{name}</div>
-                  <div class="text-xs text-stone">CEO SPX</div>
-                </div>
-                <span class="inline-flex items-center gap-1 text-sm font-semibold text-ink font-heading">
-                  <Icon name="lucide:star" class="w-4 h-4 text-brand" /> 4.9
-                </span>
-              </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      <Reveal class="text-center text-sm font-semibold text-steel mb-24">
-        Rated 4.9/5 from over 450 review
-      </Reveal>
-
-      {/* 7. Built smarter transactions */}
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
-        <Reveal>
-          <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
-            Built smarter transactions
+    {/* 1. Centered hero */}
+    <section class="pt-24 md:pt-[120px] pb-16 md:pb-24">
+      <div class="container-page">
+        <Reveal class="text-center max-w-4xl mx-auto">
+          <span class="eyebrow mb-6 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
+            More features
           </span>
-          <h2 class="text-3xl md:text-5xl font-semibold text-ink font-heading tracking-tight mb-5 leading-tight">
-            Grow your transaction from another level
-          </h2>
-          <p class="text-base text-steel leading-relaxed">
-            Fintech harnesses advanced technology to transform and optimize financial processes, delivering innovative, secure, and intelligent banking solutions that enhance efficiency.
+          <h1 class="hero-display mb-6">
+            Smart payment<br class="hidden sm:inline" /> solution for your business
+          </h1>
+          <p class="subtitle max-w-2xl mx-auto mb-8">
+            Everything you need to move money, issue cards, and get paid — in one connected platform.
           </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">
+              Get started <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="/contact" class="btn-secondary btn-lg">Contact sales</a>
+          </div>
         </Reveal>
 
-        <Reveal delay={100} class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-subtle)]">
-          <ul class="space-y-5">
-            {aboutPoints.map((p) => (
-              <li class="flex items-start gap-3">
-                <Icon name="lucide:check" class="w-5 h-5 mt-0.5 shrink-0 text-brand" />
-                <span class="text-base font-semibold text-ink font-heading leading-snug">{p}</span>
-              </li>
-            ))}
-          </ul>
+        <Reveal delay={120} class="mt-12 md:mt-16">
+          <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-mockup)] overflow-hidden max-w-5xl mx-auto">
+            <img src="/placeholder.png" alt="Zylo feature dashboard" class="w-full rounded-md block" />
+          </div>
         </Reveal>
       </div>
+    </section>
 
-      {/* 8. CTA */}
-      <Reveal class="rounded-lg bg-canvas-dark text-on-dark p-10 md:p-16 text-center max-w-5xl mx-auto shadow-[var(--shadow-card)]">
-        <h2 class="text-3xl md:text-5xl font-semibold font-heading mb-5 leading-tight">
-          Start planning smarter and more<br class="hidden sm:block" /> meaningful user experiences
-        </h2>
-        <p class="text-on-dark-muted max-w-2xl mx-auto text-base leading-relaxed mb-8">
-          Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual and interactive effects all in one platform.
-        </p>
-        <form class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-lg mx-auto">
-          <label for="cta-email" class="sr-only">Enter your email</label>
-          <input
-            id="cta-email"
-            type="email"
-            name="email"
-            placeholder="Enter your email.."
-            class="h-12 w-full flex-1 rounded-full border border-white/20 bg-canvas/10 px-6 text-sm text-on-dark placeholder:text-stone focus:outline-none focus:border-brand"
-          />
-          <button type="submit" class="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-semibold text-on-primary hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]">
-            Subscribe now
-          </button>
-        </form>
-      </Reveal>
-    </div>
+    {/* 2. Social proof strip */}
+    <section class="border-y border-hairline py-12">
+      <div class="container-page text-center">
+        <Reveal>
+          <p class="eyebrow mb-8">
+            Rated <span class="text-ink">4.9/5</span> from over 450 review
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-8 items-center justify-items-center">
+            {brands.map((b) => (
+              <span class="p-lg font-medium tracking-tight text-steel">{b}</span>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* 3. Feature grid — 5-up */}
+    <section class="section">
+      <div class="container-page">
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+          {featureGrid.map((f, idx) => (
+            <Reveal delay={idx * 60}>
+              <div class="card h-full">
+                <span class="icon-tile mb-5">
+                  <Icon name={f.icon} class="w-5 h-5" />
+                </span>
+                <h3 class="h5 mb-2">{f.title}</h3>
+                <p class="p-sm">{f.desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 4. Alternating feature rows */}
+    <section class="pb-16 md:pb-24">
+      <div class="container-page space-y-16 md:space-y-24">
+
+        {/* Row 1 — text left */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal>
+            <h2 class="h2 mb-5">Complete Payment Solution</h2>
+            <p class="p-rg">
+              Zylo's fully integrated platform is built to handle your payment needs seamlessly, whether you need to issue cards, accept payments, or move money more efficiently.
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div class="card space-y-7 p-8">
+              {paymentFeatures.map((f) => (
+                <div class="flex items-start gap-4">
+                  <span class="icon-tile shrink-0">
+                    <Icon name={f.icon} class="w-5 h-5" />
+                  </span>
+                  <div>
+                    <h3 class="h5 mb-1">{f.title}</h3>
+                    <p class="p-sm">{f.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Row 2 — text right */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal class="lg:order-2">
+            <h2 class="h2 mb-5">Accept online payments</h2>
+            <p class="p-rg mb-8">
+              The easiest way to accept payments for phone plans and manage AutoPay, refunds, payouts and more. Fully embedded in Zylo Connect.
+            </p>
+            <a href="/contact" class="btn-primary btn-md">
+              Contact sales <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+          </Reveal>
+          <Reveal delay={100} class="lg:order-1">
+            <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-card)] overflow-hidden">
+              <img src="/placeholder.png" alt="Zylo payments overview" class="w-full rounded-md block" />
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Row 3 — text left */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal>
+            <span class="eyebrow mb-6 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
+              More features
+            </span>
+            <h2 class="h2 mb-5">
+              How does<br class="hidden sm:inline" /> it even work?
+            </h2>
+            <p class="p-rg">
+              Use Zylo for free as long as you want, or upgrade to get access to our best features for work and team projects.
+            </p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div class="space-y-4">
+              {howSteps.map((s) => (
+                <div class="card">
+                  <span class="eyebrow mb-3 inline-block rounded-full border border-hairline bg-surface px-3 py-1">{s.step}</span>
+                  <h3 class="h5 mb-2">{s.title}</h3>
+                  <p class="p-sm">{stepDesc}</p>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Browse cards */}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {browseCards.map((text, idx) => (
+            <Reveal delay={idx * 70}>
+              <div class="card h-full flex flex-col justify-between gap-6">
+                <p class="h5 leading-snug">{text}</p>
+                <a href="/pricing" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:underline">
+                  Browse <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Row 4 — text right */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal class="lg:order-2">
+            <span class="eyebrow mb-6 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
+              Built smarter transactions
+            </span>
+            <h2 class="h2 mb-5">Grow your transaction from another level</h2>
+            <p class="p-rg">
+              Fintech harnesses advanced technology to transform and optimize financial processes, delivering innovative, secure, and intelligent banking solutions that enhance efficiency.
+            </p>
+          </Reveal>
+          <Reveal delay={100} class="lg:order-1">
+            <div class="card-feature">
+              <ul class="space-y-5">
+                {aboutPoints.map((p) => (
+                  <li class="flex items-start gap-3">
+                    <Icon name="lucide:check" class="w-5 h-5 mt-0.5 shrink-0 text-brand" />
+                    <span class="h6 leading-snug">{p}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+
+      </div>
+    </section>
+
+    {/* 5. Stat row */}
+    <section class="border-y border-hairline py-16">
+      <div class="container-page">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+          {stats.map((s, idx) => (
+            <Reveal delay={idx * 80}>
+              <div class="display-lg mb-2">{s.value}</div>
+              <p class="p-sm">{s.label}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 6. Testimonials */}
+    <section class="section">
+      <div class="container-page">
+        <Reveal class="text-center max-w-3xl mx-auto mb-12">
+          <span class="inline-flex items-center gap-2 rounded-full border border-hairline bg-canvas px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.5px] text-steel mb-6">
+            <Icon name="lucide:star" class="w-3.5 h-3.5 text-brand" />
+            See our 426 reviews on Trustpilot
+          </span>
+          <h2 class="h2 mb-5">
+            Trusted by Crypto<br class="hidden sm:inline" /> Natives Worldwide
+          </h2>
+          <p class="p-rg mb-6">What's your work finance</p>
+          <a href="/pricing" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:underline">
+            See how default works <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          </a>
+        </Reveal>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((name, idx) => (
+            <Reveal delay={idx * 70}>
+              {idx === 1 ? (
+                <div class="rounded-lg bg-testimonial-orange text-on-dark p-8 h-full flex flex-col justify-between">
+                  <p class="text-base leading-[1.5] text-on-dark mb-6">{testimonialQuote}</p>
+                  <div class="flex items-center justify-between border-t border-white/25 pt-5">
+                    <div>
+                      <div class="text-sm font-semibold text-on-dark">{name}</div>
+                      <div class="text-[13px] text-on-dark-muted">CEO SPX</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1 text-sm font-semibold text-on-dark">
+                      <Icon name="lucide:star" class="w-4 h-4" /> 4.9
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <div class="card h-full flex flex-col justify-between p-8">
+                  <p class="p-sm mb-6">{testimonialQuote}</p>
+                  <div class="flex items-center justify-between border-t border-hairline pt-5">
+                    <div>
+                      <div class="h6">{name}</div>
+                      <div class="p-lt">CEO SPX</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1 h6">
+                      <Icon name="lucide:star" class="w-4 h-4 text-brand" /> 4.9
+                    </span>
+                  </div>
+                </div>
+              )}
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 7. Closing CTA band */}
+    <section class="section bg-surface-soft border-t border-hairline">
+      <div class="container-page">
+        <Reveal class="text-center max-w-3xl mx-auto">
+          <h2 class="h2 mb-5">
+            Start planning smarter and more<br class="hidden sm:inline" /> meaningful user experiences
+          </h2>
+          <p class="p-rg mb-8">
+            Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual and interactive effects all in one platform.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">
+              Subscribe now <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="/contact" class="btn-secondary btn-lg">Contact sales</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
   </main>
 
   <Footer />

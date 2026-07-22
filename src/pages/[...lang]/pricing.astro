@@ -67,13 +67,32 @@ const plans = [
   },
 ];
 
-const comparisonRows = [
-  'Access All Features',
-  'No Hidden Fees',
-  'Flexible Pricing Models',
-  'Dedicated Program Manager',
-  'Volume Discounts',
-  'Volume Discounts',
+// Feature comparison rows, grouped under eyebrow section-divider rows.
+const comparisonGroups = [
+  {
+    group: 'Plan essentials',
+    rows: ['Access All Features', 'No Hidden Fees', 'Flexible Pricing Models'],
+  },
+  {
+    group: 'Program support',
+    rows: ['Dedicated Program Manager', 'Volume Discounts', 'Volume Discounts'],
+  },
+];
+
+const logos = [
+  'CloudScale',
+  'DataPivot',
+  'VentureLab',
+  'SaaSify',
+  'SecureBank',
+  'FintechX',
+];
+
+const helpCards = [
+  { title: 'Documentation', desc: 'Set up your workspace and ship your first automation.', icon: 'lucide:book-open', href: '/features' },
+  { title: 'Support', desc: 'Reach the team for account, billing and workspace questions.', icon: 'lucide:life-buoy', href: '/support' },
+  { title: 'Talk to sales', desc: 'Scope volume pricing and rollout for a larger team.', icon: 'lucide:message-circle', href: '/contact' },
+  { title: 'Case studies', desc: 'See how other teams measure results with Zylo.', icon: 'lucide:bar-chart-3', href: '/case-studies' },
 ];
 
 const faqs = [
@@ -107,183 +126,236 @@ const faqs = [
 <Layout title="Transparent plans. Trusted value. — Zylo Pricing" description="Accept payments that will scale and adapt to your business needs.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-6xl mx-auto px-4">
-      {/* 1. Pricing header */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-12">
-        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
-          Innovation that scales
-        </span>
-        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight mb-6">
-          Transparent plans. Trusted value.
-        </h1>
-        <p class="text-lg text-steel leading-relaxed">
-          Accept payments that will scale and adapt to your business needs.
-        </p>
-      </Reveal>
+  <main id="main" class="bg-canvas pt-24 md:pt-[120px]">
+    {/* 1. Centered hero */}
+    <section class="pb-10 md:pb-14">
+      <div class="container-page">
+        <Reveal class="mx-auto max-w-3xl text-center">
+          <p class="eyebrow mb-4">Innovation that scales</p>
+          <h1 class="h1 mb-5">Transparent plans. Trusted value.</h1>
+          <p class="subtitle">
+            Accept payments that will scale and adapt to your business needs.
+          </p>
+        </Reveal>
+      </div>
+    </section>
 
-      {/* 2. Billing & currency band */}
-      <Reveal delay={100} class="flex flex-col sm:flex-row items-center justify-between gap-4 p-3 px-6 rounded-full border border-hairline bg-canvas mb-12 shadow-[var(--shadow-subtle)] max-w-4xl mx-auto">
-        <div class="flex items-center gap-4">
-          <div class="flex items-center rounded-full bg-surface p-1" id="billing-toggle">
-            <button type="button" data-billing="monthly" class="rounded-full bg-primary px-5 py-1.5 text-xs font-semibold text-on-primary shadow-[var(--shadow-subtle)]">
-              Pay monthly
-            </button>
-            <button type="button" data-billing="yearly" class="rounded-full px-5 py-1.5 text-xs font-semibold text-steel hover:text-ink">
-              Pay yearly
-            </button>
+    {/* 2. Billing controls row */}
+    <section class="pb-12">
+      <div class="container-page">
+        <Reveal delay={100} class="flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-8">
+          <div class="flex items-center gap-3">
+            <div class="flex items-center rounded-full bg-surface p-1" id="billing-toggle">
+              <button type="button" data-billing="monthly" class="rounded-full bg-canvas px-5 py-1.5 text-sm font-medium text-ink shadow-[var(--shadow-subtle)]">
+                Pay monthly
+              </button>
+              <button type="button" data-billing="yearly" class="rounded-full px-5 py-1.5 text-sm font-medium text-steel hover:text-ink">
+                Pay yearly
+              </button>
+            </div>
+            <span class="rounded-full bg-brand px-2 py-0.5 text-[13px] font-semibold leading-[1.4] text-primary">
+              Save up to 15% off
+            </span>
           </div>
-          <span class="text-xs font-semibold text-brand">Save up to 15% off</span>
-        </div>
 
-        <div class="flex items-center gap-4 text-xs font-semibold text-steel">
-          <label class="flex items-center gap-1.5 cursor-pointer">
-            <input type="radio" name="currency" checked class="text-brand focus:ring-brand" /> USD ($)
-          </label>
-          <label class="flex items-center gap-1.5 cursor-pointer">
-            <input type="radio" name="currency" class="text-brand focus:ring-brand" /> EUR (€)
-          </label>
-          <label class="flex items-center gap-1.5 cursor-pointer">
-            <input type="radio" name="currency" class="text-brand focus:ring-brand" /> GBP (£)
-          </label>
-        </div>
-      </Reveal>
+          <div class="flex items-center gap-4 text-sm font-medium text-steel">
+            <label class="flex cursor-pointer items-center gap-1.5">
+              <input type="radio" name="currency" checked class="text-brand focus:ring-brand" /> USD ($)
+            </label>
+            <label class="flex cursor-pointer items-center gap-1.5">
+              <input type="radio" name="currency" class="text-brand focus:ring-brand" /> EUR (€)
+            </label>
+            <label class="flex cursor-pointer items-center gap-1.5">
+              <input type="radio" name="currency" class="text-brand focus:ring-brand" /> GBP (£)
+            </label>
+          </div>
+        </Reveal>
+      </div>
+    </section>
 
-      {/* 3. Tier cards */}
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 items-stretch">
-        {plans.map((p, idx) => (
-          <Reveal delay={idx * 80}>
-            <div class={`rounded-lg border bg-canvas p-8 shadow-[var(--shadow-subtle)] transition-all h-full flex flex-col justify-between relative ${p.popular ? 'border-brand ring-2 ring-brand/20 shadow-[var(--shadow-card)]' : 'border-hairline'}`}>
-              {p.popular && (
-                <span class="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-semibold uppercase tracking-wider text-on-primary shadow-[var(--shadow-subtle)]">
-                  Popular Choice
-                </span>
-              )}
-              <div>
-                <span class="font-semibold text-lg text-ink font-heading block mb-2">{p.name}</span>
-                <div class="flex items-baseline gap-1 mb-3">
+    {/* 3. Tier cards */}
+    <section class="pb-20 md:pb-24">
+      <div class="container-page">
+        <div class="grid grid-cols-1 items-stretch gap-6 md:grid-cols-3">
+          {plans.map((p, idx) => (
+            <Reveal delay={idx * 80} class="h-full">
+              <div class={`relative flex h-full flex-col rounded-lg bg-canvas p-8 ${p.popular ? 'border-2 border-brand shadow-[var(--shadow-brand)]' : 'border border-hairline'}`}>
+                {p.popular && (
+                  <span class="absolute -top-3 left-8 rounded-full bg-primary px-3 py-1 text-[11px] font-semibold uppercase leading-[1.4] tracking-[0.5px] text-on-primary">
+                    Popular Choice
+                  </span>
+                )}
+
+                <h3 class="h3 mb-4">{p.name}</h3>
+
+                <div class="mb-4 flex items-baseline gap-1.5">
                   <span
-                    class="text-4xl font-semibold text-ink font-heading js-price"
+                    class="display-lg js-price"
                     data-monthly={p.price}
                     data-yearly={p.yearly}
                   >{p.price}</span>
-                  <span class="text-xs font-medium text-stone">{p.period}</span>
+                  <span class="p-sm text-stone">{p.period}</span>
                 </div>
-                <p class="text-stone text-xs leading-relaxed mb-6 font-normal">{p.desc}</p>
 
-                <a
-                  href={p.href}
-                  class={`w-full inline-flex h-11 items-center justify-center rounded-full text-xs font-semibold tracking-tight transition-colors shadow-[var(--shadow-subtle)] mb-6 ${p.popular ? 'bg-primary text-on-primary hover:bg-charcoal' : 'border border-hairline text-ink hover:bg-canvas-dark hover:text-on-dark'}`}
-                >
-                  {p.cta}
-                </a>
+                <p class="p-sm mb-6">{p.desc}</p>
 
-                <ul class="space-y-3 pt-6 border-t border-hairline-soft">
+                <ul class="mb-6 space-y-3 border-t border-hairline-soft pt-6">
                   {p.features.map((f) => (
-                    <li class="flex items-center gap-2.5 text-xs text-steel font-medium">
-                      <Icon name="lucide:check" class="w-4 h-4 text-brand shrink-0" />
+                    <li class="p-sm flex items-start gap-2.5">
+                      <Icon name="lucide:check" class="mt-0.5 h-4 w-4 shrink-0 text-brand" />
                       <span>{f}</span>
                     </li>
                   ))}
                 </ul>
 
-                <p class="mt-6 pt-4 border-t border-hairline-soft text-xs text-stone font-medium">
-                  <span class="font-semibold text-ink">Best for:</span> {p.bestFor}
+                <p class="p-sm mt-auto border-t border-hairline-soft pt-5">
+                  <span class="font-medium text-ink">Best for:</span> {p.bestFor}
                 </p>
+
+                <a
+                  href={p.href}
+                  class={`mt-6 w-full ${p.popular ? 'btn-accent' : idx === 0 ? 'btn-primary' : 'btn-secondary'} btn-lg`}
+                >
+                  {p.cta}
+                </a>
               </div>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* 4. Comparison table */}
-      <Reveal class="mb-20 overflow-x-auto">
-        <div class="min-w-[640px] rounded-lg border border-hairline bg-canvas overflow-hidden">
-          <div class="grid grid-cols-12 border-b border-hairline bg-surface-soft">
-            <div class="col-span-6 px-8 py-4"></div>
-            {plans.map((p) => (
-              <div class="col-span-2 px-4 py-4 text-center text-xs font-semibold uppercase tracking-wider text-ink">
-                {p.name}
-              </div>
-            ))}
-          </div>
-          {comparisonRows.map((row) => (
-            <div class="grid grid-cols-12 border-b border-hairline-soft last:border-b-0">
-              <div class="col-span-6 px-8 py-5 text-sm font-semibold text-ink">{row}</div>
-              {plans.map(() => (
-                <div class="col-span-2 px-4 py-5 flex justify-center items-center">
-                  <span class="w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center">
-                    <Icon name="lucide:check" class="w-3 h-3" />
-                  </span>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* 5. Trusted by */}
-      <Reveal class="mb-24 text-center">
-        <p class="text-lg text-stone">
-          Trusted by <span class="font-semibold text-ink">10,000+</span> businesses worldwide
-        </p>
-      </Reveal>
-
-      {/* 6. FAQ */}
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24">
-        <Reveal class="lg:col-span-5">
-          <span class="inline-block border border-dashed border-hairline px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-5">
-            Our faq
-          </span>
-          <h2 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight mb-3">
-            Frequently Asked Questions
-          </h2>
-          <p class="text-steel leading-relaxed mb-8">
-            Connect Analytics with your favourite tools to streamline workflows and keep everything running smoothly.
-          </p>
-          <a href="/contact" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-canvas-dark px-8 text-sm font-semibold text-on-dark hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]">
-            Contact us <Icon name="lucide:arrow-right" class="w-4 h-4" />
-          </a>
-        </Reveal>
-
-        <div class="lg:col-span-7 space-y-3">
-          {faqs.map((f, idx) => (
-            <Reveal delay={idx * 60}>
-              <details class="group rounded-lg border border-hairline bg-canvas px-7 py-5 shadow-[var(--shadow-subtle)]">
-                <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
-                  <span class="text-base font-semibold text-ink font-heading">{f.q}</span>
-                  <span class="shrink-0 w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-stone group-open:bg-canvas-dark group-open:text-on-dark transition-colors">
-                    <Icon name="lucide:plus" class="w-4 h-4 group-open:hidden" />
-                    <Icon name="lucide:minus" class="w-4 h-4 hidden group-open:block" />
-                  </span>
-                </summary>
-                <p class="pt-4 text-sm text-steel leading-relaxed">{f.a}</p>
-              </details>
             </Reveal>
           ))}
         </div>
       </div>
+    </section>
 
-      {/* 7. Closing CTA */}
-      <Reveal class="rounded-lg bg-canvas-dark px-8 py-16 text-center">
-        <h2 class="text-3xl sm:text-5xl font-semibold text-on-dark font-heading tracking-tight mb-4 leading-tight">
-          Start planning smarter and more meaningful user experiences
-        </h2>
-        <p class="text-on-dark-muted leading-relaxed max-w-2xl mx-auto mb-10">
-          Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual and interactive effects all in one platform.
-        </p>
-        <form class="flex flex-wrap justify-center gap-3">
-          <input
-            type="email"
-            placeholder="Enter your email.."
-            class="h-12 w-full max-w-[300px] rounded-full border border-transparent bg-canvas px-6 text-sm text-ink focus:border-brand focus:outline-none"
-          />
-          <button type="submit" class="h-12 inline-flex items-center justify-center rounded-full bg-primary px-8 text-sm font-semibold text-on-primary hover:bg-charcoal transition-colors">
-            Subscribe now
-          </button>
-        </form>
-      </Reveal>
-    </div>
+    {/* 4. Feature comparison table */}
+    <section class="pb-20 md:pb-24">
+      <div class="container-page">
+        <Reveal class="overflow-x-auto">
+          <div class="min-w-[640px] overflow-hidden rounded-md border border-hairline bg-canvas">
+            <div class="grid grid-cols-12 border-b border-hairline bg-surface-soft">
+              <div class="col-span-6 px-5 py-4"></div>
+              {plans.map((p) => (
+                <div class="eyebrow col-span-2 px-5 py-4 text-center text-ink">
+                  {p.name}
+                </div>
+              ))}
+            </div>
+
+            {comparisonGroups.map((group) => (
+              <>
+                <div class="border-b border-hairline-soft bg-surface-soft px-5 py-4">
+                  <span class="eyebrow">{group.group}</span>
+                </div>
+                {group.rows.map((row) => (
+                  <div class="grid grid-cols-12 border-b border-hairline-soft last:border-b-0">
+                    <div class="p-sm col-span-6 px-5 py-4 text-ink">{row}</div>
+                    {plans.map(() => (
+                      <div class="col-span-2 flex items-center justify-center px-5 py-4">
+                        <Icon name="lucide:check" class="h-4 w-4 text-brand" />
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* 5. Logo wall / trust strip */}
+    <section class="pb-20 md:pb-24">
+      <div class="container-page">
+        <Reveal class="text-center">
+          <p class="p-lg mb-8">
+            Trusted by <span class="font-medium text-ink">10,000+</span> businesses worldwide
+          </p>
+          <div class="grid grid-cols-2 items-center justify-items-center gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+            {logos.map((logo) => (
+              <span class="px-5 text-base font-medium text-steel">{logo}</span>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* 6. FAQ accordion */}
+    <section class="pb-20 md:pb-24">
+      <div class="container-page">
+        <div class="grid grid-cols-1 gap-10 lg:grid-cols-12">
+          <Reveal class="lg:col-span-5">
+            <p class="eyebrow mb-4">Our faq</p>
+            <h2 class="h2 mb-4">Frequently Asked Questions</h2>
+            <p class="p-rg mb-8">
+              Connect Analytics with your favourite tools to streamline workflows and keep everything running smoothly.
+            </p>
+            <a href="/contact" class="btn-primary btn-md">
+              Contact us <Icon name="lucide:arrow-right" class="ml-2 h-4 w-4" />
+            </a>
+          </Reveal>
+
+          <div class="space-y-3 lg:col-span-7">
+            {faqs.map((f, idx) => (
+              <Reveal delay={idx * 60}>
+                <details class="group rounded-md border border-hairline-soft bg-canvas p-6">
+                  <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                    <span class="h5">{f.q}</span>
+                    <Icon name="lucide:plus" class="h-4 w-4 shrink-0 text-steel group-open:hidden" />
+                    <Icon name="lucide:minus" class="hidden h-4 w-4 shrink-0 text-steel group-open:block" />
+                  </summary>
+                  <p class="p-rg pt-4">{f.a}</p>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* 7a. Need help? card row */}
+    <section class="pb-20 md:pb-24">
+      <div class="container-page">
+        <Reveal class="mb-8">
+          <p class="eyebrow mb-3">Need help?</p>
+          <h2 class="h3">Still deciding which plan fits</h2>
+        </Reveal>
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {helpCards.map((c, idx) => (
+            <Reveal delay={idx * 60} class="h-full">
+              <a href={c.href} class="card flex h-full flex-col">
+                <span class="icon-tile mb-4">
+                  <Icon name={c.icon} class="h-4 w-4" />
+                </span>
+                <h3 class="h5 mb-2">{c.title}</h3>
+                <p class="p-sm">{c.desc}</p>
+              </a>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 7b. Closing CTA band */}
+    <section class="bg-surface-soft py-16 md:py-24">
+      <div class="container-page">
+        <Reveal class="mx-auto max-w-3xl text-center">
+          <h2 class="h2 mb-4">
+            Start planning smarter and more meaningful user experiences
+          </h2>
+          <p class="p-rg mx-auto mb-10 max-w-2xl">
+            Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual and interactive effects all in one platform.
+          </p>
+          <form class="flex flex-wrap justify-center gap-3">
+            <input
+              type="email"
+              placeholder="Enter your email.."
+              class="h-10 w-full max-w-[300px] rounded-md border border-hairline bg-canvas px-4 text-base text-ink focus:border-brand focus:outline-none"
+            />
+            <button type="submit" class="btn-primary btn-md">
+              Subscribe now
+            </button>
+          </form>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />
@@ -299,8 +371,8 @@ const faqs = [
         buttons.forEach((b) => {
           const active = b === btn;
           b.className = active
-            ? 'rounded-full bg-primary px-5 py-1.5 text-xs font-semibold text-on-primary shadow-[var(--shadow-subtle)]'
-            : 'rounded-full px-5 py-1.5 text-xs font-semibold text-steel hover:text-ink';
+            ? 'rounded-full bg-canvas px-5 py-1.5 text-sm font-medium text-ink shadow-[var(--shadow-subtle)]'
+            : 'rounded-full px-5 py-1.5 text-sm font-medium text-steel hover:text-ink';
         });
         document.querySelectorAll<HTMLElement>('.js-price').forEach((el) => {
           const value = mode === 'yearly' ? el.dataset.yearly : el.dataset.monthly;

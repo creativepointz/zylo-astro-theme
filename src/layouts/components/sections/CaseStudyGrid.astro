@@ -1,0 +1,70 @@
+---
+import { Icon } from 'astro-icon/components';
+import Reveal from '@/components/widgets/Reveal.astro';
+
+/* 2x2 customer story grid. Brands are the theme's placeholder set. */
+const stories = [
+  {
+    company: 'CloudScale',
+    metric: '2x',
+    metricLabel: 'support tickets handled',
+    quote: 'Intelligent workflows and real-time analytics let the same team take on double the volume.',
+  },
+  {
+    company: 'HyperLogistics',
+    metric: '150 hrs',
+    metricLabel: 'saved per member each month',
+    quote: 'The visual workflow canvas makes it effortless for anyone on the team to build automated pipelines.',
+  },
+  {
+    company: 'FintechX',
+    metric: 'Minutes',
+    metricLabel: 'to connect custom endpoints',
+    quote: 'Reliability and low-latency execution made Zylo part of the core product infrastructure.',
+  },
+  {
+    company: 'SecureBank',
+    metric: '55,000+',
+    metricLabel: 'tasks managed with ERP',
+    quote: 'Approvals, audit trails and reporting now run in one place instead of four.',
+  },
+];
+---
+
+<section class="section border-b border-hairline bg-surface-soft">
+  <div class="container-page">
+    <Reveal class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div>
+        <span class="eyebrow mb-3 block">Customer stories</span>
+        <h2 class="h2 max-w-xl">Teams ship more with less busywork</h2>
+      </div>
+      <a href="/customer" class="btn-secondary btn-md shrink-0">
+        See all stories <Icon name="lucide:arrow-right" class="h-4 w-4" />
+      </a>
+    </Reveal>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+      {stories.map((s, idx) => (
+        <Reveal delay={idx * 60}>
+          <article class="flex h-full flex-col justify-between overflow-hidden rounded-lg border border-hairline bg-canvas">
+            <img
+              src="/placeholder.png"
+              alt={`${s.company} customer story`}
+              loading="lazy"
+              class="aspect-[16/9] w-full border-b border-hairline-soft bg-surface object-contain p-4"
+            />
+            <div class="p-8">
+              <div class="eyebrow mb-6">{s.company}</div>
+              <div class="display-lg mb-1">{s.metric}</div>
+              <div class="p-sm mb-6">{s.metricLabel}</div>
+              <p class="p-rg text-charcoal">{s.quote}</p>
+            </div>
+            <a href="/customer-details" class="mt-8 inline-flex items-center gap-1.5 px-8 pb-8 text-sm font-medium text-ink hover:text-brand">
+              Read story <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+          </article>
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>

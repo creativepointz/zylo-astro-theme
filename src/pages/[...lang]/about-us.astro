@@ -24,7 +24,7 @@ const values = [
   { icon: 'lucide:users', title: 'Time collaboration', desc: 'Work together effortlessly follow progress hypes' },
 ];
 
-const brands = ['CloudScale', 'DataPivot', 'VentureLab', 'SaaSify', 'SecureBank', 'FintechX', 'HyperLogistics'];
+const brands = ['CloudScale', 'DataPivot', 'VentureLab', 'SaaSify', 'SecureBank', 'FintechX'];
 
 const integrations = ['Slack', 'Notion', 'HubSpot', 'Salesforce', 'Zapier', 'Google Drive', 'Shopify', 'Intercom'];
 ---
@@ -32,114 +32,141 @@ const integrations = ['Slack', 'Notion', 'HubSpot', 'Salesforce', 'Zapier', 'Goo
 <Layout title="About Us — Zylo Platform" description="Learn about Zylo mission, core values, team metrics, and company growth.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
-    <div class="container-page max-w-[1280px]">
-
-      {/* 1. Inner Hero Banner */}
-      <Reveal class="text-center max-w-4xl mx-auto mb-16">
+  <main id="main" class="pt-24 md:pt-[120px] bg-canvas">
+    {/* 1. Centered hero */}
+    <div class="container-page pb-16 md:pb-20">
+      <Reveal class="text-center max-w-4xl mx-auto">
         <span class="eyebrow mb-6 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
           Innovation meets intent
         </span>
-        <h1 class="hero-display mb-8">
+        <h1 class="hero-display mb-6">
           Where teams move <br class="hidden sm:inline" /> faster &amp; work gets done
         </h1>
+        <p class="subtitle max-w-2xl mx-auto">
+          Zylo is a workflow automation platform. We build the connective layer that moves work between the tools your
+          team already runs on.
+        </p>
 
-        {/* 3D Preview Image Container */}
-        <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-mockup)] overflow-hidden mt-8 max-w-4xl mx-auto">
-          <img src="/home/zylo-hero.png" alt="Zylo Platform" class="w-full rounded-md block" />
+        <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-mockup)] overflow-hidden mt-12">
+          <img src="/placeholder.png" alt="Zylo Platform" class="w-full rounded-md block" />
         </div>
       </Reveal>
+    </div>
 
-      {/* 2. Brand Marquee */}
-      <Reveal delay={100} class="py-12 text-center border-y border-hairline mb-20">
+    {/* 2. Logo wall — 6-up */}
+    <div class="container-page pb-16 md:pb-24">
+      <Reveal delay={100} class="border-y border-hairline py-12 text-center">
         <p class="eyebrow mb-8">Trusted by <span class="text-ink">10,000+</span> businesses worldwide</p>
-        <div class="flex flex-wrap items-center justify-center gap-8 md:gap-14">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center">
           {brands.map((b) => (
-            <span class="text-base font-medium text-steel tracking-tight">{b}</span>
+            <span class="text-base font-medium text-steel tracking-tight py-2">{b}</span>
           ))}
         </div>
       </Reveal>
+    </div>
 
-      {/* 3. Mission Highlight */}
-      <Reveal delay={120} class="text-center max-w-4xl mx-auto mb-20">
-        <span class="eyebrow mb-6 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
-          Know more about us
-        </span>
-        <h2 class="display-lg">
-          When teams are stretched thin, our <span class="text-brand-annotate">AI support coordinator</span> takes care of the tasks so your staff can take care of people. More clients care by AI.
-        </h2>
-      </Reveal>
-
-      {/* 4. Funfact Stats Cards */}
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+    {/* 3. Stat row */}
+    <div class="container-page pb-16 md:pb-24">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((s, idx) => (
           <Reveal delay={idx * 80}>
-            <div class="card h-full flex flex-col justify-between p-8">
-              <div>
-                <span class="eyebrow mb-8 inline-block rounded-full border border-hairline bg-surface px-3 py-1">
-                  {s.badge}
-                </span>
-                <div class="display-lg mb-3">{s.value}</div>
-              </div>
+            <div class="h-full">
+              <span class="eyebrow mb-5 inline-block rounded-full border border-hairline bg-surface px-3 py-1">
+                {s.badge}
+              </span>
+              <div class="display-lg mb-3">{s.value}</div>
               <p class="p-sm">{s.desc}</p>
             </div>
           </Reveal>
         ))}
       </div>
-
-      {/* 5. Core Values Container Card */}
-      <Reveal delay={150} class="rounded-lg bg-canvas-dark text-on-dark p-10 md:p-16 mb-20">
-        <div class="text-center max-w-2xl mx-auto mb-14">
-          <span class="eyebrow mb-4 inline-block rounded-full border border-hairline-dark bg-canvas/5 px-3 py-1 text-on-dark-muted">
-            Core values guide everything
-          </span>
-          <h2 class="h2 text-on-dark">Core values guide everything</h2>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {values.map((v) => (
-            <div class="rounded-lg border border-hairline-dark bg-canvas/5 p-6">
-              <div class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-hairline-dark bg-canvas/5 text-brand mb-6">
-                <Icon name={v.icon} class="w-5 h-5" />
-              </div>
-              <h3 class="h5 text-on-dark mb-2">{v.title}</h3>
-              <p class="text-sm leading-[1.5] text-on-dark-muted">{v.desc}</p>
-            </div>
-          ))}
-        </div>
-      </Reveal>
-
-      {/* 6. Integrations */}
-      <Reveal delay={120} class="text-center max-w-5xl mx-auto mb-20">
-        <h2 class="h2 mb-10">
-          Seamless integration <br class="hidden sm:inline" /> with your entire tech stack
-        </h2>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
-          {integrations.map((i) => (
-            <div class="rounded-lg border border-hairline bg-canvas p-6 text-sm font-semibold text-ink">
-              {i}
-            </div>
-          ))}
-        </div>
-        <a href="/integrations" class="btn-secondary btn-md">
-          See all integrations <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </a>
-      </Reveal>
-
-      {/* 7. Final CTA */}
-      <Reveal class="text-center max-w-3xl mx-auto">
-        <h2 class="h2 mb-6">
-          Start planning smarter and more <br class="hidden sm:inline" /> meaningful user experiences
-        </h2>
-        <p class="p-rg mb-8">
-          Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual and interactive effects all in one platform.
-        </p>
-        <a href="/pricing" class="btn-accent btn-lg">
-          Subscribe now <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </a>
-      </Reveal>
-
     </div>
+
+    {/* 4. Value cards — 4-up */}
+    <div class="container-page pb-16 md:pb-24">
+      <Reveal class="text-center max-w-2xl mx-auto mb-12">
+        <span class="eyebrow mb-4 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
+          Core values guide everything
+        </span>
+        <h2 class="h2">Core values guide everything</h2>
+      </Reveal>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((v, idx) => (
+          <Reveal delay={idx * 60}>
+            <div class="h-full rounded-lg border border-hairline bg-canvas p-6">
+              <span class="icon-tile mb-5">
+                <Icon name={v.icon} class="w-5 h-5" />
+              </span>
+              <h3 class="h5 mb-2">{v.title}</h3>
+              <p class="p-sm">{v.desc}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+
+    {/* 5. Story row — text left, image right */}
+    <div class="container-page pb-16 md:pb-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <Reveal>
+          <span class="eyebrow mb-6 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
+            Know more about us
+          </span>
+          <h2 class="h2">
+            When teams are stretched thin, our <span class="text-brand-annotate">AI support coordinator</span> takes
+            care of the tasks so your staff can take care of people. More clients care by AI.
+          </h2>
+        </Reveal>
+        <Reveal delay={100}>
+          <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-card)] overflow-hidden">
+            <img src="/placeholder.png" alt="Zylo AI coordinator" class="w-full rounded-md block" />
+          </div>
+        </Reveal>
+      </div>
+    </div>
+
+    {/* 6. Story row — grid left, text right */}
+    <div class="container-page pb-16 md:pb-24">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <Reveal class="lg:order-2">
+          <h2 class="h2 mb-4">Seamless integration with your entire tech stack</h2>
+          <p class="p-rg mb-8">
+            Connect the tools your team already uses and let Zylo pass work between them without manual handoffs.
+          </p>
+          <a href="/integrations" class="btn-secondary btn-md">
+            See all integrations <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          </a>
+        </Reveal>
+        <Reveal delay={100} class="lg:order-1">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {integrations.map((i) => (
+              <div class="rounded-md border border-hairline bg-canvas p-4 text-sm font-medium text-ink text-center">
+                {i}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </div>
+
+    {/* 7. Closing CTA band */}
+    <section class="bg-surface-soft border-t border-hairline">
+      <div class="container-page section">
+        <Reveal class="text-center max-w-3xl mx-auto">
+          <h2 class="h2 mb-6">
+            Start planning smarter and more <br class="hidden sm:inline" /> meaningful user experiences
+          </h2>
+          <p class="p-rg mb-8">
+            Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual
+            and interactive effects all in one platform.
+          </p>
+          <a href="/pricing" class="btn-accent btn-lg">
+            Subscribe now <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          </a>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />

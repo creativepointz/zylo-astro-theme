@@ -29,45 +29,47 @@ const testimonials = [
   <Navbar />
 
   <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
-    <div class="container-page max-w-6xl">
-      {/* 1. Header Banner */}
-      <Reveal class="text-center max-w-4xl mx-auto mb-16">
-        <span class="eyebrow mb-4 block">
-          Testimonials
-        </span>
-        <h1 class="h1">
+    {/* 1. Compact centered hero */}
+    <section class="container-page max-w-6xl">
+      <Reveal class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow mb-4 block">Testimonials</span>
+        <h1 class="h1 mb-5">
           Experiences shared by our customers
         </h1>
+        <p class="subtitle">
+          Operators, founders, and support leads on what changed after they automated their workflows with Zylo.
+        </p>
       </Reveal>
 
-      {/* 2. Testimonial Cards Grid */}
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+      {/* 2. Four-column quote wall — one card promoted to the orange signature treatment */}
+      <div class="columns-1 md:columns-2 lg:columns-4 gap-6 mb-24">
         {testimonials.map((t, idx) => (
-          <Reveal delay={idx * 60}>
+          <Reveal class="break-inside-avoid mb-6 block">
             <div
-              class={`rounded-lg p-8 h-full flex flex-col justify-between ${
+              class={`rounded-lg p-6 ${
                 idx === 4
                   ? 'bg-testimonial-orange text-on-dark'
                   : 'bg-canvas border border-hairline'
               }`}
             >
-              <div class="flex items-center gap-3 mb-6">
-                <div
-                  class={`w-10 h-10 rounded-full font-semibold flex items-center justify-center text-sm ${
-                    idx === 4 ? 'bg-on-dark/20 text-on-dark' : 'bg-surface text-ink'
+              <div class="flex items-center gap-3 mb-5">
+                <img
+                  src="/placeholder.png"
+                  alt={t.name}
+                  loading="lazy"
+                  class={`w-10 h-10 shrink-0 rounded-full object-cover ${
+                    idx === 4 ? 'border border-on-dark/30 bg-on-dark/20' : 'border border-hairline bg-surface'
                   }`}
-                >
-                  {t.name[0]}
-                </div>
+                />
                 <div>
-                  <h4 class={`font-semibold text-sm ${idx === 4 ? 'text-on-dark' : 'text-ink'}`}>{t.name}</h4>
-                  <p class={`text-[13px] leading-[1.4] ${idx === 4 ? 'text-on-dark/80' : 'text-stone'}`}>{t.role}</p>
+                  <h2 class={`h6 ${idx === 4 ? 'text-on-dark' : ''}`}>{t.name}</h2>
+                  <p class={`p-lt ${idx === 4 ? 'text-on-dark/80' : ''}`}>{t.role}</p>
                 </div>
               </div>
 
-              <p class={`text-sm leading-[1.5] mb-6 ${idx === 4 ? 'text-on-dark' : 'text-steel'}`}>&ldquo;{t.quote}&rdquo;</p>
+              <p class={`p-sm mb-6 ${idx === 4 ? 'text-on-dark' : ''}`}>&ldquo;{t.quote}&rdquo;</p>
 
-              <div class={`pt-6 border-t flex items-center gap-2 ${idx === 4 ? 'border-on-dark/25' : 'border-hairline'}`}>
+              <div class={`pt-5 border-t flex items-center gap-2 ${idx === 4 ? 'border-on-dark/25' : 'border-hairline'}`}>
                 <div class={`flex items-center gap-1 ${idx === 4 ? 'text-on-dark' : 'text-brand'}`}>
                   <Icon name="lucide:star" class="w-4 h-4 fill-current" />
                   <Icon name="lucide:star" class="w-4 h-4 fill-current" />
@@ -81,30 +83,25 @@ const testimonials = [
           </Reveal>
         ))}
       </div>
+    </section>
 
-      {/* 3. Bottom CTA Banner */}
-      <Reveal class="rounded-lg border border-hairline-dark bg-canvas-dark p-10 md:p-16 text-center">
-        <h2 class="h2 text-on-dark mb-6">
-          Start planning smarter and more meaningful user experiences
-        </h2>
-        <p class="text-base leading-[1.5] text-on-dark-muted mb-10 max-w-2xl mx-auto">
-          Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual and interactive effects all in one platform.
-        </p>
-        <form class="flex flex-wrap justify-center gap-3" action="#">
-          <label class="sr-only" for="testimonial-email">Enter your email..</label>
-          <input
-            id="testimonial-email"
-            type="email"
-            name="email"
-            placeholder="Enter your email.."
-            class="h-10 w-full max-w-[300px] rounded-md bg-canvas px-4 text-sm text-ink placeholder:text-muted border border-hairline-dark focus:border-brand focus:outline-none"
-          />
-          <button type="submit" class="btn-on-dark btn-md">
-            Subscribe now
-          </button>
-        </form>
-      </Reveal>
-    </div>
+    {/* 3. Closing CTA band */}
+    <section class="bg-surface-soft border-t border-hairline">
+      <div class="container-page max-w-3xl py-16 md:py-24 text-center">
+        <Reveal>
+          <h2 class="h2 mb-4">
+            Start planning smarter and more meaningful user experiences
+          </h2>
+          <p class="p-rg mb-8">
+            Zylo delivers an exceptional UX design, providing users with a smooth experience through outstanding visual and interactive effects all in one platform.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">Subscribe now</a>
+            <a href="/contact" class="btn-secondary btn-lg">Talk to us</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />

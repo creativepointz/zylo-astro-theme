@@ -10,16 +10,15 @@ export function getStaticPaths() {
   return generatePaths();
 }
 
-const bullets = [
-  'Clear comparison of single- vs multi-tenant models',
-  'Costs, complexity, and trade-offs — explained plain and simple',
-  'Tips to improve existing SaaS products if you need to scale',
-];
+const brands = ['CloudScale', 'DataPivot', 'VentureLab', 'SaaSify', 'SecureBank', 'FintechX'];
 
-const stats = [
-  { icon: 'lucide:download', label: '500+ downloads by C-levels' },
-  { icon: 'lucide:compass', label: 'Guided by our architect with 9+ SaaS built' },
-  { icon: 'lucide:file-search', label: 'Detailed case study inside' },
+/* 5-up feature grid — what is inside the paper */
+const insideGrid = [
+  { icon: 'lucide:git-compare', title: 'Model comparison', desc: 'Clear comparison of single- vs multi-tenant models' },
+  { icon: 'lucide:scale', title: 'Costs and trade-offs', desc: 'Costs, complexity, and trade-offs — explained plain and simple' },
+  { icon: 'lucide:trending-up', title: 'Scaling tips', desc: 'Tips to improve existing SaaS products if you need to scale' },
+  { icon: 'lucide:compass', title: 'Architect guidance', desc: 'Guided by our architect with 9+ SaaS built' },
+  { icon: 'lucide:file-search', title: 'Case study', desc: 'Detailed case study inside' },
 ];
 
 const cards = [
@@ -30,71 +29,165 @@ const cards = [
   'Revolutionize Customer Experience in the Banking Sector',
   'Drive Secure and Agile Banking Operations with SaaS',
 ];
+
+const stats = [
+  { value: '500+', label: 'Downloads by C-levels' },
+  { value: '9+', label: 'SaaS products built by our architect' },
+  { value: '6', label: 'Chapters, one case study' },
+];
 ---
 
 <Layout title="Finding the architecture that fits your SaaS — Zylo Whitepaper" description="Multi-tenant, single-tenant — which will better support your SaaS? All answers are packed into this white paper.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
-    <div class="container-page">
-      {/* 1. Manifesto / Hero */}
-      <Reveal class="max-w-3xl mx-auto text-center mb-16">
-        <h1 class="h1 mb-6">
-          Finding the architecture<br class="hidden sm:block" /> that fits your SaaS
-        </h1>
-        <p class="subtitle mb-8">
-          Multi-tenant, single-tenant — which will better support your SaaS? We cornered our software architect and asked them all about architecture models, how they pick the right setup, and how to fix one for an up-and-running product.
-        </p>
+  <main id="main" class="bg-canvas">
 
-        <p class="h6 mb-4">All answers are packed into this white paper:</p>
-        <ul class="space-y-3 text-left max-w-xl mx-auto mb-10">
-          {bullets.map((b) => (
-            <li class="flex items-start gap-3 p-sm">
-              <Icon name="lucide:check" class="w-4 h-4 mt-1 shrink-0 text-brand" />
-              <span>{b}</span>
-            </li>
+    {/* 1. Centered hero */}
+    <section class="pt-24 md:pt-[120px] pb-16 md:pb-24">
+      <div class="container-page">
+        <Reveal class="text-center max-w-3xl mx-auto">
+          <span class="eyebrow mb-6 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
+            White paper
+          </span>
+          <h1 class="hero-display mb-6">
+            Finding the architecture<br class="hidden sm:inline" /> that fits your SaaS
+          </h1>
+          <p class="subtitle mb-8">
+            Multi-tenant, single-tenant — which will better support your SaaS? We cornered our software architect and asked them all about architecture models, how they pick the right setup, and how to fix one for an up-and-running product.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">
+              Join now <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="/contact" class="btn-secondary btn-lg">Talk to our architect</a>
+          </div>
+        </Reveal>
+
+        <Reveal delay={120} class="mt-12 md:mt-16">
+          <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-mockup)] overflow-hidden max-w-4xl mx-auto">
+            <img src="/placeholder.png" alt="Zylo white paper preview" class="w-full rounded-md block" />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* 2. Social proof strip */}
+    <section class="border-y border-hairline py-12">
+      <div class="container-page text-center">
+        <Reveal>
+          <p class="eyebrow mb-8">
+            <span class="text-ink">500+</span> downloads by C-levels
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-8 items-center justify-items-center">
+            {brands.map((b) => (
+              <span class="p-lg font-medium tracking-tight text-steel">{b}</span>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* 3. Feature grid — 5-up */}
+    <section class="section">
+      <div class="container-page">
+        <Reveal class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="h2">All answers are packed into this white paper</h2>
+        </Reveal>
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+          {insideGrid.map((f, idx) => (
+            <Reveal delay={idx * 60}>
+              <div class="card h-full">
+                <span class="icon-tile mb-5">
+                  <Icon name={f.icon} class="w-5 h-5" />
+                </span>
+                <h3 class="h5 mb-2">{f.title}</h3>
+                <p class="p-sm">{f.desc}</p>
+              </div>
+            </Reveal>
           ))}
-        </ul>
+        </div>
+      </div>
+    </section>
 
-        <a href="/pricing" class="btn-accent btn-lg">
-          Join now <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </a>
-      </Reveal>
+    {/* 4. Alternating feature rows */}
+    <section class="pb-16 md:pb-24">
+      <div class="container-page space-y-16 md:space-y-24">
 
-      {/* 2. Feature stats */}
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
-        {stats.map((s, idx) => (
-          <Reveal delay={idx * 80}>
-            <div class="card h-full flex items-center gap-4">
-              <span class="icon-tile shrink-0">
-                <Icon name={s.icon} class="w-5 h-5" />
-              </span>
-              <p class="h6">{s.label}</p>
+        {/* Row 1 — text left */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal>
+            <h2 class="h2 mb-5">Thorough research, verified data, and practical SaaS strategies.</h2>
+            <p class="p-rg mb-8">
+              Every chapter is written from work we have shipped, not theory — so you can take the recommendations straight into your next architecture review.
+            </p>
+            <a href="/blog" class="btn-secondary btn-md">
+              Read more <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+          </Reveal>
+          <Reveal delay={100}>
+            <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-card)] overflow-hidden">
+              <img src="/placeholder.png" alt="Inside the Zylo white paper" class="w-full rounded-md block" />
             </div>
           </Reveal>
-        ))}
-      </div>
+        </div>
 
-      {/* 3. Whitepaper cards */}
-      <Reveal class="text-center max-w-2xl mx-auto mb-12">
-        <h2 class="h2">
-          Thorough research, verified data, and practical SaaS strategies.
-        </h2>
-      </Reveal>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {cards.map((title, idx) => (
-          <Reveal delay={idx * 60}>
-            <div class="card h-full flex flex-col justify-between gap-6">
-              <h3 class="h4">{title}</h3>
-              <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:underline">
-                Read more <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
-              </a>
+        {/* Row 2 — text right */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal class="lg:order-2">
+            <h2 class="h2 mb-5">What you will read inside</h2>
+            <p class="p-rg">
+              Six chapters covering the decisions SaaS teams make once and live with for years — from tenancy model to the day-to-day cost of running it.
+            </p>
+          </Reveal>
+          <Reveal delay={100} class="lg:order-1">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {cards.map((title) => (
+                <div class="card h-full flex flex-col justify-between gap-5">
+                  <h3 class="h6 leading-snug">{title}</h3>
+                  <a href="/blog" class="inline-flex items-center gap-2 text-sm font-medium text-ink hover:underline">
+                    Read more <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              ))}
             </div>
           </Reveal>
-        ))}
+        </div>
+
       </div>
-    </div>
+    </section>
+
+    {/* 5. Stat row */}
+    <section class="border-y border-hairline py-16">
+      <div class="container-page">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+          {stats.map((s, idx) => (
+            <Reveal delay={idx * 80}>
+              <div class="display-lg mb-2">{s.value}</div>
+              <p class="p-sm">{s.label}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 7. Closing CTA band */}
+    <section class="section bg-surface-soft">
+      <div class="container-page">
+        <Reveal class="text-center max-w-3xl mx-auto">
+          <h2 class="h2 mb-5">Get the white paper</h2>
+          <p class="p-rg mb-8">
+            Download the full paper, or bring your setup to our architect and talk it through.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">
+              Join now <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="/contact" class="btn-secondary btn-lg">Talk to our architect</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
   </main>
 
   <Footer />

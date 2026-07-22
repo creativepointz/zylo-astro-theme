@@ -11,8 +11,9 @@ export function getStaticPaths() {
 }
 
 const badges = [
-  { icon: 'lucide:award', label: 'Rated #1 SaaS solution for business growth' },
-  { icon: 'lucide:trending-up', label: 'Leader position winter 2026' },
+  { icon: 'lucide:award', title: 'Rated #1 SaaS solution for business growth' },
+  { icon: 'lucide:trending-up', title: 'Leader position winter 2026' },
+  { icon: 'lucide:clock', title: 'Paid once a referral stays active for 30+ days' },
 ];
 
 const steps = [
@@ -60,82 +61,111 @@ const faqs = [
 <Layout title="Referral Program — Make up to $69.85 in commission" description="Make up to $69.85 in commission on every referred sale.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-6xl mx-auto px-4">
-      {/* 1. Program header */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-12">
-        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight mb-5 leading-tight">
-          Make up to $69.85 in commission on every referred sale.
-        </h1>
-        <p class="text-lg text-steel leading-relaxed">
-          It's always easy to contact our top-rated support team.
-        </p>
-      </Reveal>
-
-      <Reveal delay={100} class="flex flex-wrap justify-center gap-5 mb-24">
-        {badges.map((b) => (
-          <div class="flex items-center gap-3 rounded-lg border border-hairline bg-canvas px-6 py-3.5 w-[270px] shadow-[var(--shadow-subtle)]">
-            <span class="w-10 h-10 shrink-0 rounded-full bg-brand/10 text-brand flex items-center justify-center">
-              <Icon name={b.icon} class="w-5 h-5" />
-            </span>
-            <p class="text-xs font-medium text-ink leading-relaxed">{b.label}</p>
-          </div>
-        ))}
-      </Reveal>
-
-      {/* 2. How it works */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-14">
-        <h2 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight mb-4">
-          How it works
-        </h2>
-        <p class="text-lg text-steel leading-relaxed">
-          Tell a friend about Zylo and earn money when they are active for 30+ days.
-        </p>
-      </Reveal>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24 items-stretch">
-        {steps.map((s, idx) => (
-          <Reveal delay={idx * 80}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 text-center shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all h-full flex flex-col items-center">
-              <div class="w-16 h-16 rounded-md bg-brand/10 text-brand flex items-center justify-center mb-8">
-                <Icon name={s.icon} class="w-7 h-7" />
-              </div>
-              <h3 class="text-xl font-semibold text-ink font-heading mb-2">{s.title}</h3>
-              <p class="text-xs text-steel leading-relaxed">{s.desc}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* 3. FAQ */}
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        <Reveal class="lg:col-span-5">
-          <h2 class="text-3xl sm:text-4xl font-semibold text-ink font-heading tracking-tight mb-3">
-            Need help?
-          </h2>
-          <p class="text-steel leading-relaxed">
-            Get quick answers and friendly assistance anytime you need.
+  <main id="main" class="bg-canvas">
+    {/* 1. Compact centered hero */}
+    <section class="pt-24 md:pt-[120px] pb-16">
+      <div class="container-page">
+        <Reveal class="mx-auto max-w-3xl text-center">
+          <span class="eyebrow mb-4 block">Referral program</span>
+          <h1 class="h1 mb-5">Make up to $69.85 in commission on every referred sale.</h1>
+          <p class="subtitle mx-auto max-w-xl">
+            It's always easy to contact our top-rated support team.
           </p>
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href="/register" class="btn-primary btn-lg">
+              Get your referral link <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+            <a href="#how-it-works" class="btn-secondary btn-lg">How it works</a>
+          </div>
         </Reveal>
+      </div>
+    </section>
 
-        <div class="lg:col-span-7 space-y-3">
-          {faqs.map((f, idx) => (
+    {/* 2. Perk grid */}
+    <section class="pb-20">
+      <div class="container-page">
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {badges.map((b, idx) => (
             <Reveal delay={idx * 60}>
-              <details class="group rounded-lg border border-hairline bg-canvas px-7 py-5 shadow-[var(--shadow-subtle)]">
-                <summary class="flex cursor-pointer items-center justify-between gap-4 list-none">
-                  <span class="text-base font-semibold text-ink font-heading">{f.q}</span>
-                  <span class="shrink-0 w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-stone group-open:bg-canvas-dark group-open:text-on-dark transition-colors">
-                    <Icon name="lucide:plus" class="w-4 h-4 group-open:hidden" />
-                    <Icon name="lucide:minus" class="w-4 h-4 hidden group-open:block" />
-                  </span>
-                </summary>
-                <p class="pt-4 text-sm text-steel leading-relaxed">{f.a}</p>
-              </details>
+              <div class="h-full rounded-lg border border-hairline bg-canvas p-6">
+                <span class="icon-tile mb-4">
+                  <Icon name={b.icon} class="h-4 w-4" />
+                </span>
+                <h2 class="h5">{b.title}</h2>
+              </div>
             </Reveal>
           ))}
         </div>
       </div>
-    </div>
+    </section>
+
+    {/* 3. How it works — numbered step row */}
+    <section id="how-it-works" class="pb-24">
+      <div class="container-page">
+        <Reveal class="mx-auto mb-12 max-w-2xl text-center">
+          <h2 class="h2 mb-4">How it works</h2>
+          <p class="p-rg">
+            Tell a friend about Zylo and earn money when they are active for 30+ days.
+          </p>
+        </Reveal>
+
+        <div class="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-hairline bg-hairline md:grid-cols-3">
+          {steps.map((s, idx) => (
+            <div class="bg-canvas p-6">
+              <div class="mb-4 flex items-center gap-3">
+                <span class="icon-tile">
+                  <Icon name={s.icon} class="h-4 w-4" />
+                </span>
+                <span class="eyebrow">Step {idx + 1}</span>
+              </div>
+              <h3 class="h5 mb-2">{s.title}</h3>
+              <p class="p-sm">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 4. FAQ */}
+    <section class="pb-24">
+      <div class="container-page">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <Reveal class="lg:col-span-5">
+            <h2 class="h2 mb-3">Need help?</h2>
+            <p class="p-rg">Get quick answers and friendly assistance anytime you need.</p>
+          </Reveal>
+
+          <div class="space-y-3 lg:col-span-7">
+            {faqs.map((f, idx) => (
+              <Reveal delay={idx * 60}>
+                <details class="group rounded-md border border-hairline-soft bg-canvas p-6">
+                  <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                    <span class="h5">{f.q}</span>
+                    <span class="shrink-0 text-stone transition-transform group-open:rotate-180">
+                      <Icon name="lucide:chevron-down" class="h-4 w-4" />
+                    </span>
+                  </summary>
+                  <p class="p-rg pt-4">{f.a}</p>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* 5. Closing CTA band */}
+    <section class="bg-surface-soft py-16 md:py-20">
+      <div class="container-page">
+        <Reveal class="mx-auto max-w-2xl text-center">
+          <h2 class="h3 mb-4">Start referring today</h2>
+          <p class="p-rg mb-8">
+            Your referral link lives in the customer portal. Sign in, copy it and share it with your network.
+          </p>
+          <a href="/sign-in" class="btn-primary btn-lg">Open your portal</a>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />

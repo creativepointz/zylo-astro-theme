@@ -9,91 +9,102 @@ import { Icon } from 'astro-icon/components';
 export function getStaticPaths() {
   return generatePaths();
 }
+
+const perks = [
+  { icon: 'lucide:layout-dashboard', label: 'Real-time collaboration' },
+  { icon: 'lucide:shield-check', label: 'Two factor authentication (2FA)' },
+  { icon: 'lucide:sparkles', label: 'AI-Powered task assistant' },
+  { icon: 'lucide:bar-chart-3', label: 'Time tracking & productivity reports' },
+];
 ---
 
 <Layout title="Register Account — Welcome To Your Zylo System" description="Create your Zylo account with email or continue with Google.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-6xl mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+  <main id="main" class="pt-24 md:pt-[120px] pb-16 md:pb-24 bg-canvas">
+    <div class="container-page">
+      <div class="grid grid-cols-1 lg:grid-cols-2 rounded-lg border border-hairline overflow-hidden">
         {/* 1. Welcome panel */}
-        <Reveal class="lg:col-span-5">
-          <div class="h-full rounded-lg bg-canvas-dark p-10 flex flex-col justify-between">
-            <h1 class="text-3xl sm:text-4xl font-semibold text-on-dark font-heading tracking-tight leading-tight">
-              Welcome To Your Zylo System.
-            </h1>
-            <div class="mt-12 grid grid-cols-2 gap-4">
-              <div class="rounded-lg border border-white/10 bg-canvas/5 p-5">
-                <Icon name="lucide:layout-dashboard" class="w-6 h-6 text-on-dark mb-3" />
-                <p class="text-xs font-medium text-on-dark-muted leading-relaxed">Real-time collaboration</p>
-              </div>
-              <div class="rounded-lg border border-white/10 bg-canvas/5 p-5">
-                <Icon name="lucide:shield-check" class="w-6 h-6 text-on-dark mb-3" />
-                <p class="text-xs font-medium text-on-dark-muted leading-relaxed">Two factor authentication (2FA)</p>
-              </div>
-              <div class="rounded-lg border border-white/10 bg-canvas/5 p-5">
-                <Icon name="lucide:sparkles" class="w-6 h-6 text-on-dark mb-3" />
-                <p class="text-xs font-medium text-on-dark-muted leading-relaxed">AI-Powered task assistant</p>
-              </div>
-              <div class="rounded-lg border border-white/10 bg-canvas/5 p-5">
-                <Icon name="lucide:bar-chart-3" class="w-6 h-6 text-on-dark mb-3" />
-                <p class="text-xs font-medium text-on-dark-muted leading-relaxed">Time tracking &amp; productivity reports</p>
-              </div>
+        <Reveal>
+          <div class="h-full bg-canvas-dark p-8 md:p-12 flex flex-col justify-between">
+            <div>
+              <h1 class="h2 text-on-dark mb-4">Welcome To Your Zylo System.</h1>
+              <p class="text-base leading-[1.5] text-on-dark-muted">
+                Create an account to build your first workflow and connect the tools your team already uses.
+              </p>
             </div>
+            <ul class="mt-12 space-y-4">
+              {perks.map((p) => (
+                <li class="flex items-center gap-3">
+                  <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-hairline-dark text-on-dark">
+                    <Icon name={p.icon} class="w-5 h-5" />
+                  </span>
+                  <span class="text-sm leading-[1.5] text-on-dark-muted">{p.label}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </Reveal>
 
-        {/* 2. Register form */}
-        <Reveal delay={100} class="lg:col-span-7">
-          <div class="h-full rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)]">
-            <h2 class="text-2xl font-semibold text-ink font-heading mb-8">Register Account</h2>
+        {/* 2. Register form panel */}
+        <Reveal delay={100}>
+          <div class="h-full bg-canvas p-8 md:p-12">
+            <div class="max-w-sm mx-auto">
+              <h2 class="h3 mb-8">Register Account</h2>
 
-            <div class="flex flex-wrap gap-3 mb-8">
-              <a href="#" class="inline-flex h-14 items-center gap-2.5 rounded-md border border-hairline px-8 text-sm font-medium text-ink hover:border-ink transition-colors">
-                <Icon name="lucide:globe" class="w-5 h-5" />
+              <a href="#" class="btn-secondary btn-lg w-full">
+                <Icon name="lucide:globe" class="w-4 h-4" />
                 Continue with Google
               </a>
-              <a href="#" class="inline-flex h-14 items-center justify-center rounded-md border border-hairline px-8 text-ink hover:border-ink transition-colors">
-                <Icon name="lucide:command" class="w-5 h-5" />
-              </a>
-            </div>
 
-            <div class="flex items-center gap-4 mb-8">
-              <span class="h-px flex-1 bg-hairline"></span>
-              <span class="text-sm text-stone">Or Sign In with email</span>
-              <span class="h-px flex-1 bg-hairline"></span>
-            </div>
-
-            <form class="space-y-5">
-              <div>
-                <label class="block text-xs font-semibold text-steel mb-1.5">Full Name</label>
-                <input type="text" required class="w-full h-14 rounded-md border border-hairline px-5 text-sm text-ink focus:border-brand focus:outline-none" />
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-steel mb-1.5">Your Email</label>
-                <input type="email" required class="w-full h-14 rounded-md border border-hairline px-5 text-sm text-ink focus:border-brand focus:outline-none" />
-              </div>
-              <div>
-                <label class="block text-xs font-semibold text-steel mb-1.5">Password</label>
-                <input type="password" required class="w-full h-14 rounded-md border border-hairline px-5 text-sm text-ink focus:border-brand focus:outline-none" />
+              <div class="flex items-center gap-4 my-8">
+                <span class="h-px flex-1 bg-hairline"></span>
+                <span class="text-sm text-stone">Or Sign In with email</span>
+                <span class="h-px flex-1 bg-hairline"></span>
               </div>
 
-              <div class="flex items-center justify-between gap-4">
-                <label class="flex items-center gap-2 text-sm text-stone cursor-pointer">
-                  <input type="checkbox" class="rounded border-hairline text-brand focus:ring-brand" />
-                  Remember me
-                </label>
-                <a href="#" class="text-sm text-ink hover:text-brand transition-colors">Forgot password ?</a>
-              </div>
-            </form>
+              <form class="space-y-5">
+                <div>
+                  <label class="block p-sm mb-1.5" for="register-name">Full Name</label>
+                  <input
+                    id="register-name"
+                    type="text"
+                    required
+                    class="w-full h-10 rounded-md border border-hairline bg-canvas px-4 text-base text-ink placeholder:text-muted focus:border-brand focus:border-2 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label class="block p-sm mb-1.5" for="register-email">Your Email</label>
+                  <input
+                    id="register-email"
+                    type="email"
+                    required
+                    class="w-full h-10 rounded-md border border-hairline bg-canvas px-4 text-base text-ink placeholder:text-muted focus:border-brand focus:border-2 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label class="block p-sm mb-1.5" for="register-password">Password</label>
+                  <input
+                    id="register-password"
+                    type="password"
+                    required
+                    class="w-full h-10 rounded-md border border-hairline bg-canvas px-4 text-base text-ink placeholder:text-muted focus:border-brand focus:border-2 focus:outline-none"
+                  />
+                </div>
 
-            <div class="mt-8">
-              <button type="submit" class="inline-flex h-14 items-center justify-center rounded-md bg-primary px-20 text-sm font-semibold text-on-primary hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]">
-                Register
-              </button>
+                <div class="flex items-center justify-between gap-4">
+                  <label class="flex items-center gap-2 text-sm text-stone cursor-pointer">
+                    <input type="checkbox" class="h-4 w-4 rounded-sm border-hairline text-brand" />
+                    Remember me
+                  </label>
+                  <a href="#" class="text-sm font-medium text-ink">Forgot password ?</a>
+                </div>
+
+                <button type="submit" class="btn-primary btn-lg w-full">Register</button>
+              </form>
+
               <p class="mt-8 text-sm text-stone">
-                Don't have account ? <a href="/sign-in" class="font-medium text-brand hover:underline">Sign Up</a>
+                Already have an account ? <a href="/sign-in" class="font-medium text-ink">Sign In</a>
               </p>
             </div>
           </div>

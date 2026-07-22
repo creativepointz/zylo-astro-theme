@@ -73,8 +73,8 @@ const toc = [
 <Layout title={`${doc.name} — Zylo Docs`} description={doc.description}>
   <Navbar />
   <main id="main" class="relative bg-canvas pt-24 md:pt-[120px] pb-8">
-    <div class="w-full px-6 md:px-12">
-      <div class="grid gap-10 lg:grid-cols-[260px_minmax(0,1fr)_286px] xl:gap-16">
+    <div class="container-page">
+      <div class="grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)] xl:grid-cols-[240px_minmax(0,1fr)_200px] xl:gap-16">
         <!-- Left: doc navigation -->
         <aside class="hidden lg:block">
           <div class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-6 overflow-y-auto pb-8">
@@ -90,14 +90,15 @@ const toc = [
 
             <!-- Nav tree -->
             <nav class="flex flex-col gap-1 text-sm">
+              <span class="eyebrow px-3 pb-1 pt-2">Documentation</span>
               {nav.map((group) => (
                 <div>
                   <button
                     type="button"
-                    class="flex w-full items-center justify-between rounded-md px-2 py-2 text-ink transition-colors hover:bg-surface-soft"
+                    class="flex w-full items-center justify-between rounded-sm px-3 py-2 text-sm text-steel transition-colors hover:bg-surface-soft hover:text-ink"
                   >
                     <span class="flex items-center gap-2">
-                      <Icon name={group.icon} stroke-width={1.75} class="h-5 w-5 text-brand" />
+                      <Icon name={group.icon} stroke-width={1.75} class="h-4 w-4 shrink-0" />
                       {group.label}
                     </span>
                     {!group.leaf && (
@@ -112,8 +113,10 @@ const toc = [
                       {group.items.map((item) => (
                         <a
                           href="#"
-                          class={`rounded-md py-2 pl-9 pr-2 transition-colors hover:text-brand ${
-                            item.active ? 'font-medium text-brand' : 'text-steel'
+                          class={`rounded-sm py-2 pl-9 pr-3 text-sm transition-colors ${
+                            item.active
+                              ? 'bg-surface font-medium text-ink'
+                              : 'text-steel hover:bg-surface-soft hover:text-ink'
                           }`}
                         >
                           {item.label}
@@ -128,26 +131,26 @@ const toc = [
         </aside>
 
         <!-- Center: article -->
-        <article class="mx-auto w-full max-w-[720px]">
+        <article class="w-full max-w-[720px]">
           <!-- Breadcrumb -->
-          <nav class="mb-12 flex items-center gap-2 text-sm text-stone">
-            <a href="/docs" class="flex items-center gap-1.5 transition-colors hover:text-brand">
-              <Icon name="lucide:circle-arrow-right" class="h-5 w-5" />
+          <nav class="mb-8 flex items-center gap-2 text-sm text-stone">
+            <a href="/docs" class="flex items-center gap-1.5 transition-colors hover:text-ink">
+              <Icon name="lucide:circle-arrow-right" class="h-4 w-4" />
               Docs
             </a>
-            <span class="text-on-dark-muted">/</span>
+            <span class="text-muted">/</span>
             <span class="text-ink">{doc.name}</span>
           </nav>
 
           <!-- Title -->
-          <header class="mb-10 flex flex-col gap-2">
-            <h1 class="h4 text-ink">{doc.name}</h1>
-            <p class="p-rg text-stone">{doc.description}</p>
+          <header class="mb-10 flex flex-col gap-3 border-b border-hairline pb-8">
+            <h1 class="h2">{doc.name}</h1>
+            <p class="subtitle">{doc.description}</p>
           </header>
 
           <div class="article-body flex flex-col gap-6">
             <!-- Premium note -->
-            <p class="p-rg text-steel">
+            <p class="p-rg rounded-md border border-hairline bg-surface-soft p-4">
               ⭐️ This is a premium feature.
               <a href="/pricing" class="font-medium text-ink underline underline-offset-2 hover:text-brand">
                 Find out more about our paid plans
@@ -173,11 +176,11 @@ const toc = [
             </ul>
 
             <!-- Image placeholder -->
-            <div class="aspect-[700/437] w-full overflow-hidden rounded-md border border-hairline bg-gradient-to-br from-surface to-hairline"></div>
+            <img src="/placeholder.png" alt="" loading="lazy" class="aspect-[700/437] w-full overflow-hidden rounded-md border border-hairline bg-surface object-contain p-4" />
 
             <!-- Section -->
-            <section id="edit-docs" class="mt-6 flex scroll-mt-28 flex-col gap-4">
-              <h2 class="h6 text-ink">Change the workspace role</h2>
+            <section id="edit-docs" class="mt-8 flex scroll-mt-28 flex-col gap-4 border-t border-hairline-soft pt-8">
+              <h2 class="h3">Change the workspace role</h2>
               <p class="p-rg text-steel">
                 If you're the owner or an admin in a Pro workspace, navigate to the
                 <strong class="font-semibold text-ink">Workspace members</strong> page, which is
@@ -186,11 +189,11 @@ const toc = [
                 the owner, you'll also have the option to change the owner role from yourself to another member.
                 Please note that notifications will not be sent when a user's role has been changed.
               </p>
-              <div class="aspect-[656/358] w-full overflow-hidden rounded-md border border-hairline bg-gradient-to-br from-surface to-hairline"></div>
+              <img src="/placeholder.png" alt="" loading="lazy" class="aspect-[656/358] w-full overflow-hidden rounded-md border border-hairline bg-surface object-contain p-4" />
             </section>
 
-            <section id="next-steps" class="mt-6 flex scroll-mt-28 flex-col gap-4">
-              <h2 class="h6 text-ink">Change the workspace role</h2>
+            <section id="next-steps" class="mt-8 flex scroll-mt-28 flex-col gap-4 border-t border-hairline-soft pt-8">
+              <h2 class="h3">Change the workspace role</h2>
               <p class="p-rg text-steel">
                 If you're the owner or an admin in a Pro workspace, navigate to the
                 <strong class="font-semibold text-ink">Workspace members</strong> page, which is
@@ -202,62 +205,58 @@ const toc = [
             </section>
 
             <!-- Feedback card -->
-            <div class="mt-6 flex flex-col gap-4 rounded-md border border-hairline p-6">
-              <div class="flex items-center gap-2">
-                <Icon name="lucide:mail" class="h-6 w-6 shrink-0 text-stone" />
+            <div class="mt-10 flex flex-col gap-4 rounded-md border border-hairline p-6">
+              <div class="flex flex-wrap items-center gap-2">
+                <Icon name="lucide:mail" class="h-4 w-4 shrink-0 text-stone" />
                 <p class="flex-1 text-sm text-ink">
                   Still Stuck?
-                  <a href="#" class="text-brand hover:underline">How can we Help?</a>
+                  <a href="#" class="font-medium text-ink underline underline-offset-2 hover:text-brand">How can we Help?</a>
                 </p>
-                <span class="text-sm text-stone">Updated on February 17, 2022</span>
+                <span class="p-lt">Updated on February 17, 2022</span>
               </div>
-              <hr class="border-hairline" />
+              <hr class="border-hairline-soft" />
               <div class="flex items-center justify-between">
                 <p class="text-sm text-ink">Was this article helpful to you?</p>
                 <div class="flex items-center gap-4">
-                  <button type="button" aria-label="Yes" class="text-stone transition-colors hover:text-brand">
-                    <Icon name="lucide:thumbs-up" class="h-6 w-6" />
+                  <button type="button" aria-label="Yes" class="text-stone transition-colors hover:text-ink">
+                    <Icon name="lucide:thumbs-up" class="h-4 w-4" />
                   </button>
-                  <button type="button" aria-label="No" class="text-stone transition-colors hover:text-brand">
-                    <Icon name="lucide:thumbs-down" class="h-6 w-6" />
+                  <button type="button" aria-label="No" class="text-stone transition-colors hover:text-ink">
+                    <Icon name="lucide:thumbs-down" class="h-4 w-4" />
                   </button>
                 </div>
               </div>
             </div>
 
             <!-- Prev / Next -->
-            <div class="mt-6 flex items-center justify-between gap-4">
-              <a href="#" class="flex items-center gap-2.5 text-sm text-ink transition-colors hover:text-brand">
-                <Icon name="lucide:arrow-left" class="h-5 w-5 shrink-0" />
+            <div class="mt-8 flex items-center justify-between gap-4 border-t border-hairline pt-8">
+              <a href="#" class="flex items-center gap-2.5 text-sm font-medium text-ink transition-colors hover:text-brand">
+                <Icon name="lucide:arrow-left" class="h-4 w-4 shrink-0" />
                 <span class="truncate">Build Your First Agent</span>
               </a>
-              <a href="#" class="flex items-center gap-2.5 text-sm text-brand transition-colors hover:underline">
+              <a href="#" class="flex items-center gap-2.5 text-sm font-medium text-ink transition-colors hover:text-brand">
                 <span class="truncate">Connect a Tool</span>
-                <Icon name="lucide:arrow-right" class="h-5 w-5 shrink-0" />
+                <Icon name="lucide:arrow-right" class="h-4 w-4 shrink-0" />
               </a>
             </div>
           </div>
         </article>
 
         <!-- Right: on this page -->
-        <aside class="hidden lg:block">
-          <nav class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-6 overflow-y-auto rounded-md border border-hairline-soft bg-canvas px-8 py-5">
-            <div class="flex items-center gap-3 text-sm text-ink">
-              <Icon name="lucide:list" class="h-4 w-4 text-brand" />
+        <aside class="hidden xl:block">
+          <nav class="sticky top-28 flex max-h-[calc(100vh-8rem)] flex-col gap-3 overflow-y-auto pb-8">
+            <span class="eyebrow flex items-center gap-2">
+              <Icon name="lucide:list" class="h-3.5 w-3.5" />
               On this page
-            </div>
+            </span>
             <ul class="flex flex-col">
               {toc.map((item) => (
                 <li>
                   <a
                     href={`#${item.id}`}
-                    class={`block border-l py-1 text-sm transition-colors hover:text-brand ${
-                      item.sub ? 'pl-8' : 'pl-4'
-                    } ${
-                      item.active
-                        ? 'border-brand font-medium text-ink'
-                        : 'border-hairline-soft ' + (item.sub ? 'text-stone' : 'text-ink')
-                    }`}
+                    class={`p-sm block border-l py-1 transition-colors hover:text-ink ${
+                      item.sub ? 'pl-6' : 'pl-3'
+                    } ${item.active ? 'border-brand font-medium text-ink' : 'border-hairline-soft'}`}
                   >
                     {item.label}
                   </a>

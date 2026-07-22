@@ -21,6 +21,7 @@ const releases = [
   {
     date: 'Jan 04, 2026',
     title: 'Slack ticket form field requirements',
+    tags: ['Integrations', 'Pro plan'],
     paragraphs: [
       'You can now train your agent using support tickets as a data source. Tickets are supported for Zendesk and Salesforce, allowing your agent to learn directly from real customer conversations.',
       'This feature is available on the Pro plan.',
@@ -30,6 +31,7 @@ const releases = [
   {
     date: 'Jan 04, 2026',
     title: 'Task comments',
+    tags: ['Permissions'],
     paragraphs: [
       'Contacts can now be assigned custom roles to limit their access with granular permissions. For example. the admin can see all issues & a regional manager can see all issues tagged with a specific region',
     ],
@@ -37,6 +39,7 @@ const releases = [
   {
     date: 'Jan 04, 2026',
     title: 'Audit Logs',
+    tags: ['Security'],
     paragraphs: [
       'Audit Logs capture events and include clear actor information to improve traceability across account-level changes such as settings updates, user management actions, and more',
     ],
@@ -44,6 +47,7 @@ const releases = [
   {
     date: 'Jan 04, 2026',
     title: 'Product intelligence',
+    tags: ['AI agents', 'Integrations'],
     paragraphs: [
       'Native ingestion of Gemini Google Meet call recordings. Like other call recording integrations, all extracted call context flows into Zylo features including account notebooks, AI fields, and more',
     ],
@@ -54,53 +58,73 @@ const releases = [
 <Layout title="Changelog" description="Follow us and stay up to date with everything Zylo!">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-5xl mx-auto px-4">
-      {/* 1. Header */}
-      <Reveal class="mb-16">
-        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight mb-8">
-          Changelog
-        </h1>
-        <div class="flex flex-wrap items-center justify-center gap-6 rounded-lg md:rounded-full bg-surface px-6 py-4">
-          <p class="text-lg text-ink">Follow us and stay up to date with everything Zylo!</p>
-          <div class="flex items-center gap-3">
+  <main id="main" class="bg-canvas">
+    {/* 1. Compact hero */}
+    <section class="pt-24 md:pt-[120px] pb-14">
+      <div class="container-page max-w-4xl">
+        <Reveal class="text-center">
+          <span class="eyebrow mb-4 block">Product updates</span>
+          <h1 class="h1 mb-5">Changelog</h1>
+          <p class="subtitle mx-auto max-w-xl">
+            Follow us and stay up to date with everything Zylo!
+          </p>
+          <div class="mt-6 flex items-center justify-center gap-3">
             {socials.map((s) => (
-              <a href="#" aria-label={s.label} class="text-brand hover:text-brand-hover transition-colors">
-                <Icon name={s.icon} class="w-5 h-5" />
+              <a
+                href="#"
+                aria-label={s.label}
+                class="icon-tile rounded-full text-steel transition-colors hover:text-ink"
+              >
+                <Icon name={s.icon} class="h-4 w-4" />
               </a>
             ))}
           </div>
-        </div>
-      </Reveal>
-
-      {/* 2. Timeline List */}
-      <div class="space-y-8 mb-14">
-        {releases.map((r, idx) => (
-          <Reveal delay={idx * 80}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] flex flex-col md:flex-row gap-8">
-              <div class="md:w-40 shrink-0">
-                <span class="text-sm font-semibold text-stone">{r.date}</span>
-              </div>
-              <div class="flex-1">
-                <h2 class="text-2xl font-semibold text-ink font-heading mb-4">{r.title}</h2>
-                <div class="space-y-4 text-base text-steel leading-relaxed">
-                  {r.paragraphs.map((p) => (
-                    <p>{p}</p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        ))}
+        </Reveal>
       </div>
+    </section>
 
-      {/* 3. Load more */}
-      <Reveal class="text-center">
-        <button type="button" class="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-hairline bg-canvas px-8 text-xs font-semibold text-ink hover:bg-charcoal hover:text-on-primary hover:border-brand transition-colors">
-          Load more <Icon name="lucide:arrow-down" class="w-4 h-4" />
-        </button>
-      </Reveal>
-    </div>
+    {/* 2. Entry list */}
+    <section class="pb-16">
+      <div class="container-page max-w-4xl">
+        <div class="border-t border-hairline-soft">
+          {releases.map((r, idx) => (
+            <Reveal delay={idx * 60}>
+              <article class="grid grid-cols-1 gap-6 border-b border-hairline-soft py-10 md:grid-cols-12">
+                <div class="md:col-span-3">
+                  <span class="eyebrow">{r.date}</span>
+                </div>
+                <div class="md:col-span-9">
+                  <h2 class="h4 mb-4">{r.title}</h2>
+                  <div class="space-y-4">
+                    {r.paragraphs.map((p) => (
+                      <p class="p-rg">{p}</p>
+                    ))}
+                  </div>
+                  {r.tags.length > 0 && (
+                    <div class="mt-6 flex flex-wrap gap-2">
+                      {r.tags.map((t) => (
+                        <span class="rounded-sm bg-surface px-2 py-1 text-[13px] font-semibold text-steel">{t}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 3. Load more */}
+    <section class="pb-24">
+      <div class="container-page max-w-4xl">
+        <Reveal class="text-center">
+          <button type="button" class="btn-secondary btn-lg">
+            Load more <Icon name="lucide:arrow-down" class="w-4 h-4" />
+          </button>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />

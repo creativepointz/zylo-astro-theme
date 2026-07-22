@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+import Reveal from '@/components/widgets/Reveal.astro';
+
+/* Horizontal scroller of smaller teams building on Zylo. Placeholder brands. */
+const teams = [
+  { name: 'DataPivot', blurb: 'Routes inbound research requests to agents overnight.' },
+  { name: 'VentureLab', blurb: 'Turns portfolio reporting into a single scheduled run.' },
+  { name: 'SaaSify', blurb: 'Keeps onboarding tasks moving without a project manager.' },
+  { name: 'CloudScale', blurb: 'Triages support queues before the team logs in.' },
+  { name: 'FintechX', blurb: 'Reconciles ledgers across four internal systems.' },
+  { name: 'SecureBank', blurb: 'Runs approval chains with a full audit trail.' },
+  { name: 'HyperLogistics', blurb: 'Tracks shipment exceptions and escalates them automatically.' },
+];
+---
+
+<section class="section border-b border-hairline bg-canvas-dark text-on-dark">
+  <div class="container-page">
+    <Reveal class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div>
+        <span class="eyebrow mb-3 block text-on-dark-muted">Startups on Zylo</span>
+        <h2 class="h2 max-w-xl text-on-dark">Small teams, production-grade automation</h2>
+      </div>
+      <a href="/case-studies" class="btn-on-dark btn-md shrink-0">
+        Browse case studies <Icon name="lucide:arrow-right" class="h-4 w-4" />
+      </a>
+    </Reveal>
+  </div>
+
+  {/* Edge-to-edge horizontal scroller */}
+  <div class="-mb-4 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 md:px-8">
+    {teams.map((t) => (
+      <article class="w-[280px] shrink-0 snap-start overflow-hidden rounded-lg border border-hairline-dark bg-charcoal md:w-[320px]">
+        <img
+          src="/placeholder.png"
+          alt={`${t.name} on Zylo`}
+          loading="lazy"
+          class="aspect-[16/9] w-full border-b border-hairline-dark bg-canvas-dark object-contain p-4"
+        />
+        <div class="p-6">
+          <h3 class="h6 mb-2 text-on-dark">{t.name}</h3>
+          <p class="p-sm text-on-dark-muted">{t.blurb}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>

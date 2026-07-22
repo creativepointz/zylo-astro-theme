@@ -4,7 +4,6 @@ import Navbar from '@/components/global/header/Navbar.astro';
 import Footer from '@/components/global/Footer.astro';
 import Reveal from '@/components/widgets/Reveal.astro';
 import { generatePaths } from '@/lib/utils/i18nUtils';
-import { Icon } from 'astro-icon/components';
 
 export function getStaticPaths() {
   return generatePaths();
@@ -27,33 +26,33 @@ const termNames = [
 <Layout title="Web accessibility glossary — Zylo" description="Web accessibility is the inclusive practice of ensuring that people with disabilities do not face barriers that prevent interaction or access to websites on the World Wide Web.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-5xl mx-auto px-4">
-      {/* 1. Header Banner */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-16">
-        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight mb-5">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
+    {/* 1. Compact centered hero */}
+    <section class="container-page max-w-6xl">
+      <Reveal class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow mb-4 block">Glossary</span>
+        <h1 class="h1 mb-5">
           Web accessibility glossary
         </h1>
-        <p class="text-lg text-steel leading-relaxed">
+        <p class="subtitle">
           Web accessibility is the inclusive practice of ensuring that people with disabilities
           do not face barriers that prevent interaction or access to websites on
           the World Wide Web.
         </p>
       </Reveal>
 
-      {/* 2. A–Z letter filter */}
-      <Reveal delay={80} class="mb-10">
-        <div
-          id="glossary-tabs"
-          class="rounded-lg border border-hairline bg-canvas py-5 px-3 flex gap-2.5 justify-center flex-wrap shadow-[var(--shadow-subtle)]"
-        >
+      {/* 2. A–Z pill filter row */}
+      <Reveal delay={60} class="mb-12">
+        <div id="glossary-tabs" class="flex flex-wrap justify-center gap-2">
           {letters.map((l, idx) => (
             <button
               type="button"
               data-letter={l}
               class:list={[
-                'glossary-tab w-9 h-9 inline-flex justify-center items-center rounded-md text-lg font-semibold transition-all duration-300',
-                idx === 0 ? 'bg-primary text-on-primary' : 'bg-surface-soft text-steel hover:text-brand',
+                'glossary-tab inline-flex h-9 w-9 items-center justify-center rounded-full text-sm font-medium transition-colors',
+                idx === 0
+                  ? 'bg-primary text-on-primary border border-primary'
+                  : 'bg-canvas text-steel border border-hairline',
               ]}
             >
               {l}
@@ -62,36 +61,39 @@ const termNames = [
         </div>
       </Reveal>
 
-      {/* 3. Glossary accordions */}
-      <div class="mb-16">
+      {/* 3. Term card grid */}
+      <div class="mb-24">
         {letters.map((l, idx) => (
           <div class="glossary-panel" data-panel={l} hidden={idx !== 0}>
-            <div class="rounded-lg border border-hairline bg-canvas p-6 md:p-10 shadow-[var(--shadow-subtle)]">
-              <div class="flex flex-col gap-6">
-                {termNames.map((t) => (
-                  <details class="group rounded-lg border border-hairline overflow-hidden transition-all open:shadow-[var(--shadow-subtle)] open:bg-canvas">
-                    <summary class="cursor-pointer list-none flex px-6 py-5 justify-between gap-4 items-center w-full">
-                      <span class="font-semibold text-left text-lg text-ink font-heading flex items-center gap-4 flex-wrap">
-                        <span class="font-semibold text-base bg-primary text-on-primary w-9 h-9 inline-flex justify-center items-center rounded-md flex-none">
-                          {l}
-                        </span>
-                        {t}
-                      </span>
-                      <span class="flex-none w-8 h-8 border border-hairline inline-flex justify-center items-center rounded-full text-stone transition-transform duration-300 group-open:rotate-45">
-                        <Icon name="lucide:plus" class="w-4 h-4" />
-                      </span>
-                    </summary>
-                    <div class="px-6 pb-6 pl-[76px] max-sm:pl-6">
-                      <p class="text-steel text-base leading-relaxed">{definition}</p>
-                    </div>
-                  </details>
-                ))}
-              </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {termNames.map((t) => (
+                <div class="rounded-lg border border-hairline bg-canvas p-6 h-full">
+                  <p class="p-lt mb-3">{l}</p>
+                  <h2 class="h5 mb-3">{t}</h2>
+                  <p class="p-sm">{definition}</p>
+                </div>
+              ))}
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
+
+    {/* 4. Closing CTA band */}
+    <section class="bg-surface-soft border-t border-hairline">
+      <div class="container-page max-w-3xl py-16 md:py-24 text-center">
+        <Reveal>
+          <h2 class="h2 mb-4">Put the terms to work</h2>
+          <p class="p-rg mb-8">
+            Zylo turns accessibility checks into automated workflow steps, so the standards above stay enforced on every release.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">Get started</a>
+            <a href="/contact" class="btn-secondary btn-lg">Talk to us</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />
@@ -109,9 +111,10 @@ const termNames = [
         const active = t === tab;
         t.classList.toggle('bg-primary', active);
         t.classList.toggle('text-on-primary', active);
-        t.classList.toggle('bg-surface-soft', !active);
+        t.classList.toggle('border-primary', active);
+        t.classList.toggle('bg-canvas', !active);
         t.classList.toggle('text-steel', !active);
-        t.classList.toggle('hover:text-brand', !active);
+        t.classList.toggle('border-hairline', !active);
       });
 
       panels.forEach((panel) => {

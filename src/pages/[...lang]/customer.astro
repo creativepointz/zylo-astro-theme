@@ -18,18 +18,18 @@ const filters = [
 ];
 
 const stories = [
-  'How 15Five addresses integration issues',
-  'How Zensai closed more than USD 300K in ARR',
-  'Slack boosts team communication workflows',
-  'Notion simplifies project documentation',
-  'HubSpot automates marketing campaigns',
-  'Zoom enhances remote collaboration tools',
-  'Trello organizes daily workflow management',
-  'Asana streamlines task tracking systems',
-  'Salesforce improves customer relationship data',
-  'Monday.com powers agile business operations',
-  'Canva accelerates creative design processes',
-  'Airtable centralizes team productivity systems',
+  { title: 'How CloudScale addresses integration issues', tag: 'HRIS' },
+  { title: 'How DataPivot closed more than USD 300K in ARR', tag: 'HRIS' },
+  { title: 'VentureLab boosts team communication workflows', tag: 'HRIS' },
+  { title: 'SaaSify simplifies project documentation', tag: 'HRIS' },
+  { title: 'SecureBank automates marketing campaigns', tag: 'HRIS' },
+  { title: 'FintechX enhances remote collaboration tools', tag: 'HRIS' },
+  { title: 'HyperLogistics organizes daily workflow management', tag: 'HRIS' },
+  { title: 'CloudScale streamlines task tracking systems', tag: 'HRIS' },
+  { title: 'DataPivot improves customer relationship data', tag: 'HRIS' },
+  { title: 'VentureLab powers agile business operations', tag: 'HRIS' },
+  { title: 'SaaSify accelerates creative design processes', tag: 'HRIS' },
+  { title: 'FintechX centralizes team productivity systems', tag: 'HRIS' },
 ];
 
 const customerQuote = "This platform completely changed how our support team operates. From intelligent workflows to real-time analytics everything is designed to scale. We now handle more than double the number of support tickets with the same team without compromising service quality.";
@@ -45,53 +45,60 @@ const customerVoices = [
 <Layout title="Customer — Zylo Customers Are Reducing Churn" description="See how teams use Zylo to reduce churn and scale customer operations.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-6xl mx-auto px-4">
-      {/* 1. Hero Header */}
-      <Reveal class="text-center max-w-4xl mx-auto mb-14">
-        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-6 shadow-[var(--shadow-subtle)]">
-          Customer
-        </span>
-        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight">
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
+    {/* 1. Compact centered hero */}
+    <section class="container-page max-w-6xl">
+      <Reveal class="text-center max-w-3xl mx-auto mb-12">
+        <span class="eyebrow mb-4 block">Customer</span>
+        <h1 class="h1 mb-5">
           Zylo customers are reducing churn
         </h1>
+        <p class="subtitle">
+          Teams across support, revenue, and operations use Zylo to automate the work behind every account.
+        </p>
       </Reveal>
 
-      {/* 2. Filter Bar */}
-      <Reveal class="flex flex-wrap gap-4 mb-12">
+      {/* 2. Filter row + search */}
+      <Reveal delay={60} class="flex flex-wrap gap-3 justify-center mb-12">
         {filters.map((f) => (
           <select
             aria-label={f.label}
-            class="h-12 w-[210px] max-w-full rounded-md border border-hairline bg-canvas px-5 text-sm font-medium text-steel focus:border-brand focus:outline-none"
+            class="h-10 w-[190px] max-w-full rounded-md border border-hairline bg-canvas px-4 text-sm text-steel focus:border-brand focus:outline-none"
           >
             <option>{f.label}</option>
             {f.options.map((o) => <option>{o}</option>)}
           </select>
         ))}
-        <form class="relative flex-1 min-w-[220px]" action="#">
+        <form class="relative w-full max-w-[280px]" action="#">
           <label class="sr-only" for="customer-search">Search...</label>
           <input
             id="customer-search"
             type="search"
             name="q"
             placeholder="Search..."
-            class="h-12 w-full rounded-md border border-hairline bg-canvas pl-5 pr-12 text-sm text-ink placeholder:text-stone focus:border-brand focus:outline-none"
+            class="h-10 w-full rounded-md border border-hairline bg-canvas pl-4 pr-10 text-sm text-ink placeholder:text-stone focus:border-brand focus:outline-none"
           />
-          <button type="submit" aria-label="Search" class="absolute right-4 top-1/2 -translate-y-1/2 text-stone hover:text-brand transition-colors">
+          <button type="submit" aria-label="Search" class="absolute right-3 top-1/2 -translate-y-1/2 text-stone hover:text-ink transition-colors">
             <Icon name="lucide:search" class="w-4 h-4" />
           </button>
         </form>
       </Reveal>
 
-      {/* 3. Grid of 12 Customer Stories */}
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-        {stories.map((title, idx) => (
-          <Reveal delay={idx * 50}>
-            <a href="/case-studies" class="group rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all h-full flex flex-col justify-between">
-              <h2 class="text-lg font-semibold text-ink font-heading mb-8 group-hover:text-brand transition-colors leading-snug">{title}</h2>
-              <div class="flex items-center justify-between">
-                <span class="rounded-full border border-hairline px-3 py-0.5 text-xs font-semibold text-ink">HRIS</span>
-                <span class="w-7 h-7 rounded-full bg-surface text-brand flex items-center justify-center group-hover:bg-charcoal group-hover:text-on-dark transition-colors">
+      {/* 3. Customer story card grid */}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+        {stories.map((s, idx) => (
+          <Reveal delay={idx * 40}>
+            <a href="/case-studies" class="group rounded-lg border border-hairline bg-canvas overflow-hidden h-full flex flex-col justify-between">
+              <img
+                src="/placeholder.png"
+                alt={s.title}
+                loading="lazy"
+                class="aspect-[16/9] w-full border-b border-hairline-soft bg-surface object-contain p-4"
+              />
+              <h2 class="h5 mb-8 px-6 pt-6">{s.title}</h2>
+              <div class="flex items-center justify-between px-6 pb-6">
+                <span class="p-lt">{s.tag}</span>
+                <span class="w-7 h-7 rounded-full border border-hairline bg-canvas text-ink flex items-center justify-center">
                   <Icon name="lucide:arrow-right" class="w-3.5 h-3.5" />
                 </span>
               </div>
@@ -100,45 +107,52 @@ const customerVoices = [
         ))}
       </div>
 
-      {/* 4. Testimonials Section */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-14">
-        <span class="inline-block border border-hairline bg-canvas px-4 py-1.5 rounded-full text-xs font-semibold text-ink uppercase tracking-wider mb-5 shadow-[var(--shadow-subtle)]">
-          Testimonials
-        </span>
-        <h2 class="text-3xl sm:text-5xl font-semibold text-ink font-heading tracking-tight">
+      {/* 4. Customer voices */}
+      <Reveal class="text-center max-w-3xl mx-auto mb-10">
+        <span class="eyebrow mb-4 block">Testimonials</span>
+        <h2 class="h2">
           Experiences shared by our customers
         </h2>
       </Reveal>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
         {customerVoices.map((c, idx) => (
-          <Reveal delay={idx * 70}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] h-full">
-              <div class="flex items-center gap-3 mb-6">
-                <div class="w-10 h-10 rounded-full bg-primary text-on-primary font-semibold flex items-center justify-center font-heading text-sm">
-                  {c.name[0]}
-                </div>
+          <Reveal delay={idx * 60}>
+            <div class="rounded-lg border border-hairline bg-canvas p-6 h-full">
+              <div class="flex items-center gap-3 mb-5">
+                <img
+                  src="/placeholder.png"
+                  alt={c.name}
+                  loading="lazy"
+                  class="w-10 h-10 shrink-0 rounded-full border border-hairline bg-surface object-cover"
+                />
                 <div>
-                  <h4 class="font-semibold text-ink font-heading text-sm">{c.name}</h4>
-                  <p class="text-xs text-stone">{c.role}</p>
+                  <h3 class="h6">{c.name}</h3>
+                  <p class="p-lt">{c.role}</p>
                 </div>
               </div>
-              <p class="text-steel text-base leading-relaxed">&ldquo;{customerQuote}&rdquo;</p>
+              <p class="p-sm">&ldquo;{customerQuote}&rdquo;</p>
             </div>
           </Reveal>
         ))}
       </div>
+    </section>
 
-      {/* 5. Bottom Pill CTA */}
-      <Reveal class="text-center">
-        <div class="inline-flex flex-wrap items-center justify-center gap-5 rounded-full bg-canvas-dark/5 p-3 pl-6">
-          <span class="text-base text-ink">What&rsquo;s your work finance</span>
-          <a href="/contact" class="inline-flex h-10 items-center justify-center rounded-full bg-primary px-6 text-xs font-semibold text-on-primary hover:bg-charcoal transition-colors">
-            See how default works
-          </a>
-        </div>
-      </Reveal>
-    </div>
+    {/* 5. Closing CTA band */}
+    <section class="bg-surface-soft border-t border-hairline mt-20">
+      <div class="container-page max-w-3xl py-16 md:py-24 text-center">
+        <Reveal>
+          <h2 class="h2 mb-4">What&rsquo;s your work finance</h2>
+          <p class="p-rg mb-8">
+            Walk through a Zylo workflow with our team and see the churn numbers move.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="/contact" class="btn-primary btn-lg">See how default works</a>
+            <a href="/case-studies" class="btn-secondary btn-lg">Read a case study</a>
+          </div>
+        </Reveal>
+      </div>
+    </section>
   </main>
 
   <Footer />

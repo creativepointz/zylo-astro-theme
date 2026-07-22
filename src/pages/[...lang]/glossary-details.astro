@@ -16,6 +16,12 @@ const meta = [
   'Platform: ios, Android, Web',
 ];
 
+// Property rows derived from the meta strings above (label before the colon)
+const metaRows = meta.map((m) => {
+  const idx = m.indexOf(':');
+  return { label: m.slice(0, idx + 1), value: m.slice(idx + 1).trim() };
+});
+
 const points = [
   'Users can click on the accordion headers to expand or collapse content panels, revealing more details only when they need them.',
   'Some accordions allow only one section to be open at at time, while others support multiple open sections at the same time.',
@@ -26,53 +32,56 @@ const points = [
 <Layout title="Accordion component — Zylo Glossary" description="It can be used during the main testing phase or post launch but requires a large sample size for accurate results.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-4xl mx-auto px-4">
-      {/* 1. Term header */}
-      <Reveal class="text-center mb-14">
-        <a href="/glossary" class="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:underline mb-6">
-          <Icon name="lucide:arrow-left" class="w-4 h-4" /> Back to glossary
-        </a>
-        <h1 class="text-4xl md:text-5xl font-semibold text-ink font-heading tracking-tight mb-4">
-          Accordion component
-        </h1>
-        <p class="text-lg text-steel leading-relaxed max-w-2xl mx-auto">
-          It can be used during the main testing phase or post launch but requires a large sample size for accurate results.
-        </p>
-      </Reveal>
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
+    <div class="container-page">
+      <article class="mx-auto w-full max-w-[720px]">
+        {/* 1. Term header */}
+        <Reveal class="mb-8">
+          <a href="/glossary" class="mb-6 inline-flex items-center gap-2 text-sm font-medium text-steel transition-colors hover:text-ink">
+            <Icon name="lucide:arrow-left" class="h-4 w-4" /> Back to glossary
+          </a>
+          <h1 class="h1 mb-4">Accordion component</h1>
+          <p class="subtitle">
+            It can be used during the main testing phase or post launch but requires a large sample size for accurate results.
+          </p>
+        </Reveal>
 
-      {/* 2. Meta row */}
-      <Reveal delay={80} class="flex flex-wrap justify-between gap-4 border-b border-hairline pb-4 mb-14">
-        {meta.map((m) => (
-          <span class="text-sm font-medium text-ink">{m}</span>
-        ))}
-      </Reveal>
-
-      {/* 3. Definition body */}
-      <Reveal delay={120} class="rounded-lg border border-hairline bg-canvas p-8 md:p-12 shadow-[var(--shadow-subtle)]">
-        <h2 class="text-3xl md:text-4xl font-semibold text-ink font-heading tracking-tight mb-5">
-          What is and accordion component?
-        </h2>
-        <p class="text-base text-steel leading-relaxed mb-8">
-          Accordion is a vertical stack of collapsible containers that reveal or hide sections of content.
-        </p>
-
-        <ul class="space-y-6 mb-10">
-          {points.map((p, idx) => (
-            <li class="flex gap-5">
-              <span class="text-base text-steel shrink-0">{idx + 1}.</span>
-              <p class="text-base text-steel leading-relaxed">{p}</p>
-            </li>
+        {/* 2. Property-row meta */}
+        <Reveal delay={80} class="mb-12 flex flex-col border-t border-hairline-soft">
+          {metaRows.map((m) => (
+            <div class="flex flex-wrap items-baseline gap-2 border-b border-hairline-soft py-4">
+              <span class="text-sm font-medium text-ink">{m.label}</span>
+              <span class="p-sm">{m.value}</span>
+            </div>
           ))}
-        </ul>
+        </Reveal>
 
-        <p class="text-base text-ink leading-relaxed mb-7">
-          Accordions are commonly used in the following design patterns: FAQ, Product features or specifications, Filtering &amp; sorting.
-        </p>
-        <p class="text-base text-ink leading-relaxed">
-          Fun fact: The term "accordion" in UI design is inspired by the musical instrument accordion, which expands and contracts to produce sound—just like how UI accordions expand to reveal content and collapse to hide it.
-        </p>
-      </Reveal>
+        {/* 3. Definition body */}
+        <Reveal delay={120} class="flex flex-col gap-6">
+          <h2 class="h2">What is and accordion component?</h2>
+          <p class="p-rg">
+            Accordion is a vertical stack of collapsible containers that reveal or hide sections of content.
+          </p>
+
+          <ol class="mt-2 flex flex-col gap-4">
+            {points.map((p, idx) => (
+              <li class="flex gap-4">
+                <span class="p-rg shrink-0">{idx + 1}.</span>
+                <p class="p-rg">{p}</p>
+              </li>
+            ))}
+          </ol>
+
+          <div class="mt-8 flex flex-col gap-6 border-t border-hairline-soft pt-8">
+            <p class="p-rg text-ink">
+              Accordions are commonly used in the following design patterns: FAQ, Product features or specifications, Filtering &amp; sorting.
+            </p>
+            <p class="p-rg text-ink">
+              Fun fact: The term "accordion" in UI design is inspired by the musical instrument accordion, which expands and contracts to produce sound—just like how UI accordions expand to reveal content and collapse to hide it.
+            </p>
+          </div>
+        </Reveal>
+      </article>
     </div>
   </main>
 

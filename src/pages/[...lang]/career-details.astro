@@ -30,74 +30,82 @@ const offers = [
 <Layout title="Forward Senior product designer for Zylo" description="Apply for the Forward Senior product designer role at Zylo.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-4xl mx-auto px-4">
-      {/* 1. Job Header */}
-      <Reveal class="mb-12">
-        <h1 class="text-4xl md:text-6xl font-semibold text-ink font-heading tracking-tight leading-[1.05] mb-8">
-          Forward Senior product designer for Zylo
-        </h1>
-        <a href="#apply" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-semibold text-on-primary hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]">
-          Apply now <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </a>
-      </Reveal>
+  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-canvas">
+    <div class="container-page">
+      <div class="grid gap-10 lg:grid-cols-[240px_minmax(0,1fr)] xl:gap-16">
+        {/* Left rail: role meta panel */}
+        <aside class="lg:block">
+          <div class="flex flex-col gap-6 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto lg:pb-8">
+            <a href="/career" class="inline-flex items-center gap-2 text-sm font-medium text-steel transition-colors hover:text-ink">
+              <Icon name="lucide:arrow-left" class="h-4 w-4" /> Back to all jobs
+            </a>
 
-      {/* 2. Meta Card */}
-      <Reveal delay={100} class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-subtle)] mb-16">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {meta.map((m) => (
-            <div>
-              <p class="text-xs font-semibold text-stone uppercase tracking-wider mb-2">{m.label}</p>
-              <p class="text-base font-semibold text-ink font-heading">{m.value}</p>
+            <div class="flex flex-col border-t border-hairline-soft">
+              {meta.map((m) => (
+                <div class="flex flex-col gap-1 border-b border-hairline-soft py-4">
+                  <span class="eyebrow">{m.label}</span>
+                  <span class="text-sm font-medium text-ink">{m.value}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </Reveal>
 
-      {/* 3. Body */}
-      <Reveal delay={120} class="space-y-12 text-steel leading-relaxed text-base">
-        <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">About Zylo</h2>
-          <p>
-            Zylo is building the future of business planning and analytics by bridging the gap between data and decision-making. We empower organizations to transform complex data into clear, actionable insights that drive business outcomes. Our AI-native platform integrates advanced data models with intuitive workflows, making enterprise performance management simple, collaborative, and effective.
-          </p>
-        </section>
+            <a href="#apply" class="btn-primary btn-md w-full">
+              Apply now <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+          </div>
+        </aside>
 
-        <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">The role</h2>
-          <p>
-            We're looking for Forward Deployed Data Scientists to work directly with our enterprise clients: understanding their business, wrangling their data, and building the systems that let them actually run it.
-          </p>
-          <p>
-            This is hands-on, high-impact work. You'll be embedded with enterprise clients, helping them go from "our data is a mess and everything lives in spreadsheets" to "we have systems that actually let us run the business."
-          </p>
-          <p>
-            The interesting part isn't just solving one client's problem — it's figuring out how to solve it in a way that's repeatable, scalable, and increasingly automated. The work involves SQL and Python, but the real job is architecting processes that work.
-          </p>
-        </section>
+        {/* Center: prose column */}
+        <article class="w-full max-w-[720px]">
+          <Reveal class="mb-10 border-b border-hairline pb-8">
+            <h1 class="h1">Forward Senior product designer for Zylo</h1>
+          </Reveal>
 
-        <section class="space-y-4">
-          <h2 class="text-2xl md:text-3xl font-semibold text-ink font-heading">What we offer</h2>
-          <ul class="space-y-3">
-            {offers.map((o) => (
-              <li class="flex items-start gap-3 text-base font-medium text-ink">
-                <Icon name="lucide:check-circle" class="w-4 h-4 text-brand shrink-0 mt-1" />
-                <span>{o}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </Reveal>
+          <Reveal delay={120} class="flex flex-col gap-6">
+            <section class="flex flex-col gap-4">
+              <h2 class="h3">About Zylo</h2>
+              <p class="p-rg">
+                Zylo is building the future of business planning and analytics by bridging the gap between data and decision-making. We empower organizations to transform complex data into clear, actionable insights that drive business outcomes. Our AI-native platform integrates advanced data models with intuitive workflows, making enterprise performance management simple, collaborative, and effective.
+              </p>
+            </section>
 
-      {/* 4. Apply CTA */}
-      <Reveal delay={150} id="apply" class="mt-16 flex flex-wrap items-center gap-6">
-        <a href="/contact" class="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-semibold text-on-primary hover:bg-charcoal transition-colors shadow-[var(--shadow-subtle)]">
-          Apply now <Icon name="lucide:arrow-right" class="w-4 h-4" />
-        </a>
-        <a href="/career" class="inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-brand transition-colors">
-          <Icon name="lucide:arrow-left" class="w-4 h-4" /> Back to all jobs
-        </a>
-      </Reveal>
+            <section class="mt-8 flex flex-col gap-4 border-t border-hairline-soft pt-8">
+              <h2 class="h3">The role</h2>
+              <p class="p-rg">
+                We're looking for Forward Deployed Data Scientists to work directly with our enterprise clients: understanding their business, wrangling their data, and building the systems that let them actually run it.
+              </p>
+              <p class="p-rg">
+                This is hands-on, high-impact work. You'll be embedded with enterprise clients, helping them go from "our data is a mess and everything lives in spreadsheets" to "we have systems that actually let us run the business."
+              </p>
+              <p class="p-rg">
+                The interesting part isn't just solving one client's problem — it's figuring out how to solve it in a way that's repeatable, scalable, and increasingly automated. The work involves SQL and Python, but the real job is architecting processes that work.
+              </p>
+            </section>
+
+            <section class="mt-8 flex flex-col gap-4 border-t border-hairline-soft pt-8">
+              <h2 class="h3">What we offer</h2>
+              <ul class="flex flex-col gap-3">
+                {offers.map((o) => (
+                  <li class="flex items-start gap-3">
+                    <Icon name="lucide:check-circle" class="mt-1 h-4 w-4 shrink-0 text-brand" />
+                    <span class="p-rg text-ink">{o}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </Reveal>
+
+          {/* Apply CTA */}
+          <Reveal delay={150} id="apply" class="mt-12 flex scroll-mt-28 flex-wrap items-center gap-6 border-t border-hairline pt-10">
+            <a href="/contact" class="btn-primary btn-md">
+              Apply now <Icon name="lucide:arrow-right" class="h-4 w-4" />
+            </a>
+            <a href="/career" class="inline-flex items-center gap-2 text-sm font-medium text-ink transition-colors hover:text-brand">
+              <Icon name="lucide:arrow-left" class="h-4 w-4" /> Back to all jobs
+            </a>
+          </Reveal>
+        </article>
+      </div>
     </div>
   </main>
 

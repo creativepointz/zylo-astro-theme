@@ -10,16 +10,21 @@ export function getStaticPaths() {
   return generatePaths();
 }
 
+const brands = ['CloudScale', 'DataPivot', 'VentureLab', 'SaaSify', 'SecureBank', 'HyperLogistics'];
+
 const bodyOne =
   'IT company content is important for a number of reasons. First, it can help you attract potential customers. When you create content that is relevant to your target audience, you position yourself as an expert in your field and increase the chances that potential customers will find you. IT company content can help you educate potential customers about your products and services.';
 
 const bodyTwo =
   'We are committed to providing our clients with the highest quality IT services and support. We understand that IT is essential for your business, and we will work tirelessly to help you achieve your business goals.';
 
-const visibilityPoints = [
-  { icon: 'lucide:badge-check', title: 'Product Quality:', desc: 'Automatically syncs across all your devices. You can also access your work offline.' },
-  { icon: 'lucide:palette', title: 'On Demand Design:', desc: 'Images, videos, PDFs and audio files are supported.' },
-  { icon: 'lucide:settings-2', title: 'Choice of Service:', desc: 'Whatever your business needs, you can choose a service.' },
+/* 5-up feature grid */
+const featureGrid = [
+  { icon: 'lucide:badge-check', title: 'Product Quality', desc: 'Automatically syncs across all your devices. You can also access your work offline.' },
+  { icon: 'lucide:palette', title: 'On Demand Design', desc: 'Images, videos, PDFs and audio files are supported.' },
+  { icon: 'lucide:settings-2', title: 'Choice of Service', desc: 'Whatever your business needs, you can choose a service.' },
+  { icon: 'lucide:wallet', title: 'All Wallets, One Hub', desc: 'One place to manage all your chains and wallets.' },
+  { icon: 'lucide:sparkles', title: 'Wealth planning', desc: 'Use AI to tailor and automate your investments.' },
 ];
 
 const serviceCards = [
@@ -28,122 +33,193 @@ const serviceCards = [
   { icon: 'lucide:gem', title: 'Discover, buy, and Sell unique digital assets.', desc: 'Access and Interact with Multiple Blockchains Effortlessly.' },
 ];
 
-const solutions = [
-  { icon: 'lucide:wallet', title: 'All Wallets, One Hub', desc: 'One place to manage all your chains and wallets.' },
-  { icon: 'lucide:sparkles', title: 'Wealth planning', desc: 'Use AI to tailor and automate your investments.' },
+const visibilityPoints = [
+  { icon: 'lucide:badge-check', title: 'Product Quality:', desc: 'Automatically syncs across all your devices. You can also access your work offline.' },
+  { icon: 'lucide:palette', title: 'On Demand Design:', desc: 'Images, videos, PDFs and audio files are supported.' },
+  { icon: 'lucide:settings-2', title: 'Choice of Service:', desc: 'Whatever your business needs, you can choose a service.' },
+];
+
+const stats = [
+  { value: '1 dashboard', label: 'Every source in one place' },
+  { value: '40+', label: 'Data connectors available' },
+  { value: 'Real time', label: 'Reports refresh as work happens' },
 ];
 ---
 
 <Layout title="Your business. All your data. One powerful dashboard. — Zylo Analytics" description="Analytics and reporting built for visibility across your business data.">
   <Navbar />
 
-  <main id="main" class="pt-24 md:pt-[120px] pb-24 bg-surface-soft">
-    <div class="container-page max-w-6xl mx-auto px-4">
-      {/* 1. Header Banner */}
-      <Reveal class="text-center max-w-4xl mx-auto mb-24">
-        <h1 class="text-4xl sm:text-6xl font-semibold text-ink font-heading tracking-tight leading-[1.08] mb-6">
-          Your business. All your data.<br class="hidden sm:block" /> One powerful dashboard.
-        </h1>
-        <p class="text-lg text-steel max-w-2xl mx-auto leading-relaxed">
-          This section provides clear, helpful answers so users can resolve issues quickly without contacting support saving valuable time.
-        </p>
-      </Reveal>
+  <main id="main" class="bg-canvas">
 
-      {/* 2. Designed to adapt to your team. */}
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-24">
-        <Reveal>
-          <h2 class="text-3xl md:text-5xl font-semibold text-ink font-heading tracking-tight mb-6 leading-tight">
-            Designed to adapt to your team.
-          </h2>
-          <p class="text-steel text-sm leading-relaxed mb-4">{bodyOne}</p>
-          <p class="text-steel text-sm leading-relaxed">{bodyTwo}</p>
+    {/* 1. Centered hero */}
+    <section class="pt-24 md:pt-[120px] pb-16 md:pb-24">
+      <div class="container-page">
+        <Reveal class="text-center max-w-4xl mx-auto">
+          <span class="eyebrow mb-6 inline-block rounded-full border border-hairline bg-canvas px-3 py-1">
+            Analytics
+          </span>
+          <h1 class="hero-display mb-6">
+            Your business. All your data.<br class="hidden sm:inline" /> One powerful dashboard.
+          </h1>
+          <p class="subtitle max-w-2xl mx-auto mb-8">
+            This section provides clear, helpful answers so users can resolve issues quickly without contacting support saving valuable time.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">
+              Get started <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="/contact" class="btn-secondary btn-lg">Talk to sales</a>
+          </div>
         </Reveal>
 
-        <Reveal delay={100} class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-subtle)]">
-          <h3 class="text-xl font-semibold text-ink font-heading mb-8">Built for visibility</h3>
-          <div class="space-y-7">
-            {visibilityPoints.map((p) => (
-              <div class="flex items-start gap-4">
-                <div class="w-11 h-11 rounded-md bg-brand/10 text-brand flex items-center justify-center shrink-0">
-                  <Icon name={p.icon} class="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 class="text-base font-semibold text-ink font-heading mb-1">{p.title}</h4>
-                  <p class="text-steel text-sm leading-relaxed">{p.desc}</p>
-                </div>
-              </div>
+        <Reveal delay={120} class="mt-12 md:mt-16">
+          <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-mockup)] overflow-hidden max-w-5xl mx-auto">
+            <img src="/placeholder.png" alt="Zylo analytics dashboard" class="w-full rounded-md block" />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    {/* 2. Social proof strip */}
+    <section class="border-y border-hairline py-12">
+      <div class="container-page text-center">
+        <Reveal>
+          <p class="eyebrow mb-8">
+            Reporting for <span class="text-ink">10,000+</span> teams across every plan
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-6 gap-x-8 items-center justify-items-center">
+            {brands.map((b) => (
+              <span class="p-lg font-medium tracking-tight text-steel">{b}</span>
             ))}
           </div>
         </Reveal>
       </div>
+    </section>
 
-      {/* 3. The Challenge */}
-      <Reveal class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-3xl md:text-5xl font-semibold text-ink font-heading tracking-tight mb-5">
-          The Challenge
-        </h2>
-        <p class="text-base text-steel leading-relaxed">
-          Every growing team hits the same wall: data scattered across tools, reports that arrive too late, and decisions made on gut feel instead of evidence. Visibility is the fix.
-        </p>
-      </Reveal>
-
-      {/* 4. Service cards */}
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        {serviceCards.map((c, idx) => (
-          <Reveal delay={idx * 80}>
-            <div class="rounded-lg border border-hairline bg-canvas p-8 shadow-[var(--shadow-subtle)] hover:border-brand/40 hover:shadow-[var(--shadow-subtle)] transition-all h-full">
-              <div class="w-12 h-12 rounded-md bg-brand/10 text-brand flex items-center justify-center mb-6">
-                <Icon name={c.icon} class="w-6 h-6" />
-              </div>
-              <h3 class="text-xl font-semibold text-ink font-heading mb-3 leading-snug">{c.title}</h3>
-              <p class="text-steel text-sm leading-relaxed">{c.desc}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* 5. Solutions */}
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-        {solutions.map((s, idx) => (
-          <Reveal delay={idx * 100}>
-            <div class="rounded-lg bg-canvas-dark text-on-dark p-8 md:p-10 shadow-[var(--shadow-card)] h-full">
-              <div class="w-12 h-12 rounded-md bg-canvas/10 text-brand flex items-center justify-center mb-6">
-                <Icon name={s.icon} class="w-6 h-6" />
-              </div>
-              <h3 class="text-2xl font-semibold font-heading mb-2">{s.title}</h3>
-              <p class="text-on-dark-muted text-sm leading-relaxed">{s.desc}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-
-      {/* 6. Clarity across the supply chain */}
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-        <Reveal>
-          <h2 class="text-3xl md:text-5xl font-semibold text-ink font-heading tracking-tight mb-6 leading-tight">
-            Clarity across the supply chain
-          </h2>
-          <p class="text-steel text-sm leading-relaxed mb-4">{bodyOne}</p>
-          <p class="text-steel text-sm leading-relaxed">{bodyTwo}</p>
+    {/* 3. Feature grid — 5-up */}
+    <section class="section">
+      <div class="container-page">
+        <Reveal class="text-center max-w-2xl mx-auto mb-12">
+          <h2 class="h2">Built for visibility</h2>
         </Reveal>
-
-        <Reveal delay={100} class="rounded-lg border border-hairline bg-canvas p-8 md:p-10 shadow-[var(--shadow-subtle)]">
-          <div class="space-y-7">
-            {visibilityPoints.map((p) => (
-              <div class="flex items-start gap-4">
-                <div class="w-11 h-11 rounded-md bg-brand/10 text-brand flex items-center justify-center shrink-0">
-                  <Icon name={p.icon} class="w-5 h-5" />
-                </div>
-                <div>
-                  <h3 class="text-base font-semibold text-ink font-heading mb-1">{p.title}</h3>
-                  <p class="text-steel text-sm leading-relaxed">{p.desc}</p>
-                </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+          {featureGrid.map((f, idx) => (
+            <Reveal delay={idx * 60}>
+              <div class="card h-full">
+                <span class="icon-tile mb-5">
+                  <Icon name={f.icon} class="w-5 h-5" />
+                </span>
+                <h3 class="h5 mb-2">{f.title}</h3>
+                <p class="p-sm">{f.desc}</p>
               </div>
-            ))}
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 4. Alternating feature rows */}
+    <section class="pb-16 md:pb-24">
+      <div class="container-page space-y-16 md:space-y-24">
+
+        {/* Row 1 — text left */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal>
+            <h2 class="h2 mb-5">Designed to adapt to your team.</h2>
+            <p class="p-sm mb-4">{bodyOne}</p>
+            <p class="p-sm">{bodyTwo}</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div class="card space-y-7 p-8">
+              {visibilityPoints.map((p) => (
+                <div class="flex items-start gap-4">
+                  <span class="icon-tile shrink-0">
+                    <Icon name={p.icon} class="w-5 h-5" />
+                  </span>
+                  <div>
+                    <h3 class="h5 mb-1">{p.title}</h3>
+                    <p class="p-sm">{p.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Row 2 — text right */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal class="lg:order-2">
+            <h2 class="h2 mb-5">The Challenge</h2>
+            <p class="p-rg">
+              Every growing team hits the same wall: data scattered across tools, reports that arrive too late, and decisions made on gut feel instead of evidence. Visibility is the fix.
+            </p>
+          </Reveal>
+          <Reveal delay={100} class="lg:order-1">
+            <div class="space-y-4">
+              {serviceCards.map((c) => (
+                <div class="card flex items-start gap-4">
+                  <span class="icon-tile shrink-0">
+                    <Icon name={c.icon} class="w-5 h-5" />
+                  </span>
+                  <div>
+                    <h3 class="h5 mb-1 leading-snug">{c.title}</h3>
+                    <p class="p-sm">{c.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* Row 3 — text left */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <Reveal>
+            <h2 class="h2 mb-5">Clarity across the supply chain</h2>
+            <p class="p-sm mb-4">{bodyOne}</p>
+            <p class="p-sm">{bodyTwo}</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <div class="rounded-lg border border-hairline-soft bg-canvas p-2 shadow-[var(--shadow-card)] overflow-hidden">
+              <img src="/placeholder.png" alt="Zylo reporting view" class="w-full rounded-md block" />
+            </div>
+          </Reveal>
+        </div>
+
+      </div>
+    </section>
+
+    {/* 5. Stat row */}
+    <section class="border-y border-hairline py-16">
+      <div class="container-page">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+          {stats.map((s, idx) => (
+            <Reveal delay={idx * 80}>
+              <div class="display-lg mb-2">{s.value}</div>
+              <p class="p-sm">{s.label}</p>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* 7. Closing CTA band */}
+    <section class="section bg-surface-soft">
+      <div class="container-page">
+        <Reveal class="text-center max-w-3xl mx-auto">
+          <h2 class="h2 mb-5">See the whole business in one view</h2>
+          <p class="p-rg mb-8">
+            Connect your tools, let Zylo do the reporting, and give every team the same numbers to work from.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href="/pricing" class="btn-primary btn-lg">
+              Get started <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            </a>
+            <a href="/contact" class="btn-secondary btn-lg">Talk to sales</a>
           </div>
         </Reveal>
       </div>
-    </div>
+    </section>
+
   </main>
 
   <Footer />
